@@ -43,17 +43,17 @@ Team Awesome
   
   ```
   10/03:
-        Camera2dFollow: Script voor het volgen van een 2D object via de camera.
-        CameraFollow: '' '' -2D.
-        GameMaster: Bepaald verschillende mechanics binnen de game. (Nu het respawnen)
-        LetterProjectileController: Bepaald de aspecten en functionaliteiten van het 'letters' projectiel.
-        NoYAxisMovement: HotFix voor de volgende achtergrond, zodat er geen y-axis movement plaatsvindt.
-        Paralaxxing: Geeft het diepte van verschillende lagen effect (langs elkaar heen). _GM GameObject
-        Platformer2DUserControl
-        PlatformerCharacter2d
-        Player: PlayerStats: bijv Health > consequenties
-        Restarter
-        Tiling: Generate lagen bij camera movement.
+    1. Camera2dFollow: Script voor het volgen van een 2D object via de camera.
+    2. CameraFollow: '' '' -2D.
+    3. GameMaster: Bepaald verschillende mechanics binnen de game. (Nu het respawnen)
+    4. LetterProjectileController: Bepaald de aspecten en functionaliteiten van het 'letters' projectiel.
+    5. NoYAxisMovement: HotFix voor de volgende achtergrond, zodat er geen y-axis movement plaatsvindt.
+    6. Paralaxxing: Geeft het diepte van verschillende lagen effect (langs elkaar heen). _GM GameObject
+    7. Platformer2DUserControl
+    8. PlatformerCharacter2d
+    9. Player: PlayerStats: bijv Health > consequenties
+    10. Restarter
+    11. Tiling: Generate lagen bij camera movement.
   ```
 #####9. Sprites: 
 
