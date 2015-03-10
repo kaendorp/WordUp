@@ -1,0 +1,726 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Game Logic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400002}
+  m_Layer: 0
+  m_Name: Example Scene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400004}
+  - 114: {fileID: 11400002}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400006}
+  - 114: {fileID: 11400004}
+  m_Layer: 0
+  m_Name: View Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400008}
+  - 114: {fileID: 11400006}
+  m_Layer: 0
+  m_Name: Wildcard Tile Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400010}
+  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400018}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400012}
+  m_Layer: 0
+  m_Name: Tile Pools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100014
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400014}
+  - 114: {fileID: 11400010}
+  m_Layer: 0
+  m_Name: Tile Pool - Deutsch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100016
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400016}
+  - 114: {fileID: 11400012}
+  m_Layer: 0
+  m_Name: "Tile Pool - fran\xE7ais"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100018
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400018}
+  - 114: {fileID: 11400014}
+  m_Layer: 0
+  m_Name: Tile Pool - italiano
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100020
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400020}
+  - 114: {fileID: 11400016}
+  m_Layer: 0
+  m_Name: "Tile Pool - espa\xF1ol"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100022
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400022}
+  - 114: {fileID: 11400020}
+  m_Layer: 0
+  m_Name: Tile Pool - English
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400010}
+  - {fileID: 400012}
+  - {fileID: 400006}
+  - {fileID: 400008}
+  - {fileID: 400000}
+  - {fileID: 400004}
+  m_Father: {fileID: 0}
+--- !u!4 &400004
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+--- !u!4 &400006
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+--- !u!4 &400008
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+--- !u!4 &400010
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+--- !u!4 &400012
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400022}
+  - {fileID: 400014}
+  - {fileID: 400016}
+  - {fileID: 400018}
+  - {fileID: 400020}
+  m_Father: {fileID: 400002}
+--- !u!4 &400014
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400012}
+--- !u!4 &400016
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400012}
+--- !u!4 &400018
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400012}
+--- !u!4 &400020
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400012}
+--- !u!4 &400022
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400012}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd65b820db5d29e40ae685ad38f48b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ViewModel: {fileID: 11400004}
+  m_Player: {fileID: 100010}
+  m_Agent: {fileID: 100010}
+  m_TilePools:
+  - {fileID: 100022}
+  - {fileID: 100016}
+  - {fileID: 100018}
+  - {fileID: 100014}
+  - {fileID: 100020}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d46435be7717048a33711b544fa169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ViewModel: {fileID: 11400004}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 968583f5a668f194988978955131c26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1305749262, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OnWildcardTileSelect:
+    m_Event:
+      _target: {fileID: 11400000}
+      _targetGameObject: {fileID: 100000}
+      _methodName: OnWildcardTileSelect
+    m_SerializedInvocationList: []
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1154868530, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputEnabled: 1
+  m_MaxTiles: 7
+  m_OrderedWordCheck: 1
+  m_MultiplyByPermutations: 0
+  m_ScorePenalty: 0
+  m_PreviousWordsCapacity: 100
+  m_WordStringSingular: word
+  m_WordStringPlural: words
+  m_OnWordResult:
+    m_Event:
+      _target: {fileID: 11400000}
+      _targetGameObject: {fileID: 100000}
+      _methodName: OnPlayerWordResult
+    m_SerializedInvocationList: []
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2125789421, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keys:
+  - E
+  - N
+  - S
+  - I
+  - R
+  - T
+  - U
+  - A
+  - D
+  - H
+  - G
+  - L
+  - O
+  - M
+  - B
+  - W
+  - Z
+  - C
+  - F
+  - K
+  - P
+  - "\xC4"
+  - J
+  - "\xDC"
+  - V
+  - "\xD6"
+  - X
+  - Q
+  - Y
+  m_Values: 0f00000009000000070000000600000006000000060000000600000005000000040000000400000003000000030000000300000004000000020000000100000001000000020000000200000002000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Count: 29
+  m_Parent: {fileID: 0}
+  m_SerializedTiles: []
+  m_LanguageIdentifier: Deutsch
+  m_TilePrefab: {fileID: 100008, guid: d9e0e03f6ba45bb409640620967a61e8, type: 2}
+  m_BlankLetterCount: 2
+  m_PoolMultiplier: 1
+  m_OnTileDistribution:
+    m_Event:
+      _target: {fileID: 0}
+      _targetGameObject: {fileID: 0}
+      _methodName: 
+    m_SerializedInvocationList: []
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2125789421, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keys:
+  - E
+  - A
+  - I
+  - N
+  - O
+  - R
+  - S
+  - T
+  - U
+  - L
+  - D
+  - M
+  - G
+  - B
+  - C
+  - P
+  - F
+  - H
+  - V
+  - J
+  - Q
+  - K
+  - W
+  - X
+  - Y
+  - Z
+  m_Values: 0f00000009000000080000000600000006000000060000000600000006000000060000000500000003000000030000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000
+  m_Count: 26
+  m_Parent: {fileID: 0}
+  m_SerializedTiles: []
+  m_LanguageIdentifier: francais
+  m_TilePrefab: {fileID: 100008, guid: d9e0e03f6ba45bb409640620967a61e8, type: 2}
+  m_BlankLetterCount: 2
+  m_PoolMultiplier: 1
+  m_OnTileDistribution:
+    m_Event:
+      _target: {fileID: 0}
+      _targetGameObject: {fileID: 0}
+      _methodName: 
+    m_SerializedInvocationList: []
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2125789421, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keys:
+  - O
+  - A
+  - I
+  - E
+  - C
+  - R
+  - S
+  - T
+  - L
+  - M
+  - N
+  - U
+  - B
+  - D
+  - F
+  - P
+  - V
+  - G
+  - H
+  - Z
+  - Q
+  m_Values: 0f0000000e0000000c0000000b0000000600000006000000060000000600000005000000050000000500000005000000030000000300000003000000030000000300000002000000020000000200000001000000
+  m_Count: 21
+  m_Parent: {fileID: 0}
+  m_SerializedTiles: []
+  m_LanguageIdentifier: italiano
+  m_TilePrefab: {fileID: 100008, guid: d9e0e03f6ba45bb409640620967a61e8, type: 2}
+  m_BlankLetterCount: 2
+  m_PoolMultiplier: 1
+  m_OnTileDistribution:
+    m_Event:
+      _target: {fileID: 0}
+      _targetGameObject: {fileID: 0}
+      _methodName: 
+    m_SerializedInvocationList: []
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2125789421, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keys:
+  - A
+  - E
+  - O
+  - I
+  - S
+  - N
+  - L
+  - R
+  - U
+  - T
+  - D
+  - G
+  - C
+  - B
+  - M
+  - P
+  - H
+  - F
+  - V
+  - Y
+  - CH
+  - Q
+  - J
+  - LL
+  - "\xD1"
+  - RR
+  - X
+  - Z
+  m_Values: 0c0000000c0000000900000006000000060000000500000004000000050000000500000004000000050000000200000004000000020000000200000002000000020000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Count: 28
+  m_Parent: {fileID: 0}
+  m_SerializedTiles: []
+  m_LanguageIdentifier: espanol
+  m_TilePrefab: {fileID: 100008, guid: d9e0e03f6ba45bb409640620967a61e8, type: 2}
+  m_BlankLetterCount: 2
+  m_PoolMultiplier: 1
+  m_OnTileDistribution:
+    m_Event:
+      _target: {fileID: 0}
+      _targetGameObject: {fileID: 0}
+      _methodName: 
+    m_SerializedInvocationList: []
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -941310377, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnorePlayerInputState: 1
+  m_Threshold: 25
+  m_Bias: .75
+  m_MinWordLength: 1
+  m_MaxWordLength: 7
+  m_MaxPrefixIterations: 1000
+  m_MaxWords: 500
+  m_MaxTime: 5
+  m_RetryCount: 4
+  m_ProcessWildcards: 1
+  m_CustomWildcardScoring: 1
+  m_CustomWildcardScore: 0
+  m_AutoSelectWord: 1
+  m_AutoSelectTime: .300000012
+  m_AutoSubmitWord: 1
+  m_AutoSubmitTime: .25
+  m_OnFindWords:
+    m_Event:
+      _target: {fileID: 11400000}
+      _targetGameObject: {fileID: 100000}
+      _methodName: OnAgentFindWords
+    m_SerializedInvocationList: []
+--- !u!114 &11400020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2125789421, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keys:
+  - E
+  - A
+  - I
+  - O
+  - N
+  - R
+  - T
+  - L
+  - S
+  - U
+  - D
+  - G
+  - B
+  - C
+  - M
+  - P
+  - F
+  - H
+  - V
+  - W
+  - Y
+  - K
+  - J
+  - X
+  - Q
+  - Z
+  m_Values: 0c00000009000000090000000800000006000000060000000600000004000000040000000400000004000000030000000200000002000000020000000200000002000000020000000200000002000000020000000100000001000000010000000100000001000000
+  m_Count: 26
+  m_Parent: {fileID: 0}
+  m_SerializedTiles: []
+  m_LanguageIdentifier: English
+  m_TilePrefab: {fileID: 100008, guid: d9e0e03f6ba45bb409640620967a61e8, type: 2}
+  m_BlankLetterCount: 2
+  m_PoolMultiplier: 1
+  m_OnTileDistribution:
+    m_Event:
+      _target: {fileID: 0}
+      _targetGameObject: {fileID: 0}
+      _methodName: 
+    m_SerializedInvocationList: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100002}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1
