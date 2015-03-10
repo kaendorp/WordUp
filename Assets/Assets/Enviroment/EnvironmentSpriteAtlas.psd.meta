@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 2fad47b47b980124ea8c56a65aa7a657
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BackgroundMountainsPink
+    21300002: BackgroundMountainsOrange
+    21300004: ForegroundDirt
+    21300006: Platform01
+    21300008: Platform02
+    21300010: Platform03
+    21300012: Platform04
+    21300014: EnvironmentSpriteAtlas_7
+    21300016: BackgroundMountainsBlue
+    21300018: foreground02
+    21300020: TreeMain
+    21300022: TreeForeground
+    21300024: MainGrass
+    21300026: EnvironmentSpriteAtlas_0
+    21300028: EnvironmentSpriteAtlas_1
+    21300030: EnvironmentSpriteAtlas_2
+    21300032: EnvironmentSpriteAtlas_3
+    21300034: EnvironmentSpriteAtlas_4
+    21300036: EnvironmentSpriteAtlas_5
+    21300038: EnvironmentSpriteAtlas_6
+    21300040: EnvironmentSpriteAtlas_8
+    21300042: EnvironmentSpriteAtlas_9
+    21300044: EnvironmentSpriteAtlas_10
+    21300046: EnvironmentSpriteAtlas_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: EnvironmentSpriteAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 1432
+        width: 1531
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1164
+        width: 1533
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 881
+        width: 1535
+        height: 270
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 702
+        width: 1958
+        height: 172
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 131
+        width: 24
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 189
+        width: 24
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 249
+        width: 21
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 160
+        width: 19
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 259
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 61
+        width: 27
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 27
+        width: 1957
+        height: 175
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EnvironmentSpriteAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 224
+        width: 1958
+        height: 175
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MainGrass
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 835
+        width: 1958
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
