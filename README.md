@@ -41,6 +41,7 @@ Team Awesome
 
   Bevat de scripts voor de verschillende functionaliteiten binnen het project.
   
+  ```
   10/03:
         Camera2dFollow: Script voor het volgen van een 2D object via de camera.
         CameraFollow: '' '' -2D.
@@ -53,4 +54,16 @@ Team Awesome
         Player: PlayerStats: bijv Health > consequenties
         Restarter
         Tiling: Generate lagen bij camera movement.
+  ```
+#####9. Sprites: 
+
+    1. Enemies
+    2. Enviroment
+      1. Backgrounds
+      2. General
+      3. Items
+      4. Trees
+    3. Hud
+    4. Player
+    5. Projectiles
   
