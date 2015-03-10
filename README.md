@@ -1,8 +1,12 @@
 # WordUp
 Team Awesome
 
+###1. Huidige Plugins
+```
+-
+```
 
-###Uitleg huidige content
+###2. Uitleg huidige content
 
 #####1. Animation: 
 
@@ -66,4 +70,3 @@ Team Awesome
     3. Hud
     4. Player
     5. Projectiles
-  
