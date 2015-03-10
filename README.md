@@ -6,7 +6,7 @@ Team Awesome
 -
 ```
 
-###2. Uitleg huidige content
+###2. Huidige content
 
 #####1. Animation: 
 
