@@ -8,7 +8,7 @@ Team Awesome
 
 ###2. Huidige content
 
-#####1. Animation: 
+#####1. Animation
 
   Bevat de animatiecontrollers en animaties voor de sprites.
 
@@ -16,32 +16,32 @@ Team Awesome
     2. Controllers: Bevat de animatiecontrollers, die de behaviour en triggering van de animaties bepaald. 
                     ('Animator' window)
 
-#####2. Fonts: 
+#####2. Fonts 
 
   Bevat een aantal fonts, gedownload voor het hoofdmenu.
 
-#####3. Levels: 
+#####3. Levels 
 
   Bevat de ontwikkelde levels.
   
-#####4. Materials: 
+#####4. Materials 
 
   Bevat de gebruikte materials.
  
-#####5. Prefabs: 
+#####5. Prefabs 
 
   Bevat de prefabs voor de GameObjecten binnen de levels.
   
-#####6. ProjectSettings: 
+#####6. ProjectSettings 
 
   ProjectSettings dus No Editing...
 
-#####7. SampleAssets:
+#####7. SampleAssets
   
   SampleAssets gedownload uit de UnityStore
   SampleAssets>2D>Scripts zijn toegevoegd aan de primaire Script map, om interactie redenen.
 
-#####8. Scripts: 
+#####8. Scripts 
 
   Bevat de scripts voor de verschillende functionaliteiten binnen het project.
   
@@ -59,7 +59,7 @@ Team Awesome
     10. Restarter
     11. Tiling: Generate lagen bij camera movement.
   ```
-#####9. Sprites: 
+#####9. Sprites 
 
     1. Enemies
     2. Enviroment
