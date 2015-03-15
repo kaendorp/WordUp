@@ -26,7 +26,7 @@ public class LetterProjectileController : MonoBehaviour {
 
 	}
 
-	void onTriggerEnter2D(Collider2D obj)
+	void onTriggerEnter2D(Collision2D obj)
     {
 		Debug.Log ("Hit");
 

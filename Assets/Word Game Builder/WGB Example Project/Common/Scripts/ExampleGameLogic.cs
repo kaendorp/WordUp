@@ -64,6 +64,8 @@ namespace Thinksquirrel.WordGameBuilderExample
         ILetterTile m_WildcardManagerTile;
         // True if a language is currently being loaded.
         bool m_LoadingLanguage;
+
+		GameObject WordGame;
         #endregion
 
         #region Unity callbacks
@@ -430,11 +432,7 @@ namespace Thinksquirrel.WordGameBuilderExample
         // when the user confirms a word selection.
         void OnSubmitWord()
         {
-            // Disable the submission button.
-            m_ViewModel.submitButtonEnabled = false;
-
-            // Submit the word! Scoring is automatic, and based on language/player settings.
-            m_PlayerCached.SubmitWord();
+			Destroy (WordGame);
         }
         // This method is called by the ViewModel,
         // when the user presses a button to change a wildcard letter.
