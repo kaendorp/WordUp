@@ -1,22 +1,28 @@
-# =============== #
-# Unity generated #
-# =============== #
-Temp/
-Library/
+# =======
+# Folders
+# =======
+[Bb]uild/
+[Ll]ibrary/
+[Oo]bj/
+[Tt]emp/
 
-# ===================================== #
-# Visual Studio / MonoDevelop generated #
-# ===================================== #
-ExportedObj/
-obj/
-*.svd
-*.userprefs
-/*.csproj
-*.pidb
-*.suo
-/*.sln
-*.user
+# Unity3D generated meta files
+*.pidb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# =====================================
+# Visual Studio / MonoDevelop generated
+# =====================================
+*.csproj
 *.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
 *.booproj
 
 # =========================
