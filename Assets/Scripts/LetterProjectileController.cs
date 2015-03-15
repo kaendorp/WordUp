@@ -47,7 +47,7 @@ public class LetterProjectileController : MonoBehaviour {
 						Destroy (collider.gameObject);
 			Destroy(gameObject);
 				}
-		Destroy(gameObject, 4);
+		Destroy(gameObject);
 		/*
          if(collider.gameObject.name == "CannonBall")
          {
