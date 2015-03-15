@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 9d6b04bac22c4b74d8d7ff2d309366cf
+timeCreated: 1426182765
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: stenen_letters(1)00_0
+    21300002: stenen_letters(1)00_1
+    21300004: stenen_letters(1)00_2
+    21300006: stenen_letters(1)00_3
+    21300008: stenen_letters(1)00_4
+    21300010: stenen_letters(1)00_5
+    21300012: stenen_letters(1)00_6
+    21300014: stenen_letters(1)00_7
+    21300016: stenen_letters(1)00_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: stenen_letters(1)00_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 120
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 336
+        width: 120
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 336
+        width: 100
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_3
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 336
+        width: 101
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 336
+        width: 120
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 272
+        width: 120
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 272
+        width: 107
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 272
+        width: 113
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stenen_letters(1)00_8
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 272
+        width: 107
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
