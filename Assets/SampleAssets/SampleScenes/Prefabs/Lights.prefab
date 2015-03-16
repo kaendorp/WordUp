@@ -93,10 +93,10 @@ Light:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 6
   m_Type: 1
   m_Color: {r: .708477497, g: .799725533, b: .823529422, a: 1}
-  m_Intensity: .349999994
+  m_Intensity: .699999988
   m_Range: 44.5999985
   m_SpotAngle: 112
   m_CookieSize: 10
@@ -105,21 +105,18 @@ Light:
     m_Resolution: 2
     m_Strength: .600000024
     m_Bias: .0199999996
-    m_Softness: 4
-    m_SoftnessFade: 1
+    m_NormalBias: .400000006
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294966270
   m_Lightmapping: 1
-  m_ShadowSamples: 1
+  m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
 --- !u!108 &10800002
 Light:
@@ -128,10 +125,10 @@ Light:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 6
   m_Type: 1
   m_Color: {r: .999492884, g: 1, b: .963235319, a: 1}
-  m_Intensity: .5
+  m_Intensity: 1
   m_Range: 44.5999985
   m_SpotAngle: 112
   m_CookieSize: 10
@@ -140,21 +137,18 @@ Light:
     m_Resolution: 2
     m_Strength: .600000024
     m_Bias: .00999999978
-    m_Softness: 1.75
-    m_SoftnessFade: .75
+    m_NormalBias: .400000006
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 1
-  m_ShadowSamples: 1
+  m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -179,10 +173,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-    m_DeprecatedTransformRoot: {fileID: 0}
-    m_DeprecatedTransformMap: {}
-    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100004}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

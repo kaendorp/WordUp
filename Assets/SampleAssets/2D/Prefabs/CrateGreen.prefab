@@ -54,8 +54,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 8be6341e1ce3f4cec9902bc34f72d20a, type: 2}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .625009537, y: .625220299}
+  serializedVersion: 2
   m_Size: {x: 1.23269653, y: 1.23209572}
-  m_Center: {x: .625009537, y: .625220299}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -65,15 +67,19 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 272ba847f100d4251bb8260575189042, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1859086223
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 12ef7cbdfe0e143fa858a324456c8979, type: 3}
@@ -86,10 +92,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-    m_DeprecatedTransformRoot: {fileID: 0}
-    m_DeprecatedTransformMap: {}
-    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

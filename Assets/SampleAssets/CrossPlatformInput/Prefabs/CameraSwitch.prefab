@@ -103,9 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Maskable: 0
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 14
@@ -118,13 +117,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_FontEffect:
-    effectStyle: 0
-    effectColor: {r: 0, g: 0, b: 0, a: 1}
-    effectDistance: {x: 1, y: 1}
   m_Text: Button
-  m_Password: 0
-  m_ShowLastChar: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,20 +141,20 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: .807843149, b: .372549027, a: 1}
     m_PressedColor: {r: .650980413, g: .525490224, b: .247058824, a: 1}
     m_DisabledColor: {r: .5, g: .5, b: .5, a: 1}
-    m_ColorTint: 0
+    m_ColorMultiplier: 1
     m_FadeDuration: .100000001
   m_SpriteState:
-    m_NormalSprite: {fileID: 21300000, guid: 0336ea8c9d6d703468726afc740950fd, type: 3}
     m_HighlightedSprite: {fileID: 21300000, guid: 0336ea8c9d6d703468726afc740950fd,
       type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 665bd6e9b9bab2046802ea85370db490, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
-    m_HighlightTrigger: Highlighted
+    m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_HighlightGraphic: {fileID: 11400006}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 11400006}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -175,7 +168,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-        m_Enabled: 1
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11400006
@@ -189,24 +183,24 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Maskable: 0
   m_Sprite: {fileID: 21300000, guid: 0336ea8c9d6d703468726afc740950fd, type: 3}
-  m_FillCenter: 1
   m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &22200000
-UIRenderer:
+CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
 --- !u!222 &22200002
-UIRenderer:
+CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -254,16 +248,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-    m_DeprecatedTransformRoot: {fileID: 100004}
-    m_DeprecatedTransformMap:
-      data:
-        first: {fileID: 400000}
-        second: {fileID: 22400000}
-      data:
-        first: {fileID: 400002}
-        second: {fileID: 22400002}
-    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100002}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

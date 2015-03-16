@@ -292,24 +292,26 @@ WheelCollider:
   m_GameObject: {fileID: 100000}
   m_Center: {x: 0, y: .0799999982, z: 0}
   m_Radius: .360000014
-  m_SuspensionDistance: .159999996
   m_SuspensionSpring:
     spring: 15
     damper: .5
     targetPosition: 0
+  m_SuspensionDistance: .159999996
+  m_ForceAppPointDistance: 0
   m_Mass: 1
+  m_WheelDampingRate: .25
   m_ForwardFriction:
-    extremumSlip: 1
-    extremumValue: 20000
-    asymptoteSlip: 2
-    asymptoteValue: 10000
-    stiffnessFactor: 1
+    m_ExtremumSlip: .400000006
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .800000012
+    m_AsymptoteValue: .5
+    m_Stiffness: 1
   m_SidewaysFriction:
-    extremumSlip: .200000003
-    extremumValue: 10000
-    asymptoteSlip: .400000006
-    asymptoteValue: 200
-    stiffnessFactor: 1
+    m_ExtremumSlip: .200000003
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .5
+    m_AsymptoteValue: .75
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &14600002
 WheelCollider:
@@ -319,24 +321,26 @@ WheelCollider:
   m_GameObject: {fileID: 100002}
   m_Center: {x: 0, y: .0799999982, z: 0}
   m_Radius: .360000014
-  m_SuspensionDistance: .159999996
   m_SuspensionSpring:
     spring: 15
     damper: .5
     targetPosition: 0
+  m_SuspensionDistance: .159999996
+  m_ForceAppPointDistance: 0
   m_Mass: 1
+  m_WheelDampingRate: .25
   m_ForwardFriction:
-    extremumSlip: 1
-    extremumValue: 20000
-    asymptoteSlip: 2
-    asymptoteValue: 10000
-    stiffnessFactor: 1
+    m_ExtremumSlip: .400000006
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .800000012
+    m_AsymptoteValue: .5
+    m_Stiffness: 1
   m_SidewaysFriction:
-    extremumSlip: .200000003
-    extremumValue: 10000
-    asymptoteSlip: .400000006
-    asymptoteValue: 200
-    stiffnessFactor: 1
+    m_ExtremumSlip: .200000003
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .5
+    m_AsymptoteValue: .75
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &14600004
 WheelCollider:
@@ -346,24 +350,26 @@ WheelCollider:
   m_GameObject: {fileID: 100004}
   m_Center: {x: 0, y: .0799999982, z: 0}
   m_Radius: .360000014
-  m_SuspensionDistance: .159999996
   m_SuspensionSpring:
     spring: 15
     damper: .5
     targetPosition: 0
+  m_SuspensionDistance: .159999996
+  m_ForceAppPointDistance: 0
   m_Mass: 1
+  m_WheelDampingRate: .25
   m_ForwardFriction:
-    extremumSlip: 1
-    extremumValue: 20000
-    asymptoteSlip: 2
-    asymptoteValue: 10000
-    stiffnessFactor: 1
+    m_ExtremumSlip: .400000006
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .800000012
+    m_AsymptoteValue: .5
+    m_Stiffness: 1
   m_SidewaysFriction:
-    extremumSlip: .200000003
-    extremumValue: 10000
-    asymptoteSlip: .400000006
-    asymptoteValue: 200
-    stiffnessFactor: 1
+    m_ExtremumSlip: .200000003
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .5
+    m_AsymptoteValue: .75
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &14600006
 WheelCollider:
@@ -373,24 +379,26 @@ WheelCollider:
   m_GameObject: {fileID: 100006}
   m_Center: {x: 0, y: .0799999982, z: 0}
   m_Radius: .360000014
-  m_SuspensionDistance: .159999996
   m_SuspensionSpring:
     spring: 15
     damper: .5
     targetPosition: 0
+  m_SuspensionDistance: .159999996
+  m_ForceAppPointDistance: 0
   m_Mass: 1
+  m_WheelDampingRate: .25
   m_ForwardFriction:
-    extremumSlip: 1
-    extremumValue: 20000
-    asymptoteSlip: 2
-    asymptoteValue: 10000
-    stiffnessFactor: 1
+    m_ExtremumSlip: .400000006
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .800000012
+    m_AsymptoteValue: .5
+    m_Stiffness: 1
   m_SidewaysFriction:
-    extremumSlip: .200000003
-    extremumValue: 10000
-    asymptoteSlip: .400000006
-    asymptoteValue: 200
-    stiffnessFactor: 1
+    m_ExtremumSlip: .200000003
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: .5
+    m_AsymptoteValue: .75
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1001 &100100000
 Prefab:
@@ -400,10 +408,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-    m_DeprecatedTransformRoot: {fileID: 0}
-    m_DeprecatedTransformMap: {}
-    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100008}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

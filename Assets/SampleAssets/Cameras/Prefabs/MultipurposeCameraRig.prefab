@@ -165,7 +165,6 @@ MonoBehaviour:
   target: {fileID: 0}
   autoTargetPlayer: 1
   updateType: 0
-  followTargetInEditMode: 1
   moveSpeed: 10
   turnSpeed: 5
   rollSpeed: 0
@@ -206,10 +205,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-    m_DeprecatedTransformRoot: {fileID: 0}
-    m_DeprecatedTransformMap: {}
-    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100004}
   m_IsPrefabParent: 1
-  m_IsExploded: 1
