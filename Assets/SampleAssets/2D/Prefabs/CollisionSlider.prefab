@@ -37,8 +37,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.036658287, y: -.0611513853}
+  serializedVersion: 2
   m_Size: {x: .321795791, y: .64172399}
-  m_Center: {x: -.036658287, y: -.0611513853}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -47,10 +49,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-    m_DeprecatedTransformRoot: {fileID: 0}
-    m_DeprecatedTransformMap: {}
-    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

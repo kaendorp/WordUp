@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1202230926, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: language
+  m_EditorClassIdentifier: 
+  m_LanguageName: Dutch
+  m_Identifier: Dutch
+  m_Culture: 
+  m_AllowBlanks: 0
+  m_CaseSensitive: 0
+  m_BlankLetterWeight: 0
+  m_LetterList:
+    m_InternalList:
+    - m_Text: A
+      m_Character: 97
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: B
+      m_Character: 98
+      m_Score: 3
+      m_HasValue: 1
+    - m_Text: C
+      m_Character: 99
+      m_Score: 3
+      m_HasValue: 1
+    - m_Text: D
+      m_Character: 100
+      m_Score: 2
+      m_HasValue: 1
+    - m_Text: E
+      m_Character: 101
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: F
+      m_Character: 102
+      m_Score: 4
+      m_HasValue: 1
+    - m_Text: G
+      m_Character: 103
+      m_Score: 2
+      m_HasValue: 1
+    - m_Text: H
+      m_Character: 104
+      m_Score: 4
+      m_HasValue: 1
+    - m_Text: I
+      m_Character: 105
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: J
+      m_Character: 106
+      m_Score: 8
+      m_HasValue: 1
+    - m_Text: K
+      m_Character: 107
+      m_Score: 5
+      m_HasValue: 1
+    - m_Text: L
+      m_Character: 108
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: M
+      m_Character: 109
+      m_Score: 3
+      m_HasValue: 1
+    - m_Text: N
+      m_Character: 110
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: O
+      m_Character: 111
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: P
+      m_Character: 112
+      m_Score: 3
+      m_HasValue: 1
+    - m_Text: Q
+      m_Character: 113
+      m_Score: 10
+      m_HasValue: 1
+    - m_Text: R
+      m_Character: 114
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: S
+      m_Character: 115
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: T
+      m_Character: 116
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: U
+      m_Character: 117
+      m_Score: 1
+      m_HasValue: 1
+    - m_Text: V
+      m_Character: 118
+      m_Score: 4
+      m_HasValue: 1
+    - m_Text: W
+      m_Character: 119
+      m_Score: 4
+      m_HasValue: 1
+    - m_Text: X
+      m_Character: 120
+      m_Score: 8
+      m_HasValue: 1
+    - m_Text: Y
+      m_Character: 121
+      m_Score: 4
+      m_HasValue: 1
+    - m_Text: Z
+      m_Character: 122
+      m_Score: 10
+      m_HasValue: 1
+    m_Language: {fileID: 11400000}
+  m_WordSet: {fileID: 11452828}
+--- !u!114 &11452828
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1280702676, guid: c43949f16aa863d43b80fed81ed7b76e, type: 3}
+  m_Name: Dutch - Word Set
+  m_EditorClassIdentifier: 
+  m_Language: {fileID: 11400000}
+  m_Count: 1

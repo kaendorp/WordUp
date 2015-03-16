@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnitySampleAssets.CrossPlatformInput;
 
     public class PlatformerCharacter2D : MonoBehaviour
     {
@@ -19,10 +21,27 @@
         private Transform ceilingCheck; // A position marking where to check for ceilings
         private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator anim; // Reference to the player's animator component.
+	    private bool Shoot;
+		bool waitActive = false;
+		public bool crouched = true;
+
+		//Knockback
+		public float knockback;
+		public float knockbackLength;
+		public float knockbackCount;
+		public bool knockFromRight;
+
+		public bool enabled;
 
         //Firing Projectiles
         public Transform firePoint;
         public GameObject letters;
+		public float shotDelay;
+		private float shotDelayCounter;
+
+		//Target = WordMiniGame
+		public GameObject target;
+		public GameObject camera;
 
         private void Awake()
         {
@@ -30,9 +49,8 @@
             groundCheck = transform.Find("GroundCheck");
             ceilingCheck = transform.Find("CeilingCheck");
             anim = GetComponent<Animator>();
-        }
-
-
+	}
+	
         private void FixedUpdate()
         {
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -41,58 +59,86 @@
 
             // Set the vertical animation
             anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
-		if (Input.GetKeyDown (KeyCode.F)) {
-			anim.SetBool ("Shoot", true);
-			Instantiate (letters, firePoint.position, firePoint.rotation);
-			anim.SetBool ("Shoot", false);
-			
 		}
-        }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public void Move(float move, bool crouch, bool jump, bool crouched)
         {
-				// If crouching, check to see if the character can stand up
-				if (!crouch && anim.GetBool ("Crouch")) {
-						// If the character has a ceiling preventing them from standing up, keep them crouching
-						if (Physics2D.OverlapCircle (ceilingCheck.position, ceilingRadius, whatIsGround))
-								crouch = true;
+		// If crouching, check to see if the character can stand up
+		if (!crouch && anim.GetBool ("Crouch")) {
+			// If the character has a ceiling preventing them from standing up, keep them crouching
+			if (Physics2D.OverlapCircle (ceilingCheck.position, ceilingRadius, whatIsGround))
+				crouch = true;
+		}
+
+		// Set whether or not the character is crouching in the animator
+
+		//only control the player if grounded or airControl is turned on
+		if (grounded || airControl) {
+
+			// Reduce the speed if crouching by the crouchSpeed multiplier
+			move = (crouch ? move * crouchSpeed : move);
+
+			// The Speed animator parameter is set to the absolute value of the horizontal input.
+			anim.SetFloat ("Speed", Mathf.Abs (move));
+
+			if(knockbackCount <= 0) {
+
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (move * maxSpeed, GetComponent<Rigidbody2D> ().velocity.y);
+			} else {
+				if(knockFromRight) {
+					anim.SetBool ("Knockback", true);
+					GetComponent<Rigidbody2D> ().velocity = new Vector2(-knockback, knockback);
+				} if(!knockFromRight) {
+					anim.SetBool ("Knockback", true);
+					GetComponent<Rigidbody2D> ().velocity = new Vector2(knockback, knockback);
 				}
+				knockbackCount -= Time.deltaTime;
+				anim.SetBool ("Knockback", false);
+			
+			}
 
-				// Set whether or not the character is crouching in the animator
-				anim.SetBool ("Crouch", crouch);
-
-				//only control the player if grounded or airControl is turned on
-				if (grounded || airControl) {
-
-						// Reduce the speed if crouching by the crouchSpeed multiplier
-						move = (crouch ? move * crouchSpeed : move);
-
-						// The Speed animator parameter is set to the absolute value of the horizontal input.
-						anim.SetFloat ("Speed", Mathf.Abs (move));
-
-						// Move the character
-						GetComponent<Rigidbody2D> ().velocity = new Vector2 (move * maxSpeed, GetComponent<Rigidbody2D> ().velocity.y);
-
-						// If the input is moving the player right and the player is facing left...
-						if (move > 0 && !facingRight)
+			// If the input is moving the player right and the player is facing left...
+			if (move > 0 && !facingRight)
                     // ... flip the player.
-								Flip ();
+				Flip ();
                     // Otherwise if the input is moving the player left and the player is facing right...
                 else if (move < 0 && facingRight)
                     // ... flip the player.
-								Flip ();
-				}
-				// If the player should jump...
-				if (grounded && jump && anim.GetBool ("Ground")) {
-						// Add a vertical force to the player.
-						grounded = false;
-						anim.SetBool ("Ground", false);
-						GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
-				}
+				Flip ();
+		}
+		// If the player should jump...
+		if (grounded && jump && anim.GetBool ("Ground")) {
+			// Add a vertical force to the player.
+			anim.SetBool ("Ground", false);
+			grounded = false;
+			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
+		}
 
+		
+		if (Input.GetKey (KeyCode.F)) {
+
+			shotDelayCounter -= Time.deltaTime;
+			if (shotDelayCounter <= 0) {
+				StartCoroutine(Wait());
+				Instantiate (letters, firePoint.position, firePoint.rotation);
+				shotDelayCounter = shotDelay;
+			}
+		} 
+		if (Input.GetKeyDown (KeyCode.F)) {
+			StartCoroutine(Wait());
+			Instantiate (letters, firePoint.position, firePoint.rotation);
 
 		}
+	}
+
+	IEnumerator Wait(){
+		anim.SetBool ("Shoot", true);
+		yield return new WaitForSeconds (1);
+		anim.SetBool ("Shoot", false);
+	}
+
+
         private void Flip()
         {
             // Switch the way the player is labelled as facing.
@@ -103,4 +149,11 @@
             theScale.x *= -1;
             transform.localScale = theScale;
         }
+
+		void OnTriggerEnter2D(Collider2D col)
+		{
+			if (col.gameObject.tag == "Trigger") {
+				target.SetActive(true);
+			}
+		}
     }

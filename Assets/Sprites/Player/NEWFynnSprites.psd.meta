@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b3de936eb5dd0bc4f914d17b080335bd
-timeCreated: 1425862192
+timeCreated: 1426187387
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,25 @@ TextureImporter:
     21300010: idle_01
     21300012: jump_01
     21300014: Shoot_01
+    21300016: Fynn_Run01
+    21300018: Fynn_Run02
+    21300020: Fynn_Run03
+    21300022: Fynn_Run04
+    21300024: Fynn_Run05
+    21300026: Fynn_Run_Shoot01
+    21300028: Fynn_Run_Shoot02
+    21300030: Fynn_Run_Shoot03
+    21300032: Fynn_Run_Shoot04
+    21300034: Fynn_Run_Shoot05
+    21300036: Fynn_Idle01
+    21300038: Fynn_Jump_Up01
+    21300040: Fynn_Shoot01
+    21300042: Fynn_Jump_Down01
+    21300044: Fynn_Jump_Up_Shoot01
+    21300046: Fynn_Jump_Down_Shoot01
+    21300048: Fynn_Idle02
+    21300050: Fynn_Crouch
+    21300052: Fynn_Knockback
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -34,7 +53,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -57,7 +76,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: run_01
+    - name: Fynn_Run01
       rect:
         serializedVersion: 2
         x: 28
@@ -67,7 +86,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: run_02
+    - name: Fynn_Run02
       rect:
         serializedVersion: 2
         x: 58
@@ -77,17 +96,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: run_03
+    - name: Fynn_Run03
       rect:
         serializedVersion: 2
         x: 88
-        y: 200
+        y: 199
         width: 15
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: run_04
+    - name: Fynn_Run04
       rect:
         serializedVersion: 2
         x: 116
@@ -97,7 +116,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: run_05
+    - name: Fynn_Run05
       rect:
         serializedVersion: 2
         x: 145
@@ -107,33 +126,143 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: idle_01
+    - name: Fynn_Run_Shoot01
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 169
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Run_Shoot02
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 169
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Run_Shoot03
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 169
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Run_Shoot04
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 169
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Run_Shoot05
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 169
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Idle01
       rect:
         serializedVersion: 2
         x: 16
-        y: 143
+        y: 112
         width: 15
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jump_01
+    - name: Fynn_Jump_Up01
       rect:
         serializedVersion: 2
-        x: 38
-        y: 144
-        width: 15
-        height: 24
+        x: 36
+        y: 112
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Shoot_01
+    - name: Fynn_Shoot01
       rect:
         serializedVersion: 2
         x: 62
-        y: 143
+        y: 112
         width: 19
         height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Jump_Down01
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 112
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Jump_Up_Shoot01
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 85
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Jump_Down_Shoot01
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 85
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Idle02
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 84
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Crouch
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 103
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Knockback
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 70
+        width: 23
+        height: 27
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

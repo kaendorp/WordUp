@@ -2,13 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: TesselatedBumpSpecularSmooth
   m_Shader: {fileID: 4800000, guid: 3954501323f24464f9e4418c78d8e8ce, type: 3}
-  m_ShaderKeywords: []
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -34,12 +35,12 @@ Material:
         second: .319910288
       data:
         first:
-          name: _EdgeLength
-        second: 12.1044779
-      data:
-        first:
           name: _Smoothness
         second: .522388041
+      data:
+        first:
+          name: _EdgeLength
+        second: 12.1044779
     m_Colors:
       data:
         first:
