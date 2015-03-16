@@ -3,7 +3,8 @@ Team Awesome
 
 ###1. Huidige Plugins
 ```
--
+-NGUI
+-Word Game Builder
 ```
 
 ###2. Huidige content
