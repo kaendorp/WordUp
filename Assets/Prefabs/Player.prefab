@@ -204,8 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthTransform: {fileID: 0}
-  maxHealth: 0
-  coolDown: 0
+  visualHealth: {fileID: 0}
+  maxHealth: 10
+  coolDown: 1
   fallBoundary: -10
   Boodschap: {fileID: 0}
   kindText: {fileID: 0}

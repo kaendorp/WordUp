@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	// Variables //
 	public RectTransform healthTransform; // healthbar in UI
+	public Image visualHealth; // healthbar image to change color
 	private float cachedY; // saved Y position, does not change
 	private float minXValue; // minimal X position of healthbar
 	private float maxXValue; // maximal X position of healthbar
@@ -40,7 +41,8 @@ public class Player : MonoBehaviour {
 	}
 	public int maxKids = 5; // Maximum amount of kids in level
 
-	public Text letterText;
+	public RectTransform letterPanel;
+	public Image letter1;
 	private int countLetters;
 	private int CountLetters // Sets current amount of kids through HandleKids()
 	{
@@ -63,7 +65,6 @@ public class Player : MonoBehaviour {
 		onCoolDown = false;
 
 		kindText.text = countKids + "  " + maxKids;
-		letterText.text = countLetters + "  " + maxLetters;
 	}
 
 	private void HandleHealth()
@@ -71,6 +72,15 @@ public class Player : MonoBehaviour {
 		float currentXValue = MapValues (currentHealth, 0, maxHealth, minXValue, maxXValue);
 
 		healthTransform.position = new Vector3 (currentXValue, cachedY);
+
+		if (currentHealth > maxHealth / 2) // Health is green
+		{ 
+			visualHealth.color = new Color32((byte)MapValues(currentHealth, maxHealth/2, maxHealth, 200, 0), 200, 0, 255);
+		}
+		else // Health is red
+		{ 
+			visualHealth.color = new Color32(255, (byte)MapValues(currentHealth, 0, maxHealth/2, 0, 255), 0, 255);
+		}
 	}
 	private void HandleKids ()
 	{
@@ -80,7 +90,6 @@ public class Player : MonoBehaviour {
 	}
 	private void HandleLetters ()
 	{
-		letterText.text = countLetters + "   " + maxLetters;
 		Boodschap.text = "Je hebt de letter 'L' gevonden!";
 		StartCoroutine (showMessage());
 	}
@@ -96,6 +105,13 @@ public class Player : MonoBehaviour {
 		onCoolDown = true;
 		yield return new WaitForSeconds (coolDown);
 		onCoolDown = false;
+	}
+
+	IEnumerator showLetters()
+	{
+		letterPanel.gameObject.SetActive(true);
+		yield return new WaitForSeconds (3);
+		letterPanel.gameObject.SetActive(false);
 	}
 
 	void OnTriggerStay2D(Collider2D collision)
@@ -135,7 +151,12 @@ public class Player : MonoBehaviour {
 			if (countLetters < 3)
 			{
 				CountLetters += 1;
-				Destroy(collision.gameObject);
+				//Destroy(collision.gameObject);
+				if (collision.gameObject.name == "letter_l")
+				{
+					// activate letter in letter_container
+				}
+				StartCoroutine(showLetters());
 			}
 		}
 	}
@@ -147,8 +168,8 @@ public class Player : MonoBehaviour {
 	void Respawn ()
 	{
 		GameMaster.KillPlayer (this);
-		CurrentHealth += maxHealth;
-		currentHealth = maxHealth;
+		//CurrentHealth += maxHealth;
+		//currentHealth = maxHealth;
 	}
 
 	void Update () 
