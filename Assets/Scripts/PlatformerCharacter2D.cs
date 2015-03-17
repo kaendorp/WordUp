@@ -12,6 +12,7 @@ using UnitySampleAssets.CrossPlatformInput;
         [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f;
                                                      // Amount of maxSpeed applied to crouching movement. 1 = 100%
 
+	
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask whatIsGround; // A mask determining what is ground to the character
 
@@ -59,7 +60,7 @@ using UnitySampleAssets.CrossPlatformInput;
 
             // Set the vertical animation
             anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
-		}
+	}
 
 
         public void Move(float move, bool crouch, bool jump, bool crouched)
@@ -129,6 +130,12 @@ using UnitySampleAssets.CrossPlatformInput;
 			StartCoroutine(Wait());
 			Instantiate (letters, firePoint.position, firePoint.rotation);
 
+		}
+
+		if (Input.GetKey (KeyCode.S)) {
+			anim.SetBool ("Crouch", true);
+		} else {
+			anim.SetBool ("Crouch", false);
 		}
 	}
 
