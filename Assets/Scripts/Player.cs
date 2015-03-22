@@ -123,7 +123,6 @@ public class Player : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Enemy") // Near enemy? Health goes down every 2 seconds
 		{
-			Debug.Log("Taking Damage");
 			if (!onCoolDown && currentHealth > 0)
 			{
 				StartCoroutine(coolDownDMG());
