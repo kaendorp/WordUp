@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 	public int maxKids = 5; // Maximum amount of kids in level
 
 	public RectTransform letterPanel;
-	public Image letter1;
+
 	private int countLetters;
 	private int CountLetters // Sets current amount of kids through HandleKids()
 	{
@@ -54,6 +54,11 @@ public class Player : MonoBehaviour {
 		}
 	}
 	public int maxLetters = 3;
+
+	// Fysieke locatie letters in HUD
+	public Text letter_1;
+	public Text letter_2;
+	public Text letter_3;
 
 	// Methods //
 	void Start()
@@ -90,7 +95,7 @@ public class Player : MonoBehaviour {
 	}
 	private void HandleLetters ()
 	{
-		Boodschap.text = "Je hebt de letter 'L' gevonden!";
+		Boodschap.text = "Je hebt een letter gevonden!";
 		StartCoroutine (showMessage());
 	}
 
@@ -142,7 +147,7 @@ public class Player : MonoBehaviour {
 
 				if (currentHealth < 10) // If damaged, health increases
 				{
-					CurrentHealth += 1; // Child found health increases + 2
+					CurrentHealth += 1; // Child found health increases + 1
 				}
 			}
 		}
@@ -151,15 +156,39 @@ public class Player : MonoBehaviour {
 			if (countLetters < 3)
 			{
 				CountLetters += 1;
-				//Destroy(collision.gameObject);
-				if (collision.gameObject.name == "letter_l")
+				if (letter_1.text == "")
 				{
-					// activate letter in letter_container
+					letter_1.text = collision.gameObject.name;
 				}
+				else if (letter_2.text == "")
+				{
+					letter_2.text = collision.gameObject.name;
+				}
+				else if (letter_3.text == "")
+				{
+					letter_3.text = collision.gameObject.name;
+				}
+				Destroy(collision.gameObject);
 				StartCoroutine(showLetters());
 			}
 		}
 	}
+
+	void OnTriggerEnter2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Bericht")
+		{
+			Boodschap.text = "Gebruik spatie om te springen!";
+		}
+	}
+	void OnTriggerExit2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Bericht")
+		{
+			Boodschap.text = "";
+		}
+	}
+
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
 	{
 		return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -167,9 +196,14 @@ public class Player : MonoBehaviour {
 
 	void Respawn ()
 	{
-		GameMaster.KillPlayer (this);
-		//CurrentHealth += maxHealth;
-		//currentHealth = maxHealth;
+		// Leegt boodschap text, dit bleef anders constant aanstaan.
+		if (Boodschap.text.Length > 1) 
+		{
+			Boodschap.text = "";
+		}
+
+		Destroy (this.gameObject);
+		GameOverScript.MenuActive = true;
 	}
 
 	void Update () 

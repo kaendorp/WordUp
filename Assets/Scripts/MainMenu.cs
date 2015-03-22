@@ -24,8 +24,8 @@ public class MainMenu : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 7) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"START"
-		)) {
-			// On Click, load the first level.
+		)) 
+		{
 			Application.LoadLevel ("LevelOne"); // Load Level One
 		}
 
@@ -34,8 +34,8 @@ public class MainMenu : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 5.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"Prestaties"
-		)) {
-			// On Click, load the first level.
+		)) 
+		{
 			Debug.Log ("Prestaties"); // Load Prestaties Scene
 		}
 
@@ -44,8 +44,8 @@ public class MainMenu : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 4.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"Opties"
-		)) {
-			// On Click, load the first level.
+		)) 
+		{		
 			Debug.Log ("Opties"); // Load Opties Scene
 		}
 		
@@ -54,8 +54,8 @@ public class MainMenu : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.8f) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"Exit"
-		)) {
-			// On Click, load the first level.
+		)) 
+		{
 			Application.Quit();  // Exit game
 		}
 	}
