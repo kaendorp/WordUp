@@ -1,0 +1,682 @@
+fileFormatVersion: 2
+guid: 64863bf910495f0429443b654b57a85f
+timeCreated: 1426426067
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Figure1
+    21300002: TreeCircle
+    21300004: BGTile3
+    21300006: BGTile2
+    21300008: BGTile1
+    21300010: MPillar1
+    21300012: MPillar2
+    21300014: LPillar1
+    21300016: LPillar2
+    21300018: Treebark1
+    21300020: Treebark2
+    21300022: Treebark3
+    21300024: BGTile5
+    21300026: BGTile4
+    21300028: LadderMid2
+    21300030: LadderMid3
+    21300032: LadderMid4
+    21300034: XLPillar1
+    21300036: XLPillar2
+    21300038: The sun
+    21300040: TreeBush2
+    21300042: Figure2
+    21300044: LadderMid1
+    21300046: LadderMid5
+    21300048: LadderMid6
+    21300050: TreeBush1
+    21300052: LadderStart2
+    21300054: LadderStart1
+    21300056: TreeBush4
+    21300058: PlatformLong2
+    21300060: DarkTile2
+    21300062: SlantedTile1
+    21300064: PlatformLong1
+    21300066: SlantedTile2
+    21300068: PlatformRight1
+    21300070: PlatformLeft2
+    21300072: SPillar1
+    21300074: SPillar2
+    21300076: SlantedTile3
+    21300078: TreeBush3
+    21300080: PlatformRight2
+    21300082: PlatformLeft1
+    21300084: DarkTile1
+    21300086: Tile4
+    21300088: Tile3
+    21300090: Tile2
+    21300092: Tile1
+    21300094: LightShrub1
+    21300096: LightShrub2
+    21300098: LightShrub3
+    21300100: LightShrub4
+    21300102: LightShrub5
+    21300104: ShadowShrub1
+    21300106: ShadowShrub2
+    21300108: ShadowShrub3
+    21300110: ShadowShrub4
+    21300112: ShadowShrub5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Figure1
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 361
+        width: 195
+        height: 131
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TreeCircle
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 331
+        width: 75
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BGTile3
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 334
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BGTile2
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 334
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BGTile1
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 334
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MPillar1
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 326
+        width: 21
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MPillar2
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 326
+        width: 21
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LPillar1
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 297
+        width: 16
+        height: 85
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LPillar2
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 297
+        width: 16
+        height: 85
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Treebark1
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 176
+        width: 11
+        height: 201
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Treebark2
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 176
+        width: 11
+        height: 201
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Treebark3
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 176
+        width: 11
+        height: 201
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BGTile5
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 284
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BGTile4
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 284
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid2
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 284
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid3
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 284
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid4
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 286
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: XLPillar1
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 171
+        width: 18
+        height: 120
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: XLPillar2
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 171
+        width: 19
+        height: 120
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: The sun
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 143
+        width: 231
+        height: 231
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TreeBush2
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 241
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Figure2
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 232
+        width: 76
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid1
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 247
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid5
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 247
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid6
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 250
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TreeBush1
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 193
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderStart2
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 201
+        width: 22
+        height: 43
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderStart1
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 200
+        width: 22
+        height: 43
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TreeBush4
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 144
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformLong2
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 184
+        width: 108
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DarkTile2
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 98
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SlantedTile1
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 99
+        width: 62
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformLong1
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 167
+        width: 113
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SlantedTile2
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 101
+        width: 62
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformRight1
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 146
+        width: 57
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformLeft2
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 146
+        width: 57
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SPillar1
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 130
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SPillar2
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 130
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SlantedTile3
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 101
+        width: 62
+        height: 41
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TreeBush3
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 97
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformRight2
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 131
+        width: 59
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformLeft1
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 131
+        width: 58
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DarkTile1
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 18
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tile4
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 15
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tile3
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 16
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tile2
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 16
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tile1
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 16
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightShrub1
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 81
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightShrub2
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 81
+        width: 58
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightShrub3
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 81
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightShrub4
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 81
+        width: 43
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightShrub5
+      rect:
+        serializedVersion: 2
+        x: 1484
+        y: 81
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ShadowShrub1
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 34
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ShadowShrub2
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 39
+        width: 58
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ShadowShrub3
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 42
+        width: 48
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ShadowShrub4
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 41
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ShadowShrub5
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 41
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
