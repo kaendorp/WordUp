@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8499999, y: -.270000011, z: 0}
+  m_LocalPosition: {x: 7.36000013, y: -1.76999998, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 432638}
@@ -67,7 +67,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -86,7 +86,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
   m_Radius: .159999996
 --- !u!61 &6121138
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .25, y: .319999993}
+  m_Size: {x: .25, y: .349999994}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3

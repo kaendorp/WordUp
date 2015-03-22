@@ -14,17 +14,26 @@ public class EnemyProjectileController : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("EnemyProjectile"));
     }
 
+    void onTriggerEnter2D(Collision2D triggered)
+    {
+        Debug.Log("Enemy projectile: HIT");
 
+        //If collides with player
+        if (triggered.gameObject.tag == "Player")
+        {
+            Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
+        }
+        Destroy(gameObject);
+    }
 
     void OnCollisionEnter2D(Collision2D collided)
     {
-        Debug.Log("Collision Detected");
+        Debug.Log("Enemy projectile: HIT");
         
-        //If collides with player, destroy player
+        //If collides with player
         if (collided.gameObject.tag == "Player")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
-            Destroy(collided.gameObject);
         }
         //If it collides with anything, destroy projectile
         Destroy(gameObject);
