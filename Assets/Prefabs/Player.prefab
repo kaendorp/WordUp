@@ -45,6 +45,7 @@ GameObject:
   - 61: {fileID: 6118624}
   - 212: {fileID: 21211306}
   - 114: {fileID: 11444148}
+  - 58: {fileID: 5806544}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -114,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .310000002, y: 0, z: 0}
+  m_LocalPosition: {x: .400000006, y: .100000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457734}
@@ -160,8 +161,21 @@ Rigidbody2D:
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
+--- !u!58 &5806544
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157408}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -.0599999987}
+  serializedVersion: 2
+  m_Radius: .0898120403
 --- !u!61 &6118624
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -170,7 +184,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 157408}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 4d503547f68c8b6498f603fb89fa6711, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.00196653605}
   serializedVersion: 2
@@ -224,13 +238,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
-  jumpForce: 600
+  jumpForce: 450
   crouchSpeed: .127000004
   airControl: 1
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294951113
+    m_Bits: 4294934729
+  whatIsClimbable:
+    serializedVersion: 2
+    m_Bits: 16384
   crouched: 1
+  isClimbing: 0
+  climbingSwitch: 0
   knockback: 0
   knockbackLength: 0
   knockbackCount: 0

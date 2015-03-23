@@ -11,13 +11,14 @@ using UnitySampleAssets.CrossPlatformInput;
 
         [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f;
                                                      // Amount of maxSpeed applied to crouching movement. 1 = 100%
-
+		bool collidingWall;
 	
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask whatIsGround; // A mask determining what is ground to the character
+		[SerializeField] private LayerMask whatIsClimbable;
 
-        private Transform groundCheck; // A position marking where to check if the player is grounded.
-        private float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+        private Transform groundCheck; // fA position marking where to check if the player is grounded.
+        private float groundedRadius = .17f; // Radius of the overlap circle to determine if grounded
         private bool grounded = false; // Whether or not the player is grounded.
         private Transform ceilingCheck; // A position marking where to check for ceilings
         private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
@@ -25,6 +26,11 @@ using UnitySampleAssets.CrossPlatformInput;
 	    private bool Shoot;
 		bool waitActive = false;
 		public bool crouched = true;
+
+		public bool isClimbing = false;
+		public bool climbingSwitch = false;
+		private bool climbing =  false;
+		float moveVertical;
 
 		//Knockback
 		public float knockback;
@@ -49,6 +55,8 @@ using UnitySampleAssets.CrossPlatformInput;
             // Setting up references.
             groundCheck = transform.Find("GroundCheck");
             ceilingCheck = transform.Find("CeilingCheck");
+			
+
             anim = GetComponent<Animator>();
 	}
 	
@@ -56,10 +64,67 @@ using UnitySampleAssets.CrossPlatformInput;
         {
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
             grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-            anim.SetBool("Ground", grounded);
-
+			climbing = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsClimbable);
+			anim.SetBool("Ground", grounded);
             // Set the vertical animation
-            anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
+			anim.SetFloat ("vSpeed", GetComponent<Rigidbody2D> ().velocity.y);
+			float move = Input.GetAxis ("Horizontal"); 
+		if(Input.GetAxis("Vertical") != 0 )
+		{
+			if(climbing)
+			{
+
+				if(grounded)
+					{
+				moveVertical = Input.GetAxis ("Vertical");
+				anim.SetBool("Climbing", true);
+				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, moveVertical * maxSpeed);
+				GetComponent<Rigidbody2D>().gravityScale = 0;
+				
+				this.gameObject.layer = 17;
+				if (!climbingSwitch)
+				{
+					SetLayerRecursively(this.gameObject, this.gameObject.layer);
+				}
+			}
+			
+			if (!grounded)
+			{
+				moveVertical = Input.GetAxis ("Vertical");
+				
+				GetComponent<Rigidbody2D>().velocity = new Vector2(0, moveVertical * maxSpeed);
+				GetComponent<Rigidbody2D>().gravityScale = 0;
+				
+				this.gameObject.layer = 17;
+				if (!climbingSwitch)
+				{
+					SetLayerRecursively(this.gameObject, this.gameObject.layer);
+				}
+			}
+			climbingSwitch = true;
+		}
+		}
+		if (!climbing & climbingSwitch)
+		{
+			anim.SetBool("Climbing", false);
+			this.gameObject.layer = 8;
+			SetLayerRecursively(this.gameObject, this.gameObject.layer);
+			GetComponent<Rigidbody2D>().gravityScale = 3f;
+			
+			climbingSwitch = false;
+			
+		}
+		if(!collidingWall || grounded){
+			GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+		}else if (collidingWall && grounded){
+			if(facingRight){
+				GetComponent<Rigidbody2D>().velocity = new Vector2(1f, GetComponent<Rigidbody2D>().velocity.y);
+			}else{
+				GetComponent<Rigidbody2D>().velocity = new Vector2(-1f, GetComponent<Rigidbody2D>().velocity.y);
+			}
+			GetComponent<Rigidbody2D>().AddForce (new Vector2(0f, -5f));
+		}
+
 	}
 
 
@@ -71,6 +136,18 @@ using UnitySampleAssets.CrossPlatformInput;
 			if (Physics2D.OverlapCircle (ceilingCheck.position, ceilingRadius, whatIsGround))
 				crouch = true;
 		}
+
+		if (grounded && jump && anim.GetBool ("Ground")) {
+			anim.SetBool ("Ground", false);
+			grounded = false;
+			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
+		}
+		
+		if (move > 0 && !facingRight)
+			Flip ();
+		
+		else if (move < 0 && facingRight)
+			Flip ();
 
 		// Set whether or not the character is crouching in the animator
 
@@ -99,58 +176,89 @@ using UnitySampleAssets.CrossPlatformInput;
 			
 			}
 
-			// If the input is moving the player right and the player is facing left...
-			if (move > 0 && !facingRight)
-                    // ... flip the player.
-				Flip ();
-                    // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && facingRight)
-                    // ... flip the player.
-				Flip ();
-		}
-		// If the player should jump...
-		if (grounded && jump && anim.GetBool ("Ground")) {
-			// Add a vertical force to the player.
-			anim.SetBool ("Ground", false);
-			grounded = false;
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
 		}
 
 		
-		if (Input.GetKey (KeyCode.F)) {
+		if (Input.GetKey (KeyCode.Space)) {
 
 			shotDelayCounter -= Time.deltaTime;
 			if (shotDelayCounter <= 0) {
-				StartCoroutine(Wait());
+				anim.SetBool ("Shoot", true);
 				Instantiate (letters, firePoint.position, firePoint.rotation);
+				StartCoroutine(Wait());
+				Destroy(letters, 1);
 				shotDelayCounter = shotDelay;
 			}
 		} 
-		if (Input.GetKeyDown (KeyCode.F)) {
-			StartCoroutine(Wait());
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			anim.SetBool ("Shoot", true);
 			Instantiate (letters, firePoint.position, firePoint.rotation);
+			StartCoroutine(Wait());
+			Destroy(letters, 1);
+
 
 		}
-
+		if(!climbing && climbingSwitch)
 		if (Input.GetKey (KeyCode.S)) {
 			anim.SetBool ("Crouch", true);
 		} else {
 			anim.SetBool ("Crouch", false);
 		}
+
 	}
 
 	IEnumerator Wait(){
-		anim.SetBool ("Shoot", true);
 		yield return new WaitForSeconds (1);
 		anim.SetBool ("Shoot", false);
 	}
 
+	void OnCollisionEnter2D(){
+		if (!grounded) {
+			collidingWall = true;       
+		}
+	}
+	
+	void OnCollisionStay2D(){
+		if (!grounded) {
+			collidingWall = true;       
+		}
+	}
+	
+	void OnCollisionExit2D(){
+		collidingWall = false;
+		if (grounded) {
+			grounded = false;
+		}
+	}
+
+	
+	
+	void SetLayerRecursively( GameObject obj, int layerNumber)
+	{
+		
+		if (null == obj)
+		{
+			return;
+		}
+		obj.layer = layerNumber;
+		
+		foreach (Transform child in obj.transform)
+		{
+			if (null == child)
+			{
+				continue;
+			}
+			SetLayerRecursively(child.gameObject, layerNumber);
+			
+		}
+	}
 
         private void Flip()
         {
             // Switch the way the player is labelled as facing.
             facingRight = !facingRight;
 
+			
             // Multiply the player's x local scale by -1.
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
@@ -163,4 +271,7 @@ using UnitySampleAssets.CrossPlatformInput;
 				target.SetActive(true);
 			}
 		}
+
+
+	
     }
