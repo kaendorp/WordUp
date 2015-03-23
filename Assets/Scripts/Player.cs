@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	// Variables //
 	public RectTransform healthTransform; // healthbar in UI
+	public Image visualHealth; // healthbar image to change color
 	private float cachedY; // saved Y position, does not change
 	private float minXValue; // minimal X position of healthbar
 	private float maxXValue; // maximal X position of healthbar
@@ -40,7 +41,8 @@ public class Player : MonoBehaviour {
 	}
 	public int maxKids = 5; // Maximum amount of kids in level
 
-	public Text letterText;
+	public RectTransform letterPanel;
+
 	private int countLetters;
 	private int CountLetters // Sets current amount of kids through HandleKids()
 	{
@@ -53,6 +55,11 @@ public class Player : MonoBehaviour {
 	}
 	public int maxLetters = 3;
 
+	// Fysieke locatie letters in HUD
+	public Text letter_1;
+	public Text letter_2;
+	public Text letter_3;
+
 	// Methods //
 	void Start()
 	{
@@ -63,7 +70,6 @@ public class Player : MonoBehaviour {
 		onCoolDown = false;
 
 		kindText.text = countKids + "  " + maxKids;
-		letterText.text = countLetters + "  " + maxLetters;
 	}
 
 	private void HandleHealth()
@@ -71,6 +77,15 @@ public class Player : MonoBehaviour {
 		float currentXValue = MapValues (currentHealth, 0, maxHealth, minXValue, maxXValue);
 
 		healthTransform.position = new Vector3 (currentXValue, cachedY);
+
+		if (currentHealth > maxHealth / 2) // Health is green
+		{ 
+			visualHealth.color = new Color32((byte)MapValues(currentHealth, maxHealth/2, maxHealth, 200, 0), 200, 0, 255);
+		}
+		else // Health is red
+		{ 
+			visualHealth.color = new Color32(255, (byte)MapValues(currentHealth, 0, maxHealth/2, 0, 255), 0, 255);
+		}
 	}
 	private void HandleKids ()
 	{
@@ -80,8 +95,7 @@ public class Player : MonoBehaviour {
 	}
 	private void HandleLetters ()
 	{
-		letterText.text = countLetters + "   " + maxLetters;
-		Boodschap.text = "Je hebt de letter 'L' gevonden!";
+		Boodschap.text = "Je hebt een letter gevonden!";
 		StartCoroutine (showMessage());
 	}
 
@@ -98,11 +112,17 @@ public class Player : MonoBehaviour {
 		onCoolDown = false;
 	}
 
+	IEnumerator showLetters()
+	{
+		letterPanel.gameObject.SetActive(true);
+		yield return new WaitForSeconds (3);
+		letterPanel.gameObject.SetActive(false);
+	}
+
 	void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "Enemy") // Near enemy? Health goes down every 2 seconds
 		{
-			Debug.Log("Taking Damage");
 			if (!onCoolDown && currentHealth > 0)
 			{
 				StartCoroutine(coolDownDMG());
@@ -126,7 +146,7 @@ public class Player : MonoBehaviour {
 
 				if (currentHealth < 10) // If damaged, health increases
 				{
-					CurrentHealth += 1; // Child found health increases + 2
+					CurrentHealth += 1; // Child found health increases + 1
 				}
 			}
 		}
@@ -135,10 +155,39 @@ public class Player : MonoBehaviour {
 			if (countLetters < 3)
 			{
 				CountLetters += 1;
+				if (letter_1.text == "")
+				{
+					letter_1.text = collision.gameObject.name;
+				}
+				else if (letter_2.text == "")
+				{
+					letter_2.text = collision.gameObject.name;
+				}
+				else if (letter_3.text == "")
+				{
+					letter_3.text = collision.gameObject.name;
+				}
 				Destroy(collision.gameObject);
+				StartCoroutine(showLetters());
 			}
 		}
 	}
+
+	void OnTriggerEnter2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Bericht")
+		{
+			Boodschap.text = "Gebruik spatie om te springen!";
+		}
+	}
+	void OnTriggerExit2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Bericht")
+		{
+			Boodschap.text = "";
+		}
+	}
+
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
 	{
 		return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -146,9 +195,14 @@ public class Player : MonoBehaviour {
 
 	void Respawn ()
 	{
-		GameMaster.KillPlayer (this);
-		CurrentHealth += maxHealth;
-		currentHealth = maxHealth;
+		// Leegt boodschap text, dit bleef anders constant aanstaan.
+		if (Boodschap.text.Length > 1) 
+		{
+			Boodschap.text = "";
+		}
+
+		Destroy (this.gameObject);
+		GameOverScript.MenuActive = true;
 	}
 
 	void Update () 

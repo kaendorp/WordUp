@@ -11,6 +11,7 @@ TagManager:
   - Letter
   - Trigger
   - Drag and Drop Root
+  - Bericht
   layers:
   - Default
   - TransparentFX
