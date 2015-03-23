@@ -42,6 +42,8 @@ namespace Thinksquirrel.WordGameBuilderExample
         [SerializeField] GameObject m_Player;
         // The AI agent to use for automatic mode.
         [SerializeField] GameObject m_Agent;
+
+		[SerializeField] GameObject CurrentWordGame;
         // The tile pools to use for the game, one per language.
         // Only one tile pool is loaded at any given time.
         [SerializeField] GameObject[] m_TilePools;
@@ -432,7 +434,7 @@ namespace Thinksquirrel.WordGameBuilderExample
         // when the user confirms a word selection.
         void OnSubmitWord()
         {
-			Destroy (WordGame);
+			Destroy (CurrentWordGame);
         }
         // This method is called by the ViewModel,
         // when the user presses a button to change a wildcard letter.

@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 02c541b4e9adef24c95ab74e6a69b4be
+timeCreated: 1427063110
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Doom-Projectiles_0
+    21300002: Doom-Projectiles_1
+    21300004: Doom-Projectiles_2
+    21300006: Doom-Projectiles_3
+    21300008: Doom-Projectiles_4
+    21300010: Doom-Projectiles_7
+    21300012: Doom-Projectiles_8
+    21300014: Doom-Projectiles_9
+    21300016: Doom-Projectiles_11
+    21300018: Doom-Projectiles_12
+    21300020: Doom-Projectiles_14
+    21300022: Doom-Projectiles_6
+    21300024: Doom-Projectiles_10
+    21300026: Doom-Projectiles_17
+    21300028: Doom-Projectiles_18
+    21300030: Doom-Projectiles_19
+    21300032: Doom-Projectiles_24
+    21300034: Doom-Projectiles_25
+    21300036: Doom-Projectiles_28
+    21300038: Doom-Projectiles_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Doom-Projectiles_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 5
+        width: 46
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_7
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 5
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_10
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 7
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_12
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 7
+        width: 100
+        height: 88
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_14
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 7
+        width: 110
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_17
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 5
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_18
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 5
+        width: 76
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_19
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 5
+        width: 117
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_24
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 5
+        width: 75
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_25
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 7
+        width: 80
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Doom-Projectiles_31
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 5
+        width: 120
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
