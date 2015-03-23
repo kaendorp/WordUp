@@ -31,7 +31,7 @@ public class GameOverScript : MonoBehaviour
 				)) 
 			{
 				MenuActive = false;
-				Application.LoadLevel ("LevelOne"); // Load Level One
+				Application.LoadLevel ("Tutorial"); // Load Level One
 			}
 			
 			// Prestaties Button
