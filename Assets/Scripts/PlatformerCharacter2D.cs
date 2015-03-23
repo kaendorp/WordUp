@@ -183,18 +183,18 @@ using UnitySampleAssets.CrossPlatformInput;
 
 			shotDelayCounter -= Time.deltaTime;
 			if (shotDelayCounter <= 0) {
-				anim.SetBool ("Shoot", true);
 				Instantiate (letters, firePoint.position, firePoint.rotation);
+				anim.SetBool ("Shoot", true);
 				StartCoroutine(Wait());
-				Destroy(letters, 1);
+				Destroy(letters, 2);
 				shotDelayCounter = shotDelay;
 			}
 		} 
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			anim.SetBool ("Shoot", true);
 			Instantiate (letters, firePoint.position, firePoint.rotation);
+			anim.SetBool ("Shoot", true);
 			StartCoroutine(Wait());
-			Destroy(letters, 1);
+			Destroy(letters, 2);
 
 
 		}

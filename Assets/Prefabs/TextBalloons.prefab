@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11420150}
   - 95: {fileID: 9567702}
   - 212: {fileID: 21293016}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TextBalloons
   m_TagString: Untagged
   m_Icon: {fileID: 0}

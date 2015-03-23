@@ -18,6 +18,9 @@ public class LetterProjectileController : MonoBehaviour {
         {
             speed = -speed;
         }
+		if (player.transform.localScale.x > 0) {
+			transform.forward = -transform.forward;
+		}
 	}
 	
 	// Update is called once per frame
