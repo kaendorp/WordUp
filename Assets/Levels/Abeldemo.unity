@@ -1141,8 +1141,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 440230, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .449999988
+      value: .25
       objectReference: {fileID: 0}
+    - target: {fileID: 9531734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: letters
+      value: 
+      objectReference: {fileID: 166636, guid: 4d2f2bdc4e68c774d95cf489d0d786e5, type: 2}
+    - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 101780, guid: 93056e6038da96e44bf767dda0bdae4a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_IsPrefabParent: 0
@@ -1651,8 +1663,6 @@ GameObject:
   - 114: {fileID: 1280017658}
   - 23: {fileID: 1280017660}
   - 33: {fileID: 1280017659}
-  - 114: {fileID: 1280017661}
-  - 114: {fileID: 1280017662}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -1778,45 +1788,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &1280017661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1280017652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533c5bdb097ae7647a8adadb00ef797f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: .5
-  threshhold: 0
-  blurSpread: 1
-  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
-  contrastCompositeShader: {fileID: 4800000, guid: 273404942eede4ea1883ca1fb2942507,
-    type: 3}
---- !u!114 &1280017662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1280017652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb7671e25f17e7488608dfb25e6bbad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mode: 0
-  intensity: 1
-  chromaticAberration: 5
-  axialAberration: 1.33000004
-  blur: .200000003
-  blurSpread: .75
-  luminanceDependency: .158000007
-  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
-  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
-  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
-    type: 3}
 --- !u!1001 &1302240705
 Prefab:
   m_ObjectHideFlags: 0

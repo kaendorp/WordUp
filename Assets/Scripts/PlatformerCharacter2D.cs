@@ -39,6 +39,7 @@ using UnitySampleAssets.CrossPlatformInput;
 		public bool knockFromRight;
 
 		public bool enabled;
+		public GameObject impactEffect;
 
         //Firing Projectiles
         public Transform firePoint;
@@ -73,7 +74,6 @@ using UnitySampleAssets.CrossPlatformInput;
 		{
 			if(climbing)
 			{
-
 				if(grounded)
 					{
 				moveVertical = Input.GetAxis ("Vertical");
@@ -91,7 +91,7 @@ using UnitySampleAssets.CrossPlatformInput;
 			if (!grounded)
 			{
 				moveVertical = Input.GetAxis ("Vertical");
-				
+					anim.SetBool("Climbing", true);
 				GetComponent<Rigidbody2D>().velocity = new Vector2(0, moveVertical * maxSpeed);
 				GetComponent<Rigidbody2D>().gravityScale = 0;
 				
@@ -195,7 +195,6 @@ using UnitySampleAssets.CrossPlatformInput;
 			anim.SetBool ("Shoot", true);
 			StartCoroutine(Wait());
 			Destroy(letters, 2);
-
 
 		}
 		if(!climbing && climbingSwitch)

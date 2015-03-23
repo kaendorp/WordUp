@@ -8,7 +8,8 @@ public class LetterProjectileController : MonoBehaviour {
     public PlatformerCharacter2D player;
 	public GameObject enemyDeathEffect;
 	public GameObject impactEffect;
-	public GameObject gameObject;
+	public GameObject projectile;
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,8 @@ public class LetterProjectileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GetComponent<Rigidbody2D>().velocity = new Vector2 (speed, GetComponent<Rigidbody2D>().velocity.y);
-
+		Destroy (gameObject,2);
+		Destroy (impactEffect);
 	}
 
 	void onTriggerEnter2D(Collision2D obj)
@@ -52,7 +54,6 @@ public class LetterProjectileController : MonoBehaviour {
 				}
 		Instantiate (impactEffect, transform.position, transform.rotation);
 		Destroy(gameObject);
-		Destroy (impactEffect);
 		/*
          if(collider.gameObject.name == "CannonBall")
          {

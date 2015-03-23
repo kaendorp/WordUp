@@ -14,7 +14,7 @@ GameObject:
   - 95: {fileID: 9567702}
   - 212: {fileID: 21293016}
   m_Layer: 15
-  m_Name: TextBalloons
+  m_Name: Letters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   player: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   enemyDeathEffect: {fileID: 149578, guid: bd10896924509c34cae544ada954484e, type: 2}
   impactEffect: {fileID: 101780, guid: 93056e6038da96e44bf767dda0bdae4a, type: 2}
-  gameObject: {fileID: 166636}
+  projectile: {fileID: 166636}
 --- !u!212 &21293016
 SpriteRenderer:
   m_ObjectHideFlags: 1
