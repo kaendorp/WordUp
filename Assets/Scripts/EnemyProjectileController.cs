@@ -24,7 +24,6 @@ public class EnemyProjectileController : MonoBehaviour {
         if (collided.gameObject.tag == "Player")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
-
             Destroy(collided.gameObject);
         }
         //If it collides with anything, destroy projectile
