@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.07999992, y: 4.44999981, z: 0}
+  m_LocalPosition: {x: 13.79, y: 2.05999994, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 457390}
@@ -211,8 +211,11 @@ MonoBehaviour:
   Boodschap: {fileID: 0}
   kindText: {fileID: 0}
   maxKids: 5
-  letterText: {fileID: 0}
+  letterPanel: {fileID: 0}
   maxLetters: 3
+  letter_1: {fileID: 0}
+  letter_2: {fileID: 0}
+  letter_3: {fileID: 0}
 --- !u!114 &11479562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
-  jumpForce: 600
+  jumpForce: 450
   crouchSpeed: .127000004
   airControl: 1
   whatIsGround:
