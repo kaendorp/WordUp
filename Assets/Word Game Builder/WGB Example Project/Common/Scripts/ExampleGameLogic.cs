@@ -435,6 +435,7 @@ namespace Thinksquirrel.WordGameBuilderExample
         void OnSubmitWord()
         {
 			Destroy (CurrentWordGame);
+			Application.LoadLevel ("MainMenu"); // Load Level One
         }
         // This method is called by the ViewModel,
         // when the user presses a button to change a wildcard letter.
