@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b3de936eb5dd0bc4f914d17b080335bd
-timeCreated: 1427040438
+timeCreated: 1427136661
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -33,6 +33,7 @@ TextureImporter:
     21300052: Fynn_Knockback
     21300054: Climb_01
     21300056: Climb_02
+    21300058: ClimbUp
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -285,6 +286,16 @@ TextureImporter:
         y: 54
         width: 17
         height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ClimbUp
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 58
+        width: 17
+        height: 22
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

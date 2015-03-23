@@ -91,7 +91,7 @@ MonoBehaviour:
   speed: 5
   player: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   enemyDeathEffect: {fileID: 149578, guid: bd10896924509c34cae544ada954484e, type: 2}
-  impactEffect: {fileID: 101780, guid: 93056e6038da96e44bf767dda0bdae4a, type: 2}
+  impactEffect: {fileID: 149060, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   projectile: {fileID: 166636}
 --- !u!212 &21293016
 SpriteRenderer:
