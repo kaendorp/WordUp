@@ -136,6 +136,15 @@ public class Player : MonoBehaviour {
 				Respawn();
 			}
 		}
+		
+	}
+
+	void OnTriggerEnter2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Bericht")
+		{
+			Boodschap.text = "Gebruik 'W' om te springen!";
+		}
 
 		if (collision.gameObject.tag == "Child") // If child is found
 		{ 
@@ -143,7 +152,7 @@ public class Player : MonoBehaviour {
 			{
 				CountKids += 1;
 				Destroy(collision.gameObject);
-
+				
 				if (currentHealth < 10) // If damaged, health increases
 				{
 					CurrentHealth += 1; // Child found health increases + 1
@@ -170,14 +179,6 @@ public class Player : MonoBehaviour {
 				Destroy(collision.gameObject);
 				StartCoroutine(showLetters());
 			}
-		}
-	}
-
-	void OnTriggerEnter2D (Collider2D collision)
-	{
-		if (collision.gameObject.tag == "Bericht")
-		{
-			Boodschap.text = "Gebruik spatie om te springen!";
 		}
 	}
 	void OnTriggerExit2D (Collider2D collision)

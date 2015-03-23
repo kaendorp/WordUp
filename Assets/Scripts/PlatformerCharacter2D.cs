@@ -38,7 +38,6 @@ using UnitySampleAssets.CrossPlatformInput;
 		public float knockbackLength;
 		public float knockbackCount;
 		public bool knockFromRight;
-		
 		//Miscellaneous
 		public bool enabled;
 		public GameObject impactEffect;
@@ -273,7 +272,9 @@ using UnitySampleAssets.CrossPlatformInput;
 		{
 			if (col.gameObject.tag == "Trigger") 
 			{
-				target.SetActive(true);
+			target.SetActive(true);	
+			maxSpeed = 0f;
+			jumpForce = 0f;
 			}
 			if (col.gameObject.tag == "AboveLadder") 
 			{

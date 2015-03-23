@@ -3,8 +3,10 @@ using System.Collections;
 
 public class EnemyProjectileController : MonoBehaviour {
 
+	public float speed;
     public GameObject enemyDeathEffect;
     public GameObject impactEffect;
+	public EnemyController enemy;
 
     // Use this for initialization
     void Start()
@@ -12,6 +14,14 @@ public class EnemyProjectileController : MonoBehaviour {
         // EnemyProjectile layer should ignore itself, not collide
         // TODO: Make sure it doesn't collide with player projectile
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("EnemyProjectile"));
+		enemy = FindObjectOfType<EnemyController>();
+		if (enemy.transform.localScale.x < 0)
+		{
+			speed = -speed;
+		}
+		if (enemy.transform.localScale.x > 0) {
+			transform.forward = -transform.forward;
+		}
     }
 
     void onTriggerEnter2D(Collision2D triggered)
