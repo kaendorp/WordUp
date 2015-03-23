@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 			"START"
 		)) 
 		{
-			Application.LoadLevel ("LevelOne"); // Load Level One
+			Application.LoadLevel ("Tutorial"); // Load Level One
 		}
 
 		// Prestaties Button
