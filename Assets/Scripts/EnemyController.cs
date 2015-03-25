@@ -47,8 +47,10 @@ public class EnemyController : MonoBehaviour {
     // Patrol
     public float walkSpeed = 1f;            // Amount of velocity
     private bool walkingRight;              // Simple check to see in what direction the enemy is moving, important for facing.
-    public float collideDistance = 0.6f;    // Distance from enemy to check for a wall.
-    private bool colliding = false;         // If true, it touched a wall and should flip.
+    public float collideDistance = 0.4f;    // Distance from enemy to check for a wall.
+    public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
+    private bool collidingWithWall = false; // If true, it touched a wall and should flip.
+    private bool collidingWithGround = true;// If true, it is not about to fall off an edge
 
     void FixedUpdate()
     {
@@ -104,7 +106,8 @@ public class EnemyController : MonoBehaviour {
 
     /*
      * Patrol script for enemy, 
-     * will walk untill the linecast hits a collider, then walk the other way
+     * will walk untill the collidingWithWall linecast hits a collider, then walk the other way
+     * or (if checked) will detect if the enemy is to hit the edge of a platform
      */
     private void Patrol()
     {
@@ -112,16 +115,33 @@ public class EnemyController : MonoBehaviour {
 
         FaceDirectionOfWalking();
 
-        colliding = Physics2D.Linecast(
+        collidingWithWall = Physics2D.Linecast(
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
-            ~( 
+            ~(
+                (1 << this.gameObject.layer) +
                 (1 << LayerMask.NameToLayer(targetLayer)) + 
                 (1 << LayerMask.NameToLayer("EnemyProjectile")) 
             ) // Collide with all layers, except the targetlayer and the enemy projectiles
         );
 
-        if (colliding)
+        if (edgeDetection)
+        {
+            collidingWithGround = Physics2D.Linecast(
+                new Vector2(this.transform.position.x, this.transform.position.y),
+                new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y))),
+                ~(
+                    (1 << this.gameObject.layer) +
+                    (1 << LayerMask.NameToLayer("EnemyProjectile"))
+                ) // Collide with all layers, except the targetlayer and the enemy projectiles
+            );
+        }
+        else
+        {
+            collidingWithGround = true;
+        }
+
+        if (collidingWithWall || !collidingWithGround)
         {
             Debug.Log(this.name + " hit a wall, now walking the other way.");
             walkSpeed *= -1;
@@ -264,6 +284,7 @@ public class EnemyController : MonoBehaviour {
             //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
             Gizmos.DrawWireSphere(this.transform.position, spotRadius);
         }
+
         // Draws the collision for the patrol enemies
         if (type == EnemyType.patrol)
         {
@@ -272,6 +293,15 @@ public class EnemyController : MonoBehaviour {
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2)))
                 );
+
+            if (edgeDetection)
+            {
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawLine(
+                    new Vector2(this.transform.position.x, this.transform.position.y),
+                    new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y)))
+                    );
+            }
         }
     }
 }
