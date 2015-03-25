@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: a3cb8e26988a59941a3712a425bbf743
+timeCreated: 1427305912
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BerichtReeks_0
+    21300002: BerichtReeks_1
+    21300004: BerichtReeks_2
+    21300006: BerichtReeks_3
+    21300008: BerichtReeks_4
+    21300010: BerichtReeks_5
+    21300012: BerichtReeks_6
+    21300014: BerichtReeks_7
+    21300016: BerichtReeks_8
+    21300018: BerichtReeks_9
+    21300020: BerichtReeks_10
+    21300022: BerichtReeks_11
+    21300024: BerichtReeks_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BerichtReeks_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_1
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_2
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 79
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_3
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_4
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_5
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_6
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_7
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_8
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_9
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_10
+      rect:
+        serializedVersion: 2
+        x: 1852
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_11
+      rect:
+        serializedVersion: 2
+        x: 2035
+        y: 80
+        width: 161
+        height: 285
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BerichtReeks_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 180
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
