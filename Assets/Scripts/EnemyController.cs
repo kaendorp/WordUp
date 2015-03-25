@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour {
     // Patrol
     public float walkSpeed = 1f;            // Amount of velocity
     private bool walkingRight;              // Simple check to see in what direction the enemy is moving, important for facing.
-    public float collideDistance = 0.4f;    // Distance from enemy to check for a wall.
+    public float collideDistance = 0.5f;    // Distance from enemy to check for a wall.
     public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false; // If true, it touched a wall and should flip.
     private bool collidingWithGround = true;// If true, it is not about to fall off an edge
