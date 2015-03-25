@@ -26,19 +26,19 @@ public class EnemyProjectileController : MonoBehaviour {
 
     void onTriggerEnter2D(Collision2D triggered)
     {
-        Debug.Log("Enemy projectile: HIT");
+        //Debug.Log("Enemy projectile: HIT");
 
         //If collides with player
         if (triggered.gameObject.tag == "Player")
         {
             Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
         }
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collided)
     {
-        Debug.Log("Enemy projectile: HIT");
+        //Debug.Log("Enemy projectile: HIT");
         
         //If collides with player
         if (collided.gameObject.tag == "Player")
@@ -46,6 +46,6 @@ public class EnemyProjectileController : MonoBehaviour {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
         //If it collides with anything, destroy projectile
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

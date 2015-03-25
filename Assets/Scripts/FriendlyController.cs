@@ -2,55 +2,43 @@ using UnityEngine;
 using System.Collections;
 
 /*
- * List of selectable enemy types 
+ * List of selectable Friendly types 
  */
-public enum EnemyType
+public enum FriendlyType
 {
     stationary, patrol
 }
 
 /*
- * List of posible states an enemy can be in
+ * List of posible states an Friendly can be in
  */
-public enum EnemyState
+public enum FriendlyState
 {
     idle, attack
 }
 
-public class EnemyController : MonoBehaviour {
-    public EnemyType type;
-    private EnemyState _state = EnemyState.idle; // Local variable to represent our state
-    public float currentHealth = 2f;
-    public GameObject friendlyPatrol;
-    public GameObject friendlyStationary;
-    
+public class FriendlyController : MonoBehaviour {
+    public FriendlyType type;
+    private FriendlyState _state = FriendlyState.idle;      // Local variable to represent our state
+    public float currentHealth = 2;
+
     // Target (usually the player)
     public string targetLayer = "Player";   // TODO: Make this a list, for players and friendly NPC's
     public GameObject target;
-
-    // Firing Projectiles
-    public Transform firePoint;             // Point from which the enemy fires
-    public GameObject projectilePrefab;     // Projectile
-    public float projectileSpeed = 5;       // Speed of the projectile
-    public float projectileLifeTime = 2;    // How long the projectile exists before selfdestructing
-    public float fireDelay = 3;             // Time between shots
     
     // Spot
     public float spotRadius = 3;            // Radius in which a player can be spotted
     public bool drawSpotRadiusGismo = true; // Visual aid in determening if the spot radius
     private Collider2D[] collisionObjects;
-    public bool playerSpotted = false;      // Debug purposes, to see in the editor if an enemy spotted the player
-    
-    // Shoot
-    private GameObject projectile;          // Selected projectile, should handle selfdestruct and damage
-    private float timeToFire = 0;           // Future date to trigger shot
+    public bool playerSpotted = false;      // Debug purposes, to see in the editor if an Friendly spotted the player
+
     public bool playerIsLeft;               // Simple check to see if the player is left to the enemy, important for facing.
     private bool facingLeft = true;         // For determining which way the player is currently facing.
 
     // Patrol
     public float walkSpeed = 1f;            // Amount of velocity
-    private bool walkingRight;              // Simple check to see in what direction the enemy is moving, important for facing.
-    public float collideDistance = 0.5f;    // Distance from enemy to check for a wall.
+    private bool walkingRight;              // Simple check to see in what direction the Friendly is moving, important for facing.
+    public float collideDistance = 0.5f;    // Distance from Friendly to check for a wall.
     public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false; // If true, it touched a wall and should flip.
     private bool collidingWithGround = true;// If true, it is not about to fall off an edge
@@ -59,23 +47,20 @@ public class EnemyController : MonoBehaviour {
     {
         switch (_state)
         {
-            case EnemyState.idle:
+            case FriendlyState.idle:
                 Idle();
-                break;
-            case EnemyState.attack:
-                Attack();
                 break;
         }
 
         if (currentHealth <= 0)
         {
-            EnemyDeath();
+            FriendlyDeath();
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Projectile") 
+        if (collision.gameObject.tag == "Enemy") // Near Friendly? Health goes down every 2 seconds
         {
             if (currentHealth > 0)
             {
@@ -85,31 +70,21 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void EnemyDeath()
+    void FriendlyDeath()
     {
-        if (type == EnemyType.patrol)
-        {
-            Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation);
-        }
-        else if (type == EnemyType.stationary)
-        {
-            Instantiate(friendlyStationary, this.transform.position, this.transform.rotation);
-        }
         Destroy(this.gameObject);
     }
 
     /*
      * Idle state
      * 
-     * In this state, the enemy will wait to spot a player, and then it will go to its attack state.
-     * Patroling enemys will resume to patrol after it shot at the player, as the attack state
-     * will reset the timer. The first time the patroling enemy spots an enemy, the timer will
-     * already have passed and it will immediately go into the attack state.
+     * In this state, the Friendly will wait to spot a player, and then it will go to its attack state.
+     * Patroling Friendlys will resume to patrol after the player is out of reach
      */
     private void Idle()
     {
-        // Sends the patroling enemy to patrol
-        if (type == EnemyType.patrol)
+        // Sends the patroling Friendly to patrol
+        if (type == FriendlyType.patrol)
         {
             Patrol();
         }
@@ -118,29 +93,18 @@ public class EnemyController : MonoBehaviour {
         IsPlayerInRange();
         if (playerSpotted)
         {
-            if (type == EnemyType.stationary)
+            FacePlayer();
+            if (type == FriendlyType.patrol)
             {
-                timeToFire = Time.time + fireDelay;
-                _state = EnemyState.attack;
-                //Debug.Log("Switch to Attack!");
-            }
-            else if (type == EnemyType.patrol)
-            {
-                // This delay is so that the enemy will resume patrol after shooting at the player
-                if (Time.time > timeToFire)
-                {
-                    timeToFire = Time.time + (fireDelay/2);
-                    _state = EnemyState.attack;
-                    //Debug.Log("Switch to Attack!");
-                }
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
         }
     }
 
     /*
-     * Patrol script for enemy, 
+     * Patrol script for Friendly, 
      * will walk untill the collidingWithWall linecast hits a collider, then walk the other way
-     * or (if checked) will detect if the enemy is to hit the edge of a platform
+     * or (if checked) will detect if the Friendly is to hit the edge of a platform
      */
     private void Patrol()
     {
@@ -152,11 +116,8 @@ public class EnemyController : MonoBehaviour {
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
             ~(
-                (1 << this.gameObject.layer) +
-                (1 << LayerMask.NameToLayer(targetLayer)) + 
-                (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                (1 << LayerMask.NameToLayer("Projectile"))
-            ) // Collide with all layers, except the targetlayer and the enemy projectiles
+                (1 << this.gameObject.layer)
+            ) // Collide with all layers, except itself
         );
 
         if (edgeDetection)
@@ -165,9 +126,8 @@ public class EnemyController : MonoBehaviour {
                 new Vector2(this.transform.position.x, this.transform.position.y),
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y))),
                 ~(
-                    (1 << this.gameObject.layer) +
-                    (1 << LayerMask.NameToLayer("EnemyProjectile"))
-                ) // Collide with all layers, except the targetlayer and the enemy projectiles
+                    (1 << this.gameObject.layer)
+                ) // Collide with all layers, except itself
             );
         }
         else
@@ -177,14 +137,14 @@ public class EnemyController : MonoBehaviour {
 
         if (collidingWithWall || !collidingWithGround)
         {
-            //Debug.Log(this.name + " hit a wall, now walking the other way.");
+            // Debug.Log(this.name + " hit a wall, now walking the other way.");
             walkSpeed *= -1;
             collideDistance *= -1;
         }
     }
 
     /*
-     * This method makes sure the enemy will be facing the direction it is going in
+     * This method makes sure the friendly will be facing the direction it is going in
      */
     private void FaceDirectionOfWalking()
     {
@@ -207,10 +167,10 @@ public class EnemyController : MonoBehaviour {
     }
 
     /*
-     * Checks to see if an entity of the "Player" layer has entered the range of the enemy.
+     * Checks to see if an entity of the "Player" layer has entered the range of the Friendly.
      * 
      * Gets a list colliders that collided with the overlapcircle and uses the first result to 
-     * become the target of the enemy. This is so that you don't have to manually add the target to every enemy
+     * become the target of the Friendly. This is so that you don't have to manually add the target to every Friendly
      * and will help when multiplayer is implemented
      */
     private void IsPlayerInRange()
@@ -229,33 +189,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     /*
-     * Attack!
-     * 
-     * The enemy spots its target and will attack it.
-     * First it will face the player, wait for the delay to run out and then shoot
-     * before going back to the idle state. 
-     * */
-    private void Attack()
-    {
-        // Patroling enemy needs to stop moving before shooting.
-        // This enemy will resume patrol in the idle state
-        if (type == EnemyType.patrol)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        }
-
-        FacePlayer();
-
-        if (Time.time > timeToFire)
-        {
-            //Debug.Log("Shooting!");
-            Shoot();
-            timeToFire = Time.time + fireDelay;
-            _state = EnemyState.idle;
-        }
-    }
-    /*
-     * Script to make the enemy face the player
+     * Script to make the friendly face the player
      */
     private void FacePlayer()
     {
@@ -276,7 +210,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     /*
-     * Flips the sprite of the enemy the other way around so it will face left/right.
+     * Flips the sprite the other way around so it will face left/right.
      * 
      * Used by both FacePlayer() and FaceDirectionOfWalking().
      */
@@ -289,26 +223,10 @@ public class EnemyController : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-
-        //Changes the speed to negative, making it fire the other way
-        projectileSpeed = -projectileSpeed;
     }
 
     /*
-     * Shoots a projectile in the direction the enemy is facing.
-     * 
-     * Auto destructs after lifetime has ended. 
-     * Projectile should have a script attached to destruct it on collision.
-     */
-    private void Shoot()
-    {
-        projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
-        Destroy(projectile, projectileLifeTime);
-    }
-
-    /*
-     * Draws a circle gizmo to show the field of view or 'agro' range of an enemy
+     * Draws a circle gizmo to show the field of view or 'agro' range of an friendly
      */
     private void OnDrawGizmos()
     {
@@ -319,8 +237,8 @@ public class EnemyController : MonoBehaviour {
             Gizmos.DrawWireSphere(this.transform.position, spotRadius);
         }
 
-        // Draws the collision for the patrol enemies
-        if (type == EnemyType.patrol)
+        // Draws the collision for the patrol friendlies
+        if (type == FriendlyType.patrol)
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(
