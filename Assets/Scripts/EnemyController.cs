@@ -358,6 +358,10 @@ public class EnemyController : MonoBehaviour {
     {
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
+        if (!facingLeft)
+        {
+            projectile.transform.localScale *= -1;
+        }
         Destroy(projectile, projectileLifeTime);
     }
 
