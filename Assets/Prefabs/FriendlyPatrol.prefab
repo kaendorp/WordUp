@@ -60,7 +60,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .159999996
+  m_Radius: .200000003
 --- !u!61 &6121138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -103,6 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  bericht: 
+  berichtRadius: .800000012
+  Boodschap: {fileID: 11447456, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
   currentHealth: 5

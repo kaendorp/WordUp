@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /*
@@ -20,9 +21,16 @@ public enum FriendlyState
 public class FriendlyController : MonoBehaviour {
     public FriendlyType type;
     private FriendlyState _state = FriendlyState.idle;      // Local variable to represent our state
-    
+
+    // Spawn enemy
     public GameObject enemyPatrol;
     public GameObject enemyStationary;
+    private GameObject spawn;
+
+    // Bericht
+    public string message = "";
+    public string messagePath = "HUD/Boodschap";
+    private Text messageObject;
 
     // Health
     public float currentHealth = 5f;
@@ -49,6 +57,12 @@ public class FriendlyController : MonoBehaviour {
     public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false; // If true, it touched a wall and should flip.
     private bool collidingWithGround = true;// If true, it is not about to fall off an edge
+
+    void Start()
+    {
+        // Find the Text object to print the message on
+        messageObject = GameObject.Find(messagePath).GetComponent<Text>();
+    }
 
     void FixedUpdate()
     {
@@ -103,12 +117,15 @@ public class FriendlyController : MonoBehaviour {
         Debug.Log(this.gameObject.name + ": 'Oh nee, ik ben slecht geworden!'");
         if (type == FriendlyType.patrol)
         {
-            Instantiate(enemyPatrol, this.transform.position, this.transform.rotation);
+            spawn = Instantiate(enemyPatrol, this.transform.position, this.transform.rotation) as GameObject;
         }
         else if (type == FriendlyType.stationary)
         {
-            Instantiate(enemyStationary, this.transform.position, this.transform.rotation);
+            spawn = Instantiate(enemyStationary, this.transform.position, this.transform.rotation) as GameObject;
         }
+
+        spawn.SendMessage("GetMessage", message);
+
         Destroy(this.gameObject);
     }
 
@@ -261,6 +278,36 @@ public class FriendlyController : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    /*
+     * If the enemy had a message on it, it will send it to this method
+     */
+    public void GetMessage(string messageGet)
+    {
+        message = messageGet;
+    }
+
+    /*
+     * If the player is close to the friendly, it will display a message
+     */
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == targetLayer)
+        {
+            messageObject.text = message;
+        }
+    }
+
+    /*
+     * If the player moves away from the friendly, it will clear the message
+     */
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == targetLayer)
+        {
+            messageObject.text = "";
+        }
     }
 
     /*

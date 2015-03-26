@@ -21,8 +21,13 @@ public class EnemyController : MonoBehaviour {
     public EnemyType type;
     private EnemyState _state = EnemyState.idle; // Local variable to represent our state
     
+    // Spawn friendly
     public GameObject friendlyPatrol;
     public GameObject friendlyStationary;
+    private GameObject spawn;
+
+    // Message
+    public string message = "";             // The message the friendly will use after this enemy is defeated
 
     // Health
     public float currentHealth = 2f;
@@ -116,12 +121,13 @@ public class EnemyController : MonoBehaviour {
         Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
         if (type == EnemyType.patrol)
         {
-            Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation);
+            spawn = Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation) as GameObject;
         }
         else if (type == EnemyType.stationary)
         {
-            Instantiate(friendlyStationary, this.transform.position, this.transform.rotation);
+            spawn = Instantiate(friendlyStationary, this.transform.position, this.transform.rotation) as GameObject;
         }
+        spawn.SendMessage("GetMessage", message);
         Destroy(this.gameObject);
     }
 
@@ -353,6 +359,17 @@ public class EnemyController : MonoBehaviour {
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         Destroy(projectile, projectileLifeTime);
+    }
+
+    /*
+     * Get the message of the friendly after it has been defeated.
+     * 
+     * This is to save the message between transformations.
+     */
+
+    void GetMessage(string messageGet)
+    {
+        message = messageGet;
     }
 
     /*
