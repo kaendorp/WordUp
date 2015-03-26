@@ -5,6 +5,8 @@ public class MainMenu : MonoBehaviour
 {
 	private GUISkin skin;
 
+	public RectTransform FynnButton;
+
 	void Start()
 	{
 		// Load a skin for the buttons
@@ -32,7 +34,7 @@ public class MainMenu : MonoBehaviour
 		// Prestaties Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 5.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 4) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"Prestaties"
 		)) 
 		{
@@ -42,7 +44,7 @@ public class MainMenu : MonoBehaviour
 		// Opties Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 4.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"Opties"
 		)) 
 		{		
@@ -52,7 +54,7 @@ public class MainMenu : MonoBehaviour
 		// Exit Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.8f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.1f) - (buttonHeight / 2), buttonWidth, buttonHeight),
 			"Exit"
 		)) 
 		{
