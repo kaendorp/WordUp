@@ -20,9 +20,14 @@ public enum EnemyState
 public class EnemyController : MonoBehaviour {
     public EnemyType type;
     private EnemyState _state = EnemyState.idle; // Local variable to represent our state
-    public float currentHealth = 2f;
+    
     public GameObject friendlyPatrol;
     public GameObject friendlyStationary;
+
+    // Health
+    public float currentHealth = 2f;
+    public float coolDown = 2f;             // length of damage cooldown
+    private bool onCoolDown = false;        // Cooldown active or not
     
     // Target (usually the player)
     public string targetLayer = "Player";   // TODO: Make this a list, for players and friendly NPC's
@@ -73,20 +78,42 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    /*
+     * Take damage when hit with the players projectile. When this entity gets hit
+     * it will get a period in which it can not be hurt ('onCoolDown'), granting
+     * it invincibility for a short period of time.
+     */
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Projectile") 
         {
-            if (currentHealth > 0)
+            if (!onCoolDown && currentHealth > 0)
             {
-                Debug.Log("Au!");
+                StartCoroutine(coolDownDMG());
+                Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
             }
         }
     }
 
+    /*
+     * Sets the delay when this entity can get hurt again.
+     */
+    IEnumerator coolDownDMG()
+    {
+        onCoolDown = true;
+        yield return new WaitForSeconds(coolDown);
+        onCoolDown = false;
+    }
+
+    /*
+     * Enemy death
+     * 
+     * When an enemy dies, it will be replaced with a friendly of the same type.
+     */
     void EnemyDeath()
     {
+        Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
         if (type == EnemyType.patrol)
         {
             Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation);
@@ -115,7 +142,7 @@ public class EnemyController : MonoBehaviour {
         }
 
         // Will set 'playerSpotted' to true if spotted
-        IsPlayerInRange();
+        IsTargetInRange();
         if (playerSpotted)
         {
             if (type == EnemyType.stationary)
@@ -152,11 +179,11 @@ public class EnemyController : MonoBehaviour {
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
             ~(
-                (1 << this.gameObject.layer) +
+                
                 (1 << LayerMask.NameToLayer(targetLayer)) + 
                 (1 << LayerMask.NameToLayer("EnemyProjectile")) +
                 (1 << LayerMask.NameToLayer("Projectile"))
-            ) // Collide with all layers, except the targetlayer and the enemy projectiles
+            ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
         if (edgeDetection)
@@ -166,8 +193,9 @@ public class EnemyController : MonoBehaviour {
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y))),
                 ~(
                     (1 << this.gameObject.layer) +
-                    (1 << LayerMask.NameToLayer("EnemyProjectile"))
-                ) // Collide with all layers, except the targetlayer and the enemy projectiles
+                    (1 << LayerMask.NameToLayer("EnemyProjectile")) +
+                    (1 << LayerMask.NameToLayer("Projectile"))
+                ) // Collide with all layers, except the targetlayer and the projectiles
             );
         }
         else
@@ -213,13 +241,33 @@ public class EnemyController : MonoBehaviour {
      * become the target of the enemy. This is so that you don't have to manually add the target to every enemy
      * and will help when multiplayer is implemented
      */
-    private void IsPlayerInRange()
+    private void IsTargetInRange()
     {
-        collisionObjects = Physics2D.OverlapCircleAll(this.transform.position, spotRadius, 1 << LayerMask.NameToLayer(targetLayer));
+        collisionObjects = Physics2D.OverlapCircleAll(
+            this.transform.position, 
+            spotRadius, 
+            ( 
+                (1 << LayerMask.NameToLayer(targetLayer)) + 
+                (1 << LayerMask.NameToLayer("Friendly")) 
+            ) 
+        );
 
         if (collisionObjects.Length > 0)
         {
             target = collisionObjects[0].gameObject;
+
+            // If there are multiple targets, prioritise the player
+            if (collisionObjects.Length > 1)
+            {
+                foreach (Collider2D spottedObject in collisionObjects)
+                {
+                    if (spottedObject.gameObject.layer == LayerMask.NameToLayer(targetLayer))
+                    {
+                        target = spottedObject.gameObject;
+                    }
+                }
+            }
+
             playerSpotted = true;
         }
         else

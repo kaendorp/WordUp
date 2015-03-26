@@ -20,7 +20,14 @@ public enum FriendlyState
 public class FriendlyController : MonoBehaviour {
     public FriendlyType type;
     private FriendlyState _state = FriendlyState.idle;      // Local variable to represent our state
-    public float currentHealth = 2;
+    
+    public GameObject enemyPatrol;
+    public GameObject enemyStationary;
+
+    // Health
+    public float currentHealth = 5f;
+    public float coolDown = 2f;             // Length of damage cooldown in seconds
+    private bool onCoolDown = false;        // Cooldown active or not
 
     // Target (usually the player)
     public string targetLayer = "Player";   // TODO: Make this a list, for players and friendly NPC's
@@ -58,20 +65,50 @@ public class FriendlyController : MonoBehaviour {
         }
     }
 
+    /*
+     * Take damage when hit with an enemy projectile. When this entity gets hit
+     * it will get a period in which it can not be hurt ('onCoolDown'), granting
+     * it invincibility for a short period of time.
+     */
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy") // Near Friendly? Health goes down every 2 seconds
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
         {
-            if (currentHealth > 0)
+            if (!onCoolDown && currentHealth > 0)
             {
-                Debug.Log("Au!");
+                StartCoroutine(coolDownDMG());
+                Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
             }
         }
     }
 
+    /*
+     * Sets the delay when this entity can get hurt again.
+     */
+    IEnumerator coolDownDMG()
+    {
+        onCoolDown = true;
+        yield return new WaitForSeconds(coolDown);
+        onCoolDown = false;
+    }
+
+    /*
+     * Friendly death
+     * 
+     * When an friendly dies, it will be replaced with an enemy of the same type.
+     */
     void FriendlyDeath()
     {
+        Debug.Log(this.gameObject.name + ": 'Oh nee, ik ben slecht geworden!'");
+        if (type == FriendlyType.patrol)
+        {
+            Instantiate(enemyPatrol, this.transform.position, this.transform.rotation);
+        }
+        else if (type == FriendlyType.stationary)
+        {
+            Instantiate(enemyStationary, this.transform.position, this.transform.rotation);
+        }
         Destroy(this.gameObject);
     }
 
@@ -116,7 +153,8 @@ public class FriendlyController : MonoBehaviour {
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
             ~(
-                (1 << this.gameObject.layer)
+                (1 << LayerMask.NameToLayer("EnemeyProjectile")) +
+                (1 << LayerMask.NameToLayer("Projectile"))
             ) // Collide with all layers, except itself
         );
 
@@ -232,7 +270,7 @@ public class FriendlyController : MonoBehaviour {
     {
         if (drawSpotRadiusGismo)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
             //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
             Gizmos.DrawWireSphere(this.transform.position, spotRadius);
         }

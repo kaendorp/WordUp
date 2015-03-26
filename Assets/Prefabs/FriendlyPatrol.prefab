@@ -103,7 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  currentHealth: 2
+  enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+  enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+  currentHealth: 5
+  coolDown: 2
   targetLayer: Player
   target: {fileID: 0}
   spotRadius: 3
