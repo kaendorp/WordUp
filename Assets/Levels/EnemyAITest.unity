@@ -127,7 +127,7 @@ Prefab:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
-      propertyPath: bericht
+      propertyPath: message
       value: Welkom! Hier wordt de enemyAI uitgetest!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -980,6 +980,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22499018, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499018, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
   m_IsPrefabParent: 0
@@ -1044,7 +1052,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.67736673
+  orthographic size: 3.30525827
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1064,7 +1072,7 @@ Transform:
   m_GameObject: {fileID: 1141697432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.5999999, y: -0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .949999988, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
@@ -1192,16 +1200,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
-      propertyPath: edgeDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
       propertyPath: m_Name
       value: EnemyPatrol 2
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
-      propertyPath: bericht
+      propertyPath: edgeDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
       value: Dank je!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1788,13 +1796,9 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
-      propertyPath: bericht
+      propertyPath: message
       value: Hi!
       objectReference: {fileID: 0}
-    - target: {fileID: 11475766, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
-      propertyPath: Boodschap
-      value: 
-      objectReference: {fileID: 1912010142}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   m_IsPrefabParent: 0
@@ -1954,12 +1958,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1912010142
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11447456, guid: ad641a1f4d04ab44696209bd854e3cd2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1130480147}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1929154064
 Prefab:
   m_ObjectHideFlags: 0
@@ -2126,13 +2124,13 @@ Prefab:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
-      propertyPath: bericht
+      propertyPath: message
       value: Duw mij er niet vanaf :<
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
-      propertyPath: Boodschap
-      value: 
-      objectReference: {fileID: 1912010142}
+      propertyPath: currentHealth
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
   m_IsPrefabParent: 0
