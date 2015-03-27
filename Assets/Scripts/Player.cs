@@ -189,6 +189,17 @@ public class Player : MonoBehaviour {
 				StartCoroutine(showLetters());
 			}
 		}
+		if (countLetters >= 3) 
+		{
+			if (collision.gameObject.tag == "WordGame")
+			{
+				Boodschap.text = "";
+				letterPanel.gameObject.SetActive(false);
+				Destroy(collision.gameObject);
+				WordGameScript.Active = true;
+			}
+		}
+
 		if (collision.gameObject.tag == "Finish") 
 		{
 			Boodschap.text = "";

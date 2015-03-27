@@ -12,6 +12,7 @@ TagManager:
   - Trigger
   - Drag and Drop Root
   - Bericht
+  - WordGame
   layers:
   - Default
   - TransparentFX
