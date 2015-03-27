@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a3cb8e26988a59941a3712a425bbf743
-timeCreated: 1427305912
+timeCreated: 1427308745
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -65,9 +65,9 @@ TextureImporter:
     - name: BerichtReeks_0
       rect:
         serializedVersion: 2
-        x: 22
+        x: 20
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -75,9 +75,9 @@ TextureImporter:
     - name: BerichtReeks_1
       rect:
         serializedVersion: 2
-        x: 205
+        x: 203
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -85,9 +85,9 @@ TextureImporter:
     - name: BerichtReeks_2
       rect:
         serializedVersion: 2
-        x: 387
+        x: 385
         y: 79
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -95,9 +95,9 @@ TextureImporter:
     - name: BerichtReeks_3
       rect:
         serializedVersion: 2
-        x: 571
+        x: 569
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -105,9 +105,9 @@ TextureImporter:
     - name: BerichtReeks_4
       rect:
         serializedVersion: 2
-        x: 754
+        x: 752
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -115,9 +115,9 @@ TextureImporter:
     - name: BerichtReeks_5
       rect:
         serializedVersion: 2
-        x: 937
+        x: 935
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -125,9 +125,9 @@ TextureImporter:
     - name: BerichtReeks_6
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 1118
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -135,9 +135,9 @@ TextureImporter:
     - name: BerichtReeks_7
       rect:
         serializedVersion: 2
-        x: 1303
+        x: 1301
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -145,9 +145,9 @@ TextureImporter:
     - name: BerichtReeks_8
       rect:
         serializedVersion: 2
-        x: 1485
+        x: 1483
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -155,9 +155,9 @@ TextureImporter:
     - name: BerichtReeks_9
       rect:
         serializedVersion: 2
-        x: 1669
+        x: 1667
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -165,9 +165,9 @@ TextureImporter:
     - name: BerichtReeks_10
       rect:
         serializedVersion: 2
-        x: 1852
+        x: 1850
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -175,9 +175,9 @@ TextureImporter:
     - name: BerichtReeks_11
       rect:
         serializedVersion: 2
-        x: 2035
+        x: 2033
         y: 80
-        width: 161
+        width: 163
         height: 285
       alignment: 7
       pivot: {x: .5, y: 0}

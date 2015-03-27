@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 64863bf910495f0429443b654b57a85f
-timeCreated: 1426426067
+timeCreated: 1427454681
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -61,6 +61,11 @@ TextureImporter:
     21300108: ShadowShrub3
     21300110: ShadowShrub4
     21300112: ShadowShrub5
+    21300114: BambooPlatform1
+    21300116: BambooPlatform3
+    21300118: BambooSquare1
+    21300120: BambooSquare2
+    21300122: BambooSquare3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -673,6 +678,56 @@ TextureImporter:
         y: 41
         width: 46
         height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BambooPlatform1
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 257
+        width: 37
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BambooPlatform3
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 250
+        width: 37
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BambooSquare1
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 194
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BambooSquare2
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 156
+        width: 27
+        height: 37
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BambooSquare3
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 118
+        width: 50
+        height: 37
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
