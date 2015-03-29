@@ -128,7 +128,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
       propertyPath: message
-      value: Welkom! Hier wordt de enemyAI uitgetest!
+      value: Welkom!\nHier wordt de enemyAI uitgetest!
+      objectReference: {fileID: 0}
+    - target: {fileID: 105374, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_TagString
+      value: Bericht
+      objectReference: {fileID: 0}
+    - target: {fileID: 105374, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
@@ -1799,6 +1807,10 @@ Prefab:
       propertyPath: message
       value: Hi!
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
+      propertyPath: edgeDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   m_IsPrefabParent: 0
@@ -2125,7 +2137,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
       propertyPath: message
-      value: Duw mij er niet vanaf :<
+      value: Duw mij er niet\nvanaf :<
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
       propertyPath: currentHealth
