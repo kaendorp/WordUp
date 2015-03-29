@@ -20,7 +20,7 @@ public class EnemyProjectileController : MonoBehaviour {
         //Debug.Log("Enemy projectile: HIT");
 
         //If collides with player
-        if (triggered.gameObject.tag == "Player")
+        if (triggered.gameObject.tag == "Player" || triggered.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
         }
@@ -32,7 +32,7 @@ public class EnemyProjectileController : MonoBehaviour {
         //Debug.Log("Enemy projectile: HIT");
         
         //If collides with player
-        if (collided.gameObject.tag == "Player")
+        if (collided.gameObject.tag == "Player" || collided.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }

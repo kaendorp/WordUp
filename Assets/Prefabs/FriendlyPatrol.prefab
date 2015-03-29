@@ -21,6 +21,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &192148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 478030}
+  - 23: {fileID: 2306092}
+  - 102: {fileID: 10211168}
+  m_Layer: 0
+  m_Name: Bericht
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &448260
 Transform:
   m_ObjectHideFlags: 1
@@ -30,9 +47,46 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 478030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &478030
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .349999994, z: -1}
+  m_LocalScale: {x: -.400000006, y: .400000006, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448260}
+  m_RootOrder: 0
+--- !u!23 &2306092
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192148}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!50 &5009560
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -91,6 +145,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!102 &10211168
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192148}
+  m_Text: 
+  m_OffsetZ: 0
+  m_CharacterSize: .0700000003
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 50
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!114 &11475766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,11 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  bericht: 
-  berichtRadius: .800000012
-  Boodschap: {fileID: 11447456, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+  message: 
+  messageObject: {fileID: 192148}
   currentHealth: 5
   coolDown: 2
   targetLayer: Player

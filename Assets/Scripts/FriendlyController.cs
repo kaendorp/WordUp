@@ -28,9 +28,8 @@ public class FriendlyController : MonoBehaviour {
     private GameObject spawn;
 
     // Bericht
-    public string message = "";
-    public string messagePath = "HUD/Boodschap";
-    private Text messageObject;
+    public string message = "";             // The message the fiendly will display when the player gets close
+    public GameObject messageObject;        // TextMesh object that will display our message
 
     // Health
     public float currentHealth = 5f;
@@ -60,8 +59,9 @@ public class FriendlyController : MonoBehaviour {
 
     void Start()
     {
-        // Find the Text object to print the message on
-        messageObject = GameObject.Find(messagePath).GetComponent<Text>();
+        // Normaal gezien is een bericht een enkele regel
+        // hiermee wordt een newline ge-escaped
+        message = message.Replace("\\n", "\n");
     }
 
     void FixedUpdate()
@@ -93,6 +93,7 @@ public class FriendlyController : MonoBehaviour {
                 StartCoroutine(coolDownDMG());
                 Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
+                ChangeColor();
             }
         }
     }
@@ -108,11 +109,24 @@ public class FriendlyController : MonoBehaviour {
     }
 
     /*
+     * Changes the color of the entity, to reflect the amount of damage they take.
+     * Will transition from white(1, 1, 1, 1) to black(0, 0, 0, 1)
+     */
+    private void ChangeColor()
+    {
+        float colorChange = (1 - (1 / (currentHealth + 1))); // +1 or else the object will be pure black at 1 health
+
+        Color transforming = new Color(colorChange, colorChange, colorChange, 1);
+
+        this.gameObject.GetComponent<SpriteRenderer>().material.color = transforming;
+    }
+
+    /*
      * Friendly death
      * 
      * When an friendly dies, it will be replaced with an enemy of the same type.
      */
-    void FriendlyDeath()
+    private void FriendlyDeath()
     {
         Debug.Log(this.gameObject.name + ": 'Oh nee, ik ben slecht geworden!'");
         if (type == FriendlyType.patrol)
@@ -278,6 +292,11 @@ public class FriendlyController : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+
+        // Flips message as well
+        Vector3 messageScale = messageObject.transform.localScale;
+        messageScale.x *= -1;
+        messageObject.transform.localScale = messageScale;
     }
 
     /*
@@ -295,7 +314,7 @@ public class FriendlyController : MonoBehaviour {
     {
         if (collision.gameObject.tag == targetLayer)
         {
-            messageObject.text = message;
+            messageObject.GetComponent<TextMesh>().text = message;
         }
     }
 
@@ -306,7 +325,7 @@ public class FriendlyController : MonoBehaviour {
     {
         if (collision.gameObject.tag == targetLayer)
         {
-            messageObject.text = "";
+            messageObject.GetComponent<TextMesh>().text = "";
         }
     }
 
