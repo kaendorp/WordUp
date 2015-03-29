@@ -13,6 +13,8 @@ public class BossController : MonoBehaviour {
 	public GameObject bossDeathFX = null;
 	public GameObject bossDropFX = null;
 
+	public bool isActive = false;
+
 	public Transform firePoint;  
 	private GameObject projectile; 
 	public GameObject projectilePrefab;     
@@ -64,6 +66,7 @@ public class BossController : MonoBehaviour {
 	void Update () {
 		switch (currentEvent) {
 			case bossEvents.inactive:
+			if(isActive)
 			StartCoroutine(Idle());
 
 			break;

@@ -496,7 +496,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457730, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 178772, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
       propertyPath: m_Name
@@ -2450,7 +2450,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457730, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 178772, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
       propertyPath: m_Name
@@ -5754,7 +5754,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: target
@@ -6002,7 +6002,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 448260, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
       propertyPath: m_Name
@@ -6418,7 +6418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457730, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 178772, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
       propertyPath: m_Name
@@ -6738,7 +6738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444488, guid: 9f32be2d9d825ed4e854c88ffb029cc8, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f32be2d9d825ed4e854c88ffb029cc8, type: 2}
@@ -7963,7 +7963,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 448260, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 432638, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8123,7 +8123,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 427724, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 190116, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Name
@@ -8542,6 +8542,7 @@ MonoBehaviour:
   bossCamera: {fileID: 1071847196}
   invWallLeft: {fileID: 705276088}
   invWallRight: {fileID: 1329962665}
+  bossController: {fileID: 1745053038}
 --- !u!1 &1179198213
 GameObject:
   m_ObjectHideFlags: 0
@@ -10602,7 +10603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 448260, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
@@ -10644,7 +10645,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22477876, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 22477876, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -11397,7 +11398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 482044, guid: 3dccbc507b3417049a2901e722d6a21f, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dccbc507b3417049a2901e722d6a21f, type: 2}
@@ -11730,7 +11731,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472516, guid: 3ec05c002ca6c064bbfd5d54b107b789, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11472516, guid: 3ec05c002ca6c064bbfd5d54b107b789, type: 2}
       propertyPath: backgrounds.Array.data[0]
@@ -12854,7 +12855,7 @@ MonoBehaviour:
   inActiveNode: {fileID: 0}
   dropToStartNode: {fileID: 0}
   dropFXSpawnPoint: {fileID: 0}
-  bossDeathFX: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 2}
+  bossDeathFX: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   bossDropFX: {fileID: 0}
   firePoint: {fileID: 43632219}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
@@ -12863,8 +12864,8 @@ MonoBehaviour:
   eventWaitDelay: 3
   polygonCollider: {fileID: 2137439385}
   circleCollider: {fileID: 1924198571}
-  currentEvent: 2
-  health: 3
+  currentEvent: 0
+  health: 2
 --- !u!1 &1774660844
 GameObject:
   m_ObjectHideFlags: 0

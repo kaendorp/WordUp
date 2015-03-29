@@ -26,8 +26,8 @@ public class FireBossProjectile : MonoBehaviour {
 	{
 		if (this.CanShoot) {
 			this.cooldownTime = this.cooldownTimeThreshold;
-			GameObject shot = Instantiate(bossProjectilePrefab, firePoint.transform.position, Quaternion.identity) as GameObject;
-			shot.GetComponent<Rigidbody2D>().AddForce(((Vector2)(player.position - shot.transform.position)).normalized * 500);
+			GameObject shot = Instantiate(bossProjectilePrefab, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
+			shot.GetComponent<Rigidbody2D>().AddForce(((Vector2)(player.position - shot.transform.position)).normalized * 300);
 				
 		}
 		
