@@ -1,23 +1,24 @@
 fileFormatVersion: 2
-guid: 08030f423ff5ca641919ae89cb8d11d9
-timeCreated: 1427244399
+guid: cce0a307f2aeecc43bf4be12eee6f1eb
+timeCreated: 1427587356
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bosssheet_0
-    21300002: bosssheet_1
-    21300004: bosssheet_2
-    21300006: bosssheet_3
-    21300008: bosssheet_4
-    21300010: bosssheet_5
-    21300012: bosssheet_6
-    21300014: bosssheet_7
-    21300016: bosssheet_8
-    21300018: bosssheet_9
-    21300020: bosssheet_10
-    21300022: bosssheet_11
-    21300024: bosssheet_12
-    21300026: bosssheet_13
+    21300000: BossSpriteSheet_0
+    21300002: BossSpriteSheet_1
+    21300004: BossSpriteSheet_2
+    21300006: BossSpriteSheet_3
+    21300008: BossSpriteSheet_4
+    21300010: BossSpriteSheet_5
+    21300012: BossSpriteSheet_6
+    21300014: BossSpriteSheet_7
+    21300016: BossSpriteSheet_8
+    21300018: BossSpriteSheet_9
+    21300020: BossSpriteSheet_10
+    21300022: BossSpriteSheet_11
+    21300024: BossSpriteSheet_12
+    21300026: BossSpriteSheet_13
+    21300028: BossSpriteSheet_14
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,145 +64,155 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: bosssheet_0
+    - name: BossSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 33
+        x: 265
         y: 33
         width: 53
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_1
+    - name: BossSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 135
-        y: 34
+        x: 333
+        y: 33
         width: 53
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_2
+    - name: BossSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 235
+        x: 434
+        y: 33
+        width: 48
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BossSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 535
         y: 33
         width: 48
         height: 60
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_3
+    - name: BossSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 337
+        x: 637
         y: 33
         width: 47
         height: 61
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_4
+    - name: BossSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 437
+        x: 737
         y: 33
         width: 53
         height: 61
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_5
+    - name: BossSpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 533
+        x: 833
         y: 33
         width: 58
         height: 61
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_6
+    - name: BossSpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 630
+        x: 930
         y: 33
         width: 63
         height: 61
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_7
+    - name: BossSpriteSheet_8
       rect:
         serializedVersion: 2
-        x: 729
+        x: 1029
         y: 33
         width: 67
         height: 66
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_8
+    - name: BossSpriteSheet_9
       rect:
         serializedVersion: 2
-        x: 829
+        x: 1129
         y: 33
         width: 67
         height: 67
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_9
+    - name: BossSpriteSheet_10
       rect:
         serializedVersion: 2
-        x: 929
+        x: 1229
         y: 33
         width: 67
         height: 67
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_10
+    - name: BossSpriteSheet_11
       rect:
         serializedVersion: 2
-        x: 1028
+        x: 1328
         y: 33
         width: 58
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_11
+    - name: BossSpriteSheet_12
       rect:
         serializedVersion: 2
-        x: 1123
+        x: 1423
         y: 33
         width: 63
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_12
+    - name: BossSpriteSheet_13
       rect:
         serializedVersion: 2
-        x: 1220
+        x: 1520
         y: 33
         width: 66
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bosssheet_13
+    - name: BossSpriteSheet_14
       rect:
         serializedVersion: 2
-        x: 1320
+        x: 1620
         y: 33
         width: 66
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

@@ -12,6 +12,10 @@ TagManager:
   - Trigger
   - Drag and Drop Root
   - Bericht
+  - AboveLadder
+  - TriggerBossBattle
+  - PlayerProjectile
+  - Shield
   layers:
   - Default
   - TransparentFX

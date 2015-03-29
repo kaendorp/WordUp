@@ -24,6 +24,7 @@ using UnitySampleAssets.CrossPlatformInput;
 		bool waitActive = false;
 		public bool crouched = true;
 
+		public GameObject shield;
 		//Wall colliding
 		bool collidingWall;
 
@@ -199,14 +200,16 @@ using UnitySampleAssets.CrossPlatformInput;
 			Destroy(letters, 2);
 		}
 
-		if(!climbing && climbingSwitch)
+		if(!climbing && !climbingSwitch)
 		if (Input.GetKey (KeyCode.S)) 
 		{
 			anim.SetBool ("Crouch", true);
+			shield.SetActive(true);
 		} 
 		else 
 		{
 			anim.SetBool ("Crouch", false);
+			target.SetActive(false);
 		}
 	}
 
@@ -273,8 +276,6 @@ using UnitySampleAssets.CrossPlatformInput;
 			if (col.gameObject.tag == "Trigger") 
 			{
 			target.SetActive(true);	
-			maxSpeed = 0f;
-			jumpForce = 0f;
 			}
 			if (col.gameObject.tag == "AboveLadder") 
 			{
@@ -284,5 +285,12 @@ using UnitySampleAssets.CrossPlatformInput;
 			{
 				anim.SetBool ("ClimbUp", false);
 			}
+			if (col.gameObject.tag == "TriggerBossBattle") 
+			{
+			Camera.main.transform.position = transform.position;
+			}	 	
+    	}
+		void OnTriggerStay2D(Collider2D col)
+		{
 		}
-    }
+}
