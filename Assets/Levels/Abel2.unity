@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 43632219}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
@@ -12761,7 +12761,7 @@ GameObject:
   - 95: {fileID: 1745053034}
   - 114: {fileID: 1745053038}
   - 114: {fileID: 1745053037}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12854,7 +12854,7 @@ MonoBehaviour:
   inActiveNode: {fileID: 0}
   dropToStartNode: {fileID: 0}
   dropFXSpawnPoint: {fileID: 0}
-  bossDeathFX: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
+  bossDeathFX: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 2}
   bossDropFX: {fileID: 0}
   firePoint: {fileID: 43632219}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
@@ -13490,7 +13490,7 @@ GameObject:
   - 4: {fileID: 1924198572}
   - 58: {fileID: 1924198574}
   - 114: {fileID: 1924198573}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CircleCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15088,7 +15088,7 @@ GameObject:
   - 4: {fileID: 2137439386}
   - 60: {fileID: 2137439388}
   - 114: {fileID: 2137439387}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PolygonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

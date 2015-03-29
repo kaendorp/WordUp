@@ -117,7 +117,7 @@ public class BossController : MonoBehaviour {
 		{
 			Instantiate (bossDeathFX);
 			Destroy (gameObject);
-
+			Application.LoadLevel ("MainMenu");
 		}
 
 		isDefeated = true;
