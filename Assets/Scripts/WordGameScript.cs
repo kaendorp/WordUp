@@ -106,6 +106,7 @@ public class WordGameScript : MonoBehaviour {
 
 	void OnGUI()
 	{
+		GUI.FocusControl(buttons[selected]);
 		if (Active == true) 
 		{
 			Time.timeScale =0;
@@ -212,7 +213,5 @@ public class WordGameScript : MonoBehaviour {
 				Wordgame.gameObject.SetActive(false);
 			}
 		}
-
-		GUI.FocusControl(buttons[selected]);
 	}
 }
