@@ -13,6 +13,7 @@ public class EnemyProjectileController : MonoBehaviour {
         // EnemyProjectile layer should ignore itself, not collide
         // TODO: Make sure it doesn't collide with player projectile
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("EnemyProjectile"));
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("EnemyProjectile"));
     }
 
     void onTriggerEnter2D(Collision2D triggered)
