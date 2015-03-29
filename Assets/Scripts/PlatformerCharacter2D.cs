@@ -201,15 +201,20 @@ using UnitySampleAssets.CrossPlatformInput;
 		}
 
 		if(!climbing && !climbingSwitch)
+
 		if (Input.GetKey (KeyCode.S)) 
 		{
 			anim.SetBool ("Crouch", true);
 			shield.SetActive(true);
+			jumpForce = 100f;
+			maxSpeed = 1f;
 		} 
 		else 
 		{
 			anim.SetBool ("Crouch", false);
-			target.SetActive(false);
+			shield.SetActive(false);
+			jumpForce = 450f;
+			maxSpeed = 3f;
 		}
 	}
 
