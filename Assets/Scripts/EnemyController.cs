@@ -20,6 +20,7 @@ public enum EnemyState
 public class EnemyController : MonoBehaviour {
     public EnemyType type;
     private EnemyState _state = EnemyState.idle; // Local variable to represent our state
+    private Animator anim;
     
     // Spawn friendly
     public GameObject friendlyPatrol;
@@ -64,6 +65,11 @@ public class EnemyController : MonoBehaviour {
     public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false; // If true, it touched a wall and should flip.
     private bool collidingWithGround = true;// If true, it is not about to fall off an edge
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void FixedUpdate()
     {
@@ -322,6 +328,7 @@ public class EnemyController : MonoBehaviour {
             _state = EnemyState.idle;
         }
     }
+
     /*
      * Script to make the enemy face the player
      */
@@ -367,9 +374,15 @@ public class EnemyController : MonoBehaviour {
      * 
      * Auto destructs after lifetime has ended. 
      * Projectile should have a script attached to destruct it on collision.
+     * Should also trigger the attack animation.
      */
     private void Shoot()
     {
+        if (anim != null)
+        {
+            anim.SetTrigger("attacktrigger");
+        }
+
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         if (!facingLeft)

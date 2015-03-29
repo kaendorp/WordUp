@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 432638}
   m_Layer: 11
   m_Name: Firepoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .270000011, y: 0, z: 0}
+  m_LocalPosition: {x: .0700000003, y: .0659999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448260}
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.88, y: 7.15999985, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 432638}
@@ -133,6 +133,7 @@ MonoBehaviour:
   type: 1
   friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+  message: 
   currentHealth: 2
   coolDown: 2
   targetLayer: Player
@@ -148,7 +149,7 @@ MonoBehaviour:
   playerIsLeft: 0
   walkSpeed: 1
   collideDistance: .5
-  edgeDetection: 1
+  edgeDetection: 0
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
