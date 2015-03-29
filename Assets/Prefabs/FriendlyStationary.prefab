@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 473264}
   - 23: {fileID: 2360876}
   - 102: {fileID: 10205682}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bericht
-  m_TagString: Untagged
+  m_TagString: Bericht
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ Transform:
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 473264}
   m_Father: {fileID: 0}
@@ -58,8 +58,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .349999994, z: -1}
-  m_LocalScale: {x: -.400000006, y: .400000006, z: 1}
+  m_LocalPosition: {x: 0, y: .981000006, z: -1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448260}
   m_RootOrder: 0
@@ -114,7 +114,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .200000003
+  m_Radius: .472522736
 --- !u!61 &6121138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -125,9 +125,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0, y: .0103769777}
+  m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Size: {x: .25, y: .329246342}
+  m_Size: {x: .402210921, y: .921784639}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -135,7 +135,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2ca4e47f8d56c3e44adced0d2841749e, type: 2}
   m_CullingMode: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   type: 0
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
-  message: 
+  message: Welkom!\nHier wordt de enemyAI uitgetest!
   messageObject: {fileID: 105374}
   currentHealth: 5
   coolDown: 2
@@ -217,8 +217,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 847213563
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 277228fbabfa3ea4cad90e4f20279d6a, type: 3}
-  m_Color: {r: 0, g: 1, b: .0482759476, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3f62652660f08ca4e904e6707c09460c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
