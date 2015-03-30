@@ -26,6 +26,7 @@ GameObject:
   - 4: {fileID: 446556}
   - 23: {fileID: 2306890}
   - 102: {fileID: 10233984}
+  - 114: {fileID: 11484790}
   m_Layer: 0
   m_Name: Bericht
   m_TagString: Bericht
@@ -271,6 +272,21 @@ MonoBehaviour:
   targetLayer: Player
   message: Druk op 'w' \n om te springen.
   messageObject: {fileID: 164504}
+--- !u!114 &11484790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231355a07bbd7f244b2e48fac8bb0a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelSize: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  resolutionDependant: 0
+  doubleResolution: 1024
 --- !u!198 &19840396
 ParticleSystem:
   m_ObjectHideFlags: 1
