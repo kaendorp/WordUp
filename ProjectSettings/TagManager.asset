@@ -12,7 +12,9 @@ TagManager:
   - Trigger
   - Drag and Drop Root
   - Bericht
-  - WordGame
+  - Friendly
+  - AboveLadder
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - Foreground
   - Enemy
   - EnemyProjectile
-  - 
+  - Friendly
   - 
   - 
   - 
@@ -62,3 +64,4 @@ TagManager:
   - name: Foreground
     uniqueID: 1184041883
     locked: 0
+

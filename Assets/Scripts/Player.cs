@@ -5,6 +5,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	// Variables //
+	public GameObject impactEffect;
 	public RectTransform healthTransform; // healthbar in UI
 	public Image visualHealth; // healthbar image to change color
 	private float cachedY; // saved Y position, does not change
@@ -29,7 +30,6 @@ public class Player : MonoBehaviour {
 	public Text Boodschap;
 
 	public Text kindText; // Kid counter for UI
-	public Text kindTextHUD;
 	private int countKids = 0; // current amount of kids collected 
 	private int CountKids // Sets current amount of kids through HandleKids()
 	{
@@ -58,11 +58,8 @@ public class Player : MonoBehaviour {
 
 	// Fysieke locatie letters in HUD
 	public Text letter_1;
-	public Text letter_1HUD;
 	public Text letter_2;
-	public Text letter_2HUD;
 	public Text letter_3;
-	public Text letter_3HUD;
 
 	// Methods //
 	void Start()
@@ -74,7 +71,6 @@ public class Player : MonoBehaviour {
 		onCoolDown = false;
 
 		kindText.text = countKids + "  " + maxKids;
-		kindTextHUD.text = countKids + "  " + maxKids;
 	}
 
 	private void HandleHealth()
@@ -94,8 +90,7 @@ public class Player : MonoBehaviour {
 	}
 	private void HandleKids ()
 	{
-		kindText.text = countKids + "  " + maxKids;
-		kindTextHUD.text = countKids + "  " + maxKids;
+		kindText.text = countKids + "   " + maxKids;
 		Boodschap.text = "Hoera, je hebt me gevonden!!!";
 		StartCoroutine (showMessage());
 	}
@@ -131,9 +126,11 @@ public class Player : MonoBehaviour {
 		{
 			if (!onCoolDown && currentHealth > 0)
 			{
+				Instantiate (impactEffect, transform.position, transform.rotation);
 				StartCoroutine(coolDownDMG());
 				CurrentHealth -= 1;
 			}
+			Destroy (impactEffect, 1);
 		}
 		if (collision.gameObject.tag == "Enemy") // If health goes below zero, while near enemy
 		{
@@ -173,38 +170,18 @@ public class Player : MonoBehaviour {
 				if (letter_1.text == "")
 				{
 					letter_1.text = collision.gameObject.name;
-					letter_1HUD.text = collision.gameObject.name;
 				}
 				else if (letter_2.text == "")
 				{
 					letter_2.text = collision.gameObject.name;
-					letter_2HUD.text = collision.gameObject.name;
 				}
 				else if (letter_3.text == "")
 				{
 					letter_3.text = collision.gameObject.name;
-					letter_3HUD.text = collision.gameObject.name;
 				}
 				Destroy(collision.gameObject);
 				StartCoroutine(showLetters());
 			}
-		}
-		if (countLetters >= 3) 
-		{
-			if (collision.gameObject.tag == "WordGame")
-			{
-				Boodschap.text = "";
-				letterPanel.gameObject.SetActive(false);
-				Destroy(collision.gameObject);
-				WordGameScript.Active = true;
-			}
-		}
-
-		if (collision.gameObject.tag == "Finish") 
-		{
-			Boodschap.text = "";
-			letterPanel.gameObject.SetActive(false);
-			GameOverScript.WinActive = true;
 		}
 	}
 	void OnTriggerExit2D (Collider2D collision)
@@ -229,16 +206,25 @@ public class Player : MonoBehaviour {
 		}
 
 		Destroy (this.gameObject);
-		GameOverScript.GameOverActive = true;
+		GameOverScript.MenuActive = true;
 	}
 
 	void Update () 
 	{
-		if (Input.GetKeyUp (KeyCode.Escape)) 
+		if (transform.position.y <= fallBoundary) 
 		{
-			Boodschap.text = "";
-			letterPanel.gameObject.SetActive(false);
-			GameOverScript.PauseActive = true;
+			FallDamage(10);
 		}
 	}
+
+	void FallDamage(int dmg)
+	{
+		currentHealth = currentHealth - dmg;
+
+		if (currentHealth == 0) 
+		{
+			Respawn();
+		}
+	}
+
 }
