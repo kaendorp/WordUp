@@ -13,6 +13,7 @@ TagManager:
   - Drag and Drop Root
   - Bericht
   - AboveLadder
+  - Projectile
   - TriggerBossBattle
   - PlayerProjectile
   - Shield
@@ -30,6 +31,7 @@ TagManager:
   - Foreground
   - Enemy
   - EnemyProjectile
+  - Friendly
   - Boss
   - Shield
   - Ladder
