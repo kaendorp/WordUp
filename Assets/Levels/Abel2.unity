@@ -1627,6 +1627,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11465322, guid: 760027f1dbc5179408c7d7a2985b1b8c, type: 2}
+      propertyPath: bossProjectilePrefab
+      value: 
+      objectReference: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
+    - target: {fileID: 11465322, guid: 760027f1dbc5179408c7d7a2985b1b8c, type: 2}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 760027f1dbc5179408c7d7a2985b1b8c, type: 2}
   m_IsPrefabParent: 0
@@ -1887,11 +1895,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.8100004
+      value: 12.4200001
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.6500001
+      value: 2.1500001
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
