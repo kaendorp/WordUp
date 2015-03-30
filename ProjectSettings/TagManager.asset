@@ -12,6 +12,9 @@ TagManager:
   - Trigger
   - Drag and Drop Root
   - Bericht
+  - Friendly
+  - AboveLadder
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -26,7 +29,7 @@ TagManager:
   - Foreground
   - Enemy
   - EnemyProjectile
-  - 
+  - Friendly
   - 
   - 
   - 

@@ -12,14 +12,28 @@ public enum EnemyType
 /*
  * List of posible states an enemy can be in
  */
-public enum State
+public enum EnemyState
 {
     idle, attack
 }
 
 public class EnemyController : MonoBehaviour {
     public EnemyType type;
-    private State _state = State.idle; // Local variable to represent our state
+    private EnemyState _state = EnemyState.idle; // Local variable to represent our state
+    private Animator anim;
+    
+    // Spawn friendly
+    public GameObject friendlyPatrol;
+    public GameObject friendlyStationary;
+    private GameObject spawn;
+
+    // Message
+    public string message = "";             // The message the friendly will use after this enemy is defeated
+
+    // Health
+    public float currentHealth = 2f;
+    public float coolDown = 2f;             // length of damage cooldown
+    private bool onCoolDown = false;        // Cooldown active or not
     
     // Target (usually the player)
     public string targetLayer = "Player";   // TODO: Make this a list, for players and friendly NPC's
@@ -47,20 +61,94 @@ public class EnemyController : MonoBehaviour {
     // Patrol
     public float walkSpeed = 1f;            // Amount of velocity
     private bool walkingRight;              // Simple check to see in what direction the enemy is moving, important for facing.
-    public float collideDistance = 0.6f;    // Distance from enemy to check for a wall.
-    private bool colliding = false;         // If true, it touched a wall and should flip.
+    public float collideDistance = 0.5f;    // Distance from enemy to check for a wall.
+    public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
+    private bool collidingWithWall = false; // If true, it touched a wall and should flip.
+    private bool collidingWithGround = true;// If true, it is not about to fall off an edge
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void FixedUpdate()
     {
         switch (_state)
         {
-            case State.idle:
+            case EnemyState.idle:
                 Idle();
                 break;
-            case State.attack:
+            case EnemyState.attack:
                 Attack();
                 break;
         }
+
+        if (currentHealth <= 0)
+        {
+            EnemyDeath();
+        }
+    }
+
+    /*
+     * Take damage when hit with the players projectile. When this entity gets hit
+     * it will get a period in which it can not be hurt ('onCoolDown'), granting
+     * it invincibility for a short period of time.
+     */
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Projectile") 
+        {
+            if (!onCoolDown && currentHealth > 0)
+            {
+                StartCoroutine(coolDownDMG());
+                Debug.Log(this.gameObject.name + ": Au!");
+                currentHealth -= 1;
+                ChangeColor();
+            }
+        }
+    }
+
+    /*
+     * Sets the delay when this entity can get hurt again.
+     */
+    IEnumerator coolDownDMG()
+    {
+        onCoolDown = true;
+        yield return new WaitForSeconds(coolDown);
+        onCoolDown = false;
+    }
+
+    /*
+     * Changes the color of the entity, to reflect the amount of damage they take.
+     * Will transition from white(1, 1, 1, 1) to green(0, 1, 0, 1)
+     */
+    private void ChangeColor()
+    {
+        float colorChange = (1 - (1 / (currentHealth + 1))); // +1 or else the object will be pure green at 1 health
+
+        Color transforming = new Color(colorChange, 1, colorChange, 1);
+
+        this.gameObject.GetComponent<SpriteRenderer>().material.color = transforming;
+    }
+
+    /*
+     * Enemy death
+     * 
+     * When an enemy dies, it will be replaced with a friendly of the same type.
+     */
+    void EnemyDeath()
+    {
+        Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
+        if (type == EnemyType.patrol)
+        {
+            spawn = Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation) as GameObject;
+        }
+        else if (type == EnemyType.stationary)
+        {
+            spawn = Instantiate(friendlyStationary, this.transform.position, this.transform.rotation) as GameObject;
+        }
+        spawn.SendMessage("GetMessage", message);
+        Destroy(this.gameObject);
     }
 
     /*
@@ -80,14 +168,14 @@ public class EnemyController : MonoBehaviour {
         }
 
         // Will set 'playerSpotted' to true if spotted
-        IsPlayerInRange();
+        IsTargetInRange();
         if (playerSpotted)
         {
             if (type == EnemyType.stationary)
             {
                 timeToFire = Time.time + fireDelay;
-                _state = State.attack;
-                Debug.Log("Switch to Attack!");
+                _state = EnemyState.attack;
+                //Debug.Log("Switch to Attack!");
             }
             else if (type == EnemyType.patrol)
             {
@@ -95,8 +183,8 @@ public class EnemyController : MonoBehaviour {
                 if (Time.time > timeToFire)
                 {
                     timeToFire = Time.time + (fireDelay/2);
-                    _state = State.attack;
-                    Debug.Log("Switch to Attack!");
+                    _state = EnemyState.attack;
+                    //Debug.Log("Switch to Attack!");
                 }
             }
         }
@@ -104,7 +192,8 @@ public class EnemyController : MonoBehaviour {
 
     /*
      * Patrol script for enemy, 
-     * will walk untill the linecast hits a collider, then walk the other way
+     * will walk untill the collidingWithWall linecast hits a collider, then walk the other way
+     * or (if checked) will detect if the enemy is to hit the edge of a platform
      */
     private void Patrol()
     {
@@ -112,18 +201,37 @@ public class EnemyController : MonoBehaviour {
 
         FaceDirectionOfWalking();
 
-        colliding = Physics2D.Linecast(
+        collidingWithWall = Physics2D.Linecast(
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
-            ~( 
+            ~(
+                
                 (1 << LayerMask.NameToLayer(targetLayer)) + 
-                (1 << LayerMask.NameToLayer("EnemyProjectile")) 
-            ) // Collide with all layers, except the targetlayer and the enemy projectiles
+                (1 << LayerMask.NameToLayer("EnemyProjectile")) +
+                (1 << LayerMask.NameToLayer("Projectile"))
+            ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
-        if (colliding)
+        if (edgeDetection)
         {
-            Debug.Log(this.name + " hit a wall, now walking the other way.");
+            collidingWithGround = Physics2D.Linecast(
+                new Vector2(this.transform.position.x, this.transform.position.y),
+                new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y))),
+                ~(
+                    (1 << this.gameObject.layer) +
+                    (1 << LayerMask.NameToLayer("EnemyProjectile")) +
+                    (1 << LayerMask.NameToLayer("Projectile"))
+                ) // Collide with all layers, except the targetlayer and the projectiles
+            );
+        }
+        else
+        {
+            collidingWithGround = true;
+        }
+
+        if (collidingWithWall || !collidingWithGround)
+        {
+            //Debug.Log(this.name + " hit a wall, now walking the other way.");
             walkSpeed *= -1;
             collideDistance *= -1;
         }
@@ -159,13 +267,33 @@ public class EnemyController : MonoBehaviour {
      * become the target of the enemy. This is so that you don't have to manually add the target to every enemy
      * and will help when multiplayer is implemented
      */
-    private void IsPlayerInRange()
+    private void IsTargetInRange()
     {
-        collisionObjects = Physics2D.OverlapCircleAll(this.transform.position, spotRadius, 1 << LayerMask.NameToLayer(targetLayer));
+        collisionObjects = Physics2D.OverlapCircleAll(
+            this.transform.position, 
+            spotRadius, 
+            ( 
+                (1 << LayerMask.NameToLayer(targetLayer)) + 
+                (1 << LayerMask.NameToLayer("Friendly")) 
+            ) 
+        );
 
         if (collisionObjects.Length > 0)
         {
             target = collisionObjects[0].gameObject;
+
+            // If there are multiple targets, prioritise the player
+            if (collisionObjects.Length > 1)
+            {
+                foreach (Collider2D spottedObject in collisionObjects)
+                {
+                    if (spottedObject.gameObject.layer == LayerMask.NameToLayer(targetLayer))
+                    {
+                        target = spottedObject.gameObject;
+                    }
+                }
+            }
+
             playerSpotted = true;
         }
         else
@@ -194,12 +322,13 @@ public class EnemyController : MonoBehaviour {
 
         if (Time.time > timeToFire)
         {
-            Debug.Log("Shooting!");
+            //Debug.Log("Shooting!");
             Shoot();
             timeToFire = Time.time + fireDelay;
-            _state = State.idle;
+            _state = EnemyState.idle;
         }
     }
+
     /*
      * Script to make the enemy face the player
      */
@@ -245,12 +374,33 @@ public class EnemyController : MonoBehaviour {
      * 
      * Auto destructs after lifetime has ended. 
      * Projectile should have a script attached to destruct it on collision.
+     * Should also trigger the attack animation.
      */
     private void Shoot()
     {
+        if (anim != null)
+        {
+            anim.SetTrigger("attacktrigger");
+        }
+
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
+        if (!facingLeft)
+        {
+            projectile.transform.localScale *= -1;
+        }
         Destroy(projectile, projectileLifeTime);
+    }
+
+    /*
+     * Get the message of the friendly after it has been defeated.
+     * 
+     * This is to save the message between transformations.
+     */
+
+    void GetMessage(string messageGet)
+    {
+        message = messageGet;
     }
 
     /*
@@ -264,6 +414,7 @@ public class EnemyController : MonoBehaviour {
             //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
             Gizmos.DrawWireSphere(this.transform.position, spotRadius);
         }
+
         // Draws the collision for the patrol enemies
         if (type == EnemyType.patrol)
         {
@@ -272,6 +423,15 @@ public class EnemyController : MonoBehaviour {
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2)))
                 );
+
+            if (edgeDetection)
+            {
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawLine(
+                    new Vector2(this.transform.position.x, this.transform.position.y),
+                    new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y)))
+                    );
+            }
         }
     }
 }

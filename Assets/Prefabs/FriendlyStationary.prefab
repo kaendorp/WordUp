@@ -1,17 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &139618
+--- !u!1 &105374
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 432638}
-  m_Layer: 11
-  m_Name: Firepoint
-  m_TagString: Enemy
-  m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
+  - 4: {fileID: 473264}
+  - 23: {fileID: 2360876}
+  - 102: {fileID: 10205682}
+  m_Layer: 5
+  m_Name: Bericht
+  m_TagString: Bericht
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -29,25 +31,13 @@ GameObject:
   - 58: {fileID: 5847930}
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
-  m_Layer: 11
-  m_Name: EnemyPatrol
-  m_TagString: Enemy
+  m_Layer: 13
+  m_Name: FriendlyStationary
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &432638
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139618}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0700000003, y: .0659999996, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 448260}
-  m_RootOrder: 0
 --- !u!4 &448260
 Transform:
   m_ObjectHideFlags: 1
@@ -55,12 +45,48 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 7.15999985, z: 0}
-  m_LocalScale: {x: -2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
-  - {fileID: 432638}
+  - {fileID: 473264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &473264
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .981000006, z: -1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448260}
+  m_RootOrder: 0
+--- !u!23 &2360876
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105374}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!50 &5009560
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -88,7 +114,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .159999996
+  m_Radius: .472522736
 --- !u!61 &6121138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -99,9 +125,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0103769796}
+  m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Size: {x: .25, y: .329246312}
+  m_Size: {x: .402210921, y: .921784639}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -111,7 +137,7 @@ Animator:
   m_GameObject: {fileID: 141542}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ca4e47f8d56c3e44adced0d2841749e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a6878781b1d5f1b4c971d08c513e3909, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -119,6 +145,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!102 &10205682
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105374}
+  m_Text: 
+  m_OffsetZ: 0
+  m_CharacterSize: .0700000003
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 50
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!114 &11475766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,29 +174,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 141542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d8929f21147caf49ab94313756b62e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a027892e8b506b4bb1219bee1e7c4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
-  friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
-  message: 
-  currentHealth: 2
+  type: 0
+  enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+  enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+  message: Welkom!\nHier wordt de enemyAI uitgetest!
+  messageObject: {fileID: 105374}
+  currentHealth: 5
   coolDown: 2
   targetLayer: Player
   target: {fileID: 0}
-  firePoint: {fileID: 432638}
-  projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
-  projectileSpeed: 5
-  projectileLifeTime: 2
-  fireDelay: 3
   spotRadius: 3
   drawSpotRadiusGismo: 1
   playerSpotted: 0
   playerIsLeft: 0
   walkSpeed: 1
   collideDistance: .5
-  edgeDetection: 0
+  edgeDetection: 1
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -174,7 +217,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 847213563
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 277228fbabfa3ea4cad90e4f20279d6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f62652660f08ca4e904e6707c09460c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
