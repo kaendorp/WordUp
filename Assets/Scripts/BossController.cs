@@ -15,6 +15,8 @@ public class BossController : MonoBehaviour {
 
 	public bool isActive = false;
 
+	public bool notDead = true;
+
 	public Transform firePoint;  
 	private GameObject projectile; 
 	public GameObject projectilePrefab;     
@@ -27,9 +29,7 @@ public class BossController : MonoBehaviour {
 	public GameObject circleCollider;
 	private Animator anim;
 
-	public float fireDelay = 1;
-	private float timeToFire = 0;  
-
+	public float fireAmount = 0;
 
 	private FireBossProjectile bossProjectile;
 
@@ -67,17 +67,17 @@ public class BossController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(notDead)
 		switch (currentEvent) {
 			case bossEvents.inactive:
-			if(isActive)
-			StartCoroutine(Idle());
-
-			break;
+				if(isActive)
+				StartCoroutine(Idle());
+				break;
 			case bossEvents.shoot:
 				anim.SetBool("IsHit", false);
 				StartCoroutine(WaitForShooting());
 				break;
-				case bossEvents.roarIdle:
+			case bossEvents.roarIdle:
 				anim.SetBool("IsHit", false);
 				circleCollider.SetActive(true);
 				StartCoroutine(Wait());
@@ -86,8 +86,12 @@ public class BossController : MonoBehaviour {
 	}
 
 	public void Shoot(){
-		if (bossProjectile != null && bossProjectile.CanShoot) {
+
+		if (bossProjectile != null && bossProjectile.CanShoot && fireAmount < 3) {
 			bossProjectile.Shoot ();
+			fireAmount = fireAmount + 1;
+		} else if (fireAmount >= 3) {
+			EndShoot ();
 		}
 	}
 	public void EndShoot(){
@@ -138,6 +142,7 @@ public class BossController : MonoBehaviour {
 
 	void Flee()
 	{
+		notDead = false;
 		Destroy (gameObject);
 		GameOverScript.WinActive = true;
 	}
@@ -146,19 +151,18 @@ public class BossController : MonoBehaviour {
 			anim.SetBool("IsShooting", true);
 			yield return new WaitForSeconds (1f);
 			Shoot ();
-			yield return new WaitForSeconds (4f);
-			EndShoot ();
 		}
 
 	IEnumerator Wait(){
 		anim.SetBool("RoarIdle", true);
-		yield return new WaitForSeconds (3.8f);
+		yield return new WaitForSeconds (3.17f);
+		fireAmount = 1;
 		EndVulnerable ();
 	}
 	IEnumerator Idle(){
 		yield return new WaitForSeconds (1f);
 		anim.SetBool("IsHit", false);
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (1f);
 		currentEvent =  bossEvents.shoot;
 	}
 

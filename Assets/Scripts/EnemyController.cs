@@ -197,6 +197,7 @@ public class EnemyController : MonoBehaviour {
      */
     private void Patrol()
     {
+		anim.SetFloat ("speed", walkSpeed);
         GetComponent<Rigidbody2D>().velocity = new Vector2(walkSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         FaceDirectionOfWalking();
