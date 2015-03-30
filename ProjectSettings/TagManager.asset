@@ -12,12 +12,9 @@ TagManager:
   - Trigger
   - Drag and Drop Root
   - Bericht
+  - Friendly
   - AboveLadder
   - Projectile
-  - TriggerBossBattle
-  - PlayerProjectile
-  - Shield
-  - Friendly
   layers:
   - Default
   - TransparentFX
@@ -33,9 +30,8 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - Friendly
-  - Boss
-  - Shield
-  - Ladder
+  - 
+  - 
   - 
   - 
   - 
@@ -68,3 +64,4 @@ TagManager:
   - name: Foreground
     uniqueID: 1184041883
     locked: 0
+
