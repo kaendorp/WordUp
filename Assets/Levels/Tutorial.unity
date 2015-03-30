@@ -149,7 +149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
 --- !u!1 &24245997
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1 &40148638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2990,7 +2990,7 @@ Transform:
   - {fileID: 666173899}
   - {fileID: 285450558}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 15
 --- !u!1 &381133666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,7 +4568,7 @@ Transform:
   - {fileID: 584298309}
   - {fileID: 2096783411}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
 --- !u!1 &483058695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5054,7 +5054,7 @@ Transform:
   - {fileID: 12941990}
   - {fileID: 1660976935}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!212 &516157653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5791,7 +5791,7 @@ Transform:
   m_Children:
   - {fileID: 391543737}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!114 &647052968
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11415304, guid: ad641a1f4d04ab44696209bd854e3cd2,
@@ -7049,7 +7049,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!1 &793628982
 GameObject:
   m_ObjectHideFlags: 0
@@ -8819,6 +8819,56 @@ SpriteRenderer:
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300096, guid: 64863bf910495f0429443b654b57a85f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1001 &1048975765
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.34000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0700000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 448260, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 10205682, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+      propertyPath: message
+      value: Probeer 's'\nen 'spatie'!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &1054655519
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11497768, guid: ad641a1f4d04ab44696209bd854e3cd2,
@@ -9387,7 +9437,7 @@ Transform:
   m_Children:
   - {fileID: 850045058}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!1 &1149122099
 GameObject:
   m_ObjectHideFlags: 0
@@ -9414,7 +9464,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!1 &1156206148
 GameObject:
   m_ObjectHideFlags: 0
@@ -9894,7 +9944,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
 --- !u!1 &1214456106
 GameObject:
   m_ObjectHideFlags: 0
@@ -10506,7 +10556,7 @@ Transform:
   - {fileID: 1631792793}
   - {fileID: 1353213683}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!114 &1280017658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12107,7 +12157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!61 &1488135827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14976,7 +15026,7 @@ Transform:
   m_Children:
   - {fileID: 1580965737}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!1 &1875499512
 GameObject:
   m_ObjectHideFlags: 0
@@ -16354,7 +16404,7 @@ Transform:
   m_Children:
   - {fileID: 634802798}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &2049106426
 GameObject:
   m_ObjectHideFlags: 0
@@ -16646,7 +16696,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
       propertyPath: message
-      value: Je moet eerst het\nwoord vinden om de\nstilte te verslaan!
+      value: Laat de stilte het\nlachen vergaan!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
