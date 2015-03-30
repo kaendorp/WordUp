@@ -13,9 +13,9 @@ GameObject:
   - 114: {fileID: 11420150}
   - 95: {fileID: 9567702}
   - 212: {fileID: 21293016}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: StoneLetters
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,9 +90,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   player: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-  shootingRate: .25
   enemyDeathEffect: {fileID: 149578, guid: bd10896924509c34cae544ada954484e, type: 2}
   impactEffect: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!212 &21293016
 SpriteRenderer:
   m_ObjectHideFlags: 1

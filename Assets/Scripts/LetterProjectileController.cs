@@ -13,7 +13,7 @@ public class LetterProjectileController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("help");
+		// Debug.Log ("help");
 		player = FindObjectOfType<PlatformerCharacter2D>();
         if (player.transform.localScale.x < 0)
         {
@@ -34,10 +34,6 @@ public class LetterProjectileController : MonoBehaviour {
 	void onTriggerEnter2D(Collision2D obj)
     {
 		Debug.Log ("Hit");
-
-		if (obj.gameObject.tag == "Enemy") {
-			DestroyObject(obj.gameObject);		
-		}
 			Instantiate(enemyDeathEffect, obj.transform.position, obj.transform.rotation);
 			Destroy(gameObject);		
     }
@@ -45,13 +41,10 @@ public class LetterProjectileController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collider)
 	{ 
 		Debug.Log("Collision Detected");
-
-
+		
 		if (collider.gameObject.tag == "Enemy") {
 			Instantiate (enemyDeathEffect, collider.transform.position, collider.transform.rotation);
-						Destroy (collider.gameObject);
-			Destroy(gameObject);
-				}
+		}
 		Instantiate (impactEffect, transform.position, transform.rotation);
 		Destroy(gameObject);
 		/*
