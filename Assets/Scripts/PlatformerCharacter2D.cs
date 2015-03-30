@@ -23,7 +23,13 @@ using UnitySampleAssets.CrossPlatformInput;
 		private bool Shoot;
 		bool waitActive = false;
 		public bool crouched = true;
+		public float moveVelocity;
 
+	public bool canUseShield = true;
+
+		private Rigidbody2D myrigidbody2D;
+
+		public GameObject shield;
 		//Wall colliding
 		bool collidingWall;
 
@@ -62,6 +68,7 @@ using UnitySampleAssets.CrossPlatformInput;
 	
         private void FixedUpdate()
         {
+			
             grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 			climbing = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsClimbable);
 			
@@ -157,27 +164,36 @@ using UnitySampleAssets.CrossPlatformInput;
 		{
 			move = (crouch ? move * crouchSpeed : move);
 			anim.SetFloat ("Speed", Mathf.Abs (move));
-
-			if(knockbackCount <= 0) 
-			{
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (move * maxSpeed, GetComponent<Rigidbody2D> ().velocity.y);
-			} 
-			else 
-			{
-				if(knockFromRight) 
-				{
-					anim.SetBool ("Knockback", true);
-					GetComponent<Rigidbody2D> ().velocity = new Vector2(-knockback, knockback);
-				} 
-				if(!knockFromRight) 
-				{
-					anim.SetBool ("Knockback", true);
-					GetComponent<Rigidbody2D> ().velocity = new Vector2(knockback, knockback);
-				}
-				knockbackCount -= Time.deltaTime;
-				anim.SetBool ("Knockback", false);
-			}
 		}
+		if (Input.GetKey (KeyCode.D)) {
+			moveVelocity = maxSpeed;
+		}
+		
+		if (Input.GetKey (KeyCode.A)) {
+			moveVelocity = -maxSpeed;
+		}
+		moveVelocity = 0f;
+
+		if(knockbackCount <= 0) 
+		{
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveVelocity, GetComponent<Rigidbody2D> ().velocity.y);
+		} 
+		else 
+		{
+			if(knockFromRight) 
+			{
+				anim.SetBool ("Knockback", true);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2(-knockback, knockback);
+			} 
+			if(!knockFromRight) 
+			{
+				anim.SetBool ("Knockback", true);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2(knockback, knockback);
+			}
+			knockbackCount -= Time.deltaTime;
+			StartCoroutine(knockbackWait());
+		}
+
 		//Player actions
 		if (Input.GetKey (KeyCode.Space)) 
 		{
@@ -199,14 +215,26 @@ using UnitySampleAssets.CrossPlatformInput;
 			Destroy(letters, 2);
 		}
 
-		if(!climbing && climbingSwitch)
+		if(!climbing && !climbingSwitch)
 		if (Input.GetKey (KeyCode.S)) 
 		{
+			if(canUseShield)
+			{
 			anim.SetBool ("Crouch", true);
+			shield.SetActive(true);
+			jumpForce = 100f;
+			maxSpeed = 1f;
+			}
+			else
+			{
+			}
 		} 
 		else 
 		{
 			anim.SetBool ("Crouch", false);
+			shield.SetActive(false);
+			jumpForce = 450f;
+			maxSpeed = 3f;
 		}
 	}
 
@@ -214,6 +242,13 @@ using UnitySampleAssets.CrossPlatformInput;
 	IEnumerator Wait(){
 		yield return new WaitForSeconds (1);
 		anim.SetBool ("Shoot", false);
+	}
+
+	IEnumerator knockbackWait()
+	{
+		yield return new WaitForSeconds (1f);
+		anim.SetBool ("Knockback", false);
+		
 	}
 
 	//Collisions
@@ -270,19 +305,32 @@ using UnitySampleAssets.CrossPlatformInput;
 
 		void OnTriggerEnter2D(Collider2D col)
 		{
-			if (col.gameObject.tag == "Trigger") 
-			{
-			target.SetActive(true);	
-			maxSpeed = 0f;
-			jumpForce = 0f;
-			}
-			if (col.gameObject.tag == "AboveLadder") 
-			{
-				anim.SetBool ("ClimbUp", true);
-			} 	
-			else 
-			{
-				anim.SetBool ("ClimbUp", false);
-			}
+		if (col.gameObject.tag == "Trigger") {
+			target.SetActive (true);	
 		}
-    }
+		if (col.gameObject.tag == "AboveLadder") {
+			anim.SetBool ("ClimbUp", true);
+		} else {
+			anim.SetBool ("ClimbUp", false);
+		}
+		if (col.gameObject.tag == "TriggerBossBattle") {
+			Camera.main.transform.position = transform.position;
+		}	 
+		if (col.gameObject.tag == "Enemy") {
+			knockbackCount = knockbackLength;
+			
+			if (col.transform.position.x < transform.position.x)
+				knockFromRight = true;
+			else
+				knockFromRight = false;
+		}
+	}
+		void OnTriggerStay2D(Collider2D col)
+		{
+		if (col.gameObject.tag == "LadderTrigger" || col.gameObject.tag == "AboveLadder") {
+			canUseShield = false;
+		} else {
+			canUseShield = true;
+		}
+		}
+}

@@ -5,6 +5,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	// Variables //
+	public GameObject impactEffect;
 	public RectTransform healthTransform; // healthbar in UI
 	public Image visualHealth; // healthbar image to change color
 	private float cachedY; // saved Y position, does not change
@@ -125,9 +126,11 @@ public class Player : MonoBehaviour {
 		{
 			if (!onCoolDown && currentHealth > 0)
 			{
+				Instantiate (impactEffect, transform.position, transform.rotation);
 				StartCoroutine(coolDownDMG());
 				CurrentHealth -= 1;
 			}
+			Destroy (impactEffect, 1);
 		}
 		if (collision.gameObject.tag == "Enemy") // If health goes below zero, while near enemy
 		{

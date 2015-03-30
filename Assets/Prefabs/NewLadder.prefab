@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413828}
   - 212: {fileID: 21214104}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LadderStart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 423388}
   - 212: {fileID: 21224408}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LadderMid3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 114: {fileID: 11452268}
   m_Layer: 0
   m_Name: AboveTrigger
-  m_TagString: Untagged
+  m_TagString: LadderTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 470190}
   - 212: {fileID: 21246844}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LadderMid6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454804}
   - 212: {fileID: 21252486}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LadderMid5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 427724}
   - 61: {fileID: 6195892}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: NewLadder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
