@@ -1,8 +1,10 @@
 fileFormatVersion: 2
 guid: 277228fbabfa3ea4cad90e4f20279d6a
+timeCreated: 1427744117
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Standard_0
+    21300000: Standard_Enemy_Hit
     21300002: Standard_Enemy_Idle_01
     21300004: Standard_Enemy_Idle_02
   serializedVersion: 2
@@ -23,6 +25,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -33,6 +38,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
@@ -46,16 +52,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Standard_0
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 206
-        width: 11
-        height: 14
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Standard_Enemy_Idle_01
       rect:
         serializedVersion: 2
@@ -76,5 +72,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Standard_Enemy_Hit
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 230
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -21,6 +21,7 @@ public enum FriendlyState
 public class FriendlyController : MonoBehaviour {
     public FriendlyType type;
     private FriendlyState _state = FriendlyState.idle;      // Local variable to represent our state
+    private Animator anim;
 
     // Spawn enemy
     public GameObject enemyPatrol;
@@ -62,6 +63,8 @@ public class FriendlyController : MonoBehaviour {
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
+        
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -93,7 +96,7 @@ public class FriendlyController : MonoBehaviour {
                 StartCoroutine(coolDownDMG());
                 Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
-                ChangeColor();
+                anim.SetTrigger("isHit");
             }
         }
     }
@@ -106,19 +109,6 @@ public class FriendlyController : MonoBehaviour {
         onCoolDown = true;
         yield return new WaitForSeconds(coolDown);
         onCoolDown = false;
-    }
-
-    /*
-     * Changes the color of the entity, to reflect the amount of damage they take.
-     * Will transition from white(1, 1, 1, 1) to black(0, 0, 0, 1)
-     */
-    private void ChangeColor()
-    {
-        float colorChange = (1 - (1 / (currentHealth + 1))); // +1 or else the object will be pure black at 1 health
-
-        Color transforming = new Color(colorChange, colorChange, colorChange, 1);
-
-        this.gameObject.GetComponent<SpriteRenderer>().material.color = transforming;
     }
 
     /*
