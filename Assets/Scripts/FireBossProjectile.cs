@@ -8,10 +8,11 @@ public class FireBossProjectile : MonoBehaviour {
 	private float cooldownTime;
 	private Transform player;
 	public GameObject firePoint;
+	private GameObject shot;
 
 	// Use this for initialization
 	private void Start () {
-		this.cooldownTime = 0.0f;
+		this.cooldownTime = 0.5f;
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
@@ -22,15 +23,12 @@ public class FireBossProjectile : MonoBehaviour {
 		}
 	}
 
-	public void Shoot(bool isEnemy)
+	public void Shoot()
 	{
-		if (this.CanShoot) {
 			this.cooldownTime = this.cooldownTimeThreshold;
-			GameObject shot = Instantiate(bossProjectilePrefab, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
-			shot.GetComponent<Rigidbody2D>().AddForce(((Vector2)(player.position - shot.transform.position)).normalized * 300);
-				
-		}
-		
+			shot = (GameObject) Instantiate(bossProjectilePrefab, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
+			shot.GetComponent<Rigidbody2D>().AddForce(((Vector2)(player.position - shot.transform.position)).normalized * 400);
+			Destroy(shot, 3);
 	}
 	
 	public bool CanShoot

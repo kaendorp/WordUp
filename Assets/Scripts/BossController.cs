@@ -27,6 +27,9 @@ public class BossController : MonoBehaviour {
 	public GameObject circleCollider;
 	private Animator anim;
 
+	public float fireDelay = 1;
+	private float timeToFire = 0;  
+
 
 	private FireBossProjectile bossProjectile;
 
@@ -72,25 +75,31 @@ public class BossController : MonoBehaviour {
 			break;
 			case bossEvents.shoot:
 				anim.SetBool("IsHit", false);
-				if(bossProjectile != null && bossProjectile.CanShoot)
-				{
-					for(int i = 0; i < 5; i++)
-					{
-						anim.SetBool("IsShooting", true);
-						bossProjectile.Shoot(true);	
-						StartCoroutine(WaitForShooting());
-						
-					}
-					currentEvent = bossEvents.roarIdle;
-				}
+				StartCoroutine(WaitForShooting());
 				break;
-			case bossEvents.roarIdle:
+				case bossEvents.roarIdle:
 				anim.SetBool("IsHit", false);
 				circleCollider.SetActive(true);
 				StartCoroutine(Wait());
-
 				break;
 		}
+	}
+
+	public void Shoot(){
+		if (bossProjectile != null && bossProjectile.CanShoot) {
+			bossProjectile.Shoot ();
+		}
+	}
+	public void EndShoot(){
+		anim.SetBool("IsShooting", false);	
+		currentEvent = bossEvents.roarIdle;
+	}
+
+	public void EndVulnerable()
+	{
+		circleCollider.SetActive(false);
+		anim.SetBool("RoarIdle", false);
+		currentEvent =  bossEvents.inactive;
 	}
 
 	public void beginBossBattle()
@@ -118,34 +127,52 @@ public class BossController : MonoBehaviour {
 	{
 		if (isDefeated) 
 		{
-			Instantiate (bossDeathFX);
-			Destroy (gameObject);
-			Application.LoadLevel ("MainMenu");
+			anim.SetBool("IsDefeated", true);
+			StartCoroutine(WaitVariable(1.1f));
+			StartCoroutine(Defeated());
 		}
 
 		isDefeated = true;
 		timeForNextEvent = 0.0f;
 	}
 
-	IEnumerator WaitForShooting(){
-		yield return new WaitForSeconds (1);
-		anim.SetBool("IsShooting", false);
+	void Flee()
+	{
+		Destroy (gameObject);
+		Application.LoadLevel ("MainMenu");
 	}
+
+	IEnumerator WaitForShooting(){
+			anim.SetBool("IsShooting", true);
+			yield return new WaitForSeconds (1f);
+			Shoot ();
+			yield return new WaitForSeconds (4f);
+			EndShoot ();
+		}
 
 	IEnumerator Wait(){
 		anim.SetBool("RoarIdle", true);
-		yield return new WaitForSeconds (4);
-		anim.SetBool("RoarIdle", false);
-		circleCollider.SetActive(false);
-		currentEvent =  bossEvents.shoot;
+		yield return new WaitForSeconds (3.8f);
+		EndVulnerable ();
 	}
 	IEnumerator Idle(){
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSeconds (1f);
 		anim.SetBool("IsHit", false);
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (3f);
 		currentEvent =  bossEvents.shoot;
 	}
-	
+
+	IEnumerator WaitVariable(float waitTime) {
+		yield return new WaitForSeconds (waitTime);
+		Instantiate (bossDeathFX);
+	}
+
+	IEnumerator Defeated()
+	{
+		yield return new WaitForSeconds (3f);
+		Flee ();
+	}
+
 	void OnCollisionEnter2D(Collision2D collider)
 	{
 				if (collider.gameObject.tag == "PlayerProjectile")
@@ -153,5 +180,6 @@ public class BossController : MonoBehaviour {
 					hitByPlayerProjectile();
 				}
 			}
+
 		}
 

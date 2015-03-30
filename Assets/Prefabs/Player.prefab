@@ -61,6 +61,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 419824}
   - 114: {fileID: 11442900}
+  - 61: {fileID: 6118498}
   m_Layer: 8
   m_Name: Stats
   m_TagString: Player
@@ -126,7 +127,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457734}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &419824
 Transform:
   m_ObjectHideFlags: 1
@@ -182,11 +183,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.150000006, z: 0}
+  m_LocalPosition: {x: 0, y: -.150000095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457734}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &457734
 Transform:
   m_ObjectHideFlags: 1
@@ -194,11 +195,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.2399998, y: 5.42000008, z: 0}
+  m_LocalPosition: {x: 33.0999985, y: 1.89999998, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
-  - {fileID: 457390}
   - {fileID: 405758}
+  - {fileID: 457390}
   - {fileID: 420802}
   - {fileID: 440230}
   - {fileID: 445442}
@@ -233,6 +234,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -.0599999987}
   serializedVersion: 2
   m_Radius: .0762366056
+--- !u!61 &6118498
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164440}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 4d503547f68c8b6498f603fb89fa6711, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -.00196653605}
+  serializedVersion: 2
+  m_Size: {x: .150000006, y: .248871207}
 --- !u!61 &6118624
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -241,7 +255,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 157408}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 4d503547f68c8b6498f603fb89fa6711, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.00196653605}
   serializedVersion: 2
@@ -256,9 +270,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .100000001, y: -.00992512703}
+  m_Offset: {x: .100000024, y: -.00303518772}
   serializedVersion: 2
-  m_Size: {x: .0299999993, y: .308215141}
+  m_Size: {x: .0300000012, y: .231440663}
 --- !u!95 &9531734
 Animator:
   serializedVersion: 3
@@ -321,15 +335,15 @@ MonoBehaviour:
     m_Bits: 4294934729
   whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
   crouched: 1
   shield: {fileID: 178276}
   isClimbing: 0
   climbingSwitch: 0
-  knockback: 0
-  knockbackLength: 0
-  knockbackCount: 0
-  knockFromRight: 1
+  knockback: 10
+  knockbackLength: .200000003
+  knockbackCount: .200000003
+  knockFromRight: 0
   enabled: 0
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 440230}
