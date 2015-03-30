@@ -197,6 +197,10 @@ public class Player : MonoBehaviour {
 				Destroy(collision.gameObject);
 				WordGameScript.Active = true;
 			}
+			else
+			{
+				// To do: Block Player
+			}
 		}
 		
 		if (collision.gameObject.tag == "Finish") 

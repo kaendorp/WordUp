@@ -22,6 +22,8 @@ TagManager:
   - Boss
   - Ladder
   - TriggerBossBattle
+  - AbovePlatform
+  - AboveTrigger
   layers:
   - Default
   - TransparentFX
