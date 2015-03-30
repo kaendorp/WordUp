@@ -150,11 +150,6 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Bericht")
-		{
-			Boodschap.text = "Gebruik 'W' om te springen!";
-		}
-
 		if (collision.gameObject.tag == "Child") // If child is found
 		{ 
 			if (countKids < 5)
