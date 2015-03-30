@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
 	string[] buttons = new string[4] {"START", "Prestaties", "Opties", "Exit"};	
 	private int selected = 0;
 
+	private Rect button1Rect = new Rect(15,15,160,30);
+	private Rect button2Rect = new Rect(15,15,160,30);
+	private Rect button3Rect = new Rect(15,15,160,30);
+	private Rect button4Rect = new Rect(15,15,160,30);
+
 	void Start()
 	{
 		// Load a skin for the buttons
@@ -61,8 +66,22 @@ public class MainMenu : MonoBehaviour
 	
 	void OnGUI()
 	{
-		const int buttonWidth = 160;
-		const int buttonHeight = 30;
+		button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
+		button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
+		
+		button2Rect.x = (Screen.width / 2) - (button2Rect.width / 2);
+		button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);
+
+		button3Rect.x = (Screen.width / 2) - (button3Rect.width / 2);
+		button3Rect.y = (Screen.height / 2) - (button3Rect.height / 2);
+		
+		button4Rect.x = (Screen.width / 2) - (button4Rect.width / 2);
+		button4Rect.y = (Screen.height / 2) - (button4Rect.height / 2);
+
+		button1Rect.y = button1Rect.y - 130;
+		// button 2 staat goed
+		button3Rect.y = button3Rect.y + 40;
+		button4Rect.y = button4Rect.y + 80;
 		
 		// Set the skin to use
 		GUI.skin = skin;
@@ -71,7 +90,7 @@ public class MainMenu : MonoBehaviour
 		// Start Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 7) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			button1Rect,
 			"START"
 		)) 
 		{
@@ -82,7 +101,7 @@ public class MainMenu : MonoBehaviour
 		// Prestaties Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 4) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			button2Rect,
 			"Prestaties"
 		)) 
 		{
@@ -93,7 +112,7 @@ public class MainMenu : MonoBehaviour
 		// Opties Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			button3Rect,
 			"Opties"
 		)) 
 		{		
@@ -104,7 +123,7 @@ public class MainMenu : MonoBehaviour
 		// Exit Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.1f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+			button4Rect	,
 			"Exit"
 		)) 
 		{

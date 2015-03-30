@@ -14,6 +14,9 @@ public class GameOverScript : MonoBehaviour
 	public static bool WinActive = false;
 	public RectTransform finishMenu;
 
+	private Rect button1Rect = new Rect(15,15,160,30);
+	private Rect button2Rect = new Rect(15,15,160,30);
+
 	// Keyboard control
 	string[] buttons = new string[5] {"Opnieuw?", "Menu", "Terug", "Menu", "Menu"};	
 	private int selected = 0;
@@ -69,25 +72,32 @@ public class GameOverScript : MonoBehaviour
 
 	void OnGUI()
 	{
+		button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
+		button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
+
+		button2Rect.x = (Screen.width / 2) - (button2Rect.width / 2);
+		button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);
+
 		GUI.FocusControl(buttons[selected]);
 
 		// Set Menu op actief en daarna op inactief
 		if (GameOverActive == true) 
 		{
+			// Plaatsing buttons
+			button1Rect.y = button1Rect.y - 20;
+			button2Rect.y = button2Rect.y + 65;
+
 			// Activeer Ingame menu
 			gameoverMenu.gameObject.SetActive(true);
 
 			// Set the skin to use
 			GUI.skin = skin;
 
-			const int buttonWidth = 160;
-			const int buttonHeight = 30;
-
 			GUI.SetNextControlName(buttons[0]);
 			// Opnieuw Button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 4.2f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				button1Rect,
 				"Opnieuw?"
 				)) 
 			{
@@ -100,7 +110,7 @@ public class GameOverScript : MonoBehaviour
 			// Naar Main menu button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.25f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				button2Rect,
 				"Menu"
 				)) 
 			{
@@ -113,6 +123,8 @@ public class GameOverScript : MonoBehaviour
 		// Pauzemenu
 		if (PauseActive == true) 
 		{
+			button1Rect.y = button1Rect.y + 65;
+			button2Rect.y = button2Rect.y + 135;
 			// Activeer Ingame menu
 			pauzeMenu.gameObject.SetActive(true);
 			
@@ -121,15 +133,12 @@ public class GameOverScript : MonoBehaviour
 			
 			// Set the skin to use
 			GUI.skin = skin;
-			
-			const int buttonWidth = 160;
-			const int buttonHeight = 30;
 
 			GUI.SetNextControlName(buttons[0]);
 			// Terug Button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.25f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				button1Rect,
 				"Terug"
 				)) 
 			{
@@ -142,7 +151,7 @@ public class GameOverScript : MonoBehaviour
 			// Naar Main menu button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 2.65f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				button2Rect,
 				"Menu"
 				)) 
 			{
@@ -156,6 +165,8 @@ public class GameOverScript : MonoBehaviour
 		// Gewonnen menu
 		if (WinActive == true) 
 		{
+			button1Rect.y = button1Rect.y + 75;
+
 			// Activeer Ingame menu
 			finishMenu.gameObject.SetActive(true);
 
@@ -163,15 +174,12 @@ public class GameOverScript : MonoBehaviour
 			Time.timeScale = 0;
 			// Set the skin to use
 			GUI.skin = skin;
-			
-			const int buttonWidth = 160;
-			const int buttonHeight = 30;
 
 			GUI.SetNextControlName(buttons[0]);
 			// Naar main menu Button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3.25f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				button1Rect,
 				"Menu"
 				)) 
 			{

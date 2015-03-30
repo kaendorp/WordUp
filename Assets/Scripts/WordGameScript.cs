@@ -23,6 +23,12 @@ public class WordGameScript : MonoBehaviour {
 
 	private int klik;
 
+	// Buttons plaatsing
+	private Rect button1Rect = new Rect(15,15,160,30);
+	private Rect letter1Rect = new Rect (15, 15, 50, 50);
+	private Rect letter2Rect = new Rect (15, 15, 50, 50);
+	private Rect letter3Rect = new Rect (15, 15, 50, 50);
+
 	// Keyboard control
 	string[] buttons = new string[4] {"F", "L", "E", "Correct"};	
 	private int selected = 0;
@@ -106,15 +112,32 @@ public class WordGameScript : MonoBehaviour {
 
 	void OnGUI()
 	{
+		button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
+		button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
+
+		letter1Rect.x = (Screen.width / 2) - (letter1Rect.width / 2);
+		letter1Rect.y = (Screen.height / 2) - (letter1Rect.height / 2);
+
+		letter2Rect.x = (Screen.width / 2) - (letter2Rect.width / 2);
+		letter2Rect.y = (Screen.height / 2) - (letter2Rect.height / 2);
+
+		letter3Rect.x = (Screen.width / 2) - (letter3Rect.width / 2);
+		letter3Rect.y = (Screen.height / 2) - (letter3Rect.height / 2);
+
 		GUI.FocusControl(buttons[selected]);
 		if (Active == true) 
 		{
+			letter1Rect.x = letter1Rect.x + 55;
+			letter1Rect.y = letter1Rect.y + 70;
+
+			letter2Rect.y = letter2Rect.y + 70;
+
+			letter3Rect.x = letter3Rect.x - 55;
+			letter3Rect.y = letter3Rect.y + 70;
+
 			Time.timeScale =0;
 
 			Wordgame.gameObject.SetActive(true);
-
-			const int buttonWidth = 50;
-			const int buttonHeight = 50;
 			
 			// Set the skin to use
 			GUI.skin = skin;
@@ -123,7 +146,7 @@ public class WordGameScript : MonoBehaviour {
 			// Eerste letter
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 1.83f - (buttonWidth / 2), (2 * Screen.height / 3) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				letter1Rect,
 				"F"
 				)) 
 			{
@@ -145,7 +168,7 @@ public class WordGameScript : MonoBehaviour {
 			// Tweede letter
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 3) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				letter2Rect,
 				"L"
 				)) 
 			{
@@ -168,7 +191,7 @@ public class WordGameScript : MonoBehaviour {
 			// Derde letter
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2.2f - (buttonWidth / 2), (2 * Screen.height / 3) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				letter3Rect,
 				"E"
 				)) 
 			{		
@@ -190,8 +213,11 @@ public class WordGameScript : MonoBehaviour {
 
 		if (WGcomplete == true) 
 		{
-			const int buttonWidth = 160;
-			const int buttonHeight = 30;	
+			// Plaatsing buttons
+			button1Rect.y = button1Rect.y + 125;
+
+			// Selecteert automatisch correct button, als het woord goed is.
+			selected = menuSelection(buttons, selected, "done");
 
 			// Set the skin to use
 			GUI.skin = menuskin;
@@ -200,7 +226,7 @@ public class WordGameScript : MonoBehaviour {
 			// Correct Button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
-				new Rect (Screen.width / 2 - (buttonWidth / 2), (2 * Screen.height / 2.5f) - (buttonHeight / 2), buttonWidth, buttonHeight),
+				button1Rect,
 				"Correct"
 				)) 
 			{
