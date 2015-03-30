@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8900001, y: 1.67799997, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 473264}
@@ -222,7 +222,7 @@ MonoBehaviour:
   type: 0
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
-  message: Welkom!\nHier wordt de enemyAI uitgetest!
+  message: 
   messageObject: {fileID: 105374}
   currentHealth: 5
   coolDown: 2
@@ -234,7 +234,7 @@ MonoBehaviour:
   playerIsLeft: 0
   walkSpeed: 1
   collideDistance: .5
-  edgeDetection: 1
+  edgeDetection: 0
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
