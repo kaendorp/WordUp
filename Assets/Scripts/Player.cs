@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 	public Text Boodschap;
 
 	public Text kindText; // Kid counter for UI
+	public Text kindTextHUD;
 	private int countKids = 0; // current amount of kids collected 
 	private int CountKids // Sets current amount of kids through HandleKids()
 	{
@@ -58,8 +59,11 @@ public class Player : MonoBehaviour {
 
 	// Fysieke locatie letters in HUD
 	public Text letter_1;
+	public Text letter_1HUD;
 	public Text letter_2;
+	public Text letter_2HUD;
 	public Text letter_3;
+	public Text letter_3HUD;
 
 	// Methods //
 	void Start()
@@ -71,6 +75,7 @@ public class Player : MonoBehaviour {
 		onCoolDown = false;
 
 		kindText.text = countKids + "  " + maxKids;
+		kindTextHUD.text = countKids + "  " + maxKids;
 	}
 
 	private void HandleHealth()
@@ -90,7 +95,8 @@ public class Player : MonoBehaviour {
 	}
 	private void HandleKids ()
 	{
-		kindText.text = countKids + "   " + maxKids;
+		kindText.text = countKids + "  " + maxKids;
+		kindTextHUD.text = countKids + "  " + maxKids;
 		Boodschap.text = "Hoera, je hebt me gevonden!!!";
 		StartCoroutine (showMessage());
 	}
@@ -144,11 +150,6 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Bericht")
-		{
-			Boodschap.text = "Gebruik 'W' om te springen!";
-		}
-
 		if (collision.gameObject.tag == "Child") // If child is found
 		{ 
 			if (countKids < 5)
@@ -170,25 +171,43 @@ public class Player : MonoBehaviour {
 				if (letter_1.text == "")
 				{
 					letter_1.text = collision.gameObject.name;
+					letter_1HUD.text = collision.gameObject.name;
 				}
 				else if (letter_2.text == "")
 				{
 					letter_2.text = collision.gameObject.name;
+					letter_2HUD.text = collision.gameObject.name;
 				}
 				else if (letter_3.text == "")
 				{
 					letter_3.text = collision.gameObject.name;
+					letter_3HUD.text = collision.gameObject.name;
 				}
 				Destroy(collision.gameObject);
 				StartCoroutine(showLetters());
 			}
 		}
-	}
-	void OnTriggerExit2D (Collider2D collision)
-	{
-		if (collision.gameObject.tag == "Bericht")
+
+		if (countLetters >= 3) 
+		{
+			if (collision.gameObject.tag == "WordGame")
+			{
+				Boodschap.text = "";
+				letterPanel.gameObject.SetActive(false);
+				Destroy(collision.gameObject);
+				WordGameScript.Active = true;
+			}
+			else
+			{
+				// To do: Block Player
+			}
+		}
+		
+		if (collision.gameObject.tag == "Finish") 
 		{
 			Boodschap.text = "";
+			letterPanel.gameObject.SetActive(false);
+			GameOverScript.WinActive = true;
 		}
 	}
 
@@ -206,25 +225,16 @@ public class Player : MonoBehaviour {
 		}
 
 		Destroy (this.gameObject);
-		GameOverScript.MenuActive = true;
+		GameOverScript.GameOverActive = true;
 	}
 
 	void Update () 
 	{
-		if (transform.position.y <= fallBoundary) 
+		if (Input.GetKeyUp (KeyCode.Escape)) 
 		{
-			FallDamage(10);
+			Boodschap.text = "";
+			letterPanel.gameObject.SetActive(false);
+			GameOverScript.PauseActive = true;
 		}
 	}
-
-	void FallDamage(int dmg)
-	{
-		currentHealth = currentHealth - dmg;
-
-		if (currentHealth == 0) 
-		{
-			Respawn();
-		}
-	}
-
 }

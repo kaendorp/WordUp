@@ -15,6 +15,15 @@ TagManager:
   - Friendly
   - AboveLadder
   - Projectile
+  - Shield
+  - LadderTrigger
+  - PlayerProjectile
+  - WordGame
+  - Boss
+  - Ladder
+  - TriggerBossBattle
+  - AbovePlatform
+  - AboveTrigger
   layers:
   - Default
   - TransparentFX
@@ -30,8 +39,8 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - Friendly
-  - 
-  - 
+  - Ladder
+  - PlayerProjectile
   - 
   - 
   - 
@@ -55,13 +64,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 2310265001
-    locked: 0
   - name: Enemy
     uniqueID: 847213563
+    locked: 0
+  - name: Player
+    uniqueID: 2310265001
     locked: 0
   - name: Foreground
     uniqueID: 1184041883
     locked: 0
-
+  - name: Friendly
+    uniqueID: 3556688625
+    locked: 0

@@ -107,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.01999998, y: -.400000006, z: 0}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children:
   - {fileID: 446556}
@@ -213,7 +213,7 @@ TextMesh:
   m_GameObject: {fileID: 164504}
   m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: .400000006
+  m_CharacterSize: .200000003
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLayer: Player
-  message: 
+  message: Druk op 'w' \n om te springen.
   messageObject: {fileID: 164504}
 --- !u!198 &19840396
 ParticleSystem:

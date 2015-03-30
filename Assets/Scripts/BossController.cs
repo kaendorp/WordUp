@@ -139,7 +139,7 @@ public class BossController : MonoBehaviour {
 	void Flee()
 	{
 		Destroy (gameObject);
-		Application.LoadLevel ("MainMenu");
+		GameOverScript.WinActive = true;
 	}
 
 	IEnumerator WaitForShooting(){
