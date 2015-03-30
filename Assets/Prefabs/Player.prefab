@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.0999985, y: 1.89999998, z: 0}
+  m_LocalPosition: {x: -6.46999979, y: -.189999998, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 405758}
@@ -309,12 +309,16 @@ MonoBehaviour:
   fallBoundary: -10
   Boodschap: {fileID: 0}
   kindText: {fileID: 0}
-  maxKids: 5
+  kindTextHUD: {fileID: 0}
+  maxKids: 1
   letterPanel: {fileID: 0}
   maxLetters: 3
   letter_1: {fileID: 0}
+  letter_1HUD: {fileID: 0}
   letter_2: {fileID: 0}
+  letter_2HUD: {fileID: 0}
   letter_3: {fileID: 0}
+  letter_3HUD: {fileID: 0}
 --- !u!114 &11479562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,19 +339,21 @@ MonoBehaviour:
     m_Bits: 4294934729
   whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 49152
   crouched: 1
+  moveVelocity: 0
+  canUseShield: 1
   shield: {fileID: 178276}
   isClimbing: 0
   climbingSwitch: 0
-  knockback: 10
+  knockback: 2
   knockbackLength: .200000003
-  knockbackCount: .200000003
+  knockbackCount: 0
   knockFromRight: 0
   enabled: 0
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 440230}
-  letters: {fileID: 166636, guid: 4d2f2bdc4e68c774d95cf489d0d786e5, type: 2}
+  letters: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
   shotDelay: .600000024
   target: {fileID: 0}
   camera: {fileID: 0}
