@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour {
      */
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Projectile") 
+        if (collision.gameObject.tag == "PlayerProjectile") 
         {
             if (!onCoolDown && currentHealth > 0)
             {
@@ -208,7 +208,7 @@ public class EnemyController : MonoBehaviour {
                 
                 (1 << LayerMask.NameToLayer(targetLayer)) + 
                 (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                (1 << LayerMask.NameToLayer("Projectile"))
+                (1 << LayerMask.NameToLayer("PlayerProjectile"))
             ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
@@ -220,7 +220,7 @@ public class EnemyController : MonoBehaviour {
                 ~(
                     (1 << this.gameObject.layer) +
                     (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                    (1 << LayerMask.NameToLayer("Projectile"))
+                    (1 << LayerMask.NameToLayer("PlayerProjectile"))
                 ) // Collide with all layers, except the targetlayer and the projectiles
             );
         }
