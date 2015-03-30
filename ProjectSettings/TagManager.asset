@@ -17,6 +17,7 @@ TagManager:
   - TriggerBossBattle
   - PlayerProjectile
   - Shield
+  - Friendly
   layers:
   - Default
   - TransparentFX
