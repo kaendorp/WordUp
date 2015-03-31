@@ -135,7 +135,7 @@ MonoBehaviour:
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
   message: 
   currentHealth: 2
-  coolDown: 2
+  coolDown: 1
   targetLayer: Player
   target: {fileID: 0}
   firePoint: {fileID: 432638}
