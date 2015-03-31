@@ -303,6 +303,7 @@ public class EnemyController : MonoBehaviour {
         // This enemy will resume patrol in the idle state
         if (type == EnemyType.patrol)
         {
+            anim.SetFloat("speed", 0);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
 
