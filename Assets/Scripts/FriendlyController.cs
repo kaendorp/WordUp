@@ -56,7 +56,7 @@ public class FriendlyController : MonoBehaviour {
     public float collideDistance = 0.5f;    // Distance from Friendly to check for a wall.
     public bool edgeDetection = true;       // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false; // If true, it touched a wall and should flip.
-    private bool collidingWithGround = true;// If true, it is not about to fall off an edge
+    public bool collidingWithGround = true;// If true, it is not about to fall off an edge
 
     void Start()
     {
@@ -185,7 +185,9 @@ public class FriendlyController : MonoBehaviour {
                 new Vector2(this.transform.position.x, this.transform.position.y),
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y))),
                 ~(
-                    (1 << this.gameObject.layer)
+				(1 << this.gameObject.layer) +
+				(1 << LayerMask.NameToLayer("UI")) +
+				(1 << LayerMask.NameToLayer("PlayerProjectile"))
                 ) // Collide with all layers, except itself
             );
         }

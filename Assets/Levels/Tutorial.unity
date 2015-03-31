@@ -5679,6 +5679,7 @@ MonoBehaviour:
   bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
   bossDropFX: {fileID: 0}
   isActive: 0
+  notDead: 1
   firePoint: {fileID: 1499784654}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 1
@@ -5686,7 +5687,7 @@ MonoBehaviour:
   eventWaitDelay: 3
   polygonCollider: {fileID: 443080473}
   circleCollider: {fileID: 431795193}
-  fireDelay: 3
+  fireAmount: 0
   currentEvent: 0
   health: 3
 --- !u!4 &642976049
@@ -6366,11 +6367,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.4000001
+      value: -6.69000006
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.0900000036
+      value: -.319999993
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6452,6 +6453,14 @@ Prefab:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1280017652}
+    - target: {fileID: 5806544, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: m_Radius
+      value: .0944447517
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806544, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_IsPrefabParent: 0
@@ -7874,7 +7883,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 905888730}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -8173,7 +8182,7 @@ PolygonCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930127121}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 4d503547f68c8b6498f603fb89fa6711, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -14712,7 +14721,7 @@ GameObject:
   - 4: {fileID: 1836934885}
   - 61: {fileID: 1836934887}
   - 114: {fileID: 1836934886}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: GameObject
   m_TagString: AboveTrigger
   m_Icon: {fileID: 0}
@@ -14995,6 +15004,10 @@ Prefab:
     - target: {fileID: 22499986, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 138510, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}

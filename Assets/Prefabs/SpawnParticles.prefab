@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpawnParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   - 4: {fileID: 449578}
   - 198: {fileID: 19849576}
   - 199: {fileID: 19949576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

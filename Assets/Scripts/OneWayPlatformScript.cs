@@ -8,6 +8,7 @@ public class OneWayPlatformScript : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D player)
 	{
+		if(player.gameObject.tag == "Player")
 		transform.parent.GetComponent<Collider2D>().isTrigger = false;
 		
 	}
@@ -18,6 +19,7 @@ public class OneWayPlatformScript : MonoBehaviour {
 	
 	void OnTriggerExit2D(Collider2D player)
 	{
+		if(player.gameObject.tag == "Player")
 		transform.parent.GetComponent<Collider2D>().isTrigger = true;
 	}
 	

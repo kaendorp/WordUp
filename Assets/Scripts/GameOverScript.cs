@@ -90,6 +90,9 @@ public class GameOverScript : MonoBehaviour
 			// Activeer Ingame menu
 			gameoverMenu.gameObject.SetActive(true);
 
+			// Zet game op stil
+			Time.timeScale = 0;
+
 			// Set the skin to use
 			GUI.skin = skin;
 
@@ -103,6 +106,7 @@ public class GameOverScript : MonoBehaviour
 			{
 				GameOverActive = false;
 				gameoverMenu.gameObject.SetActive(false);
+				Time.timeScale = 1;
 				Application.LoadLevel ("Tutorial"); // Load Totorial
 			}
 
@@ -116,6 +120,7 @@ public class GameOverScript : MonoBehaviour
 			{
 				GameOverActive = false;
 				gameoverMenu.gameObject.SetActive(false);
+				Time.timeScale = 1;
 				Application.LoadLevel ("MainMenu"); // Load Main Menu
 			}
 		}
