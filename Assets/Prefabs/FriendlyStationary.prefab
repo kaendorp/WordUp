@@ -48,7 +48,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438332}
   - 58: {fileID: 5876996}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BerichtTrigger
   m_TagString: Bericht
   m_Icon: {fileID: 0}
@@ -251,6 +251,7 @@ MonoBehaviour:
   walkSpeed: 1
   collideDistance: .5
   edgeDetection: 0
+  collidingWithGround: 1
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
