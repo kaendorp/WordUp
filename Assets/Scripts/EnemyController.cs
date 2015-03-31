@@ -103,7 +103,7 @@ public class EnemyController : MonoBehaviour {
                 StartCoroutine(coolDownDMG());
                 Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
-                ChangeColor();
+                anim.SetTrigger("isHit");
             }
         }
     }
@@ -116,19 +116,6 @@ public class EnemyController : MonoBehaviour {
         onCoolDown = true;
         yield return new WaitForSeconds(coolDown);
         onCoolDown = false;
-    }
-
-    /*
-     * Changes the color of the entity, to reflect the amount of damage they take.
-     * Will transition from white(1, 1, 1, 1) to green(0, 1, 0, 1)
-     */
-    private void ChangeColor()
-    {
-        float colorChange = (1 - (1 / (currentHealth + 1))); // +1 or else the object will be pure green at 1 health
-
-        Color transforming = new Color(colorChange, 1, colorChange, 1);
-
-        this.gameObject.GetComponent<SpriteRenderer>().material.color = transforming;
     }
 
     /*

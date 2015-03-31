@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 473264}
   - 23: {fileID: 2360876}
   - 102: {fileID: 10205682}
+  - 114: {fileID: 11469618}
   m_Layer: 5
   m_Name: Bericht
   m_TagString: Bericht
@@ -38,6 +39,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &161096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 438332}
+  - 58: {fileID: 5876996}
+  m_Layer: 0
+  m_Name: BerichtTrigger
+  m_TagString: Bericht
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &438332
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448260}
+  m_RootOrder: 1
 --- !u!4 &448260
 Transform:
   m_ObjectHideFlags: 1
@@ -45,10 +74,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.34000015, y: .0700000003, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 473264}
+  - {fileID: 438332}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &473264
@@ -58,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .981000006, z: -1}
+  m_LocalPosition: {x: 0, y: .800000012, z: -1}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448260}
@@ -73,7 +103,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 77b4558c2e2da714f86ceaeac1ffe7c1, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -114,7 +144,20 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .472522736
+  m_Radius: .5
+--- !u!58 &5876996
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161096}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .0500000007}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6121138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -154,7 +197,7 @@ TextMesh:
   m_GameObject: {fileID: 105374}
   m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: .0700000003
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -162,10 +205,25 @@ TextMesh:
   m_FontSize: 50
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 77b4558c2e2da714f86ceaeac1ffe7c1, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &11469618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231355a07bbd7f244b2e48fac8bb0a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelSize: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  resolutionDependant: 0
+  doubleResolution: 1024
 --- !u!114 &11475766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,7 +238,7 @@ MonoBehaviour:
   type: 0
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
-  message: Welkom!\nHier wordt de enemyAI uitgetest!
+  message: 
   messageObject: {fileID: 105374}
   currentHealth: 5
   coolDown: 2
@@ -192,7 +250,7 @@ MonoBehaviour:
   playerIsLeft: 0
   walkSpeed: 1
   collideDistance: .5
-  edgeDetection: 1
+  edgeDetection: 0
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1

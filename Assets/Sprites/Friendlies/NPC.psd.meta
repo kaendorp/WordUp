@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 3f62652660f08ca4e904e6707c09460c
-timeCreated: 1427637054
+timeCreated: 1427746679
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: NPC_Idle_0
     21300002: NPC_Idle_1
+    21300004: NPC_Hit
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -70,6 +71,16 @@ TextureImporter:
         height: 30
       alignment: 9
       pivot: {x: .5, y: .449999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_Hit
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 174
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

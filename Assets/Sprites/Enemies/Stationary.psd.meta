@@ -1,16 +1,17 @@
 fileFormatVersion: 2
 guid: 2087a256967b3b044ae4b54af54c8f94
-timeCreated: 1427637406
+timeCreated: 1427744217
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Stationary_0
-    21300002: Stationary_1
-    21300004: Stationary_2
-    21300006: Stationary_3
-    21300008: Stationary_4
-    21300010: Stationary_5
-    21300012: Stationary_6
+    21300000: Stationary_Idle_1
+    21300002: Stationary_Idle_2
+    21300004: Stationary_Idle_3
+    21300006: Stationary_Fire_1
+    21300008: Stationary_Fire_2
+    21300010: Stationary_Fire_3
+    21300012: Stationary_Fire_4
+    21300014: Stationary_Hit
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,7 +57,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Stationary_0
+    - name: Stationary_Idle_1
       rect:
         serializedVersion: 2
         x: 31
@@ -66,7 +67,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stationary_1
+    - name: Stationary_Idle_2
       rect:
         serializedVersion: 2
         x: 72
@@ -76,7 +77,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stationary_2
+    - name: Stationary_Idle_3
       rect:
         serializedVersion: 2
         x: 116
@@ -86,7 +87,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stationary_3
+    - name: Stationary_Fire_1
       rect:
         serializedVersion: 2
         x: 25
@@ -96,7 +97,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stationary_4
+    - name: Stationary_Fire_2
       rect:
         serializedVersion: 2
         x: 64
@@ -106,7 +107,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stationary_5
+    - name: Stationary_Fire_3
       rect:
         serializedVersion: 2
         x: 101
@@ -116,11 +117,21 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stationary_6
+    - name: Stationary_Fire_4
       rect:
         serializedVersion: 2
         x: 136
         y: 402
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stationary_Hit
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 359
         width: 33
         height: 33
       alignment: 0
