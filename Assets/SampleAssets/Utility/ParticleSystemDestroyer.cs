@@ -46,7 +46,7 @@ namespace UnitySampleAssets.Utility
             // wait for any remaining particles to expire
             yield return new WaitForSeconds(maxLifetime);
 
-            Destroy(gameObject);
+            Destroy(this.gameObject);
 
         }
 

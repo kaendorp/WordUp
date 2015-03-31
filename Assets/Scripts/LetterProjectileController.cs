@@ -27,15 +27,16 @@ public class LetterProjectileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GetComponent<Rigidbody2D>().velocity = new Vector2 (speed, GetComponent<Rigidbody2D>().velocity.y);
-		Destroy (gameObject,2);
-		Destroy (impactEffect);
+        if (this.gameObject != null)
+		    Destroy (this.gameObject,2);
+		// Destroy (this.impactEffect);
 	}
 
 	void onTriggerEnter2D(Collision2D obj)
     {
 		Debug.Log ("Hit");
 			Instantiate(enemyDeathEffect, obj.transform.position, obj.transform.rotation);
-			Destroy(gameObject);		
+            Destroy(this.gameObject);		
     }
 
 	void OnCollisionEnter2D(Collision2D collider)
@@ -46,7 +47,7 @@ public class LetterProjectileController : MonoBehaviour {
 			Instantiate (enemyDeathEffect, collider.transform.position, collider.transform.rotation);
 		}
 		Instantiate (impactEffect, transform.position, transform.rotation);
-		Destroy(gameObject);
+        Destroy(this.gameObject);
 		/*
          if(collider.gameObject.name == "CannonBall")
          {

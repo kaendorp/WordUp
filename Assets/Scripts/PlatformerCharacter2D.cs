@@ -203,7 +203,7 @@ using UnitySampleAssets.CrossPlatformInput;
 				Instantiate (letters, firePoint.position, firePoint.rotation);
 				anim.SetBool ("Shoot", true);
 				StartCoroutine(Wait());
-				Destroy(letters, 2);
+				// Destroy(letters, 2);
 				shotDelayCounter = shotDelay;
 			}
 		} 
@@ -212,7 +212,7 @@ using UnitySampleAssets.CrossPlatformInput;
 			Instantiate (letters, firePoint.position, firePoint.rotation);
 			anim.SetBool ("Shoot", true);
 			StartCoroutine(Wait());
-			Destroy(letters, 2);
+			// Destroy(letters, 2);
 		}
 
 		if(!climbing && !climbingSwitch)

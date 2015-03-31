@@ -132,11 +132,12 @@ public class Player : MonoBehaviour {
 		{
 			if (!onCoolDown && currentHealth > 0)
 			{
-				Instantiate (impactEffect, transform.position, transform.rotation);
+				Object spawnedImpactEffect = Instantiate (impactEffect, transform.position, transform.rotation);
 				StartCoroutine(coolDownDMG());
 				CurrentHealth -= 1;
+                Destroy(spawnedImpactEffect, 1);
 			}
-			Destroy (impactEffect, 1);
+            
 		}
 		if (collision.gameObject.tag == "Enemy") // If health goes below zero, while near enemy
 		{
