@@ -45,8 +45,8 @@ public class BossController : MonoBehaviour {
 	private GameObject targetNode = null;
 	private Vector3 targetPosition = Vector3.zero;
 
-	public int health = 6;
-	private int startHealth = 6;
+	public int health = 1;
+	private int startHealth = 1;
 	private bool isDefeated = false;
 
 	void onEnable()
@@ -118,8 +118,9 @@ public class BossController : MonoBehaviour {
 
 	public void hitByPlayerProjectile()
 	{
+		circleCollider.SetActive(false);
 		anim.SetBool("IsHit", true);
-		health -= 1;
+		health--;
 		if (health <= 0) 
 		{
 			defeated ();
@@ -129,8 +130,10 @@ public class BossController : MonoBehaviour {
 
 	void defeated()
 	{
+		circleCollider.SetActive(false);
 		if (isDefeated) 
 		{
+			circleCollider.SetActive(false);
 			anim.SetBool("IsDefeated", true);
 			StartCoroutine(WaitVariable(1.1f));
 			StartCoroutine(Defeated());
@@ -160,6 +163,7 @@ public class BossController : MonoBehaviour {
 		EndVulnerable ();
 	}
 	IEnumerator Idle(){
+		circleCollider.SetActive(false);
 		yield return new WaitForSeconds (1f);
 		anim.SetBool("IsHit", false);
 		yield return new WaitForSeconds (1f);
@@ -181,6 +185,7 @@ public class BossController : MonoBehaviour {
 	{
 				if (collider.gameObject.tag == "PlayerProjectile")
 				{
+					circleCollider.SetActive(false);
 					hitByPlayerProjectile();
 				}
 			}

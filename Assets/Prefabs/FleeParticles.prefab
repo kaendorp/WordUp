@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.0400009, y: -.879999995, z: 0}
+  m_LocalPosition: {x: 40.9529991, y: -1.15199995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442296}
@@ -67,7 +67,7 @@ ParticleSystem:
   startDelay: 0
   speed: 1
   randomSeed: 0
-  looping: 0
+  looping: 1
   prewarm: 1
   playOnAwake: 1
   moveWithTransform: 1
@@ -89,7 +89,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .739130497
+          value: .478260905
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -214,7 +214,7 @@ ParticleSystem:
         rgba: 4283707181
       minMaxState: 0
     startSize:
-      scalar: .449999988
+      scalar: .450000018
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -229,7 +229,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .200000018
+          value: .466666639
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -275,7 +275,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 3
+    type: 0
     radius: .00999999978
     angle: 25
     length: 5
@@ -290,7 +290,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 105.949997
+      scalar: 39.0600014
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -338,13 +338,13 @@ ParticleSystem:
       maxCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - time: .20714286
           value: 1
           inSlope: -2
           outSlope: -2
           tangentMode: 0
         - time: 1
-          value: 0
+          value: .013513512
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -853,14 +853,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
-          inSlope: -1
-          outSlope: -1
+          value: .0270271301
+          inSlope: -.0270271301
+          outSlope: -.0270271301
           tangentMode: 10
         - time: 1
           value: 0
-          inSlope: -1
-          outSlope: -1
+          inSlope: -.0270271301
+          outSlope: -.0270271301
           tangentMode: 10
         m_PreInfinity: 2
         m_PostInfinity: 2
