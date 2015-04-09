@@ -156,8 +156,7 @@ public class Player : MonoBehaviour {
 			if (countKids < 5)
 			{
 				CountKids += 1;
-				Destroy(collision.gameObject);
-				
+               
 				if (currentHealth < 10) // If damaged, health increases
 				{
 					CurrentHealth += 1; // Child found health increases + 1
