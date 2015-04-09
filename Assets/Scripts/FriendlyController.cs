@@ -132,8 +132,10 @@ public class FriendlyController : MonoBehaviour
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
             ~(
+                (1 << this.gameObject.layer) +
+                (1 << LayerMask.NameToLayer("UI")) +
                 (1 << LayerMask.NameToLayer("EnemeyProjectile")) +
-                (1 << LayerMask.NameToLayer("Projectile"))
+                (1 << LayerMask.NameToLayer("PlayerProjectile"))
             ) // Collide with all layers, except itself
         );
 
@@ -143,9 +145,10 @@ public class FriendlyController : MonoBehaviour
                 new Vector2(this.transform.position.x, this.transform.position.y),
                 new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y))),
                 ~(
-                (1 << this.gameObject.layer) +
-                (1 << LayerMask.NameToLayer("UI")) +
-                (1 << LayerMask.NameToLayer("PlayerProjectile"))
+                    (1 << this.gameObject.layer) +
+                    (1 << LayerMask.NameToLayer("UI")) +
+                    (1 << LayerMask.NameToLayer("EnemeyProjectile")) +
+                    (1 << LayerMask.NameToLayer("PlayerProjectile"))
                 ) // Collide with all layers, except itself
             );
         }
