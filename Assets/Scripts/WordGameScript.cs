@@ -21,7 +21,15 @@ public class WordGameScript : MonoBehaviour {
 	public static bool WGcomplete = false;
 	public RectTransform Wordgame;
 
+    public Text gevondenLetters;
+
 	private int klik;
+
+    // Welke letters, welk woord
+    public string nieuwWoord;
+    public string letterKeuze1;
+    public string letterKeuze2;
+    public string letterKeuze3;
 
 	// Buttons plaatsing
 	private Rect button1Rect = new Rect(15,15,160,30);
@@ -30,7 +38,7 @@ public class WordGameScript : MonoBehaviour {
 	private Rect letter3Rect = new Rect (15, 15, 50, 50);
 
 	// Keyboard control
-	string[] buttons = new string[4] {"F", "L", "E", "Correct"};	
+	string[] buttons = new string[4] {"1", "2", "3", "Correct"};	
 	private int selected = 0;
 
 	// Use this for initialization
@@ -45,7 +53,7 @@ public class WordGameScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (letter1text.text == "L" && letter2text.text == "E" && letter3text.text == "F") 
+		if (letter1text.text + letter2text.text + letter3text.text == nieuwWoord) 
 		{
 			controle.color = new Color32(19, 182, 40, 225);
 			WGcomplete = true;
@@ -147,21 +155,21 @@ public class WordGameScript : MonoBehaviour {
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
 				letter1Rect,
-				"F"
-				)) 
+				letterKeuze1
+				))
 			{
 				klik += 1;
 				if (letter1text.text == "")
 				{
-					letter1text.text = "F";
+					letter1text.text = letterKeuze1;
 				}
 				else if (letter2text.text == "")
 				{
-					letter2text.text = "F";
+                    letter2text.text = letterKeuze1;
 				}
 				else if (letter3text.text == "")
 				{
-					letter3text.text = "F";
+                    letter3text.text = letterKeuze1;
 				}
 			}
 			GUI.SetNextControlName(buttons[1]);
@@ -169,21 +177,21 @@ public class WordGameScript : MonoBehaviour {
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
 				letter2Rect,
-				"L"
+				letterKeuze2
 				)) 
 			{
 				klik += 1;
 				if (letter1text.text == "")
 				{
-					letter1text.text = "L";
+					letter1text.text = letterKeuze2;
 				}
 				else if (letter2text.text == "")
 				{
-					letter2text.text = "L";
+					letter2text.text = letterKeuze2;
 				}
 				else if (letter3text.text == "")
 				{
-					letter3text.text = "L";
+					letter3text.text = letterKeuze2;
 				}
 			}
 
@@ -192,27 +200,29 @@ public class WordGameScript : MonoBehaviour {
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
 				letter3Rect,
-				"E"
+				letterKeuze3
 				)) 
 			{		
 				klik += 1;
 				if (letter1text.text == "")
 				{
-					letter1text.text = "E";
+					letter1text.text = letterKeuze3;
 				}
 				else if (letter2text.text == "")
 				{
-					letter2text.text = "E";
+					letter2text.text = letterKeuze3;
 				}
 				else if (letter3text.text == "")
 				{
-					letter3text.text = "E";
+					letter3text.text = letterKeuze3;
 				}
 			}
 		}
 
 		if (WGcomplete == true) 
 		{
+            Active = false;
+            gevondenLetters.gameObject.SetActive(false);
 			// Plaatsing buttons
 			button1Rect.y = button1Rect.y + 125;
 
@@ -229,8 +239,7 @@ public class WordGameScript : MonoBehaviour {
 				button1Rect,
 				"Correct"
 				)) 
-			{
-				Active = false;
+			{				
 				WGcomplete = false;
 				letter1text.text = "";
 				letter2text.text = "";

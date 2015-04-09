@@ -147,7 +147,7 @@ public class BossController : MonoBehaviour {
 	{
 		notDead = false;
 		Destroy (gameObject);
-		GameOverScript.WinActive = true;
+		WinMenuScript.WinActive = true;
 	}
 
 	IEnumerator WaitForShooting(){

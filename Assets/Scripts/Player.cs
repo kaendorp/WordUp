@@ -208,7 +208,7 @@ public class Player : MonoBehaviour {
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
-			GameOverScript.WinActive = true;
+			WinMenuScript.WinActive = true;
 		}
 	}
 
@@ -235,7 +235,7 @@ public class Player : MonoBehaviour {
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
-			GameOverScript.PauseActive = true;
+			PauseMenuScripte.PauseActive = true;
 		}
 	}
 }
