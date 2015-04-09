@@ -7,7 +7,8 @@ using System.Collections;
 public enum EnemyType
 {
 	stationary,
-	patrol
+	patrol,
+    floating
 }
 
 /*
@@ -16,7 +17,8 @@ public enum EnemyType
 public enum EnemyState
 {
 	idle,
-	waitThenAttack
+	waitThenAttack,
+    moveToOrigin
 }
 
 public class EnemyController : MonoBehaviour
@@ -45,6 +47,16 @@ public class EnemyController : MonoBehaviour
     public bool edgeDetection = true;           // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false;     // If true, it touched a wall and should flip.
     private bool collidingWithGround = true;    // If true, it is not about to fall off an edge
+
+    // Hover
+    private Vector3 startPosition;
+    private Vector3 tempPosition;
+    public float hoverYSpeed = -5f;
+    public float hoverXSpeed = 2.5f;
+    public float hoverAplitude = 0.01f;
+    private float setHoverY;
+    private float setHoverX;
+    private float setHoverA;
 
     // Target (usually the player)
     public string targetLayer = "Player";       // TODO: Make this a list, for players and friendly NPC's
@@ -77,6 +89,12 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        if (type == EnemyType.floating)
+        {
+            startPosition = this.transform.position;
+            tempPosition = startPosition;
+        }
     }
 
     void FixedUpdate()
@@ -93,6 +111,10 @@ public class EnemyController : MonoBehaviour
                 {
                     Patrol();
                 }
+                else if (type == EnemyType.floating)
+                {
+                    Float();
+                }
                 break;
             case EnemyState.waitThenAttack:
                 WaitThenAttack();
@@ -100,6 +122,14 @@ public class EnemyController : MonoBehaviour
                 if (!delayCoroutineStarted)
                     StartCoroutine(FireDelay());
                 break;
+            case EnemyState.moveToOrigin:
+                MoveToOrigin();
+                break;
+        }
+
+        if (type == EnemyType.floating)
+        {
+            Hover();
         }
 
         if (currentHealth <= 0)
@@ -184,6 +214,37 @@ public class EnemyController : MonoBehaviour
     }
 
     /**
+     * Idle state
+     *
+     * In this state, the enemy will wait to spot a player, and then it will go to its attack state.
+     * Patroling enemys will resume to patrol after it shot at the player, as the attack state
+     * will reset the timer. The first time the patroling enemy spots an enemy, the timer will
+     * already have passed and it will immediately go into the attack state.
+     */
+    private void Float()
+    {
+        setHoverX = hoverXSpeed;
+        setHoverY = hoverYSpeed;
+        setHoverA = hoverAplitude;
+        if (!isBlinded)
+        {
+            // Will set 'playerSpotted' to true if spotted
+            IsTargetInRange();
+            if (playerSpotted)
+            {
+                _state = EnemyState.waitThenAttack;
+            }
+        }
+    }
+
+    void Hover()
+    {
+        tempPosition.x += Mathf.Sin(Time.realtimeSinceStartup * setHoverX) * setHoverA;
+        tempPosition.y += Mathf.Sin(Time.realtimeSinceStartup * setHoverY) * setHoverA;
+        transform.position = tempPosition;
+    }
+
+    /**
      * In this method the enemy will stop to stare at the player, then after the delay,
      * it will shoot in the direction of the player.
      *
@@ -198,12 +259,25 @@ public class EnemyController : MonoBehaviour
             anim.SetFloat("speed", 0);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
+        else if (type == EnemyType.floating)
+        {
+            setHoverX = hoverXSpeed/2;
+            setHoverY = hoverYSpeed/2;
+            setHoverA = hoverAplitude/2;
+        }
         FacePlayer();
         if (readyToFire)
         {
             Shoot();
             readyToFire = false;
-            _state = EnemyState.idle;
+            if (type == EnemyType.floating)
+            {
+                _state = EnemyState.moveToOrigin;
+            }
+            else
+            {
+                _state = EnemyState.idle;
+            }
         }
     }
 
@@ -218,13 +292,21 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(fireDelay);
         readyToFire = true;
 
-        if (type == EnemyType.patrol)
+        if (type == EnemyType.patrol || type == EnemyType.floating)
         {
             isBlinded = true;
             yield return new WaitForSeconds(blindedDelay);
             isBlinded = false;
         }
         delayCoroutineStarted = false;
+    }
+
+    private void MoveToOrigin()
+    {
+        float step = walkSpeed * Time.deltaTime;
+        this.transform.position = Vector3.MoveTowards(this.transform.position, startPosition, step);
+        if (this.transform.position == startPosition)
+            _state = EnemyState.idle;
     }
 
     /**
@@ -311,6 +393,12 @@ public class EnemyController : MonoBehaviour
                 Flip();
             }
         }
+
+        if (type == EnemyType.floating)
+        {
+            //Vector3 lookAtPoint = new Vector3(target.transform.position.x, target.transform.position.y, 0);
+            //firePoint.LookAt(Vector3.forward, target.transform.position);
+        }
     }
 
     /**
@@ -348,13 +436,29 @@ public class EnemyController : MonoBehaviour
         }
 
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
+        if (type == EnemyType.floating)
+        {
+            //projectile.GetComponent<Rigidbody2D>().AddForce(((Vector2)(target.transform.position - this.transform.position)).normalized * ((projectileSpeed*30)*-1));
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
+        }
+        else
+        {
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
+        }
         if (!facingLeft)
         {
             projectile.transform.localScale *= -1;
         }
         Destroy(projectile, projectileLifeTime);
     }
+
+    //public void Shoots()
+    //{
+    //    this.cooldownTime = this.cooldownTimeThreshold;
+    //    shot = (GameObject)Instantiate(bossProjectilePrefab, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
+    //    shot.GetComponent<Rigidbody2D>().AddForce(((Vector2)(player.position - shot.transform.position)).normalized * 400);
+    //    Destroy(shot, 3);
+    //}
 
     /**
      * Take damage when hit with the players projectile. When this entity gets hit
@@ -397,7 +501,7 @@ public class EnemyController : MonoBehaviour
         {
             spawn = Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation) as GameObject;
         }
-        else if (type == EnemyType.stationary)
+        else if (type == EnemyType.stationary || type == EnemyType.floating)
         {
             spawn = Instantiate(friendlyStationary, this.transform.position, this.transform.rotation) as GameObject;
         }
