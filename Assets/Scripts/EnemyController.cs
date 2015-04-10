@@ -17,8 +17,7 @@ public enum EnemyType
 public enum EnemyState
 {
 	idle,
-	waitThenAttack,
-    moveToOrigin
+	waitThenAttack
 }
 
 public class EnemyController : MonoBehaviour
@@ -41,8 +40,8 @@ public class EnemyController : MonoBehaviour
     private bool onCoolDown = false;            // Cooldown active or not
 
     // Patrol
-    public float walkSpeed = 1f;                // Amount of velocity
-    private bool walkingRight;                  // Simple check to see in what direction the enemy is moving, important for facing.
+    public float moveSpeed = 1f;                // Amount of velocity
+    private bool movingRight = false;           // Simple check to see in what direction the enemy is moving, important for facing.
     public float collideDistance = 0.5f;        // Distance from enemy to check for a wall.
     public bool edgeDetection = true;           // If checked, it will try to detect the edge of a platform
     private bool collidingWithWall = false;     // If true, it touched a wall and should flip.
@@ -50,13 +49,12 @@ public class EnemyController : MonoBehaviour
 
     // Hover
     private Vector3 startPosition;
-    private Vector3 tempPosition;
-    public float hoverYSpeed = -5f;
-    public float hoverXSpeed = 2.5f;
-    public float hoverAplitude = 0.01f;
-    private float setHoverY;
-    private float setHoverX;
-    private float setHoverA;
+    private Vector3 leftPosition;
+    private Vector3 rightPosition;
+    private Vector3 moveTo;
+    public float hoverXSwing = 1f;
+    public float hoverYSwing = 1f;
+    private float hoverSpeed;
 
     // Target (usually the player)
     public string targetLayer = "Player";       // TODO: Make this a list, for players and friendly NPC's
@@ -93,7 +91,9 @@ public class EnemyController : MonoBehaviour
         if (type == EnemyType.floating)
         {
             startPosition = this.transform.position;
-            tempPosition = startPosition;
+
+            leftPosition = new Vector3((startPosition.x - hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
+            rightPosition = new Vector3((startPosition.x + hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
         }
     }
 
@@ -121,9 +121,6 @@ public class EnemyController : MonoBehaviour
                 // To ensure the coroutine is only fired once!
                 if (!delayCoroutineStarted)
                     StartCoroutine(FireDelay());
-                break;
-            case EnemyState.moveToOrigin:
-                MoveToOrigin();
                 break;
         }
 
@@ -163,8 +160,8 @@ public class EnemyController : MonoBehaviour
      */
     private void Patrol()
     {
-        anim.SetFloat("speed", walkSpeed);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(walkSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        anim.SetFloat("speed", moveSpeed);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         FaceDirectionOfWalking();
 
@@ -198,7 +195,7 @@ public class EnemyController : MonoBehaviour
         if (collidingWithWall || !collidingWithGround)
         {
             //Debug.Log(this.name + " hit a wall, now walking the other way.");
-            walkSpeed *= -1;
+            moveSpeed *= -1;
             collideDistance *= -1;
         }
 
@@ -223,9 +220,7 @@ public class EnemyController : MonoBehaviour
      */
     private void Float()
     {
-        setHoverX = hoverXSpeed;
-        setHoverY = hoverYSpeed;
-        setHoverA = hoverAplitude;
+        hoverSpeed = moveSpeed;
         if (!isBlinded)
         {
             // Will set 'playerSpotted' to true if spotted
@@ -239,9 +234,31 @@ public class EnemyController : MonoBehaviour
 
     void Hover()
     {
-        tempPosition.x += Mathf.Sin(Time.realtimeSinceStartup * setHoverX) * setHoverA;
-        tempPosition.y += Mathf.Sin(Time.realtimeSinceStartup * setHoverY) * setHoverA;
-        transform.position = tempPosition;
+        //tempPosition.x += Mathf.Sin(Time.realtimeSinceStartup * setHoverX) * setHoverA;
+        //tempPosition.y += Mathf.Sin(Time.realtimeSinceStartup * setHoverY) * setHoverA;
+        //transform.position = tempPosition;
+
+        float step = hoverSpeed * Time.deltaTime;
+        if (this.transform.position == startPosition && movingRight)
+        {
+            moveTo = rightPosition;
+        }
+        else if (this.transform.position == startPosition && !movingRight)
+        {
+            moveTo = leftPosition;
+        }
+        else if (this.transform.position == leftPosition)
+        {
+            movingRight = true;
+            moveTo = startPosition;
+        }
+        else if (this.transform.position == rightPosition)
+        {
+            movingRight = false;
+            moveTo = startPosition;
+        }
+
+        this.transform.position = Vector3.MoveTowards(this.transform.position, moveTo, step);
     }
 
     /**
@@ -261,23 +278,14 @@ public class EnemyController : MonoBehaviour
         }
         else if (type == EnemyType.floating)
         {
-            setHoverX = hoverXSpeed/2;
-            setHoverY = hoverYSpeed/2;
-            setHoverA = hoverAplitude/2;
+            hoverSpeed = moveSpeed - (moveSpeed / 3);
         }
         FacePlayer();
         if (readyToFire)
         {
             Shoot();
             readyToFire = false;
-            if (type == EnemyType.floating)
-            {
-                _state = EnemyState.moveToOrigin;
-            }
-            else
-            {
-                _state = EnemyState.idle;
-            }
+            _state = EnemyState.idle;
         }
     }
 
@@ -299,14 +307,6 @@ public class EnemyController : MonoBehaviour
             isBlinded = false;
         }
         delayCoroutineStarted = false;
-    }
-
-    private void MoveToOrigin()
-    {
-        float step = walkSpeed * Time.deltaTime;
-        this.transform.position = Vector3.MoveTowards(this.transform.position, startPosition, step);
-        if (this.transform.position == startPosition)
-            _state = EnemyState.idle;
     }
 
     /**
@@ -358,17 +358,17 @@ public class EnemyController : MonoBehaviour
     {
         if (GetComponent<Rigidbody2D>().velocity.x > 0)
         {
-            walkingRight = true;
+            movingRight = true;
         }
         else
         {
-            walkingRight = false;
+            movingRight = false;
         }
-        if (walkingRight && facingLeft)
+        if (movingRight && facingLeft)
         {
             Flip();
         }
-        else if (!walkingRight && !facingLeft)
+        else if (!movingRight && !facingLeft)
         {
             Flip();
         }

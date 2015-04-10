@@ -136,9 +136,11 @@ MonoBehaviour:
   message: 
   currentHealth: 2
   invincibilityDuration: 2
-  walkSpeed: 1
+  moveSpeed: 1
   collideDistance: .5
   edgeDetection: 1
+  hoverXSwing: 0
+  hoverYSwing: 0
   targetLayer: Player
   firePoint: {fileID: 432638}
   projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
