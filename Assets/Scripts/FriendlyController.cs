@@ -231,7 +231,6 @@ public class FriendlyController : MonoBehaviour
                 StartCoroutine(coolDownDMG());
                 Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
-                anim.SetTrigger("isHit");
             }
         }
     }
@@ -242,8 +241,10 @@ public class FriendlyController : MonoBehaviour
     IEnumerator coolDownDMG()
     {
         onCoolDown = true;
+        anim.SetBool("isHit", true);
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
+        anim.SetBool("isHit", false);
     }
 
     /**
