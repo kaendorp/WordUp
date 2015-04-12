@@ -73,7 +73,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4943863894499149904a6895e59cd92, type: 3}
+  - {fileID: 2100000, guid: 77b4558c2e2da714f86ceaeac1ffe7c1, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -126,7 +126,7 @@ TextMesh:
   m_GameObject: {fileID: 145742}
   m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: .0299999993
+  m_CharacterSize: .0199999996
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -134,7 +134,7 @@ TextMesh:
   m_FontSize: 50
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: f4943863894499149904a6895e59cd92, type: 3}
+  m_Font: {fileID: 12800000, guid: 77b4558c2e2da714f86ceaeac1ffe7c1, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLayer: Player
-  message: Hoi
+  message: Wat ga ik \n zeggen?
   messageObject: {fileID: 145742}
 --- !u!212 &21220166
 SpriteRenderer:
