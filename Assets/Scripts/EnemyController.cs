@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
     // Spawn friendly
     public GameObject friendlyPatrol;
     public GameObject friendlyStationary;
+    public GameObject friendlyFloating;
     private GameObject spawn;
 
     // Message
@@ -55,6 +56,7 @@ public class EnemyController : MonoBehaviour
     public float hoverXSwing = 1f;
     public float hoverYSwing = 1f;
     private float hoverSpeed;
+    public bool drawFloatPath;
 
     // Target (usually the player)
     public string targetLayer = "Player";       // TODO: Make this a list, for players and friendly NPC's
@@ -139,9 +141,6 @@ public class EnemyController : MonoBehaviour
      * Idle state
      *
      * In this state, the enemy will wait to spot a player, and then it will go to its attack state.
-     * Patroling enemys will resume to patrol after it shot at the player, as the attack state
-     * will reset the timer. The first time the patroling enemy spots an enemy, the timer will
-     * already have passed and it will immediately go into the attack state.
      */
     private void Idle()
     {
@@ -154,9 +153,14 @@ public class EnemyController : MonoBehaviour
     }
 
     /**
-     * Patrol script for enemy,
-     * will walk untill the collidingWithWall linecast hits a collider, then walk the other way
-     * or (if checked) will detect if the enemy is to hit the edge of a platform
+     * Patrol script 
+     * 
+     * enemy will walk untill the collidingWithWall linecast hits a collider, then walk the other way
+     * or (if checked) will detect if the enemy is to hit the edge of a platform.
+     * 
+     * Patroling enemys will resume to patrol after it shot at the player, as the attack state
+     * will reset the timer. The first time the patroling enemy spots an enemy, the timer will
+     * already have passed and it will immediately go into the attack state.
      */
     private void Patrol()
     {
@@ -211,12 +215,10 @@ public class EnemyController : MonoBehaviour
     }
 
     /**
-     * Idle state
+     * Float state
      *
-     * In this state, the enemy will wait to spot a player, and then it will go to its attack state.
-     * Patroling enemys will resume to patrol after it shot at the player, as the attack state
-     * will reset the timer. The first time the patroling enemy spots an enemy, the timer will
-     * already have passed and it will immediately go into the attack state.
+     * Reset the movespeed if it was set by the waitThenAttack state, then
+     * if not blinded, spot the player.
      */
     private void Float()
     {
@@ -232,6 +234,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /**
+     * Hover
+     * 
+     * In this script the floating enemy will hover in a V shape.
+     * start/left/right position is set in the Start() method.
+     */
     void Hover()
     {
         //tempPosition.x += Mathf.Sin(Time.realtimeSinceStartup * setHoverX) * setHoverA;
@@ -393,12 +401,6 @@ public class EnemyController : MonoBehaviour
                 Flip();
             }
         }
-
-        if (type == EnemyType.floating)
-        {
-            //Vector3 lookAtPoint = new Vector3(target.transform.position.x, target.transform.position.y, 0);
-            //firePoint.LookAt(Vector3.forward, target.transform.position);
-        }
     }
 
     /**
@@ -438,8 +440,14 @@ public class EnemyController : MonoBehaviour
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (type == EnemyType.floating)
         {
-            //projectile.GetComponent<Rigidbody2D>().AddForce(((Vector2)(target.transform.position - this.transform.position)).normalized * ((projectileSpeed*30)*-1));
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
+            if (facingLeft)
+            {
+                projectileSpeed = (projectileSpeed*30);
+            } else {
+                projectileSpeed = (projectileSpeed*-30);
+            }
+            projectile.GetComponent<Rigidbody2D>().AddForce(((Vector2)(target.transform.position - this.transform.position)).normalized * projectileSpeed);
+            //projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         }
         else
         {
@@ -474,7 +482,6 @@ public class EnemyController : MonoBehaviour
                 StartCoroutine(coolDownDMG());
                 Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
-                anim.SetTrigger("isHit");
             }
         }
     }
@@ -485,8 +492,10 @@ public class EnemyController : MonoBehaviour
     IEnumerator coolDownDMG()
     {
         onCoolDown = true;
+        anim.SetBool("isHit", true);
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
+        anim.SetBool("isHit", false);
     }
 
     /**
@@ -501,11 +510,19 @@ public class EnemyController : MonoBehaviour
         {
             spawn = Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation) as GameObject;
         }
-        else if (type == EnemyType.stationary || type == EnemyType.floating)
+        else if (type == EnemyType.stationary)
         {
             spawn = Instantiate(friendlyStationary, this.transform.position, this.transform.rotation) as GameObject;
         }
-        spawn.SendMessage("GetMessage", message);
+        else if (type == EnemyType.floating)
+        {
+            spawn = Instantiate(friendlyFloating, this.transform.position, this.transform.rotation) as GameObject;
+        }
+
+        if (!string.IsNullOrEmpty(message) || type != EnemyType.floating)
+        {
+            spawn.SendMessage("GetMessage", message);
+        }
         Destroy(this.gameObject);
     }
 
@@ -520,7 +537,19 @@ public class EnemyController : MonoBehaviour
     }
 
     /**
+     * OnDrawGiszmos
+     * 
+     * drawSpotRadiusGismo:
      * Draws a circle gizmo to show the field of view or 'agro' range of an enemy
+     * 
+     * Patrol:
+     * Patroling enemy's show the distance it will check for a wall.
+     * 
+     * edgeDetection:
+     * Displays the raycast for the edgedetection
+     * 
+     * drawFloatPath:
+     * Shows the path the floating enemies take.
      */
     private void OnDrawGizmos()
     {
@@ -546,6 +575,22 @@ public class EnemyController : MonoBehaviour
                 Gizmos.DrawLine(
                     new Vector2(this.transform.position.x, this.transform.position.y),
                     new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y)))
+                );
+            }
+        }
+
+        if (type == EnemyType.floating)
+        {
+            if (drawFloatPath)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(
+                    new Vector2((startPosition.x - hoverXSwing), (startPosition.y + hoverYSwing)),
+                    new Vector2(startPosition.x, startPosition.y)
+                );
+                Gizmos.DrawLine(
+                    new Vector2((startPosition.x + hoverXSwing), (startPosition.y + hoverYSwing)),
+                    new Vector2(startPosition.x, startPosition.y)
                 );
             }
         }

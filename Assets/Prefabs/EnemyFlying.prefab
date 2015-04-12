@@ -133,14 +133,16 @@ MonoBehaviour:
   type: 2
   friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
+  friendlyFloating: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   message: 
   currentHealth: 2
-  invincibilityDuration: 2
+  invincibilityDuration: 1.5
   moveSpeed: 1
   collideDistance: 0
   edgeDetection: 0
   hoverXSwing: .5
   hoverYSwing: .5
+  drawFloatPath: 1
   targetLayer: Player
   firePoint: {fileID: 432638}
   projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
