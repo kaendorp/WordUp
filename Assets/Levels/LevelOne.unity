@@ -993,106 +993,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: visualHealth
-      value: 
-      objectReference: {fileID: 678315964}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: healthTransform
       value: 
       objectReference: {fileID: 678315963}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: maxHealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: coolDown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6118624, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: kindText
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: visualHealth
       value: 
-      objectReference: {fileID: 522107700}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: kindBoodschap
-      value: 
-      objectReference: {fileID: 1582320731}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letterText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      objectReference: {fileID: 678315964}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: Boodschap
       value: 
       objectReference: {fileID: 1582320731}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: kindText
+      value: 
+      objectReference: {fileID: 522107700}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: kindTextHUD
+      value: 
+      objectReference: {fileID: 1837350966}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: letterPanel
       value: 
       objectReference: {fileID: 132270491}
-    - target: {fileID: 157408, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letter_1
-      value: 
-      objectReference: {fileID: 1602868578}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letter_2
-      value: 
-      objectReference: {fileID: 614881197}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letter_3
-      value: 
-      objectReference: {fileID: 614711211}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: maxKids
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: kindTextHUD
-      value: 
-      objectReference: {fileID: 1837350966}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letter_1HUD
-      value: 
-      objectReference: {fileID: 512308874}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letter_2HUD
-      value: 
-      objectReference: {fileID: 2098539302}
-    - target: {fileID: 11444148, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letter_3HUD
-      value: 
-      objectReference: {fileID: 1403655437}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: healthTransform
-      value: 
-      objectReference: {fileID: 678315963}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: visualHealth
-      value: 
-      objectReference: {fileID: 678315964}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: Boodschap
-      value: 
-      objectReference: {fileID: 1582320731}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: kindText
-      value: 
-      objectReference: {fileID: 522107700}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: kindTextHUD
-      value: 
-      objectReference: {fileID: 1837350966}
     - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: letter_1
       value: 
@@ -1117,14 +1041,6 @@ Prefab:
       propertyPath: letter_3HUD
       value: 
       objectReference: {fileID: 1403655437}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letterPanel
-      value: 
-      objectReference: {fileID: 132270491}
-    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: maxKids
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_IsPrefabParent: 0
