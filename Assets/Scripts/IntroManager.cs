@@ -39,38 +39,14 @@ public class IntroManager : MonoBehaviour {
         kindRed
     }
 
-    public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
+    public float fadeInSpeed = 1.5f;        // Speed that the screen fades from black.
+    public float fadeOutSpeed = 1.5f;       // Speed that the screen fades to black.
     private bool sceneStarting = true;      // Whether or not the scene is still fading in.
-    public GUITexture overlay;
+    public Image overlay;
     
     void Awake ()
     {
-        // Set the texture so that it is the the size of the screen and covers it.
-        overlay.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
-
         StartCoroutine(FadeToClear());
-    }
-    
-    IEnumerator FadeToClear ()
-    {
-        // Lerp the colour of the texture between itself and transparent.
-        float rate = 1f / fadeSpeed;
-        float progress = 0f;
-        while (progress < 1f)
-        {
-            overlay.color = Color.Lerp(overlay.color, Color.clear, progress);
-            progress += rate * Time.deltaTime;
-
-            yield return null;
-        }
-        overlay.color = Color.clear;
-    }
-    
-    
-    void FadeToBlack ()
-    {
-        // Lerp the colour of the texture between itself and black.
-        overlay.color = Color.Lerp(overlay.color, Color.black, fadeSpeed * Time.deltaTime);
     }
 
 	// Use this for initialization
@@ -88,7 +64,7 @@ public class IntroManager : MonoBehaviour {
 
         bossAnim = boss.GetComponent<Animator>();
         playerAnim = player.GetComponent<Animator>();
-        playerAnim.SetBool("Knockback", true);
+        playerAnim.SetBool("IntroKnockback", true);
 
         targetposition = new Vector3(boss.transform.position.x + 5, boss.transform.position.y, boss.transform.position.z);
 	}
@@ -130,10 +106,10 @@ public class IntroManager : MonoBehaviour {
     {
         waitCoroutineStarted = true;
         yield return new WaitForSeconds(5);
-        bossAnim.SetTrigger("introRoarIdle");
+        bossAnim.SetTrigger("IntroBossRoarIdle");
         messageObject.GetComponent<TextMesh>().text = "Je woorden zijn zwak,\nniets wat je zegt\nkan mij raken!";
         yield return new WaitForSeconds(5);
-        bossAnim.SetTrigger("introRoarIdle");
+        bossAnim.SetTrigger("IntroBossRoarIdle");
         messageObject.GetComponent<TextMesh>().text = "Niemand hier kan je helpen,\nhahaha!";
         yield return new WaitForSeconds(5);
         messageObject.GetComponent<TextMesh>().text = "";
@@ -144,6 +120,9 @@ public class IntroManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
         bossMoveOut = true;
         _state = IntroState.bossVertrekt;
+        StartCoroutine(FadeToBlack());
+        yield return new WaitForSeconds(10);
+        Application.LoadLevel("Tutorial");
         waitCoroutineStarted = false;
     }
 
@@ -158,4 +137,35 @@ public class IntroManager : MonoBehaviour {
         }
     }
 
+    IEnumerator FadeToClear()
+    {
+        // Lerp the colour of the texture between itself and transparent.
+        float rate = fadeInSpeed;
+        float progress = 0f;
+        while (progress < 1f)
+        {
+            overlay.color = Color.Lerp(Color.black, Color.clear, progress);
+            progress += rate * Time.deltaTime;
+
+            yield return null;
+        }
+        overlay.color = Color.clear;
+    }
+
+    IEnumerator FadeToBlack()
+    {
+        //overlay.color = Color.Lerp(overlay.color, Color.black, fadeSpeed * Time.deltaTime);
+
+        // Lerp the colour of the texture between itself and transparent.
+        float rate = fadeOutSpeed;
+        float progress = 0f;
+        while (progress < 1f)
+        {
+            overlay.color = Color.Lerp(Color.clear, Color.black, progress);
+            progress += rate * Time.deltaTime;
+
+            yield return null;
+        }
+        overlay.color = Color.black;
+    }
 }
