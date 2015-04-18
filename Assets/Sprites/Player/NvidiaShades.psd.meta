@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: 1ec42d6e31095a043ad77b0fdaaa0a86
+timeCreated: 1429139891
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: NvidiaShades_0
+    21300002: NvidiaShades_1
+    21300004: NvidiaShades_2
+    21300006: NvidiaShades_3
+    21300008: NvidiaShades_4
+    21300010: NvidiaShades_5
+    21300012: NvidiaShades_6
+    21300014: NvidiaShades_7
+    21300016: NvidiaShades_8
+    21300018: NvidiaShades_9
+    21300020: NvidiaShades_10
+    21300022: NvidiaShades_11
+    21300024: NvidiaShades_12
+    21300026: NvidiaShades_13
+    21300028: NvidiaShades_14
+    21300030: NvidiaShades_15
+    21300032: NvidiaShades_16
+    21300034: NvidiaShades_17
+    21300036: NvidiaShades_18
+    21300038: NvidiaShades_19
+    21300040: NvidiaShades_20
+    21300042: NvidiaShades_21
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 1
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 1
+    externalNormalMap: 1
+    heightScale: .264999986
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 1
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 0
+  textureType: 1
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: NvidiaShades_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 200
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 200
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 200
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 200
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_4
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 200
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_5
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 169
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 169
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_7
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 169
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_8
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 169
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_9
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 169
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_11
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 112
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 112
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_13
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 112
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_14
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 103
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 84
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_16
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 85
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_17
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 85
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_18
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 71
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_19
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 54
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_20
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 54
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NvidiaShades_21
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 58
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
