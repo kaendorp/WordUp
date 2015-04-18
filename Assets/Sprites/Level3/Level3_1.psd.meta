@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 22b3b3f8fff8588479448a8c9293becf
+timeCreated: 1429368795
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Blue door
+    21300002: Green door
+    21300004: Gele deur
+    21300006: Gordijn 1
+    21300008: Gordijn 2
+    21300010: Gordijn 3
+    21300012: Grote wijzer
+    21300014: Kleine wijzer
+    21300016: Klok face
+    21300018: Plafond
+    21300020: Bed
+    21300022: Muur klein
+    21300024: Deur zijkant
+    21300026: Lampenkap
+    21300028: Verbindingsstukje
+    21300030: Kort armpje
+    21300032: Ketting
+    21300034: Snoer
+    21300036: Hanglamp roede klein
+    21300038: Platform geel
+    21300040: Platform groen
+    21300042: Platform blauw
+    21300044: Hanglamp roede groot
+    21300046: Knop rood
+    21300048: Knop onderkant
+    21300050: Knop hint
+    21300052: Lever rood
+    21300054: Lever onderkant
+    21300056: Room divider top
+    21300058: Room divider mid
+    21300060: Room divider bottom
+    21300062: Muur
+    21300064: Raamkozijn
+    21300066: Vloer
+    21300068: Kastje
+    21300070: Cog M groen
+    21300072: Cog M rood
+    21300074: Cog M blauw
+    21300076: Stoel
+    21300078: Tafel
+    21300080: Cog M grijs
+    21300082: Ketting attach
+    21300084: Sleutel rood
+    21300086: Sleutel blauw
+    21300088: Sleutel geel
+    21300090: Ladder top
+    21300092: Madder mid
+    21300094: Ladder bottom
+    21300096: Lamp pivot
+    21300098: Cog L rood
+    21300100: Cog L groen
+    21300102: Cog L blauw
+    21300104: Lamp L bottom
+    21300106: Lamp L mid
+    21300108: Platform L grijs
+    21300110: Lamp foot
+    21300112: Platform chainweight
+    21300114: Lamp M top
+    21300116: Level3_1_0
+    21300118: Lamp M bottom
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Blue door
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1639
+        width: 65
+        height: 78
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green door
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 1639
+        width: 65
+        height: 78
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gele deur
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1639
+        width: 65
+        height: 78
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gordijn 1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1438
+        width: 307
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gordijn 2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1292
+        width: 307
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gordijn 3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1190
+        width: 307
+        height: 91
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grote wijzer
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 939
+        width: 32
+        height: 227
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kleine wijzer
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 952
+        width: 21
+        height: 185
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Klok face
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 859
+        width: 319
+        height: 319
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plafond
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 591
+        width: 408
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bed
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 578
+        width: 484
+        height: 452
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Muur klein
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 791
+        width: 10
+        height: 218
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Deur zijkant
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 710
+        width: 29
+        height: 78
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lampenkap
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 486
+        width: 124
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Verbindingsstukje
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 486
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kort armpje
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 447
+        width: 4
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ketting
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 447
+        width: 4
+        height: 128
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Snoer
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 588
+        width: 52
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hanglamp roede klein
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 468
+        width: 285
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform geel
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 513
+        width: 103
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform groen
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 490
+        width: 103
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform blauw
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 468
+        width: 103
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hanglamp roede groot
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 442
+        width: 1295
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Knop rood
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 528
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Knop onderkant
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 521
+        width: 39
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Knop hint
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 558
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lever rood
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 525
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lever onderkant
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 521
+        width: 39
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Room divider top
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 300
+        width: 82
+        height: 138
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Room divider mid
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 159
+        width: 75
+        height: 135
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Room divider bottom
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 7
+        width: 82
+        height: 145
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Muur
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 10
+        width: 120
+        height: 325
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Raamkozijn
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1493
+        width: 332
+        height: 229
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Vloer
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1398
+        width: 408
+        height: 323
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kastje
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1383
+        width: 148
+        height: 161
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog M groen
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 1550
+        width: 181
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog M rood
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 1549
+        width: 183
+        height: 177
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog M blauw
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 1364
+        width: 182
+        height: 177
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stoel
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 1071
+        width: 146
+        height: 296
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tafel
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1071
+        width: 653
+        height: 312
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog M grijs
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 1089
+        width: 155
+        height: 155
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ketting attach
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1322
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sleutel rood
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1314
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sleutel blauw
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1314
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sleutel geel
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1314
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ladder top
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 1303
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Madder mid
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 1253
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ladder bottom
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1201
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lamp pivot
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 715
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog L rood
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 3
+        width: 414
+        height: 414
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog L groen
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 3
+        width: 414
+        height: 414
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cog L blauw
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 3
+        width: 413
+        height: 415
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lamp L bottom
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 480
+        width: 29
+        height: 424
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lamp L mid
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 467
+        width: 334
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform L grijs
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 498
+        width: 409
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lamp foot
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 471
+        width: 118
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform chainweight
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 523
+        width: 57
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lamp M top
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 621
+        width: 174
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Level3_1_0
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 643
+        width: 170
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lamp M bottom
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 729
+        width: 30
+        height: 253
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
