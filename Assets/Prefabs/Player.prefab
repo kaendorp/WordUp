@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.46999979, y: -.189999998, z: 0}
+  m_LocalPosition: {x: 0, y: .800000012, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 405758}
@@ -306,7 +306,6 @@ MonoBehaviour:
   visualHealth: {fileID: 0}
   maxHealth: 10
   coolDown: 1
-  fallBoundary: -10
   Boodschap: {fileID: 0}
   kindText: {fileID: 0}
   kindTextHUD: {fileID: 0}

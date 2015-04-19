@@ -8,17 +8,11 @@ public class GameOverScript : MonoBehaviour
 	public static bool GameOverActive = false;
 	public RectTransform gameoverMenu;
 
-	public static bool PauseActive = false;
-	public RectTransform pauzeMenu;
-
-	public static bool WinActive = false;
-	public RectTransform finishMenu;
-
 	private Rect button1Rect = new Rect(15,15,160,30);
 	private Rect button2Rect = new Rect(15,15,160,30);
 
 	// Keyboard control
-	string[] buttons = new string[5] {"Opnieuw?", "Menu", "Terug", "Menu", "Menu"};	
+	string[] buttons = new string[2] {"Opnieuw?", "Menu"};	
 	private int selected = 0;
 
 	void Start()
@@ -123,76 +117,6 @@ public class GameOverScript : MonoBehaviour
 				Time.timeScale = 1;
 				Application.LoadLevel ("MainMenu"); // Load Main Menu
 			}
-		}
-
-		// Pauzemenu
-		if (PauseActive == true) 
-		{
-			button1Rect.y = button1Rect.y + 65;
-			button2Rect.y = button2Rect.y + 135;
-			// Activeer Ingame menu
-			pauzeMenu.gameObject.SetActive(true);
-			
-			// Zet game op stil
-			Time.timeScale = 0;
-			
-			// Set the skin to use
-			GUI.skin = skin;
-
-			GUI.SetNextControlName(buttons[0]);
-			// Terug Button
-			if (GUI.Button (
-				// Center in X, 2/3 of the height in Y
-				button1Rect,
-				"Terug"
-				)) 
-			{
-				PauseActive = false;
-				Time.timeScale = 1;
-				pauzeMenu.gameObject.SetActive(false);
-			}
-
-			GUI.SetNextControlName(buttons[1]);
-			// Naar Main menu button
-			if (GUI.Button (
-				// Center in X, 2/3 of the height in Y
-				button2Rect,
-				"Menu"
-				)) 
-			{
-				PauseActive = false;
-				Time.timeScale = 1;
-				pauzeMenu.gameObject.SetActive(false);
-				Application.LoadLevel ("MainMenu");
-			}
-		}
-
-		// Gewonnen menu
-		if (WinActive == true) 
-		{
-			button1Rect.y = button1Rect.y + 75;
-
-			// Activeer Ingame menu
-			finishMenu.gameObject.SetActive(true);
-
-			// Pauzeer spel
-			Time.timeScale = 0;
-			// Set the skin to use
-			GUI.skin = skin;
-
-			GUI.SetNextControlName(buttons[0]);
-			// Naar main menu Button
-			if (GUI.Button (
-				// Center in X, 2/3 of the height in Y
-				button1Rect,
-				"Menu"
-				)) 
-			{
-				WinActive = false;
-				Time.timeScale = 1;
-				finishMenu.gameObject.SetActive(false);
-				Application.LoadLevel ("MainMenu"); // Load Level One
-			}	
-		}
+		}		
 	}
 }

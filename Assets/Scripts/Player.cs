@@ -23,12 +23,13 @@ public class Player : MonoBehaviour {
 	}
 	public int maxHealth; // maximum value of health. Currently 10
 	public float coolDown; // length of damage cooldown
-	private bool onCoolDown; // Cooldown active or not
+	private bool onCoolDown; // Cooldown active or not	
 
-	public int fallBoundary = -10;
-
+    //Boodschap
 	public Text Boodschap;
 
+    // Kinderen
+    public static bool kindPlus;
 	public Text kindText; // Kid counter for UI
 	public Text kindTextHUD;
 	private int countKids = 0; // current amount of kids collected 
@@ -96,9 +97,7 @@ public class Player : MonoBehaviour {
 	private void HandleKids ()
 	{
 		kindText.text = countKids + "  " + maxKids;
-		kindTextHUD.text = countKids + "  " + maxKids;
-		Boodschap.text = "Hoera, je hebt me gevonden!!!";
-		StartCoroutine (showMessage());
+		kindTextHUD.text = countKids + "  " + maxKids;		
 	}
 	private void HandleLetters ()
 	{
@@ -150,20 +149,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collision)
-	{
-		if (collision.gameObject.tag == "Child") // If child is found
-		{ 
-			if (countKids < 5)
-			{
-				CountKids += 1;
-				Destroy(collision.gameObject);
-				
-				if (currentHealth < 10) // If damaged, health increases
-				{
-					CurrentHealth += 1; // Child found health increases + 1
-				}
-			}
-		}
+	{		
 		if (collision.gameObject.tag == "Letter") 
 		{
 			if (countLetters < 3)
@@ -208,7 +194,7 @@ public class Player : MonoBehaviour {
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
-			GameOverScript.WinActive = true;
+			WinMenuScript.WinActive = true;
 		}
 	}
 
@@ -235,7 +221,22 @@ public class Player : MonoBehaviour {
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
-			GameOverScript.PauseActive = true;
+			PauseMenuScripte.PauseActive = true;
 		}
-	}
+
+        if (kindPlus == true)
+        {
+            if (countKids < 5)
+            {
+                CountKids += 1;
+
+                if (currentHealth < 10) // If damaged, health increases
+                {
+                    CurrentHealth += 1; // Child found health increases + 1
+                }
+            }
+            kindPlus = false;
+        }
+	}    
 }
+
