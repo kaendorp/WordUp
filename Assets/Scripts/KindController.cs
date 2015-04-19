@@ -11,8 +11,9 @@ public class KindController : MonoBehaviour
     public GameObject messageObject;    // TextMesh    
 
     // Kind gevonden?
-    private bool gevonden;
-
+    private bool healthBonus;
+    private int checkHealth;      
+    
     // Use this for initialization
     void Start()
     {
@@ -20,43 +21,37 @@ public class KindController : MonoBehaviour
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
 
-        gevonden = false;
+        healthBonus = false;
     }
 
     // Update is called once per frame
     void Update()
-    {
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == targetLayer)
-        {
-            messageObject.GetComponent<TextMesh>().text = message;            
-
-            // Als kind nog niet is gevonden
-            if (gevonden == false)
-            {
-                Debug.Log("FOUND");
-                gevonden = true;
-
-                Player.kindPlus = true;
-            }
-        }
-    }
+    {       
+        
+    }    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == targetLayer)
-        {            
-            // Als kind nog niet is gevonden
-            if (gevonden == false)
-            {
-                Debug.Log("FOUND");
-                gevonden = true;
+        {
+            messageObject.GetComponent<TextMesh>().text = message;
 
-                Player.kindPlus = true;
+            
+            Player player = collision.gameObject.GetComponent<Player>();
+            int checkHealth = player.currentHealth;
+
+            if (checkHealth < 10)
+            {
+                // Als kind nog niet is gevonden
+                if (healthBonus == false)
+                {
+                    //Debug.Log("FOUND");
+                    healthBonus = true;
+
+                    Player.kindPlus = true;
+                }
             }
+            
         }
     }
 

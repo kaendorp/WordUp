@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 	private float cachedY; // saved Y position, does not change
 	private float minXValue; // minimal X position of healthbar
 	private float maxXValue; // maximal X position of healthbar
-	private int currentHealth; // current health value
+	public int currentHealth; // current health value
 	private int CurrentHealth // Sets health through HandelHealth()
 	{
 		get { return currentHealth;}
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 	public int maxHealth; // maximum value of health. Currently 10
 	public float coolDown; // length of damage cooldown
 	private bool onCoolDown; // Cooldown active or not	
+    public RectTransform plusOne;
 
     //Boodschap
 	public Text Boodschap;
@@ -216,27 +217,36 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () 
-	{
+	{        
 		if (Input.GetKeyUp (KeyCode.Escape)) 
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
+            
 			PauseMenuScripte.PauseActive = true;
 		}
 
         if (kindPlus == true)
         {
-            if (countKids < 5)
+            if (countKids < maxKids)
             {
                 CountKids += 1;
 
                 if (currentHealth < 10) // If damaged, health increases
                 {
                     CurrentHealth += 1; // Child found health increases + 1
-                }
+                    StartCoroutine(PlusOneActive()); 
+                }                
             }
             kindPlus = false;
         }
-	}    
+	}
+
+    IEnumerator PlusOneActive()
+    {
+        plusOne.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        plusOne.gameObject.SetActive(false);
+    }
 }
 
