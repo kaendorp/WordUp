@@ -1,39 +1,31 @@
 fileFormatVersion: 2
-guid: b3de936eb5dd0bc4f914d17b080335bd
-timeCreated: 1429140754
+guid: 3d2ed8e9f08ac844eb522c0dda14c1e1
+timeCreated: 1429405680
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: run_01
-    21300002: run_02
-    21300004: run_03
-    21300006: run_04
-    21300008: run_05
-    21300010: idle_01
-    21300012: jump_01
-    21300014: Shoot_01
-    21300016: Fynn_Run01
-    21300018: Fynn_Run02
-    21300020: Fynn_Run03
-    21300022: Fynn_Run04
-    21300024: Fynn_Run05
-    21300026: Fynn_Run_Shoot01
-    21300028: Fynn_Run_Shoot02
-    21300030: Fynn_Run_Shoot03
-    21300032: Fynn_Run_Shoot04
-    21300034: Fynn_Run_Shoot05
-    21300036: Fynn_Idle01
-    21300038: Fynn_Jump_Up01
-    21300040: Fynn_Shoot01
-    21300042: Fynn_Jump_Down01
-    21300044: Fynn_Jump_Up_Shoot01
-    21300046: Fynn_Jump_Down_Shoot01
-    21300048: Fynn_Idle02
-    21300050: Fynn_Crouch
-    21300052: Fynn_Knockback
-    21300054: Climb_01
-    21300056: Climb_02
-    21300058: ClimbUp
+    21300000: Fiona_Run01
+    21300002: Fiona_Run02
+    21300004: Fiona_Run03
+    21300006: Fiona_Run04
+    21300008: Fiona_Run05
+    21300010: Fiona_Run_Shoot01
+    21300012: NEWFionaSprites_6
+    21300014: NEWFionaSprites_7
+    21300016: NEWFionaSprites_8
+    21300018: NEWFionaSprites_9
+    21300020: Fiona_Idle01
+    21300022: Fiona_Jump
+    21300024: Fiona_Shoot
+    21300026: Fiona_Fall
+    21300028: Fiona_Shield
+    21300030: Fiona_Idle02
+    21300032: Fiona_Jump_Shoot
+    21300034: Fiona_Fall_Shoot
+    21300036: Fiona_Hit
+    21300038: Fiona_Climb01
+    21300040: Fiona_Climb02
+    21300042: Fiona_Up
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -79,7 +71,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Fynn_Run01
+    - name: Fiona_Run01
       rect:
         serializedVersion: 2
         x: 28
@@ -89,17 +81,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run02
+    - name: Fiona_Run02
       rect:
         serializedVersion: 2
-        x: 59
+        x: 58
         y: 200
         width: 19
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run03
+    - name: Fiona_Run03
       rect:
         serializedVersion: 2
         x: 88
@@ -109,27 +101,27 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run04
+    - name: Fiona_Run04
       rect:
         serializedVersion: 2
-        x: 116
+        x: 115
         y: 200
-        width: 14
+        width: 15
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run05
+    - name: Fiona_Run05
       rect:
         serializedVersion: 2
-        x: 145
+        x: 143
         y: 200
-        width: 14
+        width: 16
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run_Shoot01
+    - name: Fiona_Run_Shoot01
       rect:
         serializedVersion: 2
         x: 28
@@ -139,7 +131,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run_Shoot02
+    - name: NEWFionaSprites_6
       rect:
         serializedVersion: 2
         x: 58
@@ -149,7 +141,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run_Shoot03
+    - name: NEWFionaSprites_7
       rect:
         serializedVersion: 2
         x: 88
@@ -159,27 +151,27 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run_Shoot04
+    - name: NEWFionaSprites_8
       rect:
         serializedVersion: 2
-        x: 116
+        x: 115
         y: 169
-        width: 19
+        width: 20
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Run_Shoot05
+    - name: NEWFionaSprites_9
       rect:
         serializedVersion: 2
-        x: 145
+        x: 143
         y: 169
-        width: 19
+        width: 21
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Idle01
+    - name: Fiona_Idle01
       rect:
         serializedVersion: 2
         x: 16
@@ -189,7 +181,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Jump_Up01
+    - name: Fiona_Jump
       rect:
         serializedVersion: 2
         x: 36
@@ -199,7 +191,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Shoot01
+    - name: Fiona_Shoot
       rect:
         serializedVersion: 2
         x: 62
@@ -209,7 +201,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Jump_Down01
+    - name: Fiona_Fall
       rect:
         serializedVersion: 2
         x: 94
@@ -219,27 +211,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Jump_Up_Shoot01
+    - name: Fiona_Shield
       rect:
         serializedVersion: 2
-        x: 36
-        y: 85
-        width: 21
+        x: 154
+        y: 103
+        width: 19
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Jump_Down_Shoot01
-      rect:
-        serializedVersion: 2
-        x: 94
-        y: 85
-        width: 22
-        height: 25
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Idle02
+    - name: Fiona_Idle02
       rect:
         serializedVersion: 2
         x: 16
@@ -249,27 +231,37 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Crouch
+    - name: Fiona_Jump_Shoot
       rect:
         serializedVersion: 2
-        x: 153
-        y: 103
-        width: 20
+        x: 36
+        y: 85
+        width: 21
         height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fynn_Knockback
+    - name: Fiona_Fall_Shoot
       rect:
         serializedVersion: 2
-        x: 200
-        y: 70
-        width: 23
-        height: 27
+        x: 94
+        y: 85
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Climb_01
+    - name: Fiona_Hit
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 71
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fiona_Climb01
       rect:
         serializedVersion: 2
         x: 15
@@ -279,7 +271,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Climb_02
+    - name: Fiona_Climb02
       rect:
         serializedVersion: 2
         x: 39
@@ -289,12 +281,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ClimbUp
+    - name: Fiona_Up
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 58
-        width: 17
+        width: 18
         height: 22
       alignment: 0
       pivot: {x: .5, y: .5}

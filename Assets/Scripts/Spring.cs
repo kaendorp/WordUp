@@ -15,7 +15,7 @@ public class Spring : MonoBehaviour {
 
 	private bool JumpInputActive {
 		get {
-			return Input.GetKeyDown(KeyCode.Space);
+			return Input.GetButtonDown("Jump");
 		}
 	}
 
@@ -38,7 +38,7 @@ public class Spring : MonoBehaviour {
 			animator.SetBool("Releasing", false);
 			player = hit.collider.gameObject;
 		}
-		else if (hit.collider != null && animator.GetBool("Pressing") && JumpInputActive) {
+		else if (hit.collider != null && animator.GetBool("Pressing")) {
 			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
 		}
 		else if (hit.collider == null) {
@@ -46,4 +46,5 @@ public class Spring : MonoBehaviour {
 			animator.SetBool("Releasing", true);
 		}
 	}
+	
 }

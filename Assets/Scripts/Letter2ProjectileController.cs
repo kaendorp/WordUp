@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Letter2ProjectileController : MonoBehaviour {
 
-	public float speed = 1.0f;
+	public float speed = 2.0f;
 	public PlatformerCharacter2D player;
 	public bool bounceUp = false;
 	public float bounceHeight = .25f;
@@ -16,7 +16,16 @@ public class Letter2ProjectileController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
+		player = FindObjectOfType<PlatformerCharacter2D>();
+		if (player.transform.localScale.x < 0)
+		{
+			speed = -speed;
+		}
+		if (player.transform.localScale.x > 0) {
+            speed = 2.0f;
+
+		}
 	}
 	
 	// Update is called once per frame
@@ -40,19 +49,23 @@ public class Letter2ProjectileController : MonoBehaviour {
 
 			Debug.Log ("Hit");
             RaycastHit2D hit = new RaycastHit2D();
-
-
-            if (Physics2D.Raycast(transform.position, Vector2.right , 0.1f) || Physics2D.Raycast(transform.position, Vector2.right, 0.1f))
+            if (Physics2D.Raycast(transform.position, new Vector2(1, 0), hit.distance - 0.5f, 1) || Physics2D.Raycast(transform.position, new Vector2(-1, 0), hit.distance - 0.5f, 1))
 			{
+                Debug.Log("1");
 				Destroy(gameObject);
 			}
-			else{
+			else
+            {
 				bounceUp = true;
 				hitPosition = transform.position.y;
 			}
 		}
 
 	}
+    void DestroyProjectile()
+    {
+        Destroy(gameObject, 5);
+    }
 	
 
 }
