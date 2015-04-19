@@ -8,7 +8,8 @@ public enum EnemyType
 {
 	stationary,
 	patrol,
-    floating
+    floating,
+    sticky
 }
 
 /*
@@ -107,7 +108,7 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyState.idle:
                 //delayCoroutineStarted = false;
-                if (type == EnemyType.stationary)
+                if (type == EnemyType.stationary || type == EnemyType.sticky)
                 {
                     Idle();
                 }
@@ -289,6 +290,11 @@ public class EnemyController : MonoBehaviour
         else if (type == EnemyType.floating)
         {
             hoverSpeed = moveSpeed - (moveSpeed / 3);
+            AimAtPlayer();
+        }
+        else if (type == EnemyType.sticky)
+        {
+            AimAtPlayer();
         }
         FacePlayer();
         if (readyToFire)
@@ -420,8 +426,25 @@ public class EnemyController : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
 
-        //Changes the speed to negative, making it fire the other way
-        projectileSpeed = -projectileSpeed;
+        if (type == EnemyType.patrol || type == EnemyType.stationary)
+        {
+            //Changes the speed to negative, making it fire the other way
+            projectileSpeed = -projectileSpeed;
+        }
+    }
+
+    private void AimAtPlayer()
+    {
+        if (target != null)
+        {
+            Vector3 targetLocation = target.transform.position;
+            //float angle = Mathf.Atan2(targetLocation.y, targetLocation.x) * Mathf.Rad2Deg;
+            //firePoint.transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
+
+            float AngleRad = Mathf.Atan2(targetLocation.y - firePoint.transform.position.y, targetLocation.x - firePoint.transform.position.x);
+            float AngleDeg = (180 / Mathf.PI) * AngleRad;
+            firePoint.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
+        }
     }
 
     /**
@@ -440,25 +463,25 @@ public class EnemyController : MonoBehaviour
         }
 
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        if (type == EnemyType.floating)
+        if (type == EnemyType.floating || type == EnemyType.sticky)
         {
-            if (facingLeft)
+            if (target != null)
             {
-                projectileSpeed = (projectileSpeed*30);
-            } else {
-                projectileSpeed = (projectileSpeed*-30);
+                projectile.transform.localScale *= -1;
+                projectile.transform.rotation = firePoint.transform.rotation;
+                Vector2 force = (Vector2)target.transform.position - (Vector2)this.transform.position;
+                projectile.GetComponent<Rigidbody2D>().AddForce(force.normalized * (projectileSpeed * 30));
             }
-            projectile.GetComponent<Rigidbody2D>().AddForce(((Vector2)(target.transform.position - this.transform.position)).normalized * projectileSpeed);
-            //projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         }
         else
         {
+            if (!facingLeft)
+            {
+                projectile.transform.localScale *= -1;
+            }
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         }
-        if (!facingLeft)
-        {
-            projectile.transform.localScale *= -1;
-        }
+
         Destroy(projectile, projectileLifeTime);
     }
 
@@ -518,7 +541,7 @@ public class EnemyController : MonoBehaviour
         {
             setSpawn = friendlyStationary;
         }
-        else if (type == EnemyType.floating)
+        else if (type == EnemyType.floating || type == EnemyType.sticky)
         {
             setSpawn = friendlyFloating;
         }
@@ -531,8 +554,8 @@ public class EnemyController : MonoBehaviour
             spawn.SendMessage("GetMessage", message);
         }
 
-        // Spawn the friendly, facing the same direction as the enemy
-        if (!facingLeft)
+        // Spawn the dove, facing the same direction as the enemy
+        if ((type == EnemyType.floating ||type == EnemyType.sticky) && !facingLeft)
         {
             spawn.transform.localScale =  new Vector3(spawn.transform.localScale.x * -1, spawn.transform.localScale.y, spawn.transform.localScale.z);
         }

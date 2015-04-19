@@ -276,12 +276,6 @@ public class FriendlyController : MonoBehaviour
             spawn.SendMessage("GetMessage", message);
         }
 
-        // Spawn the enemy, facing the same direction as the enemy
-        if (!facingLeft)
-        {
-            spawn.transform.localScale = new Vector3(spawn.transform.localScale.x * -1, spawn.transform.localScale.y, spawn.transform.localScale.z);
-        }
-
         Destroy(this.gameObject);
     }
 
