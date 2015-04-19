@@ -30,6 +30,7 @@ public class FriendlyController : MonoBehaviour
     public GameObject enemyPatrol;
     public GameObject enemyStationary;
     private GameObject spawn;
+    private GameObject setSpawn;
 
     // Message
     public string message = "";                 // The message the fiendly will display when the player gets close
@@ -255,16 +256,31 @@ public class FriendlyController : MonoBehaviour
     private void FriendlyDeath()
     {
         Debug.Log(this.gameObject.name + ": 'Oh nee, ik ben slecht geworden!'");
+
+        // Set the friendly spawn type
         if (type == FriendlyType.patrol)
         {
-            spawn = Instantiate(enemyPatrol, this.transform.position, this.transform.rotation) as GameObject;
+            setSpawn = enemyPatrol;
         }
         else if (type == FriendlyType.stationary)
         {
-            spawn = Instantiate(enemyStationary, this.transform.position, this.transform.rotation) as GameObject;
+            setSpawn = enemyStationary;
         }
 
-        spawn.SendMessage("GetMessage", message);
+        // Instantiate enemy
+        spawn = Instantiate(setSpawn, this.transform.position, this.transform.rotation) as GameObject;
+
+        // If there is a message, it should be send to the enemy
+        if (!string.IsNullOrEmpty(message))
+        {
+            spawn.SendMessage("GetMessage", message);
+        }
+
+        // Spawn the enemy, facing the same direction as the enemy
+        if (!facingLeft)
+        {
+            spawn.transform.localScale = new Vector3(spawn.transform.localScale.x * -1, spawn.transform.localScale.y, spawn.transform.localScale.z);
+        }
 
         Destroy(this.gameObject);
     }

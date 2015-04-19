@@ -134,6 +134,7 @@ MonoBehaviour:
   friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
   friendlyFloating: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
+  enemyDeathEffect: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   message: 
   currentHealth: 2
   invincibilityDuration: 1.5

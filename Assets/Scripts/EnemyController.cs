@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
     public GameObject friendlyStationary;
     public GameObject friendlyFloating;
     private GameObject spawn;
+    private GameObject setSpawn;
+    public GameObject enemyDeathEffect;
 
     // Message
     public string message = "";                 // The message the friendly will use after this enemy is defeated
@@ -506,23 +508,38 @@ public class EnemyController : MonoBehaviour
     void EnemyDeath()
     {
         Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
+
+        // Set the friendly spawn type
         if (type == EnemyType.patrol)
         {
-            spawn = Instantiate(friendlyPatrol, this.transform.position, this.transform.rotation) as GameObject;
+            setSpawn = friendlyPatrol;
         }
         else if (type == EnemyType.stationary)
         {
-            spawn = Instantiate(friendlyStationary, this.transform.position, this.transform.rotation) as GameObject;
+            setSpawn = friendlyStationary;
         }
         else if (type == EnemyType.floating)
         {
-            spawn = Instantiate(friendlyFloating, this.transform.position, this.transform.rotation) as GameObject;
+            setSpawn = friendlyFloating;
         }
+        // Instantiate friendly
+        spawn = Instantiate(setSpawn, this.transform.position, this.transform.rotation) as GameObject;
 
+        // If there is a message, it should be send to the friendly
         if (!string.IsNullOrEmpty(message) || type != EnemyType.floating)
         {
             spawn.SendMessage("GetMessage", message);
         }
+
+        // Spawn the friendly, facing the same direction as the enemy
+        if (!facingLeft)
+        {
+            spawn.transform.localScale =  new Vector3(spawn.transform.localScale.x * -1, spawn.transform.localScale.y, spawn.transform.localScale.z);
+        }
+
+        // Instantiate death effect
+        Instantiate(enemyDeathEffect, this.transform.position, this.transform.rotation);
+
         Destroy(this.gameObject);
     }
 
