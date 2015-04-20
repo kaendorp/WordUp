@@ -12,7 +12,8 @@ public class KindController : MonoBehaviour
 
     // Kind gevonden?
     private bool healthBonus;
-    private int checkHealth;      
+    private int checkHealth;
+    private Player _player = new Player();
     
     // Use this for initialization
     void Start()
@@ -20,13 +21,13 @@ public class KindController : MonoBehaviour
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
-
-        healthBonus = false;
+        
+        healthBonus = false;        
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
         
     }    
 
@@ -36,18 +37,15 @@ public class KindController : MonoBehaviour
         {
             messageObject.GetComponent<TextMesh>().text = message;
 
+            _player = collision.gameObject.GetComponent<Player>();
+            checkHealth = _player.currentHealth;
             
-            Player player = collision.gameObject.GetComponent<Player>();
-            int checkHealth = player.currentHealth;
-
-            if (checkHealth < 10)
+            if (checkHealth < 10) // Als health nog vol is
             {
-                // Als kind nog niet is gevonden
+                // Als kind nog niet de healthBonus gegeven heeft
                 if (healthBonus == false)
                 {
-                    //Debug.Log("FOUND");
                     healthBonus = true;
-
                     Player.kindPlus = true;
                 }
             }
