@@ -94,7 +94,7 @@ public class MainMenu : MonoBehaviour
 			"START"
 		)) 
 		{
-			Application.LoadLevel ("Tutorial"); // Load Level One
+			Application.LoadLevel ("Intro"); // Load Intro
 		}
 
 		GUI.SetNextControlName(buttons[1]);
