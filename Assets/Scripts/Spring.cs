@@ -8,6 +8,7 @@ public class Spring : MonoBehaviour {
 	public Transform rayCastStart;
 	public Transform rayCastEnd;
 	public float springForce = 1200.0f;
+    public bool canJump;
 
 	private Animator animator;
 	private float rayCastDistance;
@@ -37,14 +38,25 @@ public class Spring : MonoBehaviour {
 			animator.SetBool("Pressing", true);
 			animator.SetBool("Releasing", false);
 			player = hit.collider.gameObject;
+            canJump = true;
 		}
-		else if (hit.collider != null && animator.GetBool("Pressing")) {
+		else if (hit.collider != null && canJump == true) {
+
+            StartCoroutine(WaitForJump());
 			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
+            canJump = false;
 		}
 		else if (hit.collider == null) {
 			animator.SetBool("Pressing", false);
 			animator.SetBool("Releasing", true);
+            canJump = false;
 		}
+
+
 	}
+    IEnumerator WaitForJump()
+    {
+        yield return new WaitForSeconds(0.8f);
+    }
 	
 }

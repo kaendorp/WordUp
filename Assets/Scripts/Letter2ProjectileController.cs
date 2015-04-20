@@ -31,13 +31,13 @@ public class Letter2ProjectileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (bounceUp == true) {
-			transform.Translate(speed * Time.deltaTime, .75f * Time.deltaTime, 0);	
+			transform.Translate(speed * Time.deltaTime, 3f * Time.deltaTime, 0);	
 			heightDifference = transform.position.y - hitPosition;
 			if(bounceHeight <= heightDifference) {
 				bounceUp = false;
 			}
 		} else {
-			transform.Translate(speed * Time.deltaTime, -1.0f * Time.deltaTime, 0);	
+			transform.Translate(speed * Time.deltaTime, -3f * Time.deltaTime, 0);	
 		}
 	}
 
@@ -47,11 +47,9 @@ public class Letter2ProjectileController : MonoBehaviour {
 	{
 		if (col.transform.tag == "Untagged") {
 
-			Debug.Log ("Hit");
             RaycastHit2D hit = new RaycastHit2D();
             if (Physics2D.Raycast(transform.position, new Vector2(1, 0), hit.distance - 0.5f, 1) || Physics2D.Raycast(transform.position, new Vector2(-1, 0), hit.distance - 0.5f, 1))
 			{
-                Debug.Log("1");
 				Destroy(gameObject);
 			}
 			else

@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476232}
-  - 212: {fileID: 21296332}
+  - 212: {fileID: 21255134}
   m_Layer: 8
   m_Name: Graphics
   m_TagString: Player
@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.44999981, y: 0, z: .300000012}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 439206}
@@ -318,10 +318,10 @@ MonoBehaviour:
   airControl: 1
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294934729
+    m_Bits: 4294901961
   whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 49152
+    m_Bits: 16384
   crouched: 1
   moveVelocity: 0
   canUseShield: 1
@@ -335,7 +335,7 @@ MonoBehaviour:
   enabled: 0
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 473800}
-  letters: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
+  letters: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
   shotDelay: .600000024
   target: {fileID: 0}
   camera: {fileID: 0}
@@ -391,10 +391,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1984702295
-  m_SortingOrder: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!212 &21296332
+--- !u!212 &21255134
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -416,7 +416,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1984702295
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
