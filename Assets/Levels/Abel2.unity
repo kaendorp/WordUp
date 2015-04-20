@@ -921,7 +921,7 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_FixedAngle: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1418,6 +1418,57 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6630a8fa8e6a0554493addcb5d8263d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1001 &326459475
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 133322, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 473800, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .0500000007
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e587890a6a537a847aa77bce79823370, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &342707447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1564,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 525999610}
   m_Anchor: {x: .430000007, y: 0}
-  m_ConnectedAnchor: {x: -.331077576, y: .036521107}
+  m_ConnectedAnchor: {x: -.331077576, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1521,7 +1572,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &346582722
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1879,7 +1930,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 639119183}
   m_Anchor: {x: .430000007, y: 0}
-  m_ConnectedAnchor: {x: -.331077576, y: .0297093689}
+  m_ConnectedAnchor: {x: -.331077576, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1887,7 +1938,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &525999610
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2518,7 +2569,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 1878169893}
   m_Anchor: {x: .430000007, y: 0}
-  m_ConnectedAnchor: {x: -.316513062, y: .0272472501}
+  m_ConnectedAnchor: {x: -.316513062, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2526,7 +2577,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!61 &639119186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3418,7 +3469,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &817892204
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3807,7 +3858,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 1665629644}
   m_Anchor: {x: -.479999989, y: 0}
-  m_ConnectedAnchor: {x: .418000221, y: -.00400000811}
+  m_ConnectedAnchor: {x: .418000221, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3815,7 +3866,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &887031370
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4103,7 +4154,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &955827481
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4158,48 +4209,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: 6630a8fa8e6a0554493addcb5d8263d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1001 &975972446
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -6.26999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 4.96999979
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1.05999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 489220, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c88108eda44faa84788a4afeea9789c4, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &988206555
 GameObject:
   m_ObjectHideFlags: 0
@@ -4309,7 +4318,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 2043760642}
   m_Anchor: {x: .430000007, y: 0}
-  m_ConnectedAnchor: {x: 1.58569717, y: .699155867}
+  m_ConnectedAnchor: {x: 1.58569717, y: .370000005}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4317,7 +4326,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &990730436
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4329,7 +4338,7 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_FixedAngle: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -4602,8 +4611,8 @@ HingeJoint2D:
   m_Enabled: 1
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 224127859}
-  m_Anchor: {x: -.494846344, y: -.00662744045}
-  m_ConnectedAnchor: {x: .442875862, y: -.00699996948}
+  m_Anchor: {x: -.494846344, y: 0}
+  m_ConnectedAnchor: {x: .442875862, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4611,7 +4620,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &1111077983
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4776,10 +4785,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300010, guid: 6630a8fa8e6a0554493addcb5d8263d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!4 &1168922379
-Transform:
-  m_PrefabParentObject: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-  m_PrefabInternal: {fileID: 1219299046}
 --- !u!1 &1186055707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,61 +4853,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.06999993, y: .880000055}
---- !u!1 &1206239429
-GameObject:
-  m_PrefabParentObject: {fileID: 157408, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-  m_PrefabInternal: {fileID: 1219299046}
---- !u!1001 &1219299046
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 39.2999992
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.10000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: letters
-      value: 
-      objectReference: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
-    - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1206239429}
-    m_RemovedComponents:
-    - {fileID: 6118498, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1280017652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4994,7 +4944,7 @@ Transform:
   - {fileID: 814329385}
   - {fileID: 1353213683}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!114 &1280017658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5006,7 +4956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8238cc53530b64fbb7828c3d3bb591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1168922379}
+  target: {fileID: 1920482991}
   damping: 1
   lookAheadFactor: 3
   lookAheadReturnSpeed: .5
@@ -5542,7 +5492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!61 &1488135827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6113,8 +6063,8 @@ HingeJoint2D:
   m_Enabled: 1
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 1111077983}
-  m_Anchor: {x: -.489627361, y: .00632974505}
-  m_ConnectedAnchor: {x: .425000191, y: .0149999857}
+  m_Anchor: {x: -.489627361, y: 0}
+  m_ConnectedAnchor: {x: .425000191, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -6122,7 +6072,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &1665629644
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -6361,7 +6311,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 990730436}
   m_Anchor: {x: .430000007, y: 0}
-  m_ConnectedAnchor: {x: -.3699646, y: .021140933}
+  m_ConnectedAnchor: {x: -.3699646, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -6369,7 +6319,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &1768047531
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -6518,7 +6468,7 @@ HingeJoint2D:
   m_Enabled: 1
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 887031370}
-  m_Anchor: {x: -.263145447, y: .0450408459}
+  m_Anchor: {x: -.263145447, y: 0}
   m_ConnectedAnchor: {x: .479995728, y: 0}
   m_UseMotor: 0
   m_Motor:
@@ -6527,7 +6477,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!50 &1778619002
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -7136,7 +7086,7 @@ HingeJoint2D:
   m_CollideConnected: 1
   m_ConnectedRigidBody: {fileID: 1768047531}
   m_Anchor: {x: .430000007, y: 0}
-  m_ConnectedAnchor: {x: -.344703674, y: .0365212262}
+  m_ConnectedAnchor: {x: -.344703674, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -7144,7 +7094,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 0
 --- !u!61 &1878169895
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7238,6 +7188,10 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300010, guid: 6630a8fa8e6a0554493addcb5d8263d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &1920482991
+Transform:
+  m_PrefabParentObject: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
+  m_PrefabInternal: {fileID: 326459475}
 --- !u!1 &1986885110
 GameObject:
   m_ObjectHideFlags: 0
@@ -7386,7 +7340,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -7400,8 +7354,8 @@ HingeJoint2D:
   m_Enabled: 1
   m_CollideConnected: 0
   m_ConnectedRigidBody: {fileID: 224127859}
-  m_Anchor: {x: 1.55815887, y: .550647736}
-  m_ConnectedAnchor: {x: -.370000005, y: .0362365842}
+  m_Anchor: {x: 1.51841736, y: .331183076}
+  m_ConnectedAnchor: {x: -.370000005, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -7558,7 +7512,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -7572,8 +7526,8 @@ HingeJoint2D:
   m_Enabled: 1
   m_CollideConnected: 0
   m_ConnectedRigidBody: {fileID: 990730436}
-  m_Anchor: {x: 1.70623016, y: .463716835}
-  m_ConnectedAnchor: {x: .437609673, y: .0286429524}
+  m_Anchor: {x: 1.53401184, y: .344430476}
+  m_ConnectedAnchor: {x: .437609673, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

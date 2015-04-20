@@ -73,7 +73,7 @@ MonoBehaviour:
   speed: 2
   player: {fileID: 0}
   bounceUp: 0
-  bounceHeight: .400000006
+  bounceHeight: .699999988
   heightDifference: 0
   hitPosition: 0
   enemyDeathEffect: {fileID: 0}
