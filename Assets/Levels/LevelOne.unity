@@ -2238,6 +2238,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 2051926018}
+    - target: {fileID: 11422406, guid: 9f32be2d9d825ed4e854c88ffb029cc8, type: 2}
+      propertyPath: gObject
+      value: 
+      objectReference: {fileID: 2051926018}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f32be2d9d825ed4e854c88ffb029cc8, type: 2}
   m_IsPrefabParent: 0
