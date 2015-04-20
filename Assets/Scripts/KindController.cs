@@ -13,7 +13,7 @@ public class KindController : MonoBehaviour
     // Kind gevonden?
     private bool healthBonus;
     private int checkHealth;
-    private Player _player = new Player();
+    public GameObject Stats;
     
     // Use this for initialization
     void Start()
@@ -36,11 +36,8 @@ public class KindController : MonoBehaviour
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
-
-            _player = collision.gameObject.GetComponent<Player>();
-            checkHealth = _player.currentHealth;
-            
-            if (checkHealth < 10) // Als health nog vol is
+                                    
+            if (Stats.GetComponent<Player>().currentHealth < 10) // Als health nog vol is
             {
                 // Als kind nog niet de healthBonus gegeven heeft
                 if (healthBonus == false)

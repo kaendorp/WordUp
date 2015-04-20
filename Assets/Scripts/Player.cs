@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
 	private float minXValue; // minimal X position of healthbar
 	private float maxXValue; // maximal X position of healthbar
 	public int currentHealth; // current health value
-    public static int checkHealth;
 	private int CurrentHealth // Sets health through HandelHealth()
 	{
 		get { return currentHealth;}
