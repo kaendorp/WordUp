@@ -215,7 +215,7 @@ using UnitySampleAssets.CrossPlatformInput;
 			// Destroy(letters, 2);
 		}
 
-		if(!climbing && !climbingSwitch)
+		if(!climbing)
 		if (Input.GetKey (KeyCode.S)) 
 		{
 			if(canUseShield)
@@ -312,6 +312,9 @@ using UnitySampleAssets.CrossPlatformInput;
 			anim.SetBool ("ClimbUp", true);
 		} else {
 			anim.SetBool ("ClimbUp", false);
+            climbing = false;
+            canUseShield = true;
+
 		}
 		if (col.gameObject.tag == "TriggerBossBattle") {
 			Camera.main.transform.position = transform.position;
@@ -330,7 +333,17 @@ using UnitySampleAssets.CrossPlatformInput;
 		if (col.gameObject.tag == "LadderTrigger" || col.gameObject.tag == "AboveLadder") {
 			canUseShield = false;
 		} else {
+            climbing = false;
 			canUseShield = true;
 		}
+
 		}
+        void OnTriggerExit2d(Collider2D col)
+        {
+            if (col.gameObject.tag == "AboveLadder")
+            {
+                climbing = false;
+                canUseShield = true;
+            }
+        }
 }

@@ -6,13 +6,13 @@ Flare:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FlareSmall
-  m_FlareTexture: {fileID: 2800000, guid: 8e3ff3e27ca4bc54dda56e89e0550dfa, type: 3}
-  m_TextureLayout: 0
+  m_FlareTexture: {fileID: 2800000, guid: ebeafa2f107dd41c2b474fb590ff5080, type: 3}
+  m_TextureLayout: 2
   m_Elements:
   - m_ImageIndex: 0
     m_Position: 0
-    m_Size: 10
-    m_Color: {r: 1, g: 1, b: 1, a: 0}
+    m_Size: 3.36999989
+    m_Color: {r: 1, g: 0, b: 0, a: 0}
     m_UseLightColor: 1
     m_Rotate: 0
     m_Zoom: 0
