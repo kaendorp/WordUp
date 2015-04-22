@@ -9,7 +9,8 @@ public enum EnemyType
 	stationary,
 	patrol,
     floating,
-    sticky
+    sticky,
+    runner
 }
 
 /*
@@ -18,13 +19,14 @@ public enum EnemyType
 public enum EnemyState
 {
 	idle,
-	waitThenAttack
+	waitThenAttack,
+    sprint
 }
 
 public class EnemyController : MonoBehaviour
 {
     public EnemyType type;
-    private EnemyState _state = EnemyState.idle;// Local variable to represent our state
+    public EnemyState _state = EnemyState.idle;// Local variable to represent our state
     private Animator anim;
 
     // Spawn friendly
@@ -93,6 +95,9 @@ public class EnemyController : MonoBehaviour
     [Range(1.0f, 360f)]
     public float fieldOfView = 360f;
 
+    // Sprint
+    private bool sprintDone = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -104,14 +109,6 @@ public class EnemyController : MonoBehaviour
             leftPosition = new Vector3((startPosition.x - hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
             rightPosition = new Vector3((startPosition.x + hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
         }
-        //else if (type == EnemyType.sticky)
-        //{
-        //    Quaternion localRotation = this.transform.rotation;
-        //    this.transform.rotation = Quaternion.identity;
-        //    SpotPointA.transform.position = new Vector3(this.transform.localPosition.x - spotRadius, this.transform.localPosition.y, this.transform.localPosition.z);
-        //    SpotPointB.transform.position = new Vector3(this.transform.localPosition.x + spotRadius, this.transform.localPosition.y - spotRadius, this.transform.localPosition.z);
-        //    this.transform.rotation = localRotation;
-        //}
     }
 
     void FixedUpdate()
@@ -124,7 +121,7 @@ public class EnemyController : MonoBehaviour
                 {
                     Idle();
                 }
-                else if (type == EnemyType.patrol)
+                else if (type == EnemyType.patrol || type == EnemyType.runner)
                 {
                     Patrol();
                 }
@@ -138,6 +135,12 @@ public class EnemyController : MonoBehaviour
                 // To ensure the coroutine is only fired once!
                 if (!delayCoroutineStarted)
                     StartCoroutine(FireDelay());
+                break;
+            case EnemyState.sprint:
+                Sprint();
+                // To ensure the coroutine is only fired once!
+                if (!delayCoroutineStarted)
+                    StartCoroutine(SprintDurationAndBlinded());
                 break;
         }
 
@@ -224,7 +227,10 @@ public class EnemyController : MonoBehaviour
             IsTargetInRange();
             if (playerSpotted)
             {
-                _state = EnemyState.waitThenAttack;
+                if (type == EnemyType.runner)
+                    _state = EnemyState.sprint;
+                else
+                    _state = EnemyState.waitThenAttack;
             }
         }
     }
@@ -282,6 +288,41 @@ public class EnemyController : MonoBehaviour
         }
 
         this.transform.position = Vector3.MoveTowards(this.transform.position, moveTo, step);
+    }
+
+    private void Sprint()
+    {
+        FacePlayer();
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed * 3, GetComponent<Rigidbody2D>().velocity.y);
+
+        collidingWithWall = Physics2D.Linecast(
+            new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
+            new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
+            ~(
+                (1 << LayerMask.NameToLayer(targetLayer)) +
+                (1 << LayerMask.NameToLayer("EnemyProjectile")) +
+                (1 << LayerMask.NameToLayer("PlayerProjectile"))
+            ) // Collide with all layers, except the targetlayer and the projectiles
+        );
+
+        if (collidingWithWall)
+            _state = EnemyState.idle;
+    }
+
+    /**
+     * Provides a short delay before shooting and blinds the patrolling enemy,
+     * so that it will continue to patrol after shooting.
+     */
+    IEnumerator SprintDurationAndBlinded()
+    {
+        delayCoroutineStarted = true;
+        sprintDone = false;
+        yield return new WaitForSeconds(fireDelay);
+        sprintDone = true;
+        isBlinded = true;
+        yield return new WaitForSeconds(blindedDelay);
+        isBlinded = false;
+        delayCoroutineStarted = false;
     }
 
     /**
@@ -346,7 +387,6 @@ public class EnemyController : MonoBehaviour
      */
     private void IsTargetInRange()
     {
-
         collisionObjects = Physics2D.OverlapCircleAll(
             this.transform.position,
             spotRadius,
