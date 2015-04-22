@@ -67,6 +67,9 @@ public class Player : MonoBehaviour {
 	public Text letter_3;
 	public Text letter_3HUD;
 
+    // Zet menu's active
+    public GameObject HUD;
+
 	// Methods //
 	void Start()
 	{
@@ -150,7 +153,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collision)
-	{		
+	{        
 		if (collision.gameObject.tag == "Letter") 
 		{
 			if (countLetters < 3)
@@ -183,7 +186,8 @@ public class Player : MonoBehaviour {
 				Boodschap.text = "";
 				letterPanel.gameObject.SetActive(false);
 				Destroy(collision.gameObject);
-				WordGameScript.Active = true;
+				//WordGameScript.Active = true;
+                HUD.GetComponent<WordGameScript>().Active = true;
 			}
 			else
 			{
@@ -195,7 +199,8 @@ public class Player : MonoBehaviour {
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
-			WinMenuScript.WinActive = true;
+			
+            HUD.GetComponent<WinMenuScript>().WinActive = true;
 		}
 	}
 
@@ -212,21 +217,24 @@ public class Player : MonoBehaviour {
 			Boodschap.text = "";
 		}
 
-		Destroy (this.gameObject);
-		GameOverScript.GameOverActive = true;
+		Destroy (this.gameObject);		
+        HUD.GetComponent<GameOverScript>().GameOverActive = true;
 	}
 
 	void Update () 
 	{
-        //checkHealth = currentHealth;
 
-		if (Input.GetKeyUp (KeyCode.Escape)) 
-		{
-			Boodschap.text = "";
-			letterPanel.gameObject.SetActive(false);
-            
-			PauseMenuScripte.PauseActive = true;
-		}
+        if (HUD.GetComponent<WordGameScript>().Active != true && HUD.GetComponent<WinMenuScript>().WinActive != true && HUD.GetComponent<GameOverScript>().GameOverActive != true)
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                Boodschap.text = "";
+                letterPanel.gameObject.SetActive(false);
+
+
+                HUD.GetComponent<PauseMenuScripte>().PauseActive = true;
+            }
+        }		
 
         if (kindPlus == true)
         {

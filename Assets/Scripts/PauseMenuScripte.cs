@@ -5,7 +5,7 @@ public class PauseMenuScripte : MonoBehaviour {
 
     private GUISkin skin;
 
-    public static bool PauseActive = false;
+    public bool PauseActive = false;
     public RectTransform pauzeMenu;
 
     private Rect button1Rect = new Rect(15, 15, 160, 30);

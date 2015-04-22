@@ -5,7 +5,7 @@ public class WinMenuScript : MonoBehaviour
 {
     private GUISkin skin;
 
-    public static bool WinActive = false;
+    public bool WinActive = false;
     public RectTransform finishMenu;
 
     private Rect button1Rect = new Rect(15, 15, 160, 30);

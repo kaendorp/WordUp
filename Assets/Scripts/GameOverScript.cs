@@ -5,7 +5,7 @@ public class GameOverScript : MonoBehaviour
 {
 	private GUISkin skin;
 
-	public static bool GameOverActive = false;
+	public bool GameOverActive = false;
 	public RectTransform gameoverMenu;
 
 	private Rect button1Rect = new Rect(15,15,160,30);

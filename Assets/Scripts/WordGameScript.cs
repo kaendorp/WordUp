@@ -17,8 +17,8 @@ public class WordGameScript : MonoBehaviour {
 	public Text letter2text;
 	public Text letter3text;
 
-	public static bool Active = false;
-	public static bool WGcomplete = false;
+	public bool Active = false;
+	public bool WGcomplete = false;
 	public RectTransform Wordgame;
 
     public Text gevondenLetters;
