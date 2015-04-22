@@ -89,6 +89,10 @@ public class EnemyController : MonoBehaviour
     private Collider2D[] collisionObjects;
     private bool playerSpotted = false;         // Has the enemy spotted the player?
 
+    // Sticky
+    [Range(1.0f, 360f)]
+    public float fieldOfView = 360f;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -100,6 +104,14 @@ public class EnemyController : MonoBehaviour
             leftPosition = new Vector3((startPosition.x - hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
             rightPosition = new Vector3((startPosition.x + hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
         }
+        //else if (type == EnemyType.sticky)
+        //{
+        //    Quaternion localRotation = this.transform.rotation;
+        //    this.transform.rotation = Quaternion.identity;
+        //    SpotPointA.transform.position = new Vector3(this.transform.localPosition.x - spotRadius, this.transform.localPosition.y, this.transform.localPosition.z);
+        //    SpotPointB.transform.position = new Vector3(this.transform.localPosition.x + spotRadius, this.transform.localPosition.y - spotRadius, this.transform.localPosition.z);
+        //    this.transform.rotation = localRotation;
+        //}
     }
 
     void FixedUpdate()
@@ -334,6 +346,7 @@ public class EnemyController : MonoBehaviour
      */
     private void IsTargetInRange()
     {
+
         collisionObjects = Physics2D.OverlapCircleAll(
             this.transform.position,
             spotRadius,
@@ -342,28 +355,61 @@ public class EnemyController : MonoBehaviour
                 (1 << LayerMask.NameToLayer("Friendly"))
             )
         );
-
+        
         if (collisionObjects.Length > 0)
         {
             target = collisionObjects[0].gameObject;
 
-            // If there are multiple targets, prioritise the player
             if (collisionObjects.Length > 1)
             {
                 foreach (Collider2D spottedObject in collisionObjects)
                 {
+                    // If there are multiple targets, prioritise the player
                     if (spottedObject.gameObject.layer == LayerMask.NameToLayer(targetLayer))
                     {
                         target = spottedObject.gameObject;
+                        break;
                     }
                 }
             }
 
-            playerSpotted = true;
+            // Sticky enemy needs to check if the player is in view
+            if (type == EnemyType.sticky)
+            {
+                playerSpotted = CanSeeObject(target);
+            }
+            else
+            {
+                playerSpotted = true;
+            }
         }
         else
         {
             playerSpotted = false;
+        }
+    }
+
+    /**
+     * CanSeeObject, used to prevent an sticky from seeing though a wall
+     * 
+     * The distance between the enemy and the spottedObject is taken care
+     * of by the IsTargetInRange() method.
+     * Objects given to this method will be within the spotRadius.
+     */
+    protected bool CanSeeObject(GameObject spottedObject)
+    {
+        RaycastHit target;
+        Vector3 rayDirection = spottedObject.transform.position - transform.position;
+
+        if ((Vector3.Angle(rayDirection, -this.transform.up)) <= (fieldOfView * 0.5f)) // half fieldOfView gives the desired result
+        {
+            Debug.DrawRay(transform.position, rayDirection, Color.yellow);
+
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -471,6 +517,8 @@ public class EnemyController : MonoBehaviour
                 projectile.transform.rotation = firePoint.transform.rotation;
                 Vector2 force = (Vector2)target.transform.position - (Vector2)this.transform.position;
                 projectile.GetComponent<Rigidbody2D>().AddForce(force.normalized * (projectileSpeed * 30));
+
+                Debug.DrawRay(transform.position, force, Color.yellow);
             }
         }
         else
@@ -484,14 +532,6 @@ public class EnemyController : MonoBehaviour
 
         Destroy(projectile, projectileLifeTime);
     }
-
-    //public void Shoots()
-    //{
-    //    this.cooldownTime = this.cooldownTimeThreshold;
-    //    shot = (GameObject)Instantiate(bossProjectilePrefab, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
-    //    shot.GetComponent<Rigidbody2D>().AddForce(((Vector2)(player.position - shot.transform.position)).normalized * 400);
-    //    Destroy(shot, 3);
-    //}
 
     /**
      * Take damage when hit with the players projectile. When this entity gets hit

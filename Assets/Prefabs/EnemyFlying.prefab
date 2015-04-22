@@ -153,6 +153,7 @@ MonoBehaviour:
   blindedDelay: 3
   spotRadius: 2
   drawSpotRadiusGismo: 1
+  fieldOfView: 360
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
