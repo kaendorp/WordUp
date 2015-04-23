@@ -233,7 +233,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.0599999987}
   serializedVersion: 2
-  m_Radius: .0762366056
+  m_Radius: .0944447517
 --- !u!61 &6118498
 BoxCollider2D:
   m_ObjectHideFlags: 1
