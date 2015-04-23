@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 91fea739613d7ed4c931182fc820b4fa
-timeCreated: 1429789940
+timeCreated: 1429799436
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,8 @@ TextureImporter:
     21300006: Runner_Move_1
     21300008: Runner_Move_2
     21300010: Runner_Move_3
+    21300012: Runner_Idle_Hit
+    21300014: Runner_Move_Hit
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -110,6 +112,26 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 443
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Runner_Idle_Hit
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 467
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Runner_Move_Hit
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 415
         width: 28
         height: 21
       alignment: 0
