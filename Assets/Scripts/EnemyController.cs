@@ -6,8 +6,8 @@ using System.Collections;
  */
 public enum EnemyType
 {
-	stationary,
-	patrol,
+    stationary,
+    patrol,
     floating,
     sticky,
     runner
@@ -18,8 +18,8 @@ public enum EnemyType
  */
 public enum EnemyState
 {
-	idle,
-	waitThenAttack,
+    idle,
+    waitThenAttack,
     sprint
 }
 
@@ -109,6 +109,10 @@ public class EnemyController : MonoBehaviour
             leftPosition = new Vector3((startPosition.x - hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
             rightPosition = new Vector3((startPosition.x + hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
         }
+        if (type == EnemyType.sticky)
+        {
+            anim = firePoint.GetComponent<Animator>();
+        }
     }
 
     void FixedUpdate()
@@ -171,11 +175,11 @@ public class EnemyController : MonoBehaviour
     }
 
     /**
-     * Patrol script 
-     * 
+     * Patrol script
+     *
      * enemy will walk untill the collidingWithWall linecast hits a collider, then walk the other way
      * or (if checked) will detect if the enemy is to hit the edge of a platform.
-     * 
+     *
      * Patroling enemys will resume to patrol after it shot at the player, as the attack state
      * will reset the timer. The first time the patroling enemy spots an enemy, the timer will
      * already have passed and it will immediately go into the attack state.
@@ -254,7 +258,7 @@ public class EnemyController : MonoBehaviour
 
     /**
      * Hover
-     * 
+     *
      * In this script the floating enemy will hover in a V shape.
      * start/left/right position is set in the Start() method.
      */
@@ -290,7 +294,7 @@ public class EnemyController : MonoBehaviour
     private void Sprint()
     {
         FacePlayer();
-        GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed*5));
+        GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed * 5));
 
         collidingWithWall = Physics2D.Linecast(
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
@@ -395,7 +399,7 @@ public class EnemyController : MonoBehaviour
                 (1 << LayerMask.NameToLayer("Friendly"))
             )
         );
-        
+
         if (collisionObjects.Length > 0)
         {
             target = collisionObjects[0].gameObject;
@@ -431,7 +435,7 @@ public class EnemyController : MonoBehaviour
 
     /**
      * CanSeeObject, used to prevent an sticky from seeing though a wall
-     * 
+     *
      * The distance between the enemy and the spottedObject is taken care
      * of by the IsTargetInRange() method.
      * Objects given to this method will be within the spotRadius.
@@ -630,7 +634,7 @@ public class EnemyController : MonoBehaviour
             setSpawn = friendlyFloating;
         }
         // Instantiate friendly
-        spawn = Instantiate(setSpawn, this.transform.position, this.transform.rotation) as GameObject;
+        spawn = Instantiate(setSpawn, this.transform.position, Quaternion.identity) as GameObject; // Reset rotation for sticky enemy can be rotated
 
         // If there is a message, it should be send to the friendly
         if (!string.IsNullOrEmpty(message) || setSpawn != friendlyFloating)
@@ -639,9 +643,9 @@ public class EnemyController : MonoBehaviour
         }
 
         // Spawn the dove, facing the same direction as the enemy
-        if ((type == EnemyType.floating ||type == EnemyType.sticky) && !facingLeft)
+        if ((type == EnemyType.floating || type == EnemyType.sticky) && !facingLeft)
         {
-            spawn.transform.localScale =  new Vector3(spawn.transform.localScale.x * -1, spawn.transform.localScale.y, spawn.transform.localScale.z);
+            spawn.transform.localScale = new Vector3(spawn.transform.localScale.x * -1, spawn.transform.localScale.y, spawn.transform.localScale.z);
         }
 
         // Instantiate death effect
@@ -662,16 +666,16 @@ public class EnemyController : MonoBehaviour
 
     /**
      * OnDrawGiszmos
-     * 
+     *
      * drawSpotRadiusGismo:
      * Draws a circle gizmo to show the field of view or 'agro' range of an enemy
-     * 
+     *
      * Patrol:
      * Patroling enemy's show the distance it will check for a wall.
-     * 
+     *
      * edgeDetection:
      * Displays the raycast for the edgedetection
-     * 
+     *
      * drawFloatPath:
      * Shows the path the floating enemies take.
      */
