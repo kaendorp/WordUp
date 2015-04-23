@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6630a8fa8e6a0554493addcb5d8263d5
-timeCreated: 1429658091
+timeCreated: 1429794431
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,13 @@ TextureImporter:
     21300018: GroundForestTex_3
     21300020: GroundForestTex_4
     21300022: GroundForestTex_5
+    21300024: GroundForestTex_6
+    21300026: GroundForestTex_7
+    21300028: GroundForestTex_8
+    21300030: GroundForestTex_9
+    21300032: GroundForestTex_10
+    21300034: GroundForestTex_11
+    21300036: GroundForestTex_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -84,10 +91,10 @@ TextureImporter:
     - name: 61976_2
       rect:
         serializedVersion: 2
-        x: 678
-        y: 978
-        width: 95
-        height: 21
+        x: 774
+        y: 1043
+        width: 45
+        height: 45
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,6 +185,76 @@ TextureImporter:
         y: 293
         width: 333
         height: 280
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_6
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 750
+        width: 52
+        height: 149
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_7
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 748
+        width: 241
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_8
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 720
+        width: 236
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_9
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 717
+        width: 54
+        height: 334
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_10
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 748
+        width: 170
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_11
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 882
+        width: 945
+        height: 237
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GroundForestTex_12
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 850
+        width: 945
+        height: 21
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
