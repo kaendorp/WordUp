@@ -25,6 +25,9 @@ sysinfo.txt
 *.pidb
 *.booproj
 
+Assets/UnityVS.meta
+Assets/UnityVS/
+
 # =========================
 # Operating System Files
 # =========================

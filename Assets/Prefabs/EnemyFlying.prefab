@@ -14,7 +14,7 @@ GameObject:
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &141542
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ GameObject:
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
   m_Layer: 11
-  m_Name: EnemyStationary
+  m_Name: EnemyFlying
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ Rigidbody2D:
   m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -86,9 +86,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .200000003
+  m_Radius: .150000006
 --- !u!61 &6185020
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .330000013, y: .330000013}
+  m_Size: {x: .189999998, y: .270000011}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -111,7 +111,7 @@ Animator:
   m_GameObject: {fileID: 141542}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c88e6a8b76dac7147befd5d18c3b5cf7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3f0ea2e2ac971d7409f7bd9ea02526d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8929f21147caf49ab94313756b62e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
   friendlyFloating: {fileID: 141542, guid: 421aaf6e405001e4fbc55cca6540ebd2, type: 2}
@@ -138,20 +138,20 @@ MonoBehaviour:
   message: 
   currentHealth: 2
   invincibilityDuration: 1.5
-  moveSpeed: 0
+  moveSpeed: 1
   collideDistance: 0
   edgeDetection: 0
-  hoverXSwing: 0
-  hoverYSwing: 0
-  drawFloatPath: 0
+  hoverXSwing: .5
+  hoverYSwing: .5
+  drawFloatPath: 1
   targetLayer: Player
   firePoint: {fileID: 432638}
   projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
   projectileSpeed: 5
   projectileLifeTime: 2
   fireDelay: 3
-  blindedDelay: 0
-  spotRadius: 3
+  blindedDelay: 3
+  spotRadius: 2
   drawSpotRadiusGismo: 1
   fieldOfView: 360
 --- !u!212 &21212692
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 847213563
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2087a256967b3b044ae4b54af54c8f94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 039c40f1c479b6d4f875aff867ad7c00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

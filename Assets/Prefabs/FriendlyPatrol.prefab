@@ -128,7 +128,7 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_FixedAngle: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -144,7 +144,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .5
+  m_Radius: .400000006
 --- !u!58 &5847930
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -238,20 +238,17 @@ MonoBehaviour:
   type: 1
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
-  message: Hi!
+  message: 
   messageObject: {fileID: 105374}
   currentHealth: 5
-  coolDown: 2
+  invincibilityDuration: 2
+  walkSpeed: 1
+  collideDistance: .400000006
+  edgeDetection: 1
   targetLayer: Player
-  target: {fileID: 0}
+  blindedDelay: 2
   spotRadius: 3
   drawSpotRadiusGismo: 1
-  playerSpotted: 0
-  playerIsLeft: 0
-  walkSpeed: 1
-  collideDistance: .5
-  edgeDetection: 1
-  collidingWithGround: 1
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
