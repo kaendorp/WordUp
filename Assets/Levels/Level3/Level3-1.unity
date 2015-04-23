@@ -16715,9 +16715,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 2068201516}
   mainCamera: {fileID: 1414706247}
+  wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 0}
+  overlay: {fileID: 1688698036}
 --- !u!61 &1345742212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20496,6 +20497,70 @@ Transform:
   - {fileID: 699728721}
   m_Father: {fileID: 1382205742}
   m_RootOrder: 4
+--- !u!1 &1688698034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163494, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1688698035}
+  - 222: {fileID: 1688698037}
+  - 114: {fileID: 1688698036}
+  m_Layer: 5
+  m_Name: Overlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1688698035
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22480468, guid: ad641a1f4d04ab44696209bd854e3cd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1688698034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
+  m_Children: []
+  m_Father: {fileID: 1733516860}
+  m_RootOrder: 10
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: .5}
+  m_SizeDelta: {x: 0, y: 1}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1688698036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11490170, guid: ad641a1f4d04ab44696209bd854e3cd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1688698034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Sprite: {fileID: 21300000, guid: cbf53601a79518a4e93f9ae9ee5b02b2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1688698037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22282346, guid: ad641a1f4d04ab44696209bd854e3cd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1688698034}
 --- !u!1 &1688958757
 GameObject:
   m_ObjectHideFlags: 0
@@ -20918,6 +20983,11 @@ SpriteRenderer:
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300030, guid: 22b3b3f8fff8588479448a8c9293becf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!224 &1733516860
+RectTransform:
+  m_PrefabParentObject: {fileID: 22458164, guid: ad641a1f4d04ab44696209bd854e3cd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 243855267}
 --- !u!1 &1735004553
 GameObject:
   m_ObjectHideFlags: 0
@@ -25208,9 +25278,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1971299121}
   mainCamera: {fileID: 1414706247}
+  wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 0}
+  overlay: {fileID: 1688698036}
 --- !u!61 &2133079273
 BoxCollider2D:
   m_ObjectHideFlags: 0

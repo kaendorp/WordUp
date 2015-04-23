@@ -9,6 +9,7 @@ public class Deur : MonoBehaviour {
 	public static bool open = true;
 	public GameObject spawnPoint;
 	public Camera mainCamera;
+	public float wait = 0.25f;
 
 	// Fade in/out
 	public float fadeInSpeed = 1.5f;        // Speed that the screen fades from black.
@@ -29,19 +30,35 @@ public class Deur : MonoBehaviour {
 		{
 			if(CrossPlatformInputManager.GetButtonDown ("Jump"))
 			{
-				StartCoroutine(FadeToBlack());
-				mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
-				collision.transform.position = spawnPoint.transform.position;
-				StartCoroutine (FadeToClear());
+				//maak het scherm zwart
+				StartCoroutine(FadeToBlack(collision));
 			}
 		}
 	}
 
-	IEnumerator FadeToClear()
+	IEnumerator FadeToBlack(Collider2D collision)
 	{
 		// Lerp the colour of the texture between itself and transparent.
-		float rate = fadeInSpeed;
+		float rate = fadeOutSpeed;
 		float progress = 0f;
+		while (progress < 1f)
+		{
+			overlay.color = Color.Lerp(Color.clear, Color.black, progress);
+			progress += rate * Time.deltaTime;
+			
+			yield return null;
+		}
+		overlay.color = Color.black;
+
+		// Naar nieuwe kamer
+		mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
+		collision.transform.position = spawnPoint.transform.position;
+
+		yield return new WaitForSeconds(wait);
+
+		// Lerp the colour of the texture between itself and transparent.
+		rate = fadeInSpeed;
+		progress = 0f;
 		while (progress < 1f)
 		{
 			overlay.color = Color.Lerp(Color.black, Color.clear, progress);
@@ -50,21 +67,5 @@ public class Deur : MonoBehaviour {
 			yield return null;
 		}
 		overlay.color = Color.clear;
-	}
-
-	IEnumerator FadeToBlack()
-	{
-		// Lerp the colour of the texture between itself and transparent.
-		float rate = fadeOutSpeed;
-		float progress = 0f;
-		while (progress < 1f)
-		{
-			Debug.Log (overlay);
-			overlay.color = Color.Lerp(Color.clear, Color.black, progress);
-			progress += rate * Time.deltaTime;
-			
-			yield return null;
-		}
-		overlay.color = Color.black;
 	}
 }

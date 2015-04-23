@@ -1,0 +1,353 @@
+fileFormatVersion: 2
+guid: 91b8aa2a7ca05dd4fb2260df19c37ccf
+timeCreated: 1429780525
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SnowTrees
+    21300002: SnowMountain
+    21300004: Water1
+    21300006: Water2
+    21300008: Floor
+    21300010: Slope1Snow
+    21300012: Slope2Ice
+    21300014: Slope3Ice
+    21300016: PlatformS
+    21300018: PlatformIceS
+    21300020: PlatformM
+    21300022: Ijsschots
+    21300024: PlatformIceM
+    21300026: House
+    21300028: PlatformL
+    21300030: PlatformIceL
+    21300032: PlatformXL
+    21300034: PlatformIceXL
+    21300036: RockXL
+    21300038: RockL1
+    21300040: RockL2
+    21300042: RockS1
+    21300044: RockS2
+    21300046: Icicle1
+    21300048: Icicle2
+    21300050: LadderBottom
+    21300052: LadderTop
+    21300054: LadderMid
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SnowTrees
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1399
+        width: 1278
+        height: 314
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SnowMountain
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1205
+        width: 1088
+        height: 180
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Water1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 842
+        width: 440
+        height: 338
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Floor
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 569
+        width: 440
+        height: 335
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Slope1Snow
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 363
+        width: 603
+        height: 267
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Slope2Ice
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 366
+        width: 372
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Slope3Ice
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 205
+        width: 385
+        height: 345
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformS
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 327
+        width: 77
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformIceS
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 325
+        width: 77
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformM
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 289
+        width: 132
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ijsschots
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 255
+        width: 141
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformIceM
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 287
+        width: 132
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: House
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 3
+        width: 227
+        height: 267
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformL
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 252
+        width: 196
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformIceL
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 250
+        width: 196
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformXL
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 205
+        width: 352
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlatformIceXL
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 203
+        width: 352
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RockXL
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 3
+        width: 167
+        height: 178
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RockL1
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 5
+        width: 167
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RockL2
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 8
+        width: 167
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RockS1
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 10
+        width: 166
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RockS2
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 13
+        width: 166
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Icicle1
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 89
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Icicle2
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 81
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderBottom
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 17
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderTop
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 16
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LadderMid
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 18
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
