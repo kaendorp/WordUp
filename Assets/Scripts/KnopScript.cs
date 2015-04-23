@@ -4,10 +4,9 @@ using System.Collections;
 public class KnopScript : MonoBehaviour {
 
     public GameObject knop;
-    public GameObject licht;
+    public GameObject[] lichten;
 
-    public GameObject platform6;
-    public GameObject platform7;
+    public GameObject[] platformen;    
 
     private bool ingedrukt;
 
@@ -32,24 +31,21 @@ public class KnopScript : MonoBehaviour {
                 StartCoroutine(ButtonPress());
             
                 // Zet licht aan
-                licht.GetComponent<Light>().enabled = true;
-            
-                // Activeer platformen            
-                platform6.SetActive(true);
-                platform7.SetActive(true);
+                foreach (GameObject o in lichten)
+                {
+                    o.GetComponent<Light>().enabled = true;
+                }             
+
+                // Activeer platformen
+                foreach (GameObject o in platformen)
+                {
+                    o.SetActive(true);
+                }                     
 
                 ingedrukt = true;
             }            
         }
-    }
-
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        StartCoroutine(ButtonPress());            
-    //    }        
-    //}
+    }    
 
     IEnumerator ButtonPress()
     {
