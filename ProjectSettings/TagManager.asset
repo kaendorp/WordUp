@@ -24,6 +24,7 @@ TagManager:
   - TriggerBossBattle
   - AbovePlatform
   - AboveTrigger
+  - Sleutel
   layers:
   - Default
   - TransparentFX
