@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 141542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: -2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,13 +39,13 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
-  m_Mass: 50
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_Mass: 10
+  m_LinearDrag: .0500000007
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_FixedAngle: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
 --- !u!58 &5847930
@@ -55,12 +55,12 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 711cfbf4e8777a947873f095bb67d2f9, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .159999996
+  m_Radius: .189999998
 --- !u!61 &6121138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -68,7 +68,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141542}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 711cfbf4e8777a947873f095bb67d2f9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0103769796}
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  _state: 0
   friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
   friendlyFloating: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
@@ -110,19 +111,19 @@ MonoBehaviour:
   message: 
   currentHealth: 2
   invincibilityDuration: 1.5
-  moveSpeed: 1
-  collideDistance: .5
-  edgeDetection: 1
+  moveSpeed: 5
+  collideDistance: 0
+  edgeDetection: 0
   hoverXSwing: 0
   hoverYSwing: 0
   drawFloatPath: 0
   targetLayer: Player
   firePoint: {fileID: 0}
-  projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
+  projectilePrefab: {fileID: 0}
   projectileSpeed: 0
   projectileLifeTime: 0
-  fireDelay: 3
-  blindedDelay: 3
+  fireDelay: 0
+  blindedDelay: 0
   spotRadius: 3
   drawSpotRadiusGismo: 1
   fieldOfView: 360
