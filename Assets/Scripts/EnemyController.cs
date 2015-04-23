@@ -91,12 +91,12 @@ public class EnemyController : MonoBehaviour
     private Collider2D[] collisionObjects;
     private bool playerSpotted = false;         // Has the enemy spotted the player?
 
+    // Sprint
+    public float sprintMinSpeed = 0.05f;
+
     // Sticky
     [Range(1.0f, 360f)]
-    public float fieldOfView = 360f;
-
-    // Sprint
-    private bool sprintDone = false;
+    public float stickyFOV = 360f;
 
     private void Start()
     {
@@ -163,6 +163,9 @@ public class EnemyController : MonoBehaviour
      */
     private void Idle()
     {
+        if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) <= sprintMinSpeed)
+            anim.SetBool("sprint", false);
+
         // Will set 'playerSpotted' to true if spotted
         IsTargetInRange();
         if (playerSpotted)
@@ -293,6 +296,9 @@ public class EnemyController : MonoBehaviour
 
     private void Sprint()
     {
+        if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= sprintMinSpeed)
+            anim.SetBool("sprint", true);
+
         FacePlayer();
         GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed * 5));
 
@@ -306,24 +312,10 @@ public class EnemyController : MonoBehaviour
             ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
-        if (GetComponent<Rigidbody2D>().velocity.x <= 0.05)
+        if (GetComponent<Rigidbody2D>().velocity.x <= sprintMinSpeed)
+            
             _state = EnemyState.idle;
-    }
-
-    /**
-     * Provides a short delay before shooting and blinds the patrolling enemy,
-     * so that it will continue to patrol after shooting.
-     */
-    IEnumerator SprintDurationAndBlinded()
-    {
-        delayCoroutineStarted = true;
-        sprintDone = false;
-        yield return new WaitForSeconds(fireDelay);
-        sprintDone = true;
-        isBlinded = true;
-        yield return new WaitForSeconds(blindedDelay);
-        isBlinded = false;
-        delayCoroutineStarted = false;
+            //anim.SetBool("sprint", false);
     }
 
     /**
@@ -445,7 +437,7 @@ public class EnemyController : MonoBehaviour
         RaycastHit target;
         Vector3 rayDirection = spottedObject.transform.position - transform.position;
 
-        if ((Vector3.Angle(rayDirection, -this.transform.up)) <= (fieldOfView * 0.5f)) // half fieldOfView gives the desired result
+        if ((Vector3.Angle(rayDirection, -this.transform.up)) <= (stickyFOV * 0.5f)) // half fieldOfView gives the desired result
         {
             Debug.DrawRay(transform.position, rayDirection, Color.yellow);
 
