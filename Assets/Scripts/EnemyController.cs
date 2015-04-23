@@ -117,11 +117,11 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyState.idle:
                 //delayCoroutineStarted = false;
-                if (type == EnemyType.stationary || type == EnemyType.sticky)
+                if (type == EnemyType.stationary || type == EnemyType.sticky || type == EnemyType.runner)
                 {
                     Idle();
                 }
-                else if (type == EnemyType.patrol || type == EnemyType.runner)
+                else if (type == EnemyType.patrol)
                 {
                     Patrol();
                 }
@@ -138,9 +138,6 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyState.sprint:
                 Sprint();
-                // To ensure the coroutine is only fired once!
-                if (!delayCoroutineStarted)
-                    StartCoroutine(SprintDurationAndBlinded());
                 break;
         }
 
@@ -166,7 +163,10 @@ public class EnemyController : MonoBehaviour
         IsTargetInRange();
         if (playerSpotted)
         {
-            _state = EnemyState.waitThenAttack;
+            if (type == EnemyType.runner)
+                _state = EnemyState.sprint;
+            else
+                _state = EnemyState.waitThenAttack;
         }
     }
 
@@ -227,10 +227,7 @@ public class EnemyController : MonoBehaviour
             IsTargetInRange();
             if (playerSpotted)
             {
-                if (type == EnemyType.runner)
-                    _state = EnemyState.sprint;
-                else
-                    _state = EnemyState.waitThenAttack;
+                _state = EnemyState.waitThenAttack;
             }
         }
     }
@@ -293,7 +290,7 @@ public class EnemyController : MonoBehaviour
     private void Sprint()
     {
         FacePlayer();
-        GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed * 3, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed*5));
 
         collidingWithWall = Physics2D.Linecast(
             new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
@@ -305,7 +302,7 @@ public class EnemyController : MonoBehaviour
             ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
-        if (collidingWithWall)
+        if (GetComponent<Rigidbody2D>().velocity.x <= 0.05)
             _state = EnemyState.idle;
     }
 
@@ -349,7 +346,10 @@ public class EnemyController : MonoBehaviour
         {
             AimAtPlayer();
         }
-        FacePlayer();
+
+        if (type != EnemyType.sticky)
+            FacePlayer();
+
         if (readyToFire)
         {
             Shoot();
@@ -517,6 +517,10 @@ public class EnemyController : MonoBehaviour
             //Changes the speed to negative, making it fire the other way
             projectileSpeed = -projectileSpeed;
         }
+        else if (type == EnemyType.runner)
+        {
+            moveSpeed *= -1;
+        }
     }
 
     private void AimAtPlayer()
@@ -621,7 +625,7 @@ public class EnemyController : MonoBehaviour
         {
             setSpawn = friendlyStationary;
         }
-        else if (type == EnemyType.floating || type == EnemyType.sticky)
+        else if (type == EnemyType.floating || type == EnemyType.sticky || type == EnemyType.runner)
         {
             setSpawn = friendlyFloating;
         }
@@ -629,7 +633,7 @@ public class EnemyController : MonoBehaviour
         spawn = Instantiate(setSpawn, this.transform.position, this.transform.rotation) as GameObject;
 
         // If there is a message, it should be send to the friendly
-        if (!string.IsNullOrEmpty(message) || type != EnemyType.floating)
+        if (!string.IsNullOrEmpty(message) || setSpawn != friendlyFloating)
         {
             spawn.SendMessage("GetMessage", message);
         }
