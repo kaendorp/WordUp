@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 	private float cachedY; // saved Y position, does not change
 	private float minXValue; // minimal X position of healthbar
 	private float maxXValue; // maximal X position of healthbar
-	private int currentHealth; // current health value
+	public int currentHealth; // current health value
 	private int CurrentHealth // Sets health through HandelHealth()
 	{
 		get { return currentHealth;}
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 	public int maxHealth; // maximum value of health. Currently 10
 	public float coolDown; // length of damage cooldown
 	private bool onCoolDown; // Cooldown active or not	
+    public RectTransform plusOne;
 
     //Boodschap
 	public Text Boodschap;
@@ -65,6 +66,9 @@ public class Player : MonoBehaviour {
 	public Text letter_2HUD;
 	public Text letter_3;
 	public Text letter_3HUD;
+
+    // Zet menu's active
+    public GameObject HUD;
 
 	// Methods //
 	void Start()
@@ -149,7 +153,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collision)
-	{		
+	{        
 		if (collision.gameObject.tag == "Letter") 
 		{
 			if (countLetters < 3)
@@ -182,7 +186,8 @@ public class Player : MonoBehaviour {
 				Boodschap.text = "";
 				letterPanel.gameObject.SetActive(false);
 				Destroy(collision.gameObject);
-				WordGameScript.Active = true;
+				//WordGameScript.Active = true;
+                HUD.GetComponent<WordGameScript>().Active = true;
 			}
 			else
 			{
@@ -194,7 +199,8 @@ public class Player : MonoBehaviour {
 		{
 			Boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
-			WinMenuScript.WinActive = true;
+			
+            HUD.GetComponent<WinMenuScript>().WinActive = true;
 		}
 	}
 
@@ -211,32 +217,46 @@ public class Player : MonoBehaviour {
 			Boodschap.text = "";
 		}
 
-		Destroy (this.gameObject);
-		GameOverScript.GameOverActive = true;
+		Destroy (this.gameObject);		
+        HUD.GetComponent<GameOverScript>().GameOverActive = true;
 	}
 
 	void Update () 
 	{
-		if (Input.GetKeyUp (KeyCode.Escape)) 
-		{
-			Boodschap.text = "";
-			letterPanel.gameObject.SetActive(false);
-			PauseMenuScripte.PauseActive = true;
-		}
+
+        if (HUD.GetComponent<WordGameScript>().Active != true && HUD.GetComponent<WinMenuScript>().WinActive != true && HUD.GetComponent<GameOverScript>().GameOverActive != true)
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                Boodschap.text = "";
+                letterPanel.gameObject.SetActive(false);
+
+
+                HUD.GetComponent<PauseMenuScripte>().PauseActive = true;
+            }
+        }		
 
         if (kindPlus == true)
         {
-            if (countKids < 5)
+            if (countKids < maxKids)
             {
                 CountKids += 1;
 
                 if (currentHealth < 10) // If damaged, health increases
                 {
                     CurrentHealth += 1; // Child found health increases + 1
-                }
+                    StartCoroutine(PlusOneActive()); 
+                }                
             }
             kindPlus = false;
         }
-	}    
+	}
+
+    IEnumerator PlusOneActive()
+    {
+        plusOne.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        plusOne.gameObject.SetActive(false);
+    }
 }
 
