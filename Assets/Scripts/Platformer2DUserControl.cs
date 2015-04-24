@@ -5,7 +5,7 @@ using UnitySampleAssets.CrossPlatformInput;
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D character;
-        private bool jump;
+        public bool jump;
 		private bool crouched;
 		private bool shoot;
 
