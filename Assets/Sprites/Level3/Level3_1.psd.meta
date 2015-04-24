@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 22b3b3f8fff8588479448a8c9293becf
-timeCreated: 1429795188
+timeCreated: 1429887628
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -177,8 +177,8 @@ TextureImporter:
         y: 939
         width: 32
         height: 227
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .506569088, y: .331395358}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Kleine wijzer
       rect:
@@ -187,8 +187,8 @@ TextureImporter:
         y: 952
         width: 21
         height: 185
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .463353097, y: .249435171}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Klok face
       rect:
