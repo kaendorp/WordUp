@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 22b3b3f8fff8588479448a8c9293becf
-timeCreated: 1429887628
+timeCreated: 1430139678
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -247,8 +247,8 @@ TextureImporter:
         y: 486
         width: 124
         height: 92
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .512931585, y: .952550471}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Verbindingsstukje
       rect:
