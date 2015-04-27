@@ -1,197 +1,217 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossController : MonoBehaviour {
+public class BossController : MonoBehaviour
+{
+    public bool isActive = false;
 
-	public delegate void BossEventHandler(int scoremod);
-	public static event BossEventHandler bossDied;
+    public enum bossSequence
+    {
+        tutorial,
+        level1,
+        level2,
+        level3
+    }
 
-	public GameObject inActiveNode = null;
-	public GameObject dropToStartNode = null;
+    public enum bossEvents
+    {
+        inactive,
+        shoot,
+        roarIdle,
+    }
 
-	public GameObject dropFXSpawnPoint = null;
-	public GameObject bossDeathFX = null;
-	public GameObject bossDropFX = null;
+    public bossSequence currentSequence = bossSequence.tutorial;
+    public bossEvents currentEvent = bossEvents.inactive;
 
-	public bool isActive = false;
+    private BetterList<bossEvents> bossSequenceList;
+    private int bossSequenceListValue = 0;
+    private bool coroutineStarted = false;
 
-	public bool notDead = true;
+    public GameObject bossDeathFX = null;
 
-	public Transform firePoint;  
-	private GameObject projectile; 
-	public GameObject projectilePrefab;     
-	public float projectileSpeed = 5;      
-	public float projectileLifeTime = 2;    
+    public GameObject polygonCollider;
+    public GameObject circleCollider;
+    private Animator anim;
 
-	public float eventWaitDelay = 3f;
+    public float fireAmount = 3;
 
-	public GameObject polygonCollider;
-	public GameObject circleCollider;
-	private Animator anim;
+    public int health = 3;
+    private int startHealth = 3;
 
-	public float fireAmount = 0;
+    // SHOOT
+    public float cooldownTime = 0.25f; //amount of time (in secs.) between two shots
+    private GameObject player;
+    private GameObject shot;
+    public Transform firePoint;
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 5f;
+    public float projectileLifeTime = 2f;
 
-	private FireBossProjectile bossProjectile;
+    private void Awake()
+    {
+        //bossProjectile = GetComponent<FireBossProjectile>();
+        anim = GetComponent<Animator>();
 
-	public enum bossEvents
-	{
-		inactive = 0,
-		shoot,
-		roarIdle,
-	}
+        bossSequenceList = new BetterList<bossEvents>();
 
-	public bossEvents currentEvent = bossEvents.inactive;
-	private float timeForNextEvent = 0.0f;
-	private GameObject targetNode = null;
-	private Vector3 targetPosition = Vector3.zero;
+        switch (currentSequence)
+        {
+            case bossSequence.tutorial:
+                bossSequenceList.Add(bossEvents.inactive);
+                bossSequenceList.Add(bossEvents.shoot);
+                bossSequenceList.Add(bossEvents.roarIdle);
+                break;
+            default:
+                bossSequenceList.Add(bossEvents.inactive);
+                bossSequenceList.Add(bossEvents.shoot);
+                bossSequenceList.Add(bossEvents.roarIdle);
+                break;
+        }
+    }
 
-	public int health = 1;
-	private int startHealth = 1;
-	private bool isDefeated = false;
+    public void setPlayerObject(GameObject passedObject)
+    {
+        player = passedObject;
+    }
 
-	void onEnable()
-	{
-	}
-	void onDisable()
-	{
-	}
+    private void setNextAction()
+    {
+        Debug.Log("Going to : " + bossSequenceList[bossSequenceListValue].ToString());
+        Debug.Log("bossSequenceListValue : " + bossSequenceListValue);
+        Debug.Log("Buffersize : " + bossSequenceList.size.ToString());
+        coroutineStarted = false;
+        currentEvent = bossSequenceList[bossSequenceListValue];
+        bossSequenceListValue++;
 
-	private void Awake() {
-		bossProjectile = GetComponent<FireBossProjectile> ();
-		anim = GetComponent<Animator>();
-	}
+        if (bossSequenceListValue > bossSequenceList.size)
+        {
+            bossSequenceListValue = 0;
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(notDead)
-		switch (currentEvent) {
-			case bossEvents.inactive:
-				if(isActive)
-				StartCoroutine(Idle());
-				break;
-			case bossEvents.shoot:
-				anim.SetBool("IsHit", false);
-				StartCoroutine(WaitForShooting());
-				break;
-			case bossEvents.roarIdle:
-				anim.SetBool("IsHit", false);
-				circleCollider.SetActive(true);
-				StartCoroutine(Wait());
-				break;
-		}
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (isActive)
+            switch (currentEvent)
+            {
+                case bossEvents.inactive:
+                    if (!coroutineStarted)
+                    {
+                        StartCoroutine(Idle());
+                        coroutineStarted = true;
+                    }
+                    break;
+                case bossEvents.shoot:
+                    if (!coroutineStarted)
+                    {
+                        StartCoroutine(Shoot());
+                        coroutineStarted = true;
+                    }
+                    break;
+                case bossEvents.roarIdle:
+                    if (!coroutineStarted)
+                    {
+                        StartCoroutine(Roar());
+                        coroutineStarted = true;
+                    }
+                    break;
+            }
+    }
 
-	public void Shoot(){
+    public void beginBossBattle()
+    {
+        currentEvent = bossEvents.roarIdle;
 
-		if (bossProjectile != null && bossProjectile.CanShoot && fireAmount < 3) {
-			bossProjectile.Shoot ();
-			fireAmount = fireAmount + 1;
-		} else if (fireAmount >= 3) {
-			EndShoot ();
-		}
-	}
-	public void EndShoot(){
-		anim.SetBool("IsShooting", false);	
-		currentEvent = bossEvents.roarIdle;
-	}
+        health = startHealth;
+    }
 
-	public void EndVulnerable()
-	{
-		circleCollider.SetActive(false);
-		anim.SetBool("RoarIdle", false);
-		currentEvent =  bossEvents.inactive;
-	}
+    IEnumerator Idle()
+    {
+        circleCollider.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("IsHit", false);
+        yield return new WaitForSeconds(1f);
+        setNextAction();
+    }
 
-	public void beginBossBattle()
-	{
-		targetNode = dropToStartNode;
-		currentEvent = bossEvents.roarIdle;
+    IEnumerator Shoot()
+    {
+        // Can't be hit whilst fireing
+        anim.SetBool("IsHit", false);
+        anim.SetBool("IsShooting", true);
+        yield return new WaitForSeconds(1f);
 
-		timeForNextEvent = 0.0f;
-		health = startHealth;
-		isDefeated = false;
-	}
+        for (int fired = 0; fired < fireAmount; fired++)
+        {
+            FireProjectile();
+            yield return new WaitForSeconds(cooldownTime);
+        }
+        anim.SetBool("IsShooting", false);
+        setNextAction();
+    }
 
-	public void hitByPlayerProjectile()
-	{
-		circleCollider.SetActive(false);
-		anim.SetBool("IsHit", true);
-		health--;
-		if (health <= 0) 
-		{
-			defeated ();
-		}
-		currentEvent = bossEvents.inactive;
-	}
+    private void FireProjectile()
+    {
+        shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
+        Vector2 force = (Vector2)player.transform.position - (Vector2)firePoint.transform.position;
+        shot.GetComponent<Rigidbody2D>().AddForce(force.normalized * (projectileSpeed * 30));
+        Destroy(shot, projectileLifeTime);
 
-	void defeated()
-	{
-		circleCollider.SetActive(false);
-		if (isDefeated) 
-		{
-			circleCollider.SetActive(false);
-			anim.SetBool("IsDefeated", true);
-			StartCoroutine(WaitVariable(1.1f));
-			StartCoroutine(Defeated());
-		}
+        Debug.DrawRay(firePoint.transform.position, force, Color.yellow);
+    }
 
-		isDefeated = true;
-		timeForNextEvent = 0.0f;
-	}
+    IEnumerator Roar()
+    {
+        // Can't be hit whilst roaring
+        anim.SetBool("IsHit", false);
+        anim.SetBool("RoarIdle", true);
+        circleCollider.SetActive(true);
+        yield return new WaitForSeconds(3.17f);
+        circleCollider.SetActive(false);
+        anim.SetBool("RoarIdle", false);
+        setNextAction();
+    }
 
-	void Flee()
-	{
-		notDead = false;
-		Destroy (gameObject);
-        
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.tag == "PlayerProjectile")
+        {
+            hitByPlayerProjectile();
+        }
+    }
+
+    public void hitByPlayerProjectile()
+    {
+        circleCollider.SetActive(false);
+        anim.SetBool("IsHit", true);
+        health--;
+
+        if (health <= 0)
+        {
+            circleCollider.SetActive(false);
+            anim.SetBool("IsDefeated", true);
+            StartCoroutine(Defeated());
+            return;
+        }
+
+        bossSequenceListValue = 0;
+        setNextAction();
+    }
+
+    IEnumerator Defeated()
+    {
+        yield return new WaitForSeconds(1.1f);
+        Instantiate(bossDeathFX);
+        yield return new WaitForSeconds(3f);
+        PlayerVictory();
+    }
+
+    void PlayerVictory()
+    {
+        Destroy(gameObject);
         GameObject g = GameObject.Find("HUD");
         WinMenuScript wScript = g.GetComponent<WinMenuScript>();
-        wScript.WinActive = true;       
-	}
-
-	IEnumerator WaitForShooting(){
-			anim.SetBool("IsShooting", true);
-			yield return new WaitForSeconds (1f);
-			Shoot ();
-		}
-
-	IEnumerator Wait(){
-		anim.SetBool("RoarIdle", true);
-		yield return new WaitForSeconds (3.17f);
-		fireAmount = 1;
-		EndVulnerable ();
-	}
-	IEnumerator Idle(){
-		circleCollider.SetActive(false);
-		yield return new WaitForSeconds (1f);
-		anim.SetBool("IsHit", false);
-		yield return new WaitForSeconds (1f);
-		currentEvent =  bossEvents.shoot;
-	}
-
-	IEnumerator WaitVariable(float waitTime) {
-		yield return new WaitForSeconds (waitTime);
-		Instantiate (bossDeathFX);
-	}
-
-	IEnumerator Defeated()
-	{
-		yield return new WaitForSeconds (3f);
-		Flee ();
-	}
-
-	void OnCollisionEnter2D(Collision2D collider)
-	{
-				if (collider.gameObject.tag == "PlayerProjectile")
-				{
-					circleCollider.SetActive(false);
-					hitByPlayerProjectile();
-				}
-			}
-
-		}
-
+        wScript.WinActive = true;
+    }
+}
