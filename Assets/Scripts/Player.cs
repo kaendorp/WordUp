@@ -6,8 +6,8 @@ public class Player : MonoBehaviour {
 
 	// Variables //
 	public GameObject impactEffect;
-	public RectTransform healthTransform; // healthbar in UI
-	public Image visualHealth; // healthbar image to change color
+	private RectTransform healthTransform; // healthbar in UI
+	private Image visualHealth; // healthbar image to change color
 	private float cachedY; // saved Y position, does not change
 	private float minXValue; // minimal X position of healthbar
 	private float maxXValue; // maximal X position of healthbar
@@ -24,15 +24,15 @@ public class Player : MonoBehaviour {
 	public int maxHealth; // maximum value of health. Currently 10
 	public float coolDown; // length of damage cooldown
 	private bool onCoolDown; // Cooldown active or not	
-    public RectTransform plusOne;
+    private RectTransform plusOne;
 
     //Boodschap
-	public Text Boodschap;
+	private Text boodschap;
 
     // Kinderen
     public static bool kindPlus;
-	public Text kindText; // Kid counter for UI
-	public Text kindTextHUD;
+	private Text kindText; // Kid counter for UI
+    public Text kindTextHUD;
 	private int countKids = 0; // current amount of kids collected 
 	private int CountKids // Sets current amount of kids through HandleKids()
 	{
@@ -43,9 +43,9 @@ public class Player : MonoBehaviour {
 			HandleKids();
 		}
 	}
-	public int maxKids = 5; // Maximum amount of kids in level
+	public int maxKids; // Maximum amount of kids in level
 
-	public RectTransform letterPanel;
+	private RectTransform letterPanel;
 
 	private int countLetters;
 	private int CountLetters // Sets current amount of kids through HandleKids()
@@ -68,11 +68,33 @@ public class Player : MonoBehaviour {
 	public Text letter_3HUD;
 
     // Zet menu's active
-    public GameObject HUD;
+    private GameObject HUD;
 
 	// Methods //
 	void Start()
 	{
+        // HUD
+        HUD = GameObject.Find("HUD");
+        
+        // Moed
+        GameObject health = GameObject.Find("moedValue");
+        healthTransform = health.GetComponent<RectTransform>();
+        visualHealth = health.GetComponent<Image>();
+
+        // Boodschap
+        boodschap = GameObject.Find("Boodschap").GetComponent<Text>();  
+
+        // Plus        
+        plusOne = GameObject.Find("PlusOne").GetComponent<RectTransform>();
+        plusOne.gameObject.SetActive(false);
+
+        // kindteller
+        kindText = GameObject.Find("kind_teller_tekst").GetComponent<Text>();        
+
+        // lettercontainer
+        letterPanel = GameObject.Find("Letter_container").GetComponent<RectTransform>();
+        letterPanel.gameObject.SetActive(false);
+
 		cachedY = healthTransform.position.y;
 		maxXValue = healthTransform.position.x;
 		minXValue = healthTransform.position.x - healthTransform.rect.width;
@@ -101,18 +123,20 @@ public class Player : MonoBehaviour {
 	private void HandleKids ()
 	{
 		kindText.text = countKids + "  " + maxKids;
-		kindTextHUD.text = countKids + "  " + maxKids;		
+        PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
+        kindTextHUD.text = countKids + "  " + maxKids;
+        //pause.SendMessage("KindPlus");
 	}
 	private void HandleLetters ()
 	{
-		Boodschap.text = "Je hebt een letter gevonden!";
+		boodschap.text = "Je hebt een letter gevonden!";
 		StartCoroutine (showMessage());
 	}
 
 	IEnumerator showMessage()
 	{
 		yield return new WaitForSeconds (3);
-		Boodschap.text = "";;
+		boodschap.text = "";;
 	}
 
 	IEnumerator coolDownDMG()
@@ -183,10 +207,9 @@ public class Player : MonoBehaviour {
 		{
 			if (collision.gameObject.tag == "WordGame")
 			{
-				Boodschap.text = "";
+				boodschap.text = "";
 				letterPanel.gameObject.SetActive(false);
-				Destroy(collision.gameObject);
-				//WordGameScript.Active = true;
+				Destroy(collision.gameObject);				
                 HUD.GetComponent<WordGameScript>().Active = true;
 			}
 			else
@@ -197,7 +220,7 @@ public class Player : MonoBehaviour {
 		
 		if (collision.gameObject.tag == "Finish") 
 		{
-			Boodschap.text = "";
+			boodschap.text = "";
 			letterPanel.gameObject.SetActive(false);
 			
             HUD.GetComponent<WinMenuScript>().WinActive = true;
@@ -212,9 +235,9 @@ public class Player : MonoBehaviour {
 	void Respawn ()
 	{
 		// Leegt boodschap text, dit bleef anders constant aanstaan.
-		if (Boodschap.text.Length > 1) 
+		if (boodschap.text.Length > 1) 
 		{
-			Boodschap.text = "";
+			boodschap.text = "";
 		}
 
 		Destroy (this.gameObject);		
@@ -228,7 +251,7 @@ public class Player : MonoBehaviour {
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                Boodschap.text = "";
+                boodschap.text = "";
                 letterPanel.gameObject.SetActive(false);
 
 

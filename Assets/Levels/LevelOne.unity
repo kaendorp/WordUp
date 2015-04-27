@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &441888414
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1144,6 +1144,10 @@ Prefab:
       propertyPath: HUD
       value: 
       objectReference: {fileID: 1035526312}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: maxKids
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_IsPrefabParent: 0
@@ -1224,6 +1228,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22458164, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117838, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 189460, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1921,6 +1933,10 @@ Prefab:
     - target: {fileID: 424944, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
       propertyPath: m_LocalScale.y
       value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 196694, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}

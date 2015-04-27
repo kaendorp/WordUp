@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PauseMenuScripte : MonoBehaviour {
@@ -15,6 +16,15 @@ public class PauseMenuScripte : MonoBehaviour {
     string[] buttons = new string[2] {"Terug", "Menu"};
     private int selected = 0;
 
+    private Text kindTextHUD;
+    private int maxKids;
+
+    void KindPlus()
+    {
+        //kindTextHUD.text = GameObject.Find("kind_teller_tekst").GetComponent<Text>().text;
+        Debug.Log("PLus");
+    }
+
 	// Use this for initialization
 	void Start () 
     {
@@ -22,6 +32,9 @@ public class PauseMenuScripte : MonoBehaviour {
         skin = Resources.Load("ButtonSkin") as GUISkin;
 
         selected = 0;
+
+        
+        //kindTextHUD.text = "0" + "  " + maxKids;
 	}
 	
 	// Update is called once per frame
