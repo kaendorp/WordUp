@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 410472}
   - 212: {fileID: 21227238}
-  - 95: {fileID: 9559096}
+  - 61: {fileID: 6176734}
   m_Layer: 0
   m_Name: Knop rood
   m_TagString: Untagged
@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454006}
   - 212: {fileID: 21269760}
+  - 61: {fileID: 6196446}
   m_Layer: 0
   m_Name: Knop onderkant
   m_TagString: Untagged
@@ -59,6 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404838}
   - 212: {fileID: 21259314}
+  - 95: {fileID: 9575366}
   m_Layer: 0
   m_Name: Knop hint
   m_TagString: Untagged
@@ -85,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.7950001, y: .837599993, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -10.7950001, y: .894999981, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464924}
   m_RootOrder: 0
@@ -109,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3599999, y: .790000021, z: 0}
+  m_LocalPosition: {x: 9.73999977, y: .786000013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 410472}
@@ -127,19 +129,45 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -10.8100004, y: .910000026}
+  m_Offset: {x: -10.7971916, y: .921635866}
   serializedVersion: 2
-  m_Size: {x: .5, y: .209999993}
---- !u!95 &9559096
+  m_Size: {x: .232446671, y: .0424823761}
+--- !u!61 &6176734
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119856}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -1.90734863e-06, y: -.0163322091}
+  serializedVersion: 2
+  m_Size: {x: .25999999, y: .0655225664}
+--- !u!61 &6196446
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187654}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .389999986, y: .0399999991}
+--- !u!95 &9575366
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119856}
-  m_Enabled: 0
+  m_GameObject: {fileID: 195148}
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 17b52c3b708416a4e8c61a6c014d0b69, type: 2}
+  m_Controller: {fileID: 9100000, guid: ec95947cc26ba63459c8c91c7e2608ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -159,8 +187,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knop: {fileID: 119856}
-  lichten: []
-  platformen: []
+  lichten:
+  - {fileID: 0}
+  platformen:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &21227238
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -184,8 +222,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9e8befdde30d3434caa9f1122dde6b83, type: 3}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300046, guid: 22b3b3f8fff8588479448a8c9293becf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21259314
 SpriteRenderer:
