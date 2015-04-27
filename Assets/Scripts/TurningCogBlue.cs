@@ -25,6 +25,7 @@ public class TurningCogBlue : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		//dit kan vast beter maar dat is voor de debug weken -_-" 
 		if (angle < 0) {
 			if (rotated == true && rotation.z > angle) {
 				Rotate ();
@@ -35,7 +36,8 @@ public class TurningCogBlue : MonoBehaviour {
 			}
 		}
 
-		if (spotlight.GetComponent<Light> ().enabled == true) {
+		if (spotlight.GetComponent<Light> ().enabled == true) 
+		{
 			lampisaan = true;
 		} else {
 			lampisaan = false;

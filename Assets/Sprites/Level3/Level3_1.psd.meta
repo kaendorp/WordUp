@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 22b3b3f8fff8588479448a8c9293becf
-timeCreated: 1430139678
+timeCreated: 1430164372
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -62,7 +62,7 @@ TextureImporter:
     21300110: Lamp foot
     21300112: Platform chainweight
     21300114: Lamp M top
-    21300116: Level3_1_0
+    21300116: Lamp M Mid
     21300118: Lamp M bottom
     21300120: Rode deur
   serializedVersion: 2
@@ -147,8 +147,8 @@ TextureImporter:
         y: 1438
         width: 307
         height: 192
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Gordijn 2
       rect:
@@ -157,8 +157,8 @@ TextureImporter:
         y: 1292
         width: 307
         height: 139
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Gordijn 3
       rect:
@@ -167,8 +167,8 @@ TextureImporter:
         y: 1190
         width: 307
         height: 91
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Grote wijzer
       rect:
@@ -690,7 +690,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Level3_1_0
+    - name: Lamp M Mid
       rect:
         serializedVersion: 2
         x: 1217

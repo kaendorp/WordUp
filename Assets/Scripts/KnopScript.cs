@@ -20,11 +20,7 @@ public class KnopScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-		if (ingedrukt == true && teller == 0) 
-		{
-			knop.transform.Translate (0, -Time.deltaTime * 3, 0);
-			teller++;
-		}
+
 	}
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -46,7 +42,13 @@ public class KnopScript : MonoBehaviour {
                 }                     
 
                 ingedrukt = true;
-            }            
+            }
+
+			if (ingedrukt == true && teller == 0) 
+			{
+				knop.transform.Translate (0, -Time.deltaTime * 3, 0);
+				teller++;
+			}
         }
     }    
 }
