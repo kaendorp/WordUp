@@ -2,10 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class EnemyProjectileController : MonoBehaviour {
-
-	public float speed;
     public GameObject enemyDeathEffect;
-    public GameObject impactEffect;
 
     // Use this for initialization
     void Start()

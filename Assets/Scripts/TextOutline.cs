@@ -33,7 +33,7 @@ public class TextOutline : MonoBehaviour
             outline.transform.localScale = new Vector3(1, 1, 1);
             MeshRenderer otherMeshRenderer = outline.GetComponent<MeshRenderer>();
             otherMeshRenderer.material = new Material(meshRenderer.material);
-            otherMeshRenderer.castShadows = false;
+            otherMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             otherMeshRenderer.receiveShadows = false;
             otherMeshRenderer.sortingLayerID = meshRenderer.sortingLayerID;
             otherMeshRenderer.sortingLayerName = meshRenderer.sortingLayerName;

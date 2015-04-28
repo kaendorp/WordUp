@@ -434,7 +434,6 @@ public class EnemyController : MonoBehaviour
      */
     protected bool CanSeeObject(GameObject spottedObject)
     {
-        RaycastHit target;
         Vector3 rayDirection = spottedObject.transform.position - transform.position;
 
         if ((Vector3.Angle(rayDirection, -this.transform.up)) <= (stickyFOV * 0.5f)) // half fieldOfView gives the desired result
