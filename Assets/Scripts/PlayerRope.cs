@@ -76,9 +76,6 @@ public class PlayerRope : MonoBehaviour {
 	{
 		xOffset = offset;
 	}
-	void Start () {
-		
-	}
 
 	public void SetUpController(float newClimbingSpeed, float newSlippingSpeed, float newHorizontalSpeed, bool slipUp, bool slipDown, bool moveHorizontally, bool shake)
 	{

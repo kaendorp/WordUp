@@ -24,7 +24,7 @@ public class CharManager : MonoBehaviour {
 		playerRope.RegisterSegment(rope);
 		
 		if(transform.parent == null || transform.parent.position.y < rope.transform.position.y){
-			playerRope.SetUpController(0, 0, 0, true, false, false, true);
+            playerRope.SetUpController(0.0f, 0.0f, 0.0f, true, false, false, true);
 			
 			if(transform.parent == null)
             {
@@ -35,9 +35,14 @@ public class CharManager : MonoBehaviour {
 				playerRope.previousParent = transform.parent.gameObject;   
 			}
 			transform.parent = rope.transform;
-			
+
+            platformerCharacter = gameObject.GetComponent<PlatformerCharacter2D>();
+            platformerUserControl = gameObject.GetComponent<Platformer2DUserControl>();
+            playerRope = gameObject.GetComponent<PlayerRope>();
+
 			playerRope.SetXOffset(0.0f);
 			platformerCharacter.enabled = false;
+            platformerUserControl.enabled = false;
 			playerRope.enabled = true;
 		}
 	}
@@ -50,7 +55,7 @@ public class CharManager : MonoBehaviour {
 		
 		if(transform.parent == rope.transform){
 			transform.parent = playerRope.previousParent.transform;
-			//some setup
+
 			int tempValue = 0;
             
             foreach(DictionaryEntry segment in playerRope.segmentHashTable)
@@ -81,6 +86,7 @@ public class CharManager : MonoBehaviour {
             platformerCharacter.moveVelocity = 0;
 			transform.parent = null;
 			platformerCharacter.enabled = true;
+            platformerUserControl.enabled = true;
 			playerRope.enabled = false;
 		}
 	}

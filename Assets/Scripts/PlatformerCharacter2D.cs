@@ -139,7 +139,7 @@ using UnitySampleAssets.CrossPlatformInput;
         public void Move(float move, bool crouch, bool jump, bool crouched)
         {
 
-        float curSpeed = anim.GetFloat("speed");
+        float curSpeed = anim.GetFloat("Speed");
 
 		// If crouching, check to see if the character can stand up
 		if (!crouch && anim.GetBool ("Crouch")) 

@@ -6,18 +6,10 @@ public class RopeSegment : MonoBehaviour {
 	public int segmentNumber;
     private Rigidbody2D myRigidBody;
 	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		collider.gameObject.transform.parent.gameObject.SendMessage ("OnEnterRope", gameObject, SendMessageOptions.DontRequireReceiver);
+        collider.gameObject.transform.parent.gameObject.SendMessage("OnEnterRope", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
 
 	void OnTriggerExit2D(Collider2D collider)
@@ -47,7 +39,12 @@ public class RopeSegment : MonoBehaviour {
 		}
 
         jumper.transform.parent = null;
-        PlayerRopeScript.segmentHashTable.Clear();
+        jumper.GetComponent<PlayerRope>().segmentHashTable.Clear();
+
+        PlayerController.enabled = true;
+        PlayerControls.enabled = true;
+        jumper.GetComponent<PlayerRope>().enabled = false;
+
 
         PlayerController.jumpForce = 400f;
 	}
