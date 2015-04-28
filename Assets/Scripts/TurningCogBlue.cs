@@ -16,10 +16,15 @@ public class TurningCogBlue : MonoBehaviour {
 	public GameObject[] punt;
 	public GameObject spotlight;
 	public GameObject[] chainweightLamp;
+
+	private AudioClip _audioSource;
+	private Vector3 positie;
 	// Use this for initialization
 	void Start () 
 	{
 		rotated = false;
+		_audioSource = gameObject.GetComponent<AudioSource>().clip;
+		positie = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -35,13 +40,11 @@ public class TurningCogBlue : MonoBehaviour {
 				Rotate ();
 			}
 		}
+	}
 
-		if (spotlight.GetComponent<Light> ().enabled == true) 
-		{
-			lampisaan = true;
-		} else {
-			lampisaan = false;
-		}
+	void LampAan(bool aan)
+	{
+		lampisaan = true;
 		ShowPlatform(lampisaan);
 	}
 
@@ -49,7 +52,9 @@ public class TurningCogBlue : MonoBehaviour {
 	{
 		if(collision.tag == "Player" && rotated == false)
 		{
+			//play sound
 			rotated = true;
+			AudioSource.PlayClipAtPoint (_audioSource, positie, 0.1f);
 		}
 	}
 
@@ -70,6 +75,9 @@ public class TurningCogBlue : MonoBehaviour {
 			chainweightLamp[teller].transform.position = punt[teller].transform.position; 
 			teller++;
 		}
+
+		//kijken welke platformen aan moeten staan
+		ShowPlatform(lampisaan);
 	}
 
 	void ShowPlatform(bool lampisaan)
