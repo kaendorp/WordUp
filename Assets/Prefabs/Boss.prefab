@@ -302,11 +302,15 @@ MonoBehaviour:
   isActive: 0
   currentSequence: 0
   currentEvent: 0
-  bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
   polygonCollider: {fileID: 143418}
   circleCollider: {fileID: 152010}
+  startHealth: 3
+  currentHealth: 3
+  bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
+  messageObject: {fileID: 111418, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+  endMessage1: 
+  endMessage2: 
   fireAmount: 3
-  health: 3
   cooldownTime: 1
   firePoint: {fileID: 402168}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}

@@ -39,6 +39,12 @@ public class BossController : MonoBehaviour
     public int currentHealth = 3;
     public GameObject bossDeathFX = null;
 
+    // MESSAGE
+    [Header("MESSAGE")]
+    public GameObject messageObject;        // TextMesh object that will display our message
+    public string endMessage1 = "";
+    public string endMessage2 = "";
+
     // SHOOT
     [Header("SHOOT")]
     public float fireAmount = 3;
@@ -75,6 +81,19 @@ public class BossController : MonoBehaviour
                 bossSequenceList.Add(bossEvents.roarIdle);
                 break;
         }
+    }
+
+    /**
+     * A message set in the inspector will always have escaped newlines.
+     * 
+     * This will unescape the escaped newlines.
+     */
+    private void Start()
+    {
+        if (!string.IsNullOrEmpty(endMessage1))
+            endMessage1 = endMessage1.Replace("\\n", "\n");
+        if (!string.IsNullOrEmpty(endMessage2))
+            endMessage2 = endMessage2.Replace("\\n", "\n");
     }
 
     // Update is called once per frame
@@ -223,7 +242,6 @@ public class BossController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            anim.SetBool("IsDefeated", true);
             StartCoroutine(Defeated());
             isActive = false; // Makes sure the next action isn't accidentally called in Update()
         }
@@ -234,6 +252,19 @@ public class BossController : MonoBehaviour
      */
     IEnumerator Defeated()
     {
+        messageObject.SetActive(true);
+        // TODO: Disable player controlls without stopping time
+        messageObject.GetComponent<TextMesh>().text = endMessage1;
+        yield return new WaitForSeconds(4f);
+        messageObject.GetComponent<TextMesh>().text = "";
+        yield return new WaitForSeconds(1f);
+        messageObject.GetComponent<TextMesh>().text = endMessage2;
+        yield return new WaitForSeconds(4f);
+        messageObject.GetComponent<TextMesh>().text = "";
+        yield return new WaitForSeconds(1f);
+
+
+        anim.SetBool("IsDefeated", true);
         yield return new WaitForSeconds(1.1f);
         Instantiate(bossDeathFX);
         yield return new WaitForSeconds(3f);
