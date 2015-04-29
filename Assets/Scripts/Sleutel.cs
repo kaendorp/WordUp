@@ -6,6 +6,7 @@ public class Sleutel : MonoBehaviour {
 	public GameObject deur;
 	private AudioClip _audioSource;
 	private Vector3 positie;
+
 	// Use this for initialization
 	void Awake () 
 	{
@@ -26,7 +27,5 @@ public class Sleutel : MonoBehaviour {
 			Destroy (gameObject);
 			deur.SendMessage("GetKey");
 		}
-
-		//_audioSource.enabled = true;
 	}
 }

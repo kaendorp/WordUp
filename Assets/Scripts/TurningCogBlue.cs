@@ -31,6 +31,7 @@ public class TurningCogBlue : MonoBehaviour {
 	void Update () 
 	{
 		//dit kan vast beter maar dat is voor de debug weken -_-" 
+		//deze blijft nu natuurlijk checken ad infinitum
 		if (angle < 0) {
 			if (rotated == true && rotation.z > angle) {
 				Rotate ();
@@ -72,7 +73,7 @@ public class TurningCogBlue : MonoBehaviour {
 		int teller = 0;
 		foreach(GameObject chain in chainweightLamp)
 		{
-			chainweightLamp[teller].transform.position = punt[teller].transform.position; 
+			chain.transform.position = punt[teller].transform.position; 
 			teller++;
 		}
 
