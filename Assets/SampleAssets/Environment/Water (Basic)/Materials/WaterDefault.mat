@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: WaterDefault
-  m_Shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 498a428ceff5d444892f5e04146b3bfc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -45,6 +45,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Cutoff
+        second: .5
+      data:
+        first:
           name: _Shininess
         second: .078125
       data:
@@ -57,12 +61,12 @@ Material:
         second: .5
       data:
         first:
-          name: _EdgeLength
-        second: 10
-      data:
-        first:
           name: _InvFade
         second: 1
+      data:
+        first:
+          name: _EdgeLength
+        second: 10
     m_Colors:
       data:
         first:

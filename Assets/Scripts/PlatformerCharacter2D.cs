@@ -6,7 +6,7 @@ using UnitySampleAssets.CrossPlatformInput;
     {
 		//<VARIABLES>
         [SerializeField] private float maxSpeed = 10f; // The fastest the player can travel in the x axis.
-        [SerializeField] private float jumpForce = 400f; // Amount of force added when the player jumps.	
+        [SerializeField] public float jumpForce = 400f; // Amount of force added when the player jumps.	
 		[Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask whatIsGround; // A mask determining what is ground to the character
@@ -25,7 +25,7 @@ using UnitySampleAssets.CrossPlatformInput;
 		public bool crouched = true;
 		public float moveVelocity;
 
-	public bool canUseShield = true;
+	    public bool canUseShield = true;
 
 		private Rigidbody2D myrigidbody2D;
 
@@ -138,6 +138,9 @@ using UnitySampleAssets.CrossPlatformInput;
 
         public void Move(float move, bool crouch, bool jump, bool crouched)
         {
+
+        float curSpeed = anim.GetFloat("Speed");
+
 		// If crouching, check to see if the character can stand up
 		if (!crouch && anim.GetBool ("Crouch")) 
 		{
@@ -237,6 +240,16 @@ using UnitySampleAssets.CrossPlatformInput;
 			maxSpeed = 3f;
 		}
 	}
+
+        public void getSpeed(float speed)
+        {
+            speed = anim.GetFloat("Speed");
+        }
+
+        public void getVSpeed(float vSpeed)
+        {
+            vSpeed = anim.GetFloat("vSpeed");
+        }
 
 	//Timer for shoot animation
 	IEnumerator Wait(){
