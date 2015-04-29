@@ -681,8 +681,8 @@ MonoBehaviour:
   currentEvent: 0
   polygonCollider: {fileID: 168330}
   circleCollider: {fileID: 181154}
-  startHealth: 1
-  currentHealth: 1
+  startHealth: 3
+  currentHealth: 3
   bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
   messageObject: {fileID: 111418}
   endMessage1: Hmm, dus je was\ntoch niet alleen!
