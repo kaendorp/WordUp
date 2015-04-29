@@ -338,7 +338,7 @@ MonoBehaviour:
     m_Bits: 4294934729
   whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 49152
+    m_Bits: 16384
   crouched: 1
   moveVelocity: 0
   canUseShield: 1
@@ -367,6 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d7b34a3bb2d4e4b926e7e729d3d410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump: 0
 --- !u!212 &21204386
 SpriteRenderer:
   m_ObjectHideFlags: 1
