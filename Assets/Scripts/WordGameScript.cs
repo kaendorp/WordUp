@@ -7,15 +7,11 @@ public class WordGameScript : MonoBehaviour {
 	private GUISkin skin;
 	private GUISkin menuskin;
 
-	public Image controle;
+	public Image controle;	    
 
-	public RectTransform letter1;
-	public RectTransform letter2;
-	public RectTransform letter3;
+    public Text[] lettersText;
 
-	public Text letter1text;
-	public Text letter2text;
-	public Text letter3text;
+    public int aantalLetters;
 
 	public bool Active = false;
 	public bool WGcomplete = false;
@@ -27,18 +23,20 @@ public class WordGameScript : MonoBehaviour {
 
     // Welke letters, welk woord
     public string nieuwWoord;
-    public string letterKeuze1;
-    public string letterKeuze2;
-    public string letterKeuze3;
+    public string[] letterKeuze;    
 
 	// Buttons plaatsing
 	private Rect button1Rect = new Rect(15,15,160,30);
-	private Rect letter1Rect = new Rect (15, 15, 50, 50);
-	private Rect letter2Rect = new Rect (15, 15, 50, 50);
-	private Rect letter3Rect = new Rect (15, 15, 50, 50);
+	private Rect letter1Rect = new Rect(15, 15, 50, 50);
+	private Rect letter2Rect = new Rect(15, 15, 50, 50);
+	private Rect letter3Rect = new Rect(15, 15, 50, 50);
+    private Rect letter4Rect = new Rect(15, 15, 50, 50);
+    private Rect letter5Rect = new Rect(15, 15, 50, 50);
+    private Rect letter6Rect = new Rect(15, 15, 50, 50);
+    private Rect letter7Rect = new Rect(15, 15, 50, 50);
 
 	// Keyboard control
-	string[] buttons = new string[4] {"1", "2", "3", "Correct"};	
+    string[] buttons = new string[8] { "1", "2", "3", "4", "5", "6", "7", "Correct" };	
 	private int selected = 0;
 
 	// Use this for initialization
@@ -47,36 +45,98 @@ public class WordGameScript : MonoBehaviour {
 		skin = Resources.Load("WordgameButton") as GUISkin;
 		menuskin = Resources.Load("ButtonSkin") as GUISkin;
 
-		selected = 0;
+		selected = 0;        
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (letter1text.text + letter2text.text + letter3text.text == nieuwWoord) 
-		{
-			controle.color = new Color32(19, 182, 40, 225);
-			WGcomplete = true;
-		} 
-		else if (klik == 3) 
-		{
-			controle.color = new Color32(250, 66, 66, 225);
+        if (aantalLetters == 3)
+        {
+            if (lettersText[0].text + lettersText[1].text + lettersText[2].text == nieuwWoord)
+            {
+                controle.color = new Color32(19, 182, 40, 225);
+                WGcomplete = true;
+            }
+            else if (klik == 3)
+            {
+                controle.color = new Color32(250, 66, 66, 225);
 
-			letter1text.text = "";
-			letter2text.text = "";
-			letter3text.text = "";
-			klik = 0;
-		}
+                lettersText[0].text = "";
+                lettersText[1].text = "";
+                lettersText[2].text = "";
+                klik = 0;
+            }
+        }
+        if (aantalLetters == 4)
+        {
+            if (lettersText[0].text + lettersText[1].text + lettersText[2].text + lettersText[3].text == nieuwWoord)
+            {
+                controle.color = new Color32(19, 182, 40, 225);
+                WGcomplete = true;
+            }
+            else if (klik == 4)
+            {
+                controle.color = new Color32(250, 66, 66, 225);
+
+                lettersText[0].text = "";
+                lettersText[1].text = "";
+                lettersText[2].text = "";
+                lettersText[3].text = "";
+                klik = 0;
+            }
+        }
+        if (aantalLetters == 6)
+        {
+            if (lettersText[0].text + lettersText[1].text + lettersText[2].text + lettersText[3].text + lettersText[4].text + lettersText[5].text == nieuwWoord)
+            {
+                controle.color = new Color32(19, 182, 40, 225);
+                WGcomplete = true;
+            }
+            else if (klik == 6)
+            {
+                controle.color = new Color32(250, 66, 66, 225);
+
+                lettersText[0].text = "";
+                lettersText[1].text = "";
+                lettersText[2].text = "";
+                lettersText[3].text = "";
+                lettersText[4].text = "";
+                lettersText[5].text = "";
+                klik = 0;
+            }
+        }
+        if (aantalLetters == 7)
+        {
+            if (lettersText[0].text + lettersText[1].text + lettersText[2].text + lettersText[3].text + lettersText[4].text + lettersText[5].text + lettersText[6].text == nieuwWoord)
+            {
+                controle.color = new Color32(19, 182, 40, 225);
+                WGcomplete = true;
+            }
+            else if (klik == 7)
+            {
+                controle.color = new Color32(250, 66, 66, 225);
+
+                lettersText[0].text = "";
+                lettersText[1].text = "";
+                lettersText[2].text = "";
+                lettersText[3].text = "";
+                lettersText[4].text = "";
+                lettersText[5].text = "";
+                lettersText[5].text = "";
+                klik = 0;
+            }
+        }        
 
 		if(Input.GetKeyDown(KeyCode.D))
 		{			
-			selected = menuSelection(buttons, selected, "up");			
+			selected = menuSelection(buttons, selected, "right");			
 		}
 		
 		if(Input.GetKeyDown(KeyCode.A))
 		{
 			
-			selected = menuSelection(buttons, selected, "down");			
+			selected = menuSelection(buttons, selected, "left");			
 		}
 		if(Input.GetKeyDown(KeyCode.S))
 		{
@@ -87,7 +147,7 @@ public class WordGameScript : MonoBehaviour {
 
 	int menuSelection (string[] buttonsArray, int selectedItem, string direction) 
 	{		
-		if (direction == "up") 
+		if (direction == "left") 
 		{			
 			if (selectedItem == 0) 
 			{				
@@ -99,7 +159,7 @@ public class WordGameScript : MonoBehaviour {
 			}			
 		}
 		
-		if (direction == "down") {
+		if (direction == "right") {
 			
 			if (selectedItem == buttonsArray.Length - 1) 
 			{
@@ -113,110 +173,399 @@ public class WordGameScript : MonoBehaviour {
 		}
 		if (direction == "done") 
 		{
-			selectedItem = 3;
+			selectedItem = 7;
 		}
 		return selectedItem;		
 	}
 
 	void OnGUI()
 	{
-		button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
-		button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
+        button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
+        button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
 
-		letter1Rect.x = (Screen.width / 2) - (letter1Rect.width / 2);
-		letter1Rect.y = (Screen.height / 2) - (letter1Rect.height / 2);
+        letter1Rect.x = (Screen.width / 2) - (letter1Rect.width / 2);
+        letter1Rect.y = (Screen.height / 2) - (letter1Rect.height / 2);
 
-		letter2Rect.x = (Screen.width / 2) - (letter2Rect.width / 2);
-		letter2Rect.y = (Screen.height / 2) - (letter2Rect.height / 2);
+        letter2Rect.x = (Screen.width / 2) - (letter2Rect.width / 2);
+        letter2Rect.y = (Screen.height / 2) - (letter2Rect.height / 2);
 
-		letter3Rect.x = (Screen.width / 2) - (letter3Rect.width / 2);
-		letter3Rect.y = (Screen.height / 2) - (letter3Rect.height / 2);
+        letter3Rect.x = (Screen.width / 2) - (letter3Rect.width / 2);
+        letter3Rect.y = (Screen.height / 2) - (letter3Rect.height / 2);
+
+        letter4Rect.x = (Screen.width / 2) - (letter4Rect.width / 2);
+        letter4Rect.y = (Screen.height / 2) - (letter4Rect.height / 2);
+
+        letter5Rect.x = (Screen.width / 2) - (letter5Rect.width / 2);
+        letter5Rect.y = (Screen.height / 2) - (letter5Rect.height / 2);
+
+        letter6Rect.x = (Screen.width / 2) - (letter6Rect.width / 2);
+        letter6Rect.y = (Screen.height / 2) - (letter6Rect.height / 2);
+
+        letter7Rect.x = (Screen.width / 2) - (letter7Rect.width / 2);
+        letter7Rect.y = (Screen.height / 2) - (letter7Rect.height / 2);
 
 		GUI.FocusControl(buttons[selected]);
 		if (Active == true) 
 		{
-			letter1Rect.x = letter1Rect.x + 55;
-			letter1Rect.y = letter1Rect.y + 70;
+            if (aantalLetters == 3)
+            {
+                letter1Rect.x = letter1Rect.x - 55;
+                letter1Rect.y = letter1Rect.y + 70;
 
-			letter2Rect.y = letter2Rect.y + 70;
+                letter2Rect.y = letter2Rect.y + 70;
 
-			letter3Rect.x = letter3Rect.x - 55;
-			letter3Rect.y = letter3Rect.y + 70;
+                letter3Rect.x = letter3Rect.x + 55;
+                letter3Rect.y = letter3Rect.y + 70;
+            }
+            if (aantalLetters == 4)
+            {
+                letter1Rect.x = letter1Rect.x - 82.5f;
+                letter1Rect.y = letter1Rect.y + 70;
 
-			Time.timeScale =0;
+                letter2Rect.x = letter2Rect.x - 27.5f;
+                letter2Rect.y = letter2Rect.y + 70;
 
-			Wordgame.gameObject.SetActive(true);
+                letter3Rect.x = letter3Rect.x + 27.5f;
+                letter3Rect.y = letter3Rect.y + 70;
+
+                letter4Rect.x = letter4Rect.x + 82.5f;
+                letter4Rect.y = letter4Rect.y + 70;
+            }
+            if (aantalLetters == 6)
+            {
+                letter1Rect.x = letter1Rect.x - 137.5f;
+                letter1Rect.y = letter1Rect.y + 70;
+
+                letter2Rect.x = letter2Rect.x - 82.5f;
+                letter2Rect.y = letter2Rect.y + 70;
+
+                letter3Rect.x = letter3Rect.x - 27.5f;
+                letter3Rect.y = letter3Rect.y + 70;
+
+                letter4Rect.x = letter4Rect.x + 27.5f;
+                letter4Rect.y = letter4Rect.y + 70;
+
+                letter5Rect.x = letter5Rect.x + 82.5f;
+                letter5Rect.y = letter5Rect.y + 70;
+
+                letter6Rect.x = letter6Rect.x + 137.5f;
+                letter6Rect.y = letter6Rect.y + 70;
+            }
+            if (aantalLetters == 7)
+            {
+                letter1Rect.x = letter1Rect.x - 165;
+                letter1Rect.y = letter1Rect.y + 70;
+
+                letter2Rect.x = letter2Rect.x - 110;
+                letter2Rect.y = letter2Rect.y + 70;
+
+                letter3Rect.x = letter3Rect.x - 55;
+                letter3Rect.y = letter3Rect.y + 70;
+
+                letter4Rect.x = letter4Rect.x + 0;
+                letter4Rect.y = letter4Rect.y + 70;
+
+                letter5Rect.x = letter5Rect.x + 55;
+                letter5Rect.y = letter5Rect.y + 70;
+
+                letter6Rect.x = letter6Rect.x + 110;
+                letter6Rect.y = letter6Rect.y + 70;
+
+                letter7Rect.x = letter7Rect.x + 165;
+                letter7Rect.y = letter7Rect.y + 70;
+            }
+
+
+            if (aantalLetters >= 3)
+            {               
+                Time.timeScale = 0;
+
+                Wordgame.gameObject.SetActive(true);
+
+                // Set the skin to use
+                GUI.skin = skin;
+
+                GUI.SetNextControlName(buttons[0]);
+                // Eerste letter
+                if (GUI.Button(  
+                    letter1Rect,
+                    letterKeuze[0]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[0];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[0];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[0];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[0];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[0];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[0];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[0];
+                    }
+                }
+                GUI.SetNextControlName(buttons[1]);
+                // Tweede letter
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    letter2Rect,
+                    letterKeuze[1]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[1];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[1];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[1];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[1];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[1];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[1];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[1];
+                    }
+                }
+
+                GUI.SetNextControlName(buttons[2]);
+                // Derde letter
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    letter3Rect,
+                    letterKeuze[2]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[2];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[2];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[2];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[2];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[2];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[2];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[2];
+                    }
+                }
+            }
 			
-			// Set the skin to use
-			GUI.skin = skin;
+            if (aantalLetters >= 4)
+            {               
+               GUI.SetNextControlName(buttons[3]);
+                // Vierde letter
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    letter4Rect,
+                    letterKeuze[3]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[3];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[3];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[3];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[3];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[3];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[3];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[3];
+                    }
+                }
+            }
 
-			GUI.SetNextControlName(buttons[0]);
-			// Eerste letter
-			if (GUI.Button (
-				// Center in X, 2/3 of the height in Y
-				letter1Rect,
-				letterKeuze1
-				))
-			{
-				klik += 1;
-				if (letter1text.text == "")
-				{
-					letter1text.text = letterKeuze1;
-				}
-				else if (letter2text.text == "")
-				{
-                    letter2text.text = letterKeuze1;
-				}
-				else if (letter3text.text == "")
-				{
-                    letter3text.text = letterKeuze1;
-				}
-			}
-			GUI.SetNextControlName(buttons[1]);
-			// Tweede letter
-			if (GUI.Button (
-				// Center in X, 2/3 of the height in Y
-				letter2Rect,
-				letterKeuze2
-				)) 
-			{
-				klik += 1;
-				if (letter1text.text == "")
-				{
-					letter1text.text = letterKeuze2;
-				}
-				else if (letter2text.text == "")
-				{
-					letter2text.text = letterKeuze2;
-				}
-				else if (letter3text.text == "")
-				{
-					letter3text.text = letterKeuze2;
-				}
-			}
+            if (aantalLetters >= 6)
+            {               
+                GUI.SetNextControlName(buttons[4]);
+                // Vierde letter
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    letter5Rect,
+                    letterKeuze[4]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[4];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[4];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[4];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[4];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[4];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[4];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[4];
+                    }
+                }
 
-			GUI.SetNextControlName(buttons[2]);
-			// Derde letter
-			if (GUI.Button (
-				// Center in X, 2/3 of the height in Y
-				letter3Rect,
-				letterKeuze3
-				)) 
-			{		
-				klik += 1;
-				if (letter1text.text == "")
-				{
-					letter1text.text = letterKeuze3;
-				}
-				else if (letter2text.text == "")
-				{
-					letter2text.text = letterKeuze3;
-				}
-				else if (letter3text.text == "")
-				{
-					letter3text.text = letterKeuze3;
-				}
-			}
+                GUI.SetNextControlName(buttons[5]);
+                // Vierde letter
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    letter6Rect,
+                    letterKeuze[5]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[5];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[5];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[5];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[5];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[5];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[5];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[5];
+                    }
+                }
+
+            }
+
+            if (aantalLetters >= 7)
+            {            
+                GUI.SetNextControlName(buttons[6]);
+                // Vierde letter
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    letter7Rect,
+                    letterKeuze[6]
+                    ))
+                {
+                    klik += 1;
+                    if (lettersText[0].text == "")
+                    {
+                        lettersText[0].text = letterKeuze[6];
+                    }
+                    else if (lettersText[1].text == "")
+                    {
+                        lettersText[1].text = letterKeuze[6];
+                    }
+                    else if (lettersText[2].text == "")
+                    {
+                        lettersText[2].text = letterKeuze[6];
+                    }
+                    else if (lettersText[3].text == "")
+                    {
+                        lettersText[3].text = letterKeuze[6];
+                    }
+                    else if (lettersText[4].text == "")
+                    {
+                        lettersText[4].text = letterKeuze[6];
+                    }
+                    else if (lettersText[5].text == "")
+                    {
+                        lettersText[5].text = letterKeuze[6];
+                    }
+                    else if (lettersText[6].text == "")
+                    {
+                        lettersText[6].text = letterKeuze[6];
+                    }
+                }
+            }
 		}
 
 		if (WGcomplete == true) 
@@ -232,7 +581,7 @@ public class WordGameScript : MonoBehaviour {
 			// Set the skin to use
 			GUI.skin = menuskin;
 
-			GUI.SetNextControlName(buttons[3]);
+			GUI.SetNextControlName(buttons[7]);
 			// Correct Button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y
@@ -241,9 +590,9 @@ public class WordGameScript : MonoBehaviour {
 				)) 
 			{				
 				WGcomplete = false;
-				letter1text.text = "";
-				letter2text.text = "";
-				letter3text.text = "";
+                lettersText[0].text = "";
+                lettersText[1].text = "";
+                lettersText[2].text = "";
 				Time.timeScale = 1;
 				Wordgame.gameObject.SetActive(false);
 			}

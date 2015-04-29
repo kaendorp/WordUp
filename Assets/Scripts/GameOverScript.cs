@@ -15,6 +15,8 @@ public class GameOverScript : MonoBehaviour
 	string[] buttons = new string[2] {"Opnieuw?", "Menu"};	
 	private int selected = 0;
 
+    public string herstartlevel;
+
 	void Start()
 	{
 		// Load a skin for the buttons
@@ -101,7 +103,7 @@ public class GameOverScript : MonoBehaviour
 				GameOverActive = false;
 				gameoverMenu.gameObject.SetActive(false);
 				Time.timeScale = 1;
-				Application.LoadLevel ("Tutorial"); // Load Totorial
+                Application.LoadLevel(herstartlevel); // Load Totorial
 			}
 
 			GUI.SetNextControlName(buttons[1]);

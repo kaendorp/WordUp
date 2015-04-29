@@ -18,6 +18,8 @@ public class WinMenuScript : MonoBehaviour
     string[] buttons = new string[2] { "Menu", "Volgende level" };
     private int selected = 0;
 
+    public bool laatstelevel;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -95,19 +97,22 @@ public class WinMenuScript : MonoBehaviour
             // Set the skin to use
             GUI.skin = skin;
 
-            GUI.SetNextControlName(buttons[0]);
-            // Naar volgende level Button
-            if (GUI.Button(
-                // Center in X, 2/3 of the height in Y
-                button2Rect,
-                levelText
-                ))
+            if (laatstelevel == false)
             {
-                WinActive = false;
-                Time.timeScale = 1;
-                finishMenu.gameObject.SetActive(false);
-                Application.LoadLevel(levelKeuze);// Load next Level
-            }
+                GUI.SetNextControlName(buttons[0]);
+                // Naar volgende level Button
+                if (GUI.Button(
+                    // Center in X, 2/3 of the height in Y
+                    button2Rect,
+                    levelText
+                    ))
+                {
+                    WinActive = false;
+                    Time.timeScale = 1;
+                    finishMenu.gameObject.SetActive(false);
+                    Application.LoadLevel(levelKeuze);// Load next Level
+                }
+            }            
 
             GUI.SetNextControlName(buttons[1]);
             // Naar main menu Button
