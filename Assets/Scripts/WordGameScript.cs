@@ -130,13 +130,13 @@ public class WordGameScript : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.D))
 		{			
-			selected = menuSelection(buttons, selected, "up");			
+			selected = menuSelection(buttons, selected, "right");			
 		}
 		
 		if(Input.GetKeyDown(KeyCode.A))
 		{
 			
-			selected = menuSelection(buttons, selected, "down");			
+			selected = menuSelection(buttons, selected, "left");			
 		}
 		if(Input.GetKeyDown(KeyCode.S))
 		{
@@ -147,7 +147,7 @@ public class WordGameScript : MonoBehaviour {
 
 	int menuSelection (string[] buttonsArray, int selectedItem, string direction) 
 	{		
-		if (direction == "up") 
+		if (direction == "left") 
 		{			
 			if (selectedItem == 0) 
 			{				
@@ -159,7 +159,7 @@ public class WordGameScript : MonoBehaviour {
 			}			
 		}
 		
-		if (direction == "down") {
+		if (direction == "right") {
 			
 			if (selectedItem == buttonsArray.Length - 1) 
 			{
@@ -207,16 +207,77 @@ public class WordGameScript : MonoBehaviour {
 		GUI.FocusControl(buttons[selected]);
 		if (Active == true) 
 		{
-            if (aantalLetters >= 3)
+            if (aantalLetters == 3)
             {
-                letter1Rect.x = letter1Rect.x + 55;
+                letter1Rect.x = letter1Rect.x - 55;
                 letter1Rect.y = letter1Rect.y + 70;
 
+                letter2Rect.y = letter2Rect.y + 70;
+
+                letter3Rect.x = letter3Rect.x + 55;
+                letter3Rect.y = letter3Rect.y + 70;
+            }
+            if (aantalLetters == 4)
+            {
+                letter1Rect.x = letter1Rect.x - 82.5f;
+                letter1Rect.y = letter1Rect.y + 70;
+
+                letter2Rect.x = letter2Rect.x - 27.5f;
+                letter2Rect.y = letter2Rect.y + 70;
+
+                letter3Rect.x = letter3Rect.x + 27.5f;
+                letter3Rect.y = letter3Rect.y + 70;
+
+                letter4Rect.x = letter4Rect.x + 82.5f;
+                letter4Rect.y = letter4Rect.y + 70;
+            }
+            if (aantalLetters == 6)
+            {
+                letter1Rect.x = letter1Rect.x - 137.5f;
+                letter1Rect.y = letter1Rect.y + 70;
+
+                letter2Rect.x = letter2Rect.x - 82.5f;
+                letter2Rect.y = letter2Rect.y + 70;
+
+                letter3Rect.x = letter3Rect.x - 27.5f;
+                letter3Rect.y = letter3Rect.y + 70;
+
+                letter4Rect.x = letter4Rect.x + 27.5f;
+                letter4Rect.y = letter4Rect.y + 70;
+
+                letter5Rect.x = letter5Rect.x + 82.5f;
+                letter5Rect.y = letter5Rect.y + 70;
+
+                letter6Rect.x = letter6Rect.x + 137.5f;
+                letter6Rect.y = letter6Rect.y + 70;
+            }
+            if (aantalLetters == 7)
+            {
+                letter1Rect.x = letter1Rect.x - 165;
+                letter1Rect.y = letter1Rect.y + 70;
+
+                letter2Rect.x = letter2Rect.x - 110;
                 letter2Rect.y = letter2Rect.y + 70;
 
                 letter3Rect.x = letter3Rect.x - 55;
                 letter3Rect.y = letter3Rect.y + 70;
 
+                letter4Rect.x = letter4Rect.x + 0;
+                letter4Rect.y = letter4Rect.y + 70;
+
+                letter5Rect.x = letter5Rect.x + 55;
+                letter5Rect.y = letter5Rect.y + 70;
+
+                letter6Rect.x = letter6Rect.x + 110;
+                letter6Rect.y = letter6Rect.y + 70;
+
+                letter7Rect.x = letter7Rect.x + 165;
+                letter7Rect.y = letter7Rect.y + 70;
+            }
+
+
+            if (aantalLetters >= 3)
+            {               
                 Time.timeScale = 0;
 
                 Wordgame.gameObject.SetActive(true);
@@ -226,8 +287,7 @@ public class WordGameScript : MonoBehaviour {
 
                 GUI.SetNextControlName(buttons[0]);
                 // Eerste letter
-                if (GUI.Button(
-                    // Center in X, 2/3 of the height in Y
+                if (GUI.Button(  
                     letter1Rect,
                     letterKeuze[0]
                     ))
@@ -342,11 +402,8 @@ public class WordGameScript : MonoBehaviour {
             }
 			
             if (aantalLetters >= 4)
-            {
-                letter4Rect.x = letter4Rect.x + 110;
-                letter4Rect.y = letter4Rect.y + 70;
-
-                GUI.SetNextControlName(buttons[3]);
+            {               
+               GUI.SetNextControlName(buttons[3]);
                 // Vierde letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -387,13 +444,7 @@ public class WordGameScript : MonoBehaviour {
             }
 
             if (aantalLetters >= 6)
-            {
-                letter5Rect.x = letter5Rect.x + 165;
-                letter5Rect.y = letter5Rect.y + 70;
-                
-                letter6Rect.x = letter6Rect.x + 220;
-                letter6Rect.y = letter6Rect.y + 70;
-
+            {               
                 GUI.SetNextControlName(buttons[4]);
                 // Vierde letter
                 if (GUI.Button(
@@ -475,10 +526,7 @@ public class WordGameScript : MonoBehaviour {
             }
 
             if (aantalLetters >= 7)
-            {
-                letter7Rect.x = letter7Rect.x + 275;
-                letter7Rect.y = letter7Rect.y + 70;
-
+            {            
                 GUI.SetNextControlName(buttons[6]);
                 // Vierde letter
                 if (GUI.Button(
