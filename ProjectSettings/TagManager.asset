@@ -25,6 +25,7 @@ TagManager:
   - AbovePlatform
   - AboveTrigger
   - Sleutel
+  - ijstand
   layers:
   - Default
   - TransparentFX

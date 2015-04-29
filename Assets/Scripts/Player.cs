@@ -324,6 +324,11 @@ public class Player : MonoBehaviour {
 			
             HUD.GetComponent<WinMenuScript>().WinActive = true;
 		}
+
+        if (collision.gameObject.tag == "ijstand")
+        {
+            CurrentHealth -= 1;
+        }
 	}
 
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
