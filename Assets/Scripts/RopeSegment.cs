@@ -5,7 +5,6 @@ public class RopeSegment : MonoBehaviour {
 
 	public int segmentNumber;
     private Rigidbody2D myRigidBody;
-	// Use this for initialization
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
