@@ -220,8 +220,9 @@ public class BossController : MonoBehaviour
     IEnumerator Roar()
     {
         anim.SetBool("RoarIdle", true);
+        yield return new WaitForSeconds(1f);
         circleCollider.SetActive(true);
-        yield return new WaitForSeconds(3.17f);
+        yield return new WaitForSeconds(2.17f);
         circleCollider.SetActive(false);
         anim.SetBool("RoarIdle", false);
         yield return new WaitForSeconds(1f);
@@ -252,8 +253,10 @@ public class BossController : MonoBehaviour
      */
     IEnumerator Defeated()
     {
-        messageObject.SetActive(true);
         // TODO: Disable player controlls without stopping time
+        anim.SetBool("IsDefeated", true);
+
+        messageObject.SetActive(true);
         messageObject.GetComponent<TextMesh>().text = endMessage1;
         yield return new WaitForSeconds(4f);
         messageObject.GetComponent<TextMesh>().text = "";
@@ -262,9 +265,8 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(4f);
         messageObject.GetComponent<TextMesh>().text = "";
         yield return new WaitForSeconds(1f);
-
-
-        anim.SetBool("IsDefeated", true);
+        anim.SetTrigger("StandAndFlee");
+        
         yield return new WaitForSeconds(1.1f);
         Instantiate(bossDeathFX);
         yield return new WaitForSeconds(3f);

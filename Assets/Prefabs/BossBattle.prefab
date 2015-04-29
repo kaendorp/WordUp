@@ -14,7 +14,7 @@ GameObject:
   - 81: {fileID: 8123322}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Finish
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &117768
 GameObject:
   m_ObjectHideFlags: 1
@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &185826
 GameObject:
   m_ObjectHideFlags: 1
@@ -204,7 +204,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.63000011, y: -.600000024, z: 0}
+  m_LocalPosition: {x: -.699999988, y: 1.09000003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438202}
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 104536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.699999988, y: -1, z: -34.7000008}
-  m_LocalScale: {x: 1.73000002, y: 1.40999997, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406520}
   m_Father: {fileID: 438202}
@@ -283,7 +283,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.165999994, y: .606999993, z: 0}
+  m_LocalPosition: {x: -.187000006, y: .898999989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460774}
@@ -346,8 +346,8 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 10
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 3
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -393,7 +393,7 @@ CircleCollider2D:
   m_Material: {fileID: 6200000, guid: 4d503547f68c8b6498f603fb89fa6711, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0900000036, y: .25999999}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .138012111
 --- !u!60 &6058816
@@ -601,9 +601,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111418}
-  m_Text: fdsgfsd
+  m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: .200000003
+  m_CharacterSize: .100000001
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -681,7 +681,7 @@ MonoBehaviour:
   currentEvent: 0
   polygonCollider: {fileID: 168330}
   circleCollider: {fileID: 181154}
-  startHealth: 3
+  startHealth: 1
   currentHealth: 1
   bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
   messageObject: {fileID: 111418}
