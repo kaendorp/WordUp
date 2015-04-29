@@ -27,19 +27,22 @@ public class BossController : MonoBehaviour
     private int bossSequenceListValue = 0;
     private bool coroutineStarted = false;
 
-    public GameObject bossDeathFX = null;
-
+    // COLLIDERS
+    [Header("COLLIDERS")]
     public GameObject polygonCollider;
     public GameObject circleCollider;
     private Animator anim;
 
-    public float fireAmount = 3;
-
-    public int health = 3;
-    private int startHealth = 3;
+    // HEALTH
+    [Header("HEALTH")]
+    public int startHealth = 3;
+    public int currentHealth = 3;
+    public GameObject bossDeathFX = null;
 
     // SHOOT
-    public float cooldownTime = 0.25f; //amount of time (in secs.) between two shots
+    [Header("SHOOT")]
+    public float fireAmount = 3;
+    public float cooldownTime = 1f; //amount of time (in secs.) between two shots
     private GameObject player;
     private GameObject shot;
     public Transform firePoint;
@@ -47,9 +50,14 @@ public class BossController : MonoBehaviour
     public float projectileSpeed = 5f;
     public float projectileLifeTime = 2f;
 
+    /**
+     * Awake
+     * 
+     * Sets the animator, initiates the bossSequenceList and fills the list
+     * with the sequence of events.
+     */
     private void Awake()
     {
-        //bossProjectile = GetComponent<FireBossProjectile>();
         anim = GetComponent<Animator>();
 
         bossSequenceList = new BetterList<bossEvents>();
@@ -69,88 +77,111 @@ public class BossController : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (isActive && !coroutineStarted)
+        {
+            coroutineStarted = true;    // coroutineStarted is set to false in setNextAction();
+
+            switch (currentEvent)
+            {
+                case bossEvents.inactive:
+                    StartCoroutine(Idle());
+                    break;
+                case bossEvents.shoot:
+                    StartCoroutine(Shoot());
+                    break;
+                case bossEvents.roarIdle:
+                    StartCoroutine(Roar());
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Sets the playerobject.
+     * 
+     * Value is passed from TriggerBossBattle.OnTriggerEnter2D()
+     */
     public void setPlayerObject(GameObject passedObject)
     {
         player = passedObject;
     }
 
+    /**
+     * Makes the boss roar at the start of the battle.
+     * 
+     * Also sets the currenthealth to the set StartHealth
+     */
+    public void beginBossBattle()
+    {
+        bossSequenceListValue = bossSequenceList.IndexOf(bossEvents.roarIdle);
+        currentHealth = startHealth;
+    }
+
+    /**
+     * Every action calls this method at the end to initiate the next action
+     * according to the selected bossSequence.
+     * 
+     * It also ends the coroutineStarted check so it will start the next
+     * action in Update()
+     */
     private void setNextAction()
     {
-        Debug.Log("Going to : " + bossSequenceList[bossSequenceListValue].ToString());
-        Debug.Log("bossSequenceListValue : " + bossSequenceListValue);
-        Debug.Log("Buffersize : " + bossSequenceList.size.ToString());
-        coroutineStarted = false;
+        Debug.Log("Setting Action to : " + bossSequenceList[bossSequenceListValue].ToString());
         currentEvent = bossSequenceList[bossSequenceListValue];
         bossSequenceListValue++;
 
-        if (bossSequenceListValue > bossSequenceList.size)
+        if (bossSequenceListValue >= bossSequenceList.size) // ListValue starts at 0, List.size starts at 1
         {
             bossSequenceListValue = 0;
         }
+        coroutineStarted = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isActive)
-            switch (currentEvent)
-            {
-                case bossEvents.inactive:
-                    if (!coroutineStarted)
-                    {
-                        StartCoroutine(Idle());
-                        coroutineStarted = true;
-                    }
-                    break;
-                case bossEvents.shoot:
-                    if (!coroutineStarted)
-                    {
-                        StartCoroutine(Shoot());
-                        coroutineStarted = true;
-                    }
-                    break;
-                case bossEvents.roarIdle:
-                    if (!coroutineStarted)
-                    {
-                        StartCoroutine(Roar());
-                        coroutineStarted = true;
-                    }
-                    break;
-            }
-    }
-
-    public void beginBossBattle()
-    {
-        currentEvent = bossEvents.roarIdle;
-
-        health = startHealth;
-    }
-
+    /**
+     * Idle animation
+     * 
+     * Disables the circleCollider and makes sure the IsHit animation
+     * is disabled.
+     */
     IEnumerator Idle()
     {
         circleCollider.SetActive(false);
-        yield return new WaitForSeconds(1f);
         anim.SetBool("IsHit", false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+        Debug.Log("IDLE DONE");
         setNextAction();
     }
 
+    /**
+     * Shooting projectiles action
+     * 
+     * Triggers the shooting animation and fires 'fireAmount' of projectiles.
+     */
     IEnumerator Shoot()
     {
-        // Can't be hit whilst fireing
-        anim.SetBool("IsHit", false);
         anim.SetBool("IsShooting", true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); // Wait for the animation to end
 
         for (int fired = 0; fired < fireAmount; fired++)
         {
             FireProjectile();
             yield return new WaitForSeconds(cooldownTime);
         }
+
         anim.SetBool("IsShooting", false);
+        yield return new WaitForSeconds(1f); // Wait for the animation to end
+        Debug.Log("SHOOT DONE");
         setNextAction();
     }
 
+    /**
+     * Spawns a projectile and fires it towards the player
+     * 
+     * Player value is set in setPlayerObject()
+     */
     private void FireProjectile()
     {
         shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
@@ -161,55 +192,60 @@ public class BossController : MonoBehaviour
         Debug.DrawRay(firePoint.transform.position, force, Color.yellow);
     }
 
+    /**
+     * Roar action (laughs at player)
+     * 
+     * Triggers the roar animation and activates the circleCollider.
+     * The player can then shoot the boss in the mouth.
+     */
     IEnumerator Roar()
     {
-        // Can't be hit whilst roaring
-        anim.SetBool("IsHit", false);
         anim.SetBool("RoarIdle", true);
         circleCollider.SetActive(true);
         yield return new WaitForSeconds(3.17f);
         circleCollider.SetActive(false);
         anim.SetBool("RoarIdle", false);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("ROAR DONE");
         setNextAction();
     }
 
-    void OnCollisionEnter2D(Collision2D collider)
-    {
-        if (collider.gameObject.tag == "PlayerProjectile")
-        {
-            hitByPlayerProjectile();
-        }
-    }
-
+    /**
+     * Boss is hit by player.
+     * 
+     * Called by BossCirlceCollider.OnCollisionEnter2D() 
+     */
     public void hitByPlayerProjectile()
     {
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", true);
-        health--;
+        currentHealth--;
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
-            circleCollider.SetActive(false);
             anim.SetBool("IsDefeated", true);
             StartCoroutine(Defeated());
-            return;
+            isActive = false; // Makes sure the next action isn't accidentally called in Update()
         }
-
-        bossSequenceListValue = 0;
-        setNextAction();
     }
 
+    /**
+     * Called by hitByPlayerProjectile() when the boss ran out of health.
+     */
     IEnumerator Defeated()
     {
         yield return new WaitForSeconds(1.1f);
         Instantiate(bossDeathFX);
         yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
         PlayerVictory();
     }
 
+    /**
+     * Initiates the victory screen
+     */
     void PlayerVictory()
     {
-        Destroy(gameObject);
         GameObject g = GameObject.Find("HUD");
         WinMenuScript wScript = g.GetComponent<WinMenuScript>();
         wScript.WinActive = true;

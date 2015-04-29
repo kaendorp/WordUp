@@ -15,6 +15,7 @@ public class TriggerBossBattle : MonoBehaviour
         {
             bossController.isActive = true;
             bossController.setPlayerObject(col.gameObject);
+            bossController.beginBossBattle();
         }
     }
 

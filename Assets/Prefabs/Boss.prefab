@@ -307,7 +307,7 @@ MonoBehaviour:
   circleCollider: {fileID: 152010}
   fireAmount: 3
   health: 3
-  cooldownTime: .25
+  cooldownTime: 1
   firePoint: {fileID: 402168}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 5
