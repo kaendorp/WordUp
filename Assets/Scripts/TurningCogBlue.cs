@@ -5,9 +5,8 @@ public class TurningCogBlue : MonoBehaviour {
 	private bool rotated;
 	private Vector3 rotation = Vector3.zero;
 	private bool lampisaan;
-	private int modulo;
 
-	public float angle;
+	public float angle; //angle is new position -this appears to bug for -100, but -10 gives results as if -100
 
 	public GameObject[] platformen;
 	public GameObject[] platformenOff;
@@ -19,6 +18,7 @@ public class TurningCogBlue : MonoBehaviour {
 
 	private AudioClip _audioSource;
 	private Vector3 positie;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,16 +30,12 @@ public class TurningCogBlue : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//dit kan vast beter maar dat is voor de debug weken -_-" 
-		//deze blijft nu natuurlijk checken ad infinitum
-		if (angle < 0) {
-			if (rotated == true && rotation.z > angle) {
-				Rotate ();
-			}
-		} else {
-			if (rotated == true && rotation.z < angle) {
-				Rotate ();
-			}
+		//deze kan op false worden gezet, mits de collider buiten de draaiing 
+		//komt te staan :/ als dat gebeurt, dan wel trigger enabled laten, 
+		//ook, dan triggered het geluid meerdere keren
+		if (rotated == true) 
+		{
+			Rotate ();
 		}
 	}
 
@@ -53,23 +49,20 @@ public class TurningCogBlue : MonoBehaviour {
 	{
 		if(collision.tag == "Player" && rotated == false)
 		{
-			//play sound
 			rotated = true;
+			rotation.z = angle;
+
+			//voorkom triggeren nog een geluidje door random springen
+			gameObject.GetComponent<BoxCollider2D>().enabled = false;
+			//play sound
 			AudioSource.PlayClipAtPoint (_audioSource, positie, 0.1f);
 		}
 	}
 
 	void Rotate()
 	{
-		if (angle < 0) {
-			rotation.z += -Time.deltaTime * 20;
-			gameObject.transform.Rotate (0, 0, -Time.deltaTime * 20);
-		} else {
-			rotation.z += Time.deltaTime * 20;
-			gameObject.transform.Rotate (0, 0, Time.deltaTime * 20);
-		}
+		gameObject.transform.rotation = Quaternion.RotateTowards (gameObject.transform.rotation, Quaternion.Euler(0, 0, rotation.z), Time.deltaTime * 20);
 
-		//to do foreach
 		int teller = 0;
 		foreach(GameObject chain in chainweightLamp)
 		{

@@ -1537,11 +1537,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 198.699997
+      value: 131.309998
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.22999954
+      value: 10.75
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12641,7 +12641,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d88504227434eb944b2293f8d067a1a0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4775cb9d5fd3d574997119fe798332bd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .100000001
   m_Pitch: 1
@@ -14431,6 +14431,7 @@ GameObject:
   - 61: {fileID: 1069914987}
   - 61: {fileID: 1069914990}
   - 114: {fileID: 1069914989}
+  - 82: {fileID: 1069914988}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -14489,6 +14490,75 @@ BoxCollider2D:
   m_Offset: {x: .00429487228, y: -1.26776409}
   serializedVersion: 2
   m_Size: {x: 4.71492052, y: 1.30286503}
+--- !u!82 &1069914988
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069914984}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b2931414a6604c540a03f229b2d8dded, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .200000003
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &1069914989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14511,9 +14581,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -4.76837158e-07, y: -.637936592}
+  m_Offset: {x: -4.76837158e-07, y: -.667087555}
   serializedVersion: 2
-  m_Size: {x: 4.59863281, y: .192388535}
+  m_Size: {x: 4.59863281, y: .134083092}
 --- !u!1001 &1073712603
 Prefab:
   m_ObjectHideFlags: 0
@@ -19508,7 +19578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72ac84918f1fa04eb25076331c0e696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: -100
+  angle: -10
   platformen:
   - {fileID: 376957016}
   - {fileID: 697791666}
@@ -19546,7 +19616,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d88504227434eb944b2293f8d067a1a0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae06c6f00bf68e54992c64e8a957083d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .100000001
   m_Pitch: 1

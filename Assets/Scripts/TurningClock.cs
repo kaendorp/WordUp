@@ -19,9 +19,11 @@ public class TurningClock : MonoBehaviour {
 	private bool rotate;
 
 	private object[] temp = new object[2];
+
 	// Use this for initialization
 	void Start () {
-
+		_triggered = false;
+		rotate = false;
 	}
 	
 	// Update is called once per frame
@@ -80,6 +82,7 @@ public class TurningClock : MonoBehaviour {
 		}
 		_triggered = false;
 		//de klok zal niet draaien als je niet op het gewicht staat
+		//de quaternation pakt de huidige rotation wel weer op, so no worries
 		rotate = false;
 	}
 
