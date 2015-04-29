@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21298504}
   - 95: {fileID: 9573538}
   - 114: {fileID: 11465322}
-  - 114: {fileID: 11496276}
   m_Layer: 13
   m_Name: Boss
   m_TagString: Untagged
@@ -102,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.209999993, y: .657000005, z: 0}
+  m_LocalPosition: {x: -.187000006, y: .898999989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405042}
@@ -129,7 +128,7 @@ CircleCollider2D:
   m_Material: {fileID: 6200000, guid: 4d503547f68c8b6498f603fb89fa6711, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0900000036, y: .230000004}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .138012111
 --- !u!60 &6086504
@@ -300,22 +299,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf74a1808932ff144b1921df22efed17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inActiveNode: {fileID: 0}
-  dropToStartNode: {fileID: 0}
-  dropFXSpawnPoint: {fileID: 0}
-  bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
-  bossDropFX: {fileID: 0}
   isActive: 0
-  firePoint: {fileID: 402168}
-  projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
-  projectileSpeed: 1
-  projectileLifeTime: 2
-  eventWaitDelay: 3
+  currentSequence: 0
+  currentEvent: 0
   polygonCollider: {fileID: 143418}
   circleCollider: {fileID: 152010}
-  fireDelay: 3
-  currentEvent: 0
-  health: 1
+  startHealth: 3
+  currentHealth: 3
+  bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
+  messageObject: {fileID: 111418, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+  endMessage1: 
+  endMessage2: 
+  fireAmount: 3
+  cooldownTime: 1
+  firePoint: {fileID: 402168}
+  projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
+  projectileSpeed: 5
+  projectileLifeTime: 2
 --- !u!114 &11483100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,20 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossController: {fileID: 11465322}
---- !u!114 &11496276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8582f0500af423d41b6ade823a2e711e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossProjectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
-  cooldownTimeThreshold: 1
-  firePoint: {fileID: 152008}
 --- !u!212 &21298504
 SpriteRenderer:
   m_ObjectHideFlags: 1

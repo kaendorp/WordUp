@@ -12,7 +12,6 @@ GameObject:
   - 212: {fileID: 21242438}
   - 114: {fileID: 11441844}
   - 61: {fileID: 6174000}
-  - 61: {fileID: 6168540}
   - 95: {fileID: 9525128}
   m_Layer: 12
   m_Name: BossProjectile
@@ -40,7 +39,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189036}
   m_Mass: 1
-  m_LinearDrag: 2
+  m_LinearDrag: 0
   m_AngularDrag: .5
   m_GravityScale: 0
   m_FixedAngle: 1
@@ -48,19 +47,6 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6168540
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189036}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: -.201868579, y: 0}
-  serializedVersion: 2
-  m_Size: {x: .396262646, y: .319999993}
 --- !u!61 &6174000
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -102,10 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaad0d60de324694d92c97c037b90cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  isEnemyShot: 0
   enemyDeathEffect: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
-  speed: -3
 --- !u!212 &21242438
 SpriteRenderer:
   m_ObjectHideFlags: 1
