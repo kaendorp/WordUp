@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 85e5c4831c9722944bf8be71e1938d97
-timeCreated: 1426617390
+timeCreated: 1430374449
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: KindSprites_0
     21300002: KindSprites_1
+    21300004: KindSprites_2
+    21300006: KindSprites_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -64,7 +66,27 @@ TextureImporter:
     - name: KindSprites_1
       rect:
         serializedVersion: 2
+        x: 40
+        y: 112
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: KindSprites_2
+      rect:
+        serializedVersion: 2
         x: 16
+        y: 84
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: KindSprites_3
+      rect:
+        serializedVersion: 2
+        x: 40
         y: 84
         width: 16
         height: 26
