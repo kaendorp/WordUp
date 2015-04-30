@@ -7,10 +7,15 @@ public class Curtain : MonoBehaviour {
 	public GameObject container;
 	public Animator anim;
 
+	private AudioClip _audioSource;
+	private Vector3 positie;
+
 	private bool triggered;
 	// Use this for initialization
 	void Start () {
-	
+		triggered = false;
+		_audioSource = gameObject.GetComponent<AudioSource>().clip;
+		positie = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -26,6 +31,7 @@ public class Curtain : MonoBehaviour {
 			if(!triggered)
 			{
 				container.transform.Translate (0, -Time.deltaTime * 10, 0);
+				AudioSource.PlayClipAtPoint (_audioSource, positie);
 				triggered = true;
 			}
 		}
