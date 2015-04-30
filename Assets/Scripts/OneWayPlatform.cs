@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OneWayPlatform : MonoBehaviour {
 
-	PlatformerCharacter2D plyr;
+	PlatformerCharacter2D character;
 	
 	void OnTriggerEnter2D(Collider2D player)
 	{
@@ -15,7 +15,6 @@ public class OneWayPlatform : MonoBehaviour {
 	{
 		if (Input.GetKey(KeyCode.S)) {
 			transform.parent.GetComponent<Collider2D>().isTrigger = true;
-			plyr.climbingSwitch = true;
 		}
 	}
 

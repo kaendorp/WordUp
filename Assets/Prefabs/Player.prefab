@@ -45,6 +45,8 @@ GameObject:
   - 61: {fileID: 6118624}
   - 212: {fileID: 21211306}
   - 58: {fileID: 5806544}
+  - 114: {fileID: 11414636}
+  - 114: {fileID: 11417918}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -195,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .800000012, z: 0}
+  m_LocalPosition: {x: -6.88000011, y: -.189999998, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 405758}
@@ -290,6 +292,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11414636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157408}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88cb0be213cb69c46b455d1ed5a68fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+--- !u!114 &11417918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48f6839adb8e744eab8579bede087bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextParent: {fileID: 0}
 --- !u!114 &11442900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,22 +328,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
-  healthTransform: {fileID: 0}
-  visualHealth: {fileID: 0}
+  currentHealth: 0
   maxHealth: 10
   coolDown: 1
-  Boodschap: {fileID: 0}
-  kindText: {fileID: 0}
+  kindhealthPlus: 0
+  kindPlus: 0
   kindTextHUD: {fileID: 0}
   maxKids: 1
-  letterPanel: {fileID: 0}
   maxLetters: 3
-  letter_1: {fileID: 0}
-  letter_1HUD: {fileID: 0}
-  letter_2: {fileID: 0}
-  letter_2HUD: {fileID: 0}
-  letter_3: {fileID: 0}
-  letter_3HUD: {fileID: 0}
+  letters: []
+  lettersHUD: []
 --- !u!114 &11479562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,7 +359,6 @@ MonoBehaviour:
   whatIsClimbable:
     serializedVersion: 2
     m_Bits: 16384
-  crouched: 1
   moveVelocity: 0
   canUseShield: 1
   shield: {fileID: 178276}
@@ -352,10 +371,11 @@ MonoBehaviour:
   enabled: 0
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 440230}
-  letters: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
+  letters: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
   shotDelay: .600000024
   target: {fileID: 0}
   camera: {fileID: 0}
+  jump: 0
 --- !u!114 &11492954
 MonoBehaviour:
   m_ObjectHideFlags: 1
