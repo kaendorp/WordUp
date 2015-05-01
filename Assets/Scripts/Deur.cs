@@ -53,7 +53,6 @@ public class Deur : MonoBehaviour {
 		// Naar nieuwe kamer
 		mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 		collision.transform.position = spawnPoint.transform.position;
-
 		yield return new WaitForSeconds(wait);
 
 		// Lerp the colour of the texture between itself and transparent.

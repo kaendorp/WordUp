@@ -17,6 +17,7 @@ public class TurningClock : MonoBehaviour {
 
 	private bool _triggered;
 	private bool rotate;
+	private int teller;
 
 	private object[] temp = new object[2];
 
@@ -24,6 +25,7 @@ public class TurningClock : MonoBehaviour {
 	void Start () {
 		_triggered = false;
 		rotate = false;
+		teller = 0;
 	}
 	
 	// Update is called once per frame
@@ -47,22 +49,31 @@ public class TurningClock : MonoBehaviour {
 					rotationLittleHand.z = -60;
 					rotationBigHand.z = 50;
 					temp[0] = kloknummer;
-					temp[1] = -60f;
-					klokLamp.SendMessage("LampAan", temp);
+					temp[1] = startingposition;
+					if(teller == 0){
+						klokLamp.SendMessage("LampAan", temp);
+						teller++;
+					}
 					break;
 				case 1:
 					rotationLittleHand.z = -90;
 					rotationBigHand.z = 30;
 					temp[0] = kloknummer;
-					temp[1] = -90f;
-					klokLamp.SendMessage("LampAan", temp);
+					temp[1] = startingposition;
+					if(teller == 0){
+						klokLamp.SendMessage("LampAan", temp);
+						teller++;
+					}
 					break;
 				case 2:
 					rotationLittleHand.z = -70;
 					rotationBigHand.z = 130;
 					temp[0] = kloknummer;
-					temp[1] = -70f;
-					klokLamp.SendMessage("LampAan", temp);
+					temp[1] = startingposition;
+					if(teller == 0){
+						klokLamp.SendMessage("LampAan", temp);
+						teller++;
+					}
 					break;
 				default:
 					startingposition = 0;
@@ -81,6 +92,7 @@ public class TurningClock : MonoBehaviour {
 				startingposition = 0;
 		}
 		_triggered = false;
+		teller = 0;
 		//de klok zal niet draaien als je niet op het gewicht staat
 		//de quaternation pakt de huidige rotation wel weer op, so no worries
 		rotate = false;

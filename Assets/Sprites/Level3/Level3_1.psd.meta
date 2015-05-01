@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 22b3b3f8fff8588479448a8c9293becf
-timeCreated: 1430164372
+timeCreated: 1430405261
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -377,8 +377,8 @@ TextureImporter:
         y: 525
         width: 9
         height: 19
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lever onderkant
       rect:
