@@ -20,7 +20,7 @@ public class KindController : MonoBehaviour
     private bool healthBonus;
     private bool plusKind;
     private int checkHealth;
-    public GameObject Stats;
+    private GameObject Stats;
 
     public bool lookAtPlayer = true;
 
@@ -41,6 +41,9 @@ public class KindController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Vind het KindObject
+        Stats = GameObject.Find("Stats");
+
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
@@ -76,21 +79,24 @@ public class KindController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
 
             if (plusKind == false)
             {
+                Debug.Log("Trigger");
                 plusKind = true;
                 Stats.GetComponent<Player>().kindPlus = true;
             }
                         
             if (Stats.GetComponent<Player>().currentHealth < 10) // Als health niet vol is
-            {                
+            {
                 // Als kind nog niet de healthBonus gegeven heeft
                 if (healthBonus == false)
                 {
+                    Debug.Log("Trigger2");
                     healthBonus = true;
                     Stats.GetComponent<Player>().kindhealthPlus = true;
                 }

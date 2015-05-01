@@ -348,10 +348,24 @@ public class Player : MonoBehaviour {
                 rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
             }
 
-            rb.AddForce(Vector3.up * 500);
-            Debug.Log("Check");
+            if (currentHealth > 0)
+            {
+                rb.AddForce(Vector3.up * 300);
+                
+                if (!onCoolDown)
+                {
+                    Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
+                    StartCoroutine(coolDownDMG());
+                    CurrentHealth -= 1;
+                    Destroy(spawnedImpactEffect, 1);
+                }             
+            }
+            else
+            {
+                Respawn();
+            }
 
-            CurrentHealth -= 1;
+            
         }        
 	}
 

@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GladScript : MonoBehaviour {
-
+public class GladScript : MonoBehaviour
+{
     public bool glijHorizontaal;
 
     public bool glijLinks;
     public bool glijRechts;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start()
     {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-	    
-	}
+
+    }
 
     void OnTriggerStay2D(Collider2D collision)
     {
@@ -49,18 +49,14 @@ public class GladScript : MonoBehaviour {
             }
             if (glijRechts == true)
             {
-                rb.AddForce(Vector2.right * 20);
+                rb.AddForce(Vector2.right * 50);
+                rb.AddForce(Vector2.up * 10);
             }
             if (glijLinks == true)
             {
-                rb.AddForce(Vector3.left * 20);
-            }   
-        }             
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        Rigidbody2D rb = GameObject.Find("Player2").GetComponent<Rigidbody2D>();
-        //rb.AddForce(0);
+                rb.AddForce(Vector3.left * 50);
+                rb.AddForce(Vector2.up * 10);
+            }
+        }
     }
 }
