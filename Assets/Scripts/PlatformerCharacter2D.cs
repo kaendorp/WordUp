@@ -52,7 +52,6 @@ public class PlatformerCharacter2D : MonoBehaviour
     public bool knockFromRight;
 
     //Miscellaneous
-    public bool enabled;
     public GameObject impactEffect;
 
     //Firing Projectiles

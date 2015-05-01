@@ -18,15 +18,23 @@ public class PlayerRope : MonoBehaviour {
 
 	public Hashtable segmentHashTable;
 	public GameObject previousParent;
+    public GameObject parent;
+    Rigidbody2D rigidbody;
 
 	private float xOffset = 0.0f;
 	[System.NonSerialized] float directionToFace = 1;
 
 	void Awake () {
 		segmentHashTable = new Hashtable ();
+        rigidbody = gameObject.GetComponent<Rigidbody2D>();
 	}
 
 	void Update () {
+
+        Vector2 localPos = transform.localPosition;
+        localPos.x = xOffset;
+        transform.localPosition = localPos;
+
 
 		float rawVerticalAxis = Input.GetAxisRaw("Vertical");
 		float smoothVerticalAxis = Input.GetAxis("Vertical");
@@ -50,7 +58,7 @@ public class PlayerRope : MonoBehaviour {
         }
 		if(smoothHorizontalAxis != 0 && canMoveHorizontally)
         {
-			transform.Translate(Vector3.right * horizontalSpeed * smoothHorizontalAxis * Time.deltaTime);
+			transform.Translate(Vector2.right * horizontalSpeed * smoothHorizontalAxis * Time.deltaTime);
         }
        
         if (canShakeCarrier)
@@ -61,6 +69,10 @@ public class PlayerRope : MonoBehaviour {
         if (rawHorizontalAxis != 0)
             directionToFace = rawHorizontalAxis;
        }
+
+    void LateUpdate()
+    {
+    }
 
 	public void RegisterSegment(GameObject segment)
 	{

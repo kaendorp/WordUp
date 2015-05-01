@@ -6,6 +6,8 @@ public class RopeSegment : MonoBehaviour {
 	public int segmentNumber;
     private Rigidbody2D myRigidBody;
 
+
+
 	void OnTriggerEnter2D(Collider2D collider)
 	{
         collider.gameObject.transform.parent.gameObject.SendMessage("OnEnterRope", gameObject, SendMessageOptions.DontRequireReceiver);
@@ -25,10 +27,9 @@ public class RopeSegment : MonoBehaviour {
 		}
 
 		var PlayerController = jumper.GetComponent<PlatformerCharacter2D>();
-        var PlayerControls = jumper.GetComponent<Platformer2DUserControl>();
 		var PlayerRopeScript = jumper.GetComponent<PlayerRope>();
 
-        PlayerControls.jump = false;
+        PlayerController.jump = false;
 		PlayerController.moveVelocity = myRigidBody.velocity.x;
 
 		if(Mathf.Abs(myRigidBody.velocity.x) >= PlayerController.moveVelocity){
@@ -41,7 +42,6 @@ public class RopeSegment : MonoBehaviour {
         jumper.GetComponent<PlayerRope>().segmentHashTable.Clear();
 
         PlayerController.enabled = true;
-        PlayerControls.enabled = true;
         jumper.GetComponent<PlayerRope>().enabled = false;
 
 
