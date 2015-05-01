@@ -154,22 +154,31 @@ public class Player : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Enemy") // Near enemy? Health goes down every 2 seconds
 		{
-			if (!onCoolDown && currentHealth > 0)
-			{
-				Object spawnedImpactEffect = Instantiate (impactEffect, transform.position, transform.rotation);
-				StartCoroutine(coolDownDMG());
-				CurrentHealth -= 1;
+            if (!onCoolDown && currentHealth > 0)
+            {
+                Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
+                StartCoroutine(coolDownDMG());
+                CurrentHealth -= 1;
                 Destroy(spawnedImpactEffect, 1);
-			}
-            
-		}
-		if (collision.gameObject.tag == "Enemy") // If health goes below zero, while near enemy
-		{
-			if (currentHealth == 0)
-			{
-				Respawn();
-			}
-		}		
+            }
+            else if (currentHealth == 0)
+            {
+                Respawn();
+            }            
+		}        
+		
+        if (collision.gameObject.tag == "Water")
+        {
+            if (currentHealth > 0)
+            {
+                CurrentHealth -= 1;
+            }
+            else
+            {
+                Respawn();
+            }            
+        }
+
 	}
 
 	void OnTriggerEnter2D (Collider2D collision)
@@ -325,10 +334,39 @@ public class Player : MonoBehaviour {
             HUD.GetComponent<WinMenuScript>().WinActive = true;
 		}
 
-        if (collision.gameObject.tag == "ijstand")
+        if (collision.gameObject.tag == "Tand")
         {
-            CurrentHealth -= 1;
-        }
+            Rigidbody2D rb;
+
+            // Get Rigidbody
+            if (GameObject.Find("Player") == null)
+            {
+                rb = GameObject.Find("Player2").GetComponent<Rigidbody2D>();
+            }
+            else
+            {
+                rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+            }
+
+            if (currentHealth > 0)
+            {
+                rb.AddForce(Vector3.up * 300);
+                
+                if (!onCoolDown)
+                {
+                    Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
+                    StartCoroutine(coolDownDMG());
+                    CurrentHealth -= 1;
+                    Destroy(spawnedImpactEffect, 1);
+                }             
+            }
+            else
+            {
+                Respawn();
+            }
+
+            
+        }        
 	}
 
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
