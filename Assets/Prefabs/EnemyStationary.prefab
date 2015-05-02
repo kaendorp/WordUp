@@ -26,7 +26,7 @@ GameObject:
   - 212: {fileID: 21212692}
   - 50: {fileID: 5009560}
   - 61: {fileID: 6185020}
-  - 58: {fileID: 5815160}
+  - 61: {fileID: 6139032}
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
   m_Layer: 11
@@ -76,8 +76,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
---- !u!58 &5815160
-CircleCollider2D:
+--- !u!61 &6139032
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -86,9 +86,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .200000003
+  m_Size: {x: .349999994, y: .349999994}
 --- !u!61 &6185020
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  _state: 0
   friendlyPatrol: {fileID: 141542, guid: 21df6fb773e2faf4d923ab26c3c881d4, type: 2}
   friendlyStationary: {fileID: 141542, guid: 3c7802a97474e4142add153d5a19f28c, type: 2}
   friendlyFloating: {fileID: 141542, guid: 421aaf6e405001e4fbc55cca6540ebd2, type: 2}
@@ -149,11 +150,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
   projectileSpeed: 5
   projectileLifeTime: 2
-  fireDelay: 3
-  blindedDelay: 0
+  fireDelay: 2
   spotRadius: 3
   drawSpotRadiusGismo: 1
-  fieldOfView: 360
+  blindedDelay: 0
+  sprintMinSpeed: 0
+  stickyFOV: 360
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -27,21 +27,25 @@ public class FriendlyController : MonoBehaviour
     private Animator anim;
 
     // Spawn enemy
+    [Header("SPAWNS")]
     public GameObject enemyPatrol;
     public GameObject enemyStationary;
     private GameObject spawn;
     private GameObject setSpawn;
 
     // Message
+    [Header("MESSAGE")]
     public string message = "";                 // The message the fiendly will display when the player gets close
     public GameObject messageObject;            // TextMesh object that will display our message
 
     // Health
+    [Header("HEALTH")]
     public float currentHealth = 5f;
     public float invincibilityDuration = 2f;    // length of damage cooldown
     private bool onCoolDown = false;            // Cooldown active or not
 
     // Patrol
+    [Header("PATROL")]
     public float walkSpeed = 1f;                // Amount of velocity
     private bool walkingRight;                  // Simple check to see in what direction the enemy is moving, important for facing.
     public float collideDistance = 0.5f;        // Distance from enemy to check for a wall.
@@ -50,23 +54,25 @@ public class FriendlyController : MonoBehaviour
     private bool collidingWithGround = true;    // If true, it is not about to fall off an edge
 
     // Target (usually the player)
+    [Header("TARGET")]
     public string targetLayer = "Player";       // TODO: Make this a list, for players and friendly NPC's
     private GameObject target;
-
-    // Stop patroling delay
-    private bool delayCoroutineStarted = false;
-    private bool isBlinded = false;
-    public float blindedDelay = 2f;
 
     // Shoot
     private bool playerIsLeft;                  // Simple check to see if the player is left to the friendly, important for facing.
     private bool facingLeft = true;             // For determining which way the player is currently facing.
 
     // Spot
+    [Header("SPOT")]
     public float spotRadius = 3;                // Radius in which a player can be spotted
     public bool drawSpotRadiusGismo = true;     // Visual aid in determening if the spot radius
     private Collider2D[] collisionObjects;
     private bool playerSpotted = false;         // Has the friendly spotted the player?
+    
+    // Stop patroling delay
+    private bool delayCoroutineStarted = false;
+    private bool isBlinded = false;
+    public float blindedDelay = 2f;
 
     void Start()
     {

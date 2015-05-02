@@ -29,7 +29,6 @@ GameObject:
   - 50: {fileID: 5009560}
   - 61: {fileID: 6185020}
   - 58: {fileID: 5815160}
-  - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
   m_Layer: 11
   m_Name: EnemySticky
@@ -104,23 +103,6 @@ BoxCollider2D:
   m_Offset: {x: -.00231494918, y: -.00366020203}
   serializedVersion: 2
   m_Size: {x: .182542622, y: .149222359}
---- !u!95 &9564636
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141542}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9585956
 Animator:
   serializedVersion: 3
@@ -169,11 +151,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
   projectileSpeed: 5
   projectileLifeTime: 2
-  fireDelay: 3
-  blindedDelay: 0
+  fireDelay: 2
   spotRadius: 3
   drawSpotRadiusGismo: 1
-  fieldOfView: 180
+  blindedDelay: 0
+  sprintMinSpeed: 0
+  stickyFOV: 180
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
