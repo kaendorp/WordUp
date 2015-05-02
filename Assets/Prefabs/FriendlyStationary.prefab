@@ -243,12 +243,12 @@ MonoBehaviour:
   currentHealth: 5
   invincibilityDuration: 2
   walkSpeed: 0
-  collideDistance: .5
+  collideDistance: 0
   edgeDetection: 0
   targetLayer: Player
-  blindedDelay: 0
   spotRadius: 3
   drawSpotRadiusGismo: 1
+  blindedDelay: 0
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1

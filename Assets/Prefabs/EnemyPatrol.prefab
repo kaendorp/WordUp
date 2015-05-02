@@ -101,7 +101,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .25999999, y: .330000013}
+  m_Size: {x: .270000011, y: .340000004}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -151,10 +151,10 @@ MonoBehaviour:
   projectileSpeed: 5
   projectileLifeTime: 2
   fireDelay: 3
-  blindedDelay: 3
   spotRadius: 3
   drawSpotRadiusGismo: 1
-  sprintMinSpeed: .0500000007
+  blindedDelay: 3
+  sprintMinSpeed: 0
   stickyFOV: 360
 --- !u!212 &21212692
 SpriteRenderer:
