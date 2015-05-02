@@ -42,17 +42,14 @@ public class GameControl : MonoBehaviour {
         GameObject fiona = GameObject.Find("Player2");
 
         if (isMainMenu == false)
-        {
-            Debug.Log("NotmainMenu");
+        {            
             if (GameControl.control.selectPlayer == "Fynn")
-            {
-                Debug.Log("Fynn");
+            {                
                 fynn.SetActive(true);
                 fiona.SetActive(false);
             }
             else if (GameControl.control.selectPlayer == "Fiona")
-            {
-                Debug.Log("Fiona");
+            {                
                 fynn.SetActive(false);
                 fiona.SetActive(true);
             }

@@ -17,13 +17,7 @@ public class PauseMenuScripte : MonoBehaviour {
     private int selected = 0;
 
     private Text kindTextHUD;
-    private int maxKids;
-
-    void KindPlus()
-    {
-        //kindTextHUD.text = GameObject.Find("kind_teller_tekst").GetComponent<Text>().text;
-        Debug.Log("PLus");
-    }
+    private int maxKids;    
 
 	// Use this for initialization
 	void Start () 
@@ -31,10 +25,7 @@ public class PauseMenuScripte : MonoBehaviour {
         // Load a skin for the buttons
         skin = Resources.Load("ButtonSkin") as GUISkin;
 
-        selected = 0;
-
-        
-        //kindTextHUD.text = "0" + "  " + maxKids;
+        selected = 0; 
 	}
 	
 	// Update is called once per frame

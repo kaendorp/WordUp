@@ -121,8 +121,7 @@ public class Player : MonoBehaviour {
 	{
 		kindText.text = countKids + "  " + maxKids;
         PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
-        kindTextHUD.text = countKids + "  " + maxKids;
-        //pause.SendMessage("KindPlus");
+        kindTextHUD.text = countKids + "  " + maxKids;       
 	}
 	private void HandleLetters ()
 	{
