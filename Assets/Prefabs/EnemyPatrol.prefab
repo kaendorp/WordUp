@@ -150,10 +150,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 166636, guid: ebfb94d97499ff34181c520cbc3d2b9f, type: 2}
   projectileSpeed: 5
   projectileLifeTime: 2
-  fireDelay: 3
+  fireDelay: 2
   spotRadius: 3
   drawSpotRadiusGismo: 1
-  blindedDelay: 3
+  blindedDelay: 1.5
   sprintMinSpeed: 0
   stickyFOV: 360
 --- !u!212 &21212692
