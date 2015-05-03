@@ -17,6 +17,7 @@ public class BossController : MonoBehaviour
     {
         inactive,
         shoot,
+        bounce,
         roarIdle,
     }
 
@@ -47,7 +48,7 @@ public class BossController : MonoBehaviour
 
     // SHOOT
     [Header("SHOOT")]
-    public float fireAmount = 3;
+    public int fireAmount = 3;
     public float cooldownTime = 1f; //amount of time (in secs.) between two shots
     private GameObject player;
     private GameObject shot;
@@ -55,6 +56,15 @@ public class BossController : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 5f;
     public float projectileLifeTime = 2f;
+
+    [Header("BOUNCE")]
+    public int bouncePoints = 4;
+    public float bounceDistance = 2f;
+    public float bounceHeight = 2f;
+    public float bounceSpeed = 0.5f;
+    public float bounceFirepointHeight = 1f;
+    private bool goingDown = true;          // bouncy projectile going down?
+    private Vector2[] bouncyPath;
 
     /**
      * Awake
@@ -73,6 +83,11 @@ public class BossController : MonoBehaviour
             case bossSequence.tutorial:
                 bossSequenceList.Add(bossEvents.inactive);
                 bossSequenceList.Add(bossEvents.shoot);
+                bossSequenceList.Add(bossEvents.roarIdle);
+                break;
+            case bossSequence.level1:
+                bossSequenceList.Add(bossEvents.inactive);
+                bossSequenceList.Add(bossEvents.bounce);
                 bossSequenceList.Add(bossEvents.roarIdle);
                 break;
             default:
@@ -111,6 +126,9 @@ public class BossController : MonoBehaviour
                 case bossEvents.shoot:
                     StartCoroutine(Shoot());
                     break;
+                case bossEvents.bounce:
+                    StartCoroutine(Bounce());
+                    break;
                 case bossEvents.roarIdle:
                     StartCoroutine(Roar());
                     break;
@@ -135,7 +153,7 @@ public class BossController : MonoBehaviour
      */
     public void beginBossBattle()
     {
-        bossSequenceListValue = bossSequenceList.IndexOf(bossEvents.roarIdle);
+        isActive = true;
         currentHealth = startHealth;
     }
 
@@ -148,7 +166,7 @@ public class BossController : MonoBehaviour
      */
     private void setNextAction()
     {
-        Debug.Log("Setting Action to : " + bossSequenceList[bossSequenceListValue].ToString());
+        // Debug.Log("Setting Action to : " + bossSequenceList[bossSequenceListValue].ToString());
         currentEvent = bossSequenceList[bossSequenceListValue];
         bossSequenceListValue++;
 
@@ -170,7 +188,7 @@ public class BossController : MonoBehaviour
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", false);
         yield return new WaitForSeconds(2f);
-        Debug.Log("IDLE DONE");
+        //Debug.Log("IDLE DONE");
         setNextAction();
     }
 
@@ -192,7 +210,7 @@ public class BossController : MonoBehaviour
 
         anim.SetBool("IsShooting", false);
         yield return new WaitForSeconds(1f); // Wait for the animation to end
-        Debug.Log("SHOOT DONE");
+        //Debug.Log("SHOOT DONE");
         setNextAction();
     }
 
@@ -212,6 +230,111 @@ public class BossController : MonoBehaviour
     }
 
     /**
+     * Shooting bouncing projectiles action
+     * 
+     * Triggers the shooting animation and fires 'fireAmount' of projectiles.
+     */
+    IEnumerator Bounce()
+    {
+        anim.SetBool("IsShooting", true);
+        yield return new WaitForSeconds(1f); // Wait for the animation to end
+
+        bool firePointUp = true;
+        Vector3 firepointResetlocation = firePoint.transform.position;
+
+        for (int fired = 0; fired < fireAmount; fired++)
+        {
+            if (firePointUp)
+            {
+                firePoint.transform.position = firepointResetlocation;
+                goingDown = true;
+                firePointUp = false;
+            }
+            else
+            {
+                firePoint.transform.position = new Vector2(firePoint.transform.position.x, firePoint.transform.position.y + bounceFirepointHeight);
+                goingDown = false;
+                firePointUp = true;
+            }
+
+            BounceProjectile();
+            yield return new WaitForSeconds(cooldownTime);
+        }
+
+        anim.SetBool("IsShooting", false);
+        yield return new WaitForSeconds(1f); // Wait for the animation to end
+        //Debug.Log("SHOOT DONE");
+
+        firePoint.transform.position = firepointResetlocation;
+        setNextAction();
+    }
+
+    private void BounceProjectile()
+    {
+        shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
+        SetBouncyPath();
+        Vector2[] savedPath = bouncyPath; // might change during fire
+        StartCoroutine(MoveToBouncePoint(shot, savedPath, 1));
+    }
+
+    /**
+     * Set the path the bouncing projectile will make.
+     * 
+     * Y position of the boss is set to bottom. Provided the boss is standing on the floor this will give us the "floor" height.
+     */
+    private void SetBouncyPath()
+    {
+        Vector2 bouncy1 = firePoint.transform.position;
+        bouncyPath = new Vector2[bouncePoints+1];
+
+        bouncyPath[0] = bouncy1;
+
+        for (int i = 1; i <= bouncePoints; i++)
+        {
+            Vector2 bouncyI;
+            if (goingDown)
+            {
+                bouncyI = new Vector2((bouncyPath[i-1].x - bounceDistance), this.transform.position.y);
+                goingDown = false;
+            }
+            else
+            {
+                bouncyI = new Vector2((bouncyPath[i - 1].x - bounceDistance), this.transform.position.y + bounceHeight);
+                goingDown = true;
+            }
+            
+            bouncyPath[i] = bouncyI;
+        }
+    }
+
+    IEnumerator MoveToBouncePoint(GameObject shot, Vector2[] savedPath, int bouncePoint) 
+    {
+        float elapsedTime = 0f;
+        Vector3 startposition = new Vector3();
+
+        if (shot != null)
+            startposition = shot.transform.position;
+
+        while (elapsedTime < bounceSpeed)
+        {
+            if (shot == null)
+                break;
+            shot.transform.position = Vector3.Lerp(startposition, savedPath[bouncePoint], (elapsedTime/bounceSpeed));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        if (bouncePoint < bouncePoints || shot != null)
+        {
+            StartCoroutine(MoveToBouncePoint(shot, savedPath, bouncePoint + 1));
+        }
+        else
+        {
+            Destroy(shot);
+        }
+    }
+
+    /**
      * Roar action (laughs at player)
      * 
      * Triggers the roar animation and activates the circleCollider.
@@ -226,7 +349,7 @@ public class BossController : MonoBehaviour
         circleCollider.SetActive(false);
         anim.SetBool("RoarIdle", false);
         yield return new WaitForSeconds(1f);
-        Debug.Log("ROAR DONE");
+        //Debug.Log("ROAR DONE");
         setNextAction();
     }
 
@@ -282,5 +405,16 @@ public class BossController : MonoBehaviour
         GameObject g = GameObject.Find("HUD");
         WinMenuScript wScript = g.GetComponent<WinMenuScript>();
         wScript.WinActive = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (bouncyPath != null && bouncyPath.Length > 0)
+        {
+            for (int i = 1; i < bouncePoints; i++)
+            {
+                Debug.DrawLine(bouncyPath[i - 1], bouncyPath[i]);
+            }
+        }
     }
 }
