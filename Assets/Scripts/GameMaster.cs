@@ -4,15 +4,18 @@ using System.Collections;
 public class GameMaster : MonoBehaviour {
 
 	public static GameMaster gm;
+    public GameObject currentCheckPoint;
+    private PlatformerCharacter2D player;
 
 	void Start() {
 		if (gm == null) {
 			gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>();
 			}
+        player = FindObjectOfType<PlatformerCharacter2D>();
 		}
 
 	public Transform playerPrefab;
-	public Transform spawnPoint;  
+	public Transform checkPoint;  
 	public int spawnDelay = 2;
 	public Transform spawnPrefab;
 
@@ -20,14 +23,11 @@ public class GameMaster : MonoBehaviour {
 	public IEnumerator RespawnPlayer () {
 		Debug.Log ("TODO: Add waiting for spawn");
 		yield return new WaitForSeconds (spawnDelay);
-		Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation);
-		GameObject clone = Instantiate (spawnPrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
-		Destroy (clone, 3f);
+        player.transform.position = currentCheckPoint.transform.position;
 	}
 
-	public static void KillPlayer (Player player)
-	{
-		Destroy (player.gameObject);
-		gm.StartCoroutine (gm.RespawnPlayer());
+	public void Respawn ()
+    {
+        gm.StartCoroutine (gm.RespawnPlayer());
 	}
 }

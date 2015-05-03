@@ -6,8 +6,6 @@ public class RopeSegment : MonoBehaviour {
 	public int segmentNumber;
     private Rigidbody2D myRigidBody;
 
-
-
 	void OnTriggerEnter2D(Collider2D collider)
 	{
         collider.gameObject.transform.parent.gameObject.SendMessage("OnEnterRope", gameObject, SendMessageOptions.DontRequireReceiver);

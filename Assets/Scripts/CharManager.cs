@@ -23,7 +23,6 @@ public class CharManager : MonoBehaviour {
 	
 	void OnEnterRope(GameObject rope){
 
-
 		if((Input.GetAxisRaw("Vertical") != 1 && playerRope.enabled == false) || playerRope.segmentHashTable.ContainsValue(rope))
 			return;
 		
