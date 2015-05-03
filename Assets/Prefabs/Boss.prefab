@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   currentSequence: 0
-  currentEvent: 0
+  currentEvent: 4
   polygonCollider: {fileID: 143418}
   circleCollider: {fileID: 152010}
   startHealth: 3
@@ -315,11 +315,11 @@ MonoBehaviour:
   firePoint: {fileID: 402168}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 5
-  projectileLifeTime: 2
+  projectileLifeTime: 8
   bouncePoints: 4
   bounceDistance: 2
-  bounceHeight: 2
-  bounceSpeed: 1
+  bounceHeight: 4.5
+  bounceSpeed: .699999988
   bounceFirepointHeight: -1
 --- !u!114 &11483100
 MonoBehaviour:

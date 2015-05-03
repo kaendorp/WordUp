@@ -638,6 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0383f1051ddea49b0f033b801776e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  y: .5
 --- !u!114 &11444350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,7 +693,12 @@ MonoBehaviour:
   firePoint: {fileID: 442692}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 5
-  projectileLifeTime: 2
+  projectileLifeTime: 8
+  bouncePoints: 4
+  bounceDistance: 2
+  bounceHeight: 4.5
+  bounceSpeed: .699999988
+  bounceFirepointHeight: -1
 --- !u!114 &11489132
 MonoBehaviour:
   m_ObjectHideFlags: 1
