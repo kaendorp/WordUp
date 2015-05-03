@@ -15,6 +15,7 @@ public class BossController : MonoBehaviour
 
     public enum bossEvents
     {
+        roarAttack,
         inactive,
         shoot,
         bounce,
@@ -57,14 +58,19 @@ public class BossController : MonoBehaviour
     public float projectileSpeed = 5f;
     public float projectileLifeTime = 2f;
 
+    // BOUNCE
     [Header("BOUNCE")]
     public int bouncePoints = 4;
     public float bounceDistance = 2f;
     public float bounceHeight = 2f;
-    public float bounceSpeed = 0.5f;
-    public float bounceFirepointHeight = 1f;
+    public float bounceSpeed = 1f;
+    public float bounceFirepointHeight = -1f;
     private bool goingDown = true;          // bouncy projectile going down?
     private Vector2[] bouncyPath;
+
+    // ROAR ATTACK
+    [Header("ROAR")]
+    private bool wasHit = false;
 
     /**
      * Awake
@@ -89,6 +95,7 @@ public class BossController : MonoBehaviour
                 bossSequenceList.Add(bossEvents.inactive);
                 bossSequenceList.Add(bossEvents.bounce);
                 bossSequenceList.Add(bossEvents.roarIdle);
+                bossSequenceList.Add(bossEvents.roarAttack);
                 break;
             default:
                 bossSequenceList.Add(bossEvents.inactive);
@@ -128,6 +135,9 @@ public class BossController : MonoBehaviour
                     break;
                 case bossEvents.bounce:
                     StartCoroutine(Bounce());
+                    break;
+                case bossEvents.roarAttack:
+                    StartCoroutine(RoarAttack());
                     break;
                 case bossEvents.roarIdle:
                     StartCoroutine(Roar());
@@ -275,6 +285,7 @@ public class BossController : MonoBehaviour
         SetBouncyPath();
         Vector2[] savedPath = bouncyPath; // might change during fire
         StartCoroutine(MoveToBouncePoint(shot, savedPath, 1));
+        Destroy(shot, projectileLifeTime);
     }
 
     /**
@@ -324,13 +335,52 @@ public class BossController : MonoBehaviour
             yield return null;
         }
 
-        if (bouncePoint < bouncePoints || shot != null)
+        if (bouncePoint <= bouncePoints || shot != null)
         {
             StartCoroutine(MoveToBouncePoint(shot, savedPath, bouncePoint + 1));
         }
         else
         {
             Destroy(shot);
+        }
+    }
+
+    /**
+     * Roar attack (laughs at player)
+     * 
+     * Triggers the roar animation and activates the circleCollider.
+     * The player can then shoot the boss in the mouth.
+     */
+    IEnumerator RoarAttack()
+    {
+        if (wasHit)
+        {
+            wasHit = false;
+            anim.SetBool("IsHit", false);
+            anim.SetBool("RoarIdle", true);
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(PushPlayerLeft());
+            yield return new WaitForSeconds(2.17f);
+            anim.SetBool("RoarIdle", false);
+            yield return new WaitForSeconds(1f);
+            //Debug.Log("ROAR DONE");
+        }
+        setNextAction();
+    }
+
+    IEnumerator PushPlayerLeft()
+    {
+        //player.GetComponent<Rigidbody2D>().AddForce(new Vector2(player.transform.position.x - 100, player.transform.position.y));
+        float elapsedTime = 0f;
+
+        Vector2 moveToLocation = new Vector2(player.transform.position.x - 5, player.transform.position.y);
+
+        while (elapsedTime < 1)
+        {
+            //player.transform.position = Vector3.Lerp(player.transform.position, moveToLocation, (elapsedTime / 2));
+            player.GetComponent<Rigidbody2D>().AddForce(transform.right * -800);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
     }
 
@@ -363,6 +413,7 @@ public class BossController : MonoBehaviour
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", true);
         currentHealth--;
+        wasHit = true; // can trigger roarAttack
 
         if (currentHealth <= 0)
         {

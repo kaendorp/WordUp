@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.187000006, y: .898999989, z: 0}
+  m_LocalPosition: {x: -.237000003, y: .898999989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405042}
@@ -316,6 +316,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 5
   projectileLifeTime: 2
+  bouncePoints: 4
+  bounceDistance: 2
+  bounceHeight: 2
+  bounceSpeed: 1
+  bounceFirepointHeight: -1
 --- !u!114 &11483100
 MonoBehaviour:
   m_ObjectHideFlags: 1
