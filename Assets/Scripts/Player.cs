@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 
 	private RectTransform letterPanel;
 
-	private int countLetters;
+	public int countLetters;
 	private int CountLetters // Sets current amount of kids through HandleKids()
 	{
 		get { return countLetters;}
@@ -121,8 +121,7 @@ public class Player : MonoBehaviour {
 	{
 		kindText.text = countKids + "  " + maxKids;
         PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
-        kindTextHUD.text = countKids + "  " + maxKids;
-        //pause.SendMessage("KindPlus");
+        kindTextHUD.text = countKids + "  " + maxKids;       
 	}
 	private void HandleLetters ()
 	{
@@ -319,11 +318,7 @@ public class Player : MonoBehaviour {
 				letterPanel.gameObject.SetActive(false);
 				Destroy(collision.gameObject);				
                 HUD.GetComponent<WordGameScript>().Active = true;
-			}
-			else
-			{
-				// To do: Block Player
-			}
+			}			
 		}
 		
 		if (collision.gameObject.tag == "Finish") 

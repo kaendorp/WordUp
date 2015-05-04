@@ -4,19 +4,27 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour 
 {
-	private GUISkin skin;
+    public GameObject level;
+    public GameObject speler;
+    
+    private GUISkin skin;
 
 	// Keyboard control
-	string[] buttons = new string[4] {"START", "Prestaties", "Opties", "Exit"};	
+	string[] buttons = new string[6] { "Start", "Level", "Speler", "Prestaties", "Opties", "Exit" };	
 	private int selected = 0;
 
 	private Rect button1Rect = new Rect(15,15,160,30);
 	private Rect button2Rect = new Rect(15,15,160,30);
 	private Rect button3Rect = new Rect(15,15,160,30);
 	private Rect button4Rect = new Rect(15,15,160,30);
+    private Rect button5Rect = new Rect(15,15,160,30);
+    private Rect button6Rect = new Rect(15,15,160,30);
 
 	void Start()
 	{
+        level.SetActive(false);
+        speler.SetActive(false);
+
 		// Load a skin for the buttons
 		skin = Resources.Load("ButtonSkin") as GUISkin;
 
@@ -78,10 +86,18 @@ public class MainMenu : MonoBehaviour
 		button4Rect.x = (Screen.width / 2) - (button4Rect.width / 2);
 		button4Rect.y = (Screen.height / 2) - (button4Rect.height / 2);
 
+        button5Rect.x = (Screen.width / 2) - (button5Rect.width / 2);
+        button5Rect.y = (Screen.height / 2) - (button5Rect.height / 2);
+        
+        button6Rect.x = (Screen.width / 2) - (button6Rect.width / 2);
+        button6Rect.y = (Screen.height / 2) - (button6Rect.height / 2);
+
 		button1Rect.y = button1Rect.y - 130;
-		// button 2 staat goed
-		button3Rect.y = button3Rect.y + 40;
-		button4Rect.y = button4Rect.y + 80;
+        button2Rect.y = button2Rect.y - 90;
+		button3Rect.y = button3Rect.y - 50;
+		button4Rect.y = button4Rect.y - 10;
+        button5Rect.y = button5Rect.y + 30;
+        button6Rect.y = button6Rect.y + 70;
 		
 		// Set the skin to use
 		GUI.skin = skin;
@@ -94,42 +110,67 @@ public class MainMenu : MonoBehaviour
 			"START"
 		)) 
 		{
-			Application.LoadLevel ("Intro"); // Load Intro
+            GameControl.control.isMainMenu = false;
+			Application.LoadLevel (GameControl.control.loadLevel); // Load Intro
 		}
 
-		GUI.SetNextControlName(buttons[1]);
+        GUI.SetNextControlName(buttons[1]);
+        // Start Button
+        if (GUI.Button(
+            // Center in X, 2/3 of the height in Y
+            button2Rect,
+            "Speler"
+        ))
+        {
+            speler.SetActive(true); // Select Speler
+            this.gameObject.SetActive(false);
+        }
+
+        GUI.SetNextControlName(buttons[2]);
+        // Start Button
+        if (GUI.Button(
+            // Center in X, 2/3 of the height in Y
+            button3Rect,
+            "Level"
+        ))
+        {            
+            level.SetActive(true);// Select Level
+            this.gameObject.SetActive(false);
+        }
+
+
+		GUI.SetNextControlName(buttons[3]);
 		// Prestaties Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			button2Rect,
+			button4Rect,
 			"Prestaties"
 		)) 
 		{
-			Debug.Log ("Prestaties"); // Load Prestaties Scene
+             // Load Prestaties Scene
 		}
 
-		GUI.SetNextControlName(buttons[2]);
+		GUI.SetNextControlName(buttons[4]);
 		// Opties Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			button3Rect,
+			button5Rect,
 			"Opties"
 		)) 
 		{		
 			Debug.Log ("Opties"); // Load Opties Scene
 		}
 
-		GUI.SetNextControlName(buttons[3]);
+		GUI.SetNextControlName(buttons[5]);
 		// Exit Button
 		if (GUI.Button (
 			// Center in X, 2/3 of the height in Y
-			button4Rect	,
+			button6Rect	,
 			"Exit"
 		)) 
 		{
 			Application.Quit();  // Exit game
 		}
-
 		GUI.FocusControl(buttons[selected]);
 	}
 }
