@@ -16,6 +16,7 @@ public class PlayerRope : MonoBehaviour {
     [System.NonSerialized] float climbingSwitch = 0;
     [System.NonSerialized] float slippingSwitch = 0;
 
+    Player player;
 	public Hashtable segmentHashTable;
 	public GameObject previousParent;
     public GameObject parent;
@@ -26,16 +27,23 @@ public class PlayerRope : MonoBehaviour {
 
 	void Awake () {
 		segmentHashTable = new Hashtable ();
+
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	void Update () {
-
+    void FixedUpdate()
+    {
+        rigidbody.velocity = new Vector2(0.0f, 0.0f);
+        rigidbody.gravityScale = 0.0f;
+        rigidbody.drag = 0.0f;
+        rigidbody.angularVelocity = 0.0f;
+        rigidbody.angularVelocity = 0.0f;
         Vector2 localPos = transform.localPosition;
         localPos.x = xOffset;
         transform.localPosition = localPos;
+    }
 
-
+	void Update () {
 		float rawVerticalAxis = Input.GetAxisRaw("Vertical");
 		float smoothVerticalAxis = Input.GetAxis("Vertical");
 		float rawHorizontalAxis = Input.GetAxisRaw("Horizontal");

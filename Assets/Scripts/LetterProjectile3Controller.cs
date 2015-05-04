@@ -26,7 +26,7 @@ public class LetterProjectile3Controller : MonoBehaviour {
 	void Update () {
         transform.Translate(speed * Time.deltaTime, 6f * Time.deltaTime, 0);	
         if (this.gameObject != null)
-		    Destroy (this.gameObject,3);
+		    Destroy (this.gameObject,5);
 		// Destroy (this.impactEffect);
 	}
 

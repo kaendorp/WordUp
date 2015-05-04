@@ -3,6 +3,8 @@ using System.Collections;
 
 public class RopeSegment : MonoBehaviour {
 
+    Player player;
+    Rigidbody2D rigidbody;
 	public int segmentNumber;
     private Rigidbody2D myRigidBody;
 
@@ -45,4 +47,10 @@ public class RopeSegment : MonoBehaviour {
 
         PlayerController.jumpForce = 400f;
 	}
+
+    //void OnTriggerExit2D()
+    //{
+    //    rigidbody.gravityScale = 3f;
+    //}
 }
+

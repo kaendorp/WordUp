@@ -23,11 +23,14 @@ public class CharManager : MonoBehaviour {
 	
 	void OnEnterRope(GameObject rope){
 
-		if((Input.GetAxisRaw("Vertical") != 1 && playerRope.enabled == false) || playerRope.segmentHashTable.ContainsValue(rope))
+        character.anim.SetBool("Swinging", true);
+        
+        if((Input.GetAxisRaw("Vertical") != 1 && playerRope.enabled == false) || playerRope.segmentHashTable.ContainsValue(rope))
 			return;
 		
 		playerRope.RegisterSegment(rope);
 		
+
 		if(transform.parent == null || transform.parent.position.y < rope.transform.position.y){
             playerRope.SetUpController(0.0f, 0.0f, 0.0f, true, false, false, true);
 			
@@ -48,6 +51,9 @@ public class CharManager : MonoBehaviour {
 	}
 	
 	void OnExitRope(GameObject rope){
+
+        character.anim.SetBool("Swinging", false);
+        rigidbody.gravityScale = 3f;
 
         if (playerRope.enabled == false)
 			return;

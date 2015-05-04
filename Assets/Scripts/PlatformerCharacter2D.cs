@@ -26,7 +26,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     private Transform ceilingCheck; // A position marking where to check for ceilings
     private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
 
-    private Animator anim; // Reference to the player's animator component.
+    public Animator anim; // Reference to the player's animator component.
     private bool facingRight = true; // For determining which way the player is currently facing.
     private bool Shoot;
     public float moveVelocity;
@@ -80,7 +80,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         character = GetComponent<PlatformerCharacter2D>();
     }
 
-   private void Update()
+    private void Update()
     {
         if (!jump)
         {
@@ -121,9 +121,8 @@ public class PlatformerCharacter2D : MonoBehaviour
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
         climbing = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsClimbable);
         anim.SetBool("Ground", grounded);
-        anim.SetBool("Climbing", climbingSwitch);
         anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
-        
+
         //Climbing
         float move = Input.GetAxis("Horizontal");
         Climb(move);
@@ -175,6 +174,11 @@ public class PlatformerCharacter2D : MonoBehaviour
                     }
                 }
                 climbingSwitch = true;
+
+            }
+            else
+            {
+                anim.SetBool("Climbing", false);
             }
         }
         if (!climbing & climbingSwitch)
@@ -231,7 +235,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             move = (crouch ? move * crouchSpeed : move);
             anim.SetFloat("Speed", Mathf.Abs(move));
         }
-      
+
         if (knockbackCount <= 0)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
@@ -389,6 +393,12 @@ public class PlatformerCharacter2D : MonoBehaviour
             canUseShield = true;
 
         }
+
+        if (col.gameObject.tag == "Ladder")
+        {
+            anim.SetBool("Climbing", true);
+        }
+
         if (col.gameObject.tag == "TriggerBossBattle")
         {
             Camera.main.transform.position = transform.position;
@@ -414,6 +424,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             climbing = false;
             canUseShield = true;
         }
+
 
     }
     void OnTriggerExit2d(Collider2D col)
