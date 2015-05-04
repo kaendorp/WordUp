@@ -67,6 +67,10 @@ public class Player : MonoBehaviour {
     // Zet menu's active
     private GameObject HUD;
 
+	//audio get letters
+	private AudioClip _audioSource;
+	private Vector3 positie;
+
 	// Methods //
 	void Start()
 	{
@@ -120,8 +124,9 @@ public class Player : MonoBehaviour {
 	private void HandleKids ()
 	{
 		kindText.text = countKids + "  " + maxKids;
-        PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
-        kindTextHUD.text = countKids + "  " + maxKids;       
+        //PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
+        kindTextHUD.text = countKids + "  " + maxKids;
+        //pause.SendMessage("KindPlus");
 	}
 	private void HandleLetters ()
 	{
@@ -137,6 +142,7 @@ public class Player : MonoBehaviour {
 
 	IEnumerator coolDownDMG()
 	{
+		//to do speel geluidje hit enemy (!)
 		onCoolDown = true;
 		yield return new WaitForSeconds (coolDown);
 		onCoolDown = false;
@@ -188,6 +194,11 @@ public class Player : MonoBehaviour {
 			{
                 // Aantal letters gevonden
                 CountLetters += 1;
+
+				//speel geluidje
+				_audioSource = collision.gameObject.GetComponent<AudioSource>().clip;
+				positie = gameObject.transform.position;
+				AudioSource.PlayClipAtPoint (_audioSource, positie);
 
                 Destroy(collision.gameObject);
                 StartCoroutine(showLetters()); 
@@ -358,10 +369,8 @@ public class Player : MonoBehaviour {
             else
             {
                 Respawn();
-            }
-
-            
-        }        
+            } 
+        }   
 	}
 
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)

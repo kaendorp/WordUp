@@ -8,10 +8,13 @@ public class GladScript : MonoBehaviour
     public bool glijLinks;
     public bool glijRechts;
 
+	private AudioSource _audioSource;
+	private bool isPlayed;
     // Use this for initialization
     void Start()
     {
-
+		isPlayed = false;
+		_audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,13 +23,13 @@ public class GladScript : MonoBehaviour
 
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+			_audioSource.enabled = true;
             Rigidbody2D rb;
-
-            // Get Rigidbody
+			// Get Rigidbody
             if (GameObject.Find("Player") == null)
             {
                 rb = GameObject.Find("Player2").GetComponent<Rigidbody2D>();
@@ -59,4 +62,12 @@ public class GladScript : MonoBehaviour
             }
         }
     }
+
+	void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Player") 
+		{
+			_audioSource.enabled = false;
+		}
+	}
 }

@@ -11,13 +11,23 @@ public class DeurController : MonoBehaviour {
 	public GameObject spawnPoint;
 	public Camera mainCamera;
 	public float wait = 0.25f;
-
+	private GameObject player;
+	private bool goThroughDoor;
+	private bool isPlayed;
 	// Fade in/out
 	public float fadeInSpeed = 1.5f;        // Speed that the screen fades from black.
 	public float fadeOutSpeed = 1.5f;       // Speed that the screen fades to black.
 	public Image overlay;                   // Object in HUD that fills screen with a full alpha, black image
+	public AudioClip _audioSource;	//open door
+	public AudioClip _audioSource2; //closed door
 
 	void Start () {
+		isPlayed = false;
+		goThroughDoor = false;
+		player = GameObject.Find ("Player");
+		if (player == null) {
+			player = GameObject.Find ("Player2");
+		}
 	}
 	
 	// Update is called once per frame
@@ -28,20 +38,55 @@ public class DeurController : MonoBehaviour {
 	void GetKey(){
 		open = true;
 	}
-
-	void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Player" && open == true) 
+		if (collision.gameObject.tag == "Player") 
 		{
-			if(CrossPlatformInputManager.GetButtonDown ("Jump"))
-			{
-				//maak het scherm zwart
-				StartCoroutine(FadeToBlack(collision));
-			}
+			goThroughDoor = true;
 		}
 	}
 
-	IEnumerator FadeToBlack(Collider2D collision)
+	void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Player" && open == true && goThroughDoor == true) 
+		{
+			if (Input.GetKey (KeyCode.W)) 
+			{
+				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
+				if (!isPlayed) {
+					GetComponent<AudioSource> ().PlayOneShot (_audioSource);
+					isPlayed = true;
+				}
+				//maak het scherm zwart
+				StartCoroutine (FadeToBlack ());
+			}
+		} 
+		else 
+		{
+			if (Input.GetKey (KeyCode.W)) 
+			{
+				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
+				if (!isPlayed) 
+				{
+					GetComponent<AudioSource> ().PlayOneShot (_audioSource2);
+					isPlayed = true;
+				}
+			}
+
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Player") 
+		{
+			goThroughDoor = false;
+			isPlayed = false;
+			player.GetComponent<PlatformerCharacter2D>().jumpForce = 450;
+		}
+	}
+
+	IEnumerator FadeToBlack()
 	{
 		// Lerp the colour of the texture between itself and transparent.
 		float rate = fadeOutSpeed;
@@ -56,7 +101,7 @@ public class DeurController : MonoBehaviour {
 		overlay.color = Color.black;
 
 		// Naar nieuwe kamer
-		collision.transform.position = spawnPoint.transform.position;
+		player.transform.position = spawnPoint.transform.position;
 		mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 
 

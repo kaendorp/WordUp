@@ -28,6 +28,7 @@ TagManager:
   - Tand
   - Water
   - Stoel
+  - Ijstand
   layers:
   - Default
   - TransparentFX
