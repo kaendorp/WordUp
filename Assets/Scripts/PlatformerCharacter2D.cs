@@ -56,7 +56,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     //Firing Projectiles
     public Transform firePoint;
-    public GameObject letters;
+    public GameObject Projectile1;
+    public GameObject Projectile2;
+    public GameObject Projectile3;
+    public GameObject CurrentLetters;
     public float shotDelay;
     private float shotDelayCounter;
 
@@ -78,6 +81,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         ceilingCheck = transform.Find("CeilingCheck");
         anim = GetComponent<Animator>();
         character = GetComponent<PlatformerCharacter2D>();
+        CurrentLetters = Projectile1;
     }
 
     private void Update()
@@ -262,7 +266,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             shotDelayCounter -= Time.deltaTime;
             if (shotDelayCounter <= 0)
             {
-                Instantiate(letters, firePoint.position, firePoint.rotation);
+                Instantiate(CurrentLetters, firePoint.position, firePoint.rotation);
                 anim.SetBool("Shoot", true);
                 StartCoroutine(Wait());
                 // Destroy(letters, 2);
@@ -271,7 +275,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(letters, firePoint.position, firePoint.rotation);
+            Instantiate(CurrentLetters, firePoint.position, firePoint.rotation);
             anim.SetBool("Shoot", true);
             StartCoroutine(Wait());
             // Destroy(letters, 2);
@@ -298,6 +302,20 @@ public class PlatformerCharacter2D : MonoBehaviour
                 jumpForce = 450f;
                 maxSpeed = 3f;
             }
+
+        //Switching Weapons
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CurrentLetters = Projectile1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CurrentLetters = Projectile2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CurrentLetters = Projectile3;
+        }
     }
 
     public void getSpeed(float speed)

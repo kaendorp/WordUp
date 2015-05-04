@@ -10,11 +10,13 @@ public class RopeSegment : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
+        if(collider.gameObject.transform.parent != null)
         collider.gameObject.transform.parent.gameObject.SendMessage("OnEnterRope", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
 
 	void OnTriggerExit2D(Collider2D collider)
 	{
+        if (collider.gameObject.transform.parent != null)
 		collider.gameObject.transform.parent.gameObject.SendMessage("OnExitRope", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
 

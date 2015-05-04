@@ -29,7 +29,7 @@ GameObject:
   - 4: {fileID: 422604}
   m_Layer: 0
   m_Name: Rope
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ GameObject:
   - 61: {fileID: 6199250}
   m_Layer: 0
   m_Name: RopePart 2
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - 61: {fileID: 6194552}
   m_Layer: 0
   m_Name: RopePart 3
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - 61: {fileID: 6181058}
   m_Layer: 0
   m_Name: RopePart 1
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ GameObject:
   - 61: {fileID: 6196804}
   m_Layer: 0
   m_Name: RopePart
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +280,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -4.76837158e-07, y: .000370264053}
   serializedVersion: 2
-  m_Size: {x: .300000012, y: .682988703}
+  m_Size: {x: .200000003, y: .682988703}
 --- !u!61 &6192456
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -288,7 +288,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106932}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0cb77231a430b454fb792ff7ffcc3943, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.158369541}
@@ -306,7 +306,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -4.76837158e-07, y: -.0051817894}
   serializedVersion: 2
-  m_Size: {x: .300000012, y: .689637125}
+  m_Size: {x: .200000003, y: .689637125}
 --- !u!61 &6196804
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -319,7 +319,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -4.76837158e-07, y: .00358998775}
   serializedVersion: 2
-  m_Size: {x: .300000012, y: .342824072}
+  m_Size: {x: .200000003, y: .342824072}
 --- !u!61 &6199250
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -332,7 +332,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -4.76837158e-07, y: -.000766277313}
   serializedVersion: 2
-  m_Size: {x: .300000012, y: .679335177}
+  m_Size: {x: .200000003, y: .679335177}
 --- !u!114 &11405190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,9 +353,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 179958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: fb92f82b1d9db5a4b86c45979fb3853c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  segmentNumber: 0
 --- !u!114 &11472972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,8 +524,8 @@ HingeJoint2D:
   m_ConnectedAnchor: {x: .0169334412, y: -.139353275}
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 3
-    m_MaximumMotorForce: 10000
+    m_MotorSpeed: -3
+    m_MaximumMotorForce: 3
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -30
@@ -542,8 +543,8 @@ HingeJoint2D:
   m_ConnectedAnchor: {x: .00983428955, y: -.314602137}
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 3
-    m_MaximumMotorForce: 10000
+    m_MotorSpeed: -3
+    m_MaximumMotorForce: 3
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -30
@@ -599,8 +600,8 @@ HingeJoint2D:
   m_ConnectedAnchor: {x: .0169334412, y: -.337000132}
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 3
-    m_MaximumMotorForce: 10000
+    m_MotorSpeed: -3
+    m_MaximumMotorForce: 3
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -30
@@ -637,8 +638,8 @@ HingeJoint2D:
   m_ConnectedAnchor: {x: 36.3359871, y: 4.30778694}
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 3
-    m_MaximumMotorForce: 10000
+    m_MotorSpeed: -3
+    m_MaximumMotorForce: 3
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -30

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnitySampleAssets._2D;
 
-public class puzzleSwitch : MonoBehaviour
+public class PuzzleSwitch : MonoBehaviour
 {
 
     public GameObject puzzleWall;
