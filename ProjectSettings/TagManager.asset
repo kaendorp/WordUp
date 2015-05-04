@@ -25,10 +25,9 @@ TagManager:
   - AbovePlatform
   - AboveTrigger
   - Sleutel
-  - Tand
-  - Water
-  - Stoel
   - Ijstand
+  - puzzleBlock
+  - Rope
   layers:
   - Default
   - TransparentFX

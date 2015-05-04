@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b3de936eb5dd0bc4f914d17b080335bd
-timeCreated: 1429140754
+timeCreated: 1430765657
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -34,6 +34,7 @@ TextureImporter:
     21300054: Climb_01
     21300056: Climb_02
     21300058: ClimbUp
+    21300060: Fynn_Swinging
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -292,10 +293,20 @@ TextureImporter:
     - name: ClimbUp
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 58
-        width: 17
+        width: 18
         height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fynn_Swinging
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 59
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
