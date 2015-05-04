@@ -248,21 +248,17 @@ public class BossController : MonoBehaviour
     {
         anim.SetBool("IsShooting", true);
         yield return new WaitForSeconds(1f); // Wait for the animation to end
-
         bool firePointUp = true;
-        Vector3 firepointResetlocation = firePoint.transform.position;
 
         for (int fired = 0; fired < fireAmount; fired++)
         {
             if (firePointUp)
             {
-                firePoint.transform.position = firepointResetlocation;
                 goingDown = true;
                 firePointUp = false;
             }
             else
             {
-                firePoint.transform.position = new Vector2(firePoint.transform.position.x, firePoint.transform.position.y + bounceFirepointHeight);
                 goingDown = false;
                 firePointUp = true;
             }
@@ -275,7 +271,6 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(1f); // Wait for the animation to end
         //Debug.Log("SHOOT DONE");
 
-        firePoint.transform.position = firepointResetlocation;
         setNextAction();
     }
 
@@ -357,12 +352,9 @@ public class BossController : MonoBehaviour
         {
             wasHit = false;
             anim.SetBool("IsHit", false);
-            anim.SetBool("RoarIdle", true);
-            yield return new WaitForSeconds(1f);
+            anim.SetTrigger("RoarAttack");
             StartCoroutine(PushPlayerLeft());
-            yield return new WaitForSeconds(2.17f);
-            anim.SetBool("RoarIdle", false);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             //Debug.Log("ROAR DONE");
         }
         setNextAction();
@@ -378,7 +370,7 @@ public class BossController : MonoBehaviour
         while (elapsedTime < 1)
         {
             //player.transform.position = Vector3.Lerp(player.transform.position, moveToLocation, (elapsedTime / 2));
-            player.GetComponent<Rigidbody2D>().AddForce(transform.right * -800);
+            player.GetComponent<Rigidbody2D>().AddForce(transform.right * -600);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
