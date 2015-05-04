@@ -8,9 +8,15 @@ public class BouncyBed : MonoBehaviour {
 	private AudioClip _audioSource;
 	private Vector3 positie;
 	private bool playSound;
+
+	private GameObject player;
 	// Use this for initialization
 	void Start () 
 	{
+		player = GameObject.Find ("Player");
+		if (player == null) {
+			player = GameObject.Find ("Player2");
+		}
 		playSound = false;
 		_audioSource = gameObject.GetComponent<AudioSource>().clip;
 		positie = gameObject.transform.position;
@@ -26,7 +32,7 @@ public class BouncyBed : MonoBehaviour {
 		if (collision.gameObject.tag == "Player") 
 		{
 			playSound = true;
-			collision.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
+			player.GetComponent<Rigidbody2D>().velocity = velocity;
 		}
 	}
 

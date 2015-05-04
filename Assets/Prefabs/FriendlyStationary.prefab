@@ -28,8 +28,8 @@ GameObject:
   - 4: {fileID: 448260}
   - 212: {fileID: 21212692}
   - 50: {fileID: 5009560}
-  - 61: {fileID: 6174684}
   - 61: {fileID: 6121138}
+  - 61: {fileID: 6129926}
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
   m_Layer: 13
@@ -144,21 +144,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .5
+  m_Radius: .400000006
 --- !u!61 &6121138
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141542}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
-  serializedVersion: 2
-  m_Size: {x: .379999995, y: .920000017}
---- !u!61 &6174684
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -168,9 +155,22 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
+  m_Offset: {x: -0, y: .0399999991}
   serializedVersion: 2
-  m_Size: {x: .370000005, y: .910000026}
+  m_Size: {x: .400000006, y: .939999998}
+--- !u!61 &6129926
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141542}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0, y: .0399999991}
+  serializedVersion: 2
+  m_Size: {x: .419999987, y: .959999979}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -243,7 +243,7 @@ MonoBehaviour:
   currentHealth: 5
   invincibilityDuration: 2
   walkSpeed: 0
-  collideDistance: 0
+  collideDistance: .5
   edgeDetection: 0
   targetLayer: Player
   spotRadius: 3

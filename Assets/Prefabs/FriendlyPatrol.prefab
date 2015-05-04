@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &130096
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +33,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &141542
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - 212: {fileID: 21212692}
   - 50: {fileID: 5009560}
   - 61: {fileID: 6121138}
-  - 61: {fileID: 6147594}
+  - 61: {fileID: 6193922}
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
   m_Layer: 13
@@ -144,7 +144,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0500000007}
   serializedVersion: 2
-  m_Radius: .5
+  m_Radius: .400000006
 --- !u!61 &6121138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -155,10 +155,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
+  m_Offset: {x: -0, y: .0399999991}
   serializedVersion: 2
-  m_Size: {x: .370000005, y: .910000026}
---- !u!61 &6147594
+  m_Size: {x: .400000006, y: .939999998}
+--- !u!61 &6193922
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -168,9 +168,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .0500000007}
+  m_Offset: {x: -0, y: .0399999991}
   serializedVersion: 2
-  m_Size: {x: .379999995, y: .920000017}
+  m_Size: {x: .419999987, y: .959999979}
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -246,9 +246,9 @@ MonoBehaviour:
   collideDistance: .400000006
   edgeDetection: 1
   targetLayer: Player
-  blindedDelay: 2
   spotRadius: 3
   drawSpotRadiusGismo: 1
+  blindedDelay: 2
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1

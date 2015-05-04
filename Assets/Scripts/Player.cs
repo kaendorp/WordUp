@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 
 	private RectTransform letterPanel;
 
-	private int countLetters;
+	public int countLetters;
 	private int CountLetters // Sets current amount of kids through HandleKids()
 	{
 		get { return countLetters;}
@@ -66,6 +66,10 @@ public class Player : MonoBehaviour {
 
     // Zet menu's active
     private GameObject HUD;
+
+	//audio get letters
+	private AudioClip _audioSource;
+	private Vector3 positie;
 
 	// Methods //
 	void Start()
@@ -120,7 +124,7 @@ public class Player : MonoBehaviour {
 	private void HandleKids ()
 	{
 		kindText.text = countKids + "  " + maxKids;
-        PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
+        //PauseMenuScripte pause = HUD.GetComponent<PauseMenuScripte>();
         kindTextHUD.text = countKids + "  " + maxKids;
         //pause.SendMessage("KindPlus");
 	}
@@ -138,6 +142,7 @@ public class Player : MonoBehaviour {
 
 	IEnumerator coolDownDMG()
 	{
+		//to do speel geluidje hit enemy (!)
 		onCoolDown = true;
 		yield return new WaitForSeconds (coolDown);
 		onCoolDown = false;
@@ -189,6 +194,11 @@ public class Player : MonoBehaviour {
 			{
                 // Aantal letters gevonden
                 CountLetters += 1;
+
+				//speel geluidje
+				_audioSource = collision.gameObject.GetComponent<AudioSource>().clip;
+				positie = gameObject.transform.position;
+				AudioSource.PlayClipAtPoint (_audioSource, positie);
 
                 Destroy(collision.gameObject);
                 StartCoroutine(showLetters()); 
@@ -319,11 +329,7 @@ public class Player : MonoBehaviour {
 				letterPanel.gameObject.SetActive(false);
 				Destroy(collision.gameObject);				
                 HUD.GetComponent<WordGameScript>().Active = true;
-			}
-			else
-			{
-				// To do: Block Player
-			}
+			}			
 		}
 		
 		if (collision.gameObject.tag == "Finish") 
@@ -363,10 +369,8 @@ public class Player : MonoBehaviour {
             else
             {
                 Respawn();
-            }
-
-            
-        }        
+            } 
+        }   
 	}
 
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)

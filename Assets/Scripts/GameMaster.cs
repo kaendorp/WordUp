@@ -1,33 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameMaster : MonoBehaviour {
+public class GameMaster : MonoBehaviour
+{
 
-	public static GameMaster gm;
+    public static GameMaster gm;
+    public GameObject currentCheckPoint;
+    private PlatformerCharacter2D player;
+    public GameObject RespawnEffect;
 
-	void Start() {
-		if (gm == null) {
-			gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>();
-			}
-		}
-
-	public Transform playerPrefab;
-	public Transform spawnPoint;  
-	public int spawnDelay = 2;
-	public Transform spawnPrefab;
+    public Transform playerPrefab;
+    public Transform checkPoint;
+    public int spawnDelay = 2;
+    public Transform spawnPrefab;
 
 
-	public IEnumerator RespawnPlayer () {
-		Debug.Log ("TODO: Add waiting for spawn");
-		yield return new WaitForSeconds (spawnDelay);
-		Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation);
-		GameObject clone = Instantiate (spawnPrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
-		Destroy (clone, 3f);
-	}
+    void Start()
+    {
+        if (gm == null)
+        {
+            gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        }
+        player = FindObjectOfType<PlatformerCharacter2D>();
+    }
 
-	public static void KillPlayer (Player player)
-	{
-		Destroy (player.gameObject);
-		gm.StartCoroutine (gm.RespawnPlayer());
-	}
+
+    public IEnumerator RespawnPlayer()
+    {
+        Debug.Log("TODO: Add waiting for spawn");
+        player.gameObject.active = false;
+        yield return new WaitForSeconds(spawnDelay);
+        Instantiate(RespawnEffect, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
+        player.transform.position = currentCheckPoint.transform.position;
+        player.gameObject.active = true;
+    }
+
+
+    public void Respawn()
+    {
+        gm.StartCoroutine(gm.RespawnPlayer());
+    }
 }

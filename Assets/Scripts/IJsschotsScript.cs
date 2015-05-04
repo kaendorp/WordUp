@@ -7,11 +7,9 @@ public class IJsschotsScript : MonoBehaviour {
     private Vector2 pos2 = new Vector2(41.2f, 4.62f);
     public float speed;
 
-    private bool bewegen;
     // Use this for initialization
 	void Start () 
     {
-        bewegen = false;
 	}
 	
 	// Update is called once per frame

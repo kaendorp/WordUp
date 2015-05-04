@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 454180}
   - 212: {fileID: 21285980}
-  - 61: {fileID: 6125032}
   - 114: {fileID: 11496726}
   - 60: {fileID: 6052510}
   m_Layer: 0
@@ -31,6 +30,7 @@ GameObject:
   - 114: {fileID: 11441816}
   - 50: {fileID: 5061184}
   - 61: {fileID: 6194026}
+  - 82: {fileID: 8219214}
   m_Layer: 0
   m_Name: IJstand_klein
   m_TagString: Untagged
@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.1000004, y: 5.98099995, z: -19.5499992}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 454180}
@@ -96,19 +96,6 @@ PolygonCollider2D:
       - {x: .0138969421, y: -.138009548}
       - {x: -.0125923157, y: -.138581753}
       - {x: -.0932674408, y: .12789011}
---- !u!61 &6125032
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112764}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: .180000007, y: .300000012}
 --- !u!61 &6194026
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -122,6 +109,75 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -1.35000002}
   serializedVersion: 2
   m_Size: {x: .119999997, y: 3}
+--- !u!82 &8219214
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196756}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 10f8a8e346a8b704c9c8dd9288021002, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .100000001
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11441816
 MonoBehaviour:
   m_ObjectHideFlags: 1

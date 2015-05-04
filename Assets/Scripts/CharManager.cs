@@ -4,25 +4,33 @@ using System.Collections;
 public class CharManager : MonoBehaviour {
 
 
-    [System.NonSerialized] PlatformerCharacter2D platformerCharacter;
-    [System.NonSerialized] Platformer2DUserControl platformerUserControl;
+    private PlatformerCharacter2D character;
     [System.NonSerialized] PlayerRope playerRope;
+    Rigidbody2D rigidbody;
 
     public GameObject nextParent;
 
+    void Start()
+    {
+        character = GetComponent<PlatformerCharacter2D>();
+    }
+
 	void Awake(){
-        platformerCharacter = gameObject.GetComponent<PlatformerCharacter2D>();
-        platformerUserControl = gameObject.GetComponent<Platformer2DUserControl>();
+        character = GetComponent<PlatformerCharacter2D>();
         playerRope = gameObject.GetComponent<PlayerRope>();
+        rigidbody = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
 	void OnEnterRope(GameObject rope){
 
-		if((Input.GetAxisRaw("Vertical") != 1 && playerRope.enabled == false) || playerRope.segmentHashTable.ContainsValue(rope))
+        character.anim.SetBool("Swinging", true);
+        
+        if((Input.GetAxisRaw("Vertical") != 1 && playerRope.enabled == false) || playerRope.segmentHashTable.ContainsValue(rope))
 			return;
 		
 		playerRope.RegisterSegment(rope);
 		
+
 		if(transform.parent == null || transform.parent.position.y < rope.transform.position.y){
             playerRope.SetUpController(0.0f, 0.0f, 0.0f, true, false, false, true);
 			
@@ -34,21 +42,20 @@ public class CharManager : MonoBehaviour {
             {
 				playerRope.previousParent = transform.parent.gameObject;   
 			}
+
 			transform.parent = rope.transform;
-
-            platformerCharacter = gameObject.GetComponent<PlatformerCharacter2D>();
-            platformerUserControl = gameObject.GetComponent<Platformer2DUserControl>();
-            playerRope = gameObject.GetComponent<PlayerRope>();
-
 			playerRope.SetXOffset(0.0f);
-			platformerCharacter.enabled = false;
-            platformerUserControl.enabled = false;
+            character.enabled = false;
 			playerRope.enabled = true;
 		}
 	}
 	
 	void OnExitRope(GameObject rope){
-		if (playerRope.enabled == false)
+
+        character.anim.SetBool("Swinging", false);
+        rigidbody.gravityScale = 3f;
+
+        if (playerRope.enabled == false)
 			return;
 		
 		playerRope.UnregisterSegment(rope);
@@ -82,11 +89,10 @@ public class CharManager : MonoBehaviour {
 		}
 		
 		if(playerRope.segmentHashTable.Count == 0){
-            platformerUserControl.jump = true;
-            platformerCharacter.moveVelocity = 0;
+            character.jump = true;
+            character.moveVelocity = 0;
 			transform.parent = null;
-			platformerCharacter.enabled = true;
-            platformerUserControl.enabled = true;
+			character.enabled = true;
 			playerRope.enabled = false;
 		}
 	}
