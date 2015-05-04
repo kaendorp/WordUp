@@ -19,6 +19,7 @@ public class BossController : MonoBehaviour
         inactive,
         shoot,
         bounce,
+        arc,
         roarIdle,
     }
 
@@ -44,7 +45,9 @@ public class BossController : MonoBehaviour
     // MESSAGE
     [Header("MESSAGE")]
     public GameObject messageObject;        // TextMesh object that will display our message
+    [TextArea(1, 2)]
     public string endMessage1 = "";
+    [TextArea(1, 2)]
     public string endMessage2 = "";
 
     // SHOOT
@@ -97,6 +100,11 @@ public class BossController : MonoBehaviour
                 bossSequenceList.Add(bossEvents.roarIdle);
                 bossSequenceList.Add(bossEvents.roarAttack);
                 break;
+            case bossSequence.level2:
+                bossSequenceList.Add(bossEvents.inactive);
+                bossSequenceList.Add(bossEvents.arc);
+                bossSequenceList.Add(bossEvents.roarIdle);
+                break;
             default:
                 bossSequenceList.Add(bossEvents.inactive);
                 bossSequenceList.Add(bossEvents.shoot);
@@ -135,6 +143,9 @@ public class BossController : MonoBehaviour
                     break;
                 case bossEvents.bounce:
                     StartCoroutine(Bounce());
+                    break;
+                case bossEvents.arc:
+                    StartCoroutine(Arc());
                     break;
                 case bossEvents.roarAttack:
                     StartCoroutine(RoarAttack());
@@ -341,6 +352,92 @@ public class BossController : MonoBehaviour
     }
 
     /**
+     * Shooting projectiles action
+     *
+     * Triggers the shooting animation and fires 'fireAmount' of projectiles.
+     */
+    IEnumerator Arc()
+    {
+        anim.SetBool("IsShooting", true);
+        yield return new WaitForSeconds(1f); // Wait for the animation to end
+
+        for (int fired = 0; fired < fireAmount; fired++)
+        {
+            ArcProjectile();
+            yield return new WaitForSeconds(cooldownTime);
+        }
+
+        anim.SetBool("IsShooting", false);
+        yield return new WaitForSeconds(1f); // Wait for the animation to end
+        //Debug.Log("SHOOT DONE");
+        setNextAction();
+    }
+
+    private void ArcProjectile()
+    {
+        shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
+        shot.GetComponent<Rigidbody2D>().gravityScale = 1f;
+        shot.GetComponent<Rigidbody2D>().angularDrag = 0;
+        Vector3 velocity = findInitialVelocity(shot.transform.position, player.transform.position);
+        shot.GetComponent<Rigidbody2D>().velocity = velocity;
+        Destroy(shot, projectileLifeTime);
+    }
+
+    /**
+     * Finds the initial velocity of a projectile given the initial positions and some offsets
+     * 
+     * http://blog.infrared5.com/2013/07/trajectory-of-a-basketball-in-unity3d/
+     * 
+     * @param Vector3 startPosition - the starting position of the projectile
+     * @param Vector3 finalPosition - the position that we want to hit
+     * @return Vector3 - the initial velocity of the ball to make it hit the target under the current gravity force.
+     */
+    private Vector3 findInitialVelocity(Vector3 startPosition, Vector3 finalPosition)
+    {
+        // get our return value ready. Default to (0f, 0f, 0f)
+        Vector3 newVel = new Vector3();
+
+        // Find the direction vector without the y-component
+        Vector3 direction = new Vector3(finalPosition.x, 0f, finalPosition.z) - new Vector3(startPosition.x, 0f, startPosition.z);
+
+        // Find the distance between the two points (without the y-component)
+        float range = direction.magnitude;
+
+        // Find unit direction of motion without the y component
+        Vector3 unitDirection = direction.normalized;
+
+        // Find the max height
+        float maxYPos = range;
+
+        // find the initial velocity in y direction
+        newVel.y = Mathf.Sqrt(-1.0f * Physics.gravity.y * (maxYPos - startPosition.y));
+
+        //Debug.Log(maxYPos + " " + startPosition.y + " " + newVel.y);
+
+        // find the total time by adding up the parts of the trajectory
+        // time to reach the max
+        float timeToMax = Mathf.Sqrt(-1.0f * (maxYPos - startPosition.y) / Physics.gravity.y);
+
+        //Debug.Log(maxYPos + " " + startPosition.y + " " + timeToMax);
+
+        // time to return to y-target
+        float timeToTargetY = Mathf.Sqrt(-1.0f * (maxYPos - finalPosition.y) / Physics.gravity.y);
+        //Debug.Log(maxYPos + " " + finalPosition.y + " " + timeToTargetY);
+
+        // add them up to find the total flight time
+        float totalFlightTime = timeToMax + timeToTargetY;
+
+        // find the magnitude of the initial velocity in the xz direction
+        float horizontalVelocityMagnitude = range / totalFlightTime;
+
+        // use the unit direction to find the x and z components of initial velocity
+        newVel.x = horizontalVelocityMagnitude * unitDirection.x;
+        newVel.z = horizontalVelocityMagnitude * unitDirection.z;
+
+        return newVel;
+    }
+
+    /**
      * Roar attack (laughs at player)
      *
      * Triggers the roar animation and activates the circleCollider.
@@ -362,14 +459,10 @@ public class BossController : MonoBehaviour
 
     IEnumerator PushPlayerLeft()
     {
-        //player.GetComponent<Rigidbody2D>().AddForce(new Vector2(player.transform.position.x - 100, player.transform.position.y));
         float elapsedTime = 0f;
-
-        Vector2 moveToLocation = new Vector2(player.transform.position.x - 5, player.transform.position.y);
-
+        
         while (elapsedTime < 1)
         {
-            //player.transform.position = Vector3.Lerp(player.transform.position, moveToLocation, (elapsedTime / 2));
             player.GetComponent<Rigidbody2D>().AddForce(transform.right * -600);
             elapsedTime += Time.deltaTime;
             yield return null;
