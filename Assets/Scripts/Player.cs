@@ -370,7 +370,20 @@ public class Player : MonoBehaviour {
             {
                 Respawn();
             } 
-        }   
+        }
+
+        if (collision.gameObject.tag == "ijstand") // Near enemy? Health goes down every 2 seconds
+        {
+            if (!onCoolDown && currentHealth > 0)
+            {
+                StartCoroutine(coolDownDMG());
+                CurrentHealth -= 1;
+            }
+            else if (currentHealth == 0)
+            {
+                Respawn();
+            }
+        }      
 	}
 
 	private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
