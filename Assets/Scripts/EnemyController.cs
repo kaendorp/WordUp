@@ -114,6 +114,7 @@ public class EnemyController : MonoBehaviour
     // Sprint
     [Header("SPRINT")]
     public float sprintMinSpeed = 0.05f;
+    private bool lostSight = false;
 
     // Sticky
     [Header("STICKY")]
@@ -377,22 +378,24 @@ public class EnemyController : MonoBehaviour
         FacePlayer();
         GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed * 5));
 
-        collidingWithWall = Physics2D.Linecast(
-            new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
-            new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
-            ~(
-                (1 << LayerMask.NameToLayer(targetLayer)) +
-                (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                (1 << LayerMask.NameToLayer("PlayerProjectile"))
-            ) // Collide with all layers, except the targetlayer and the projectiles
-        );
+        if (!delayCoroutineStarted)
+            StartCoroutine(BlindSprint());
 
-        if (GetComponent<Rigidbody2D> ().velocity.x <= sprintMinSpeed) 
-		{
-			_audioSource.Stop ();
-			isPlayed = false;
-			_state = EnemyState.idle;
-		}
+        if (!isBlinded)
+        {
+            IsTargetInRange();
+            if (!playerSpotted)
+                _state = EnemyState.idle;
+        }
+    }
+
+    IEnumerator BlindSprint()
+    {
+        delayCoroutineStarted = true;
+        isBlinded = true;
+        yield return new WaitForSeconds(blindedDelay);
+        isBlinded = false;
+        delayCoroutineStarted = false;
     }
 
     /**
