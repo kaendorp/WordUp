@@ -44,6 +44,14 @@ public class FriendlyController : MonoBehaviour
     public float invincibilityDuration = 2f;    // length of damage cooldown
     private bool onCoolDown = false;            // Cooldown active or not
 
+	[Header("SOUND")]
+	public AudioClip idleSound;
+	public AudioClip friendlyIsAangevallen;
+	public AudioClip[] talking;
+	public AudioClip friendlyConvertToEnemy;
+	private Vector3 position;
+	private bool isPlayed;
+
     // Patrol
     [Header("PATROL")]
     public float walkSpeed = 1f;                // Amount of velocity
@@ -91,10 +99,14 @@ public class FriendlyController : MonoBehaviour
                 if (type == FriendlyType.stationary)
                 {
                     Idle();
+					if (!isPlayed)
+						PlaySound();
                 }
                 else if (type == FriendlyType.patrol)
                 {
                     Patrol();
+					if (!isPlayed)
+						PlaySound();
                 }
                 break;
             case FriendlyState.wait:
@@ -107,6 +119,18 @@ public class FriendlyController : MonoBehaviour
             FriendlyDeath();
         }
     }
+
+	private void PlaySound()
+	{
+		isPlayed = true;
+		if (_state == FriendlyState.idle) {
+			//play sound of walking
+			//look audiosource
+		} else if (_state == FriendlyState.wait) {
+			//be quiet!
+			//isPlayed = false;
+		}
+	}
 
     /**
      * Idle state
@@ -236,7 +260,7 @@ public class FriendlyController : MonoBehaviour
             if (!onCoolDown && currentHealth > 0)
             {
                 StartCoroutine(coolDownDMG());
-                Debug.Log(this.gameObject.name + ": Au!");
+                //Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
             }
         }
@@ -249,6 +273,7 @@ public class FriendlyController : MonoBehaviour
     {
         onCoolDown = true;
         anim.SetBool("isHit", true);
+		//friendly = hit sound
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
         anim.SetBool("isHit", false);
@@ -261,7 +286,7 @@ public class FriendlyController : MonoBehaviour
      */
     private void FriendlyDeath()
     {
-        Debug.Log(this.gameObject.name + ": 'Oh nee, ik ben slecht geworden!'");
+        //Debug.Log(this.gameObject.name + ": 'Oh nee, ik ben slecht geworden!'");
 
         // Set the friendly spawn type
         if (type == FriendlyType.patrol)
@@ -275,6 +300,8 @@ public class FriendlyController : MonoBehaviour
 
         // Instantiate enemy
         spawn = Instantiate(setSpawn, this.transform.position, this.transform.rotation) as GameObject;
+
+		//friendly sound converted to enemy
 
         // If there is a message, it should be send to the enemy
         if (!string.IsNullOrEmpty(message))
@@ -388,6 +415,7 @@ public class FriendlyController : MonoBehaviour
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
+			//geluid van string to sound (oneshot) isPlayed = true
         }
     }
 

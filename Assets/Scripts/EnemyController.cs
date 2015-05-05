@@ -48,6 +48,15 @@ public class EnemyController : MonoBehaviour
     public float invincibilityDuration = 2f;    // length of damage cooldown
     private bool onCoolDown = false;            // Cooldown active or not
 
+	// Spot
+	[Header("SOUND")]
+	public AudioClip enemyIdleSound;
+	public AudioClip attackSound;
+	public AudioClip enemyIsHitSound;
+	private Vector3 position;
+	private bool isPlayed;
+	private AudioSource _audioSource;
+
     // Movement
     [Header("MOVEMENT")]
     public float moveSpeed = 1f;                // Amount of velocity
@@ -113,8 +122,12 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+		//sound
+		position = gameObject.transform.position;
+		_audioSource = GetComponent<AudioSource>();
+		isPlayed = false;
 
+		anim = GetComponent<Animator>();
         if (type == EnemyType.floating)
         {
             startPosition = this.transform.position;
@@ -134,13 +147,25 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyState.idle:
                 //delayCoroutineStarted = false;
-                if (type == EnemyType.stationary || type == EnemyType.sticky || type == EnemyType.runner)
+                if (type == EnemyType.stationary)
                 {
                     Idle();
+					if (!isPlayed)
+						PlaySound();
                 }
+				else if(type == EnemyType.sticky)
+				{
+					Idle();
+				}
+				else if(type == EnemyType.runner)
+				{
+					Idle();
+				}
                 else if (type == EnemyType.patrol)
                 {
                     Patrol();
+					if (!isPlayed)
+						PlaySound();
                 }
                 else if (type == EnemyType.floating)
                 {
@@ -169,6 +194,23 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+	private void PlaySound()
+	{
+		//loop idle
+		isPlayed = true;
+		if (type == EnemyType.stationary) 
+		{
+			_audioSource.clip = enemyIdleSound;
+			_audioSource.loop = true;
+			_audioSource.Play();
+		} 
+		else if(type == EnemyType.patrol) 
+		{
+			//loop-audio
+		}
+
+	}
+
     /**
      * Idle state
      *
@@ -183,6 +225,9 @@ public class EnemyController : MonoBehaviour
         IsTargetInRange();
         if (playerSpotted)
         {
+			_audioSource.Stop ();
+			isPlayed = false;
+			Debug.Log ("audiosource is stopped");
             if (type == EnemyType.runner)
                 _state = EnemyState.sprint;
             else
@@ -247,6 +292,8 @@ public class EnemyController : MonoBehaviour
             IsTargetInRange();
             if (playerSpotted)
             {
+				isPlayed = false;
+				_audioSource.Stop ();
                 _state = EnemyState.waitThenAttack;
             }
         }
@@ -310,7 +357,10 @@ public class EnemyController : MonoBehaviour
     private void Sprint()
     {
         if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= sprintMinSpeed)
+		{
+			//trigger sprint sound runner (loop)
             anim.SetBool("sprint", true);
+		}
 
         FacePlayer();
         GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed * 5));
@@ -325,10 +375,11 @@ public class EnemyController : MonoBehaviour
             ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
-        if (GetComponent<Rigidbody2D>().velocity.x <= sprintMinSpeed)
-            
-            _state = EnemyState.idle;
-            //anim.SetBool("sprint", false);
+        if (GetComponent<Rigidbody2D> ().velocity.x <= sprintMinSpeed) 
+		{
+			_audioSource.Stop();
+			_state = EnemyState.idle;
+		}
     }
 
     /**
@@ -353,6 +404,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (type == EnemyType.sticky)
         {
+			//growl on sight sound
             AimAtPlayer();
         }
 
@@ -560,6 +612,11 @@ public class EnemyController : MonoBehaviour
             anim.SetTrigger("attacktrigger");
         }
 
+		_audioSource.clip = attackSound;
+		_audioSource.loop = false;
+		_audioSource.Play();
+		StartCoroutine(WaitForAudio(_audioSource));
+
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (type == EnemyType.floating || type == EnemyType.sticky)
         {
@@ -581,10 +638,13 @@ public class EnemyController : MonoBehaviour
             }
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         }
-
         Destroy(projectile, projectileLifeTime);
     }
 
+	IEnumerator WaitForAudio(AudioSource _audioSource)
+	{
+		yield return new WaitForSeconds(_audioSource.clip.length);
+	}
     /**
      * Take damage when hit with the players projectile. When this entity gets hit
      * it will get a period in which it can not be hurt ('onCoolDown'), granting
@@ -597,7 +657,7 @@ public class EnemyController : MonoBehaviour
             if (!onCoolDown && currentHealth > 0)
             {
                 StartCoroutine(coolDownDMG());
-                Debug.Log(this.gameObject.name + ": Au!");
+                //Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
             }
         }
@@ -610,6 +670,12 @@ public class EnemyController : MonoBehaviour
     {
         onCoolDown = true;
         anim.SetBool("isHit", true);
+
+		_audioSource.clip = enemyIsHitSound;
+		_audioSource.loop = false;
+		_audioSource.Play();
+		StartCoroutine(WaitForAudio(_audioSource));
+
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
         anim.SetBool("isHit", false);
@@ -622,7 +688,7 @@ public class EnemyController : MonoBehaviour
      */
     void EnemyDeath()
     {
-        Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
+        //Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
 
         // Set the friendly spawn type
         if (type == EnemyType.patrol)
@@ -639,6 +705,7 @@ public class EnemyController : MonoBehaviour
         }
         // Instantiate friendly
         spawn = Instantiate(setSpawn, this.transform.position, Quaternion.identity) as GameObject; // Reset rotation for sticky enemy can be rotated
+		//sound enemy dead
 
         // If there is a message, it should be send to the friendly
         if (!string.IsNullOrEmpty(message) || setSpawn != friendlyFloating)

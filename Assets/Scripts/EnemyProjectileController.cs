@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyProjectileController : MonoBehaviour {
     public GameObject enemyDeathEffect;
+	private AudioClip projectileHits;
+	private Vector3 positie;
 
     // Use this for initialization
     void Start()
@@ -11,6 +13,9 @@ public class EnemyProjectileController : MonoBehaviour {
         // TODO: Make sure it doesn't collide with player projectile
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("EnemyProjectile"));
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("EnemyProjectile"));
+
+		projectileHits = gameObject.GetComponent<AudioSource> ().clip;
+		positie = gameObject.transform.position;
     }
 
     void onTriggerEnter2D(Collision2D triggered)
@@ -35,6 +40,9 @@ public class EnemyProjectileController : MonoBehaviour {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
         //If it collides with anything, destroy projectile
-        Destroy(this.gameObject);
+		AudioSource.PlayClipAtPoint (projectileHits, positie);
+		Destroy(this.gameObject);
+
+		//sound projectile destroyed
     }
 }

@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d7b34a3bb2d4e4b926e7e729d3d410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump: 0
 --- !u!114 &11451004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,7 +323,7 @@ MonoBehaviour:
   whatIsClimbable:
     serializedVersion: 2
     m_Bits: 16384
-  crouched: 1
+  anim: {fileID: 0}
   moveVelocity: 0
   canUseShield: 1
   shield: {fileID: 109038}
@@ -332,13 +333,16 @@ MonoBehaviour:
   knockbackLength: .200000003
   knockbackCount: 0
   knockFromRight: 0
-  enabled: 0
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 473800}
-  letters: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
+  Projectile1: {fileID: 100002, guid: 1880a732ad112a541100162a44295342, type: 2}
+  Projectile2: {fileID: 100002, guid: a29e133e3841243b7b0ec432e3573cdd, type: 2}
+  Projectile3: {fileID: 100002, guid: b0a1f6772f39e47fdae4d55c17d8ac35, type: 2}
+  CurrentLetters: {fileID: 0}
   shotDelay: .600000024
   target: {fileID: 0}
   camera: {fileID: 0}
+  jump: 0
 --- !u!114 &11476612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,22 +355,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
-  healthTransform: {fileID: 0}
-  visualHealth: {fileID: 0}
+  currentHealth: 0
   maxHealth: 10
   coolDown: 1
-  Boodschap: {fileID: 0}
-  kindText: {fileID: 0}
+  kindhealthPlus: 0
+  kindPlus: 0
   kindTextHUD: {fileID: 0}
   maxKids: 1
-  letterPanel: {fileID: 0}
+  countLetters: 0
   maxLetters: 3
-  letter_1: {fileID: 0}
-  letter_1HUD: {fileID: 0}
-  letter_2: {fileID: 0}
-  letter_2HUD: {fileID: 0}
-  letter_3: {fileID: 0}
-  letter_3HUD: {fileID: 0}
+  letters: []
+  lettersHUD: []
 --- !u!212 &21215412
 SpriteRenderer:
   m_ObjectHideFlags: 1
