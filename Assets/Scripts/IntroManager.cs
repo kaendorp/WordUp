@@ -40,7 +40,6 @@ public class IntroManager : MonoBehaviour
     // Fade in/out
     public float fadeInSpeed = 1.5f;        // Speed that the screen fades from black.
     public float fadeOutSpeed = 1.5f;       // Speed that the screen fades to black.
-    private bool sceneStarting = true;      // Whether or not the scene is still fading in.
     public Image overlay;                   // Object in HUD that fills screen with a full alpha, black image
 
     // Use this for initialization
