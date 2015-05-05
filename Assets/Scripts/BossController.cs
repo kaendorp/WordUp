@@ -76,6 +76,7 @@ public class BossController : MonoBehaviour
     // ARC
     [Header("ARC")]
     public GameObject arcPrefab;
+    public float timeToTarget = 1f;
 
     // ROAR ATTACK
     [Header("ROAR")]
@@ -404,66 +405,46 @@ public class BossController : MonoBehaviour
         shot = (GameObject)Instantiate(arcPrefab, firePoint.transform.position, firePoint.transform.rotation);
         shot.GetComponent<Rigidbody2D>().gravityScale = 1f;
         shot.GetComponent<Rigidbody2D>().angularDrag = 0;
-        Vector3 velocity = findInitialVelocity(shot.transform.position, player.transform.position);
+        Vector3 velocity = calculateThrowSpeed(shot.transform.position, player.transform.position, timeToTarget);
 
-        if (float.IsNaN(velocity.y) || float.IsNaN(velocity.x))
+        if (float.IsNaN(velocity.y) || float.IsNaN(velocity.x)) // if calculation fails, give the projectile a weak nudge
             velocity = new Vector3(-2f, 1f, 0);
         shot.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(shot, projectileLifeTime);
     }
 
     /**
-     * Finds the initial velocity of a projectile given the initial positions and some offsets
+     * Calculate the velocity of the projectile depending on the firepoint and player location.
+     * Returns a Vector3 to be used as the velocity of the projectiles RigidBody2D.
      * 
-     * http://blog.infrared5.com/2013/07/trajectory-of-a-basketball-in-unity3d/
-     * 
-     * @param Vector3 startPosition - the starting position of the projectile
-     * @param Vector3 finalPosition - the position that we want to hit
-     * @return Vector3 - the initial velocity of the projectile to make it hit the target under the current gravity force.
+     * http://answers.unity3d.com/questions/248788/calculating-ball-trajectory-in-full-3d-world.html
+     * Based of an awnser by Tomer Barkan, May 14, 2013
      */
-    private Vector3 findInitialVelocity(Vector3 startPosition, Vector3 finalPosition)
+    private Vector3 calculateThrowSpeed(Vector3 origin, Vector3 target, float timeToTarget)
     {
-        // get our return value ready. Default to (0f, 0f, 0f)
-        Vector3 newVel = new Vector3();
+        // calculate vectors
+        Vector3 toTarget = target - origin;
+        Vector3 toTargetXZ = toTarget;
+        toTargetXZ.y = 0;
 
-        // Find the direction vector without the y-component
-        Vector3 direction = new Vector3(finalPosition.x, 0f, finalPosition.z) - new Vector3(startPosition.x, 0f, startPosition.z);
+        // calculate xz and y
+        float y = toTarget.y;
+        float xz = toTargetXZ.magnitude;
 
-        // Find the distance between the two points (without the y-component)
-        float range = direction.magnitude;
+        // calculate starting speeds for xz and y. Physics forumulase deltaX = v0 * t + 1/2 * a * t * t
+        // where a is "-gravity" but only on the y plane, and a is 0 in xz plane.
+        // so xz = v0xz * t => v0xz = xz / t
+        // and y = v0y * t - 1/2 * gravity * t * t => v0y * t = y + 1/2 * gravity * t * t => v0y = y / t + 1/2 * gravity * t
+        float t = timeToTarget;
+        float v0y = y / t + 0.5f * Physics.gravity.magnitude * t;
+        float v0xz = xz / t;
 
-        // Find unit direction of motion without the y component
-        Vector3 unitDirection = direction.normalized;
+        // create result vector for calculated starting speeds
+        Vector3 result = toTargetXZ.normalized;        // get direction of xz but with magnitude 1
+        result *= v0xz;                                // set magnitude of xz to v0xz (starting speed in xz plane)
+        result.y = v0y;                                // set y to v0y (starting speed of y plane)
 
-        // Find the max height
-        float maxYPos = range;
-
-        // find the initial velocity in y direction
-        newVel.y = Mathf.Sqrt(-1.0f * Physics.gravity.y * (maxYPos - startPosition.y));
-
-        //Debug.Log(maxYPos + " " + startPosition.y + " " + newVel.y);
-
-        // find the total time by adding up the parts of the trajectory
-        // time to reach the max
-        float timeToMax = Mathf.Sqrt(-1.0f * (maxYPos - startPosition.y) / Physics.gravity.y);
-
-        //Debug.Log(maxYPos + " " + startPosition.y + " " + timeToMax);
-
-        // time to return to y-target
-        float timeToTargetY = Mathf.Sqrt(-1.0f * (maxYPos - finalPosition.y) / Physics.gravity.y);
-        //Debug.Log(maxYPos + " " + finalPosition.y + " " + timeToTargetY);
-
-        // add them up to find the total flight time
-        float totalFlightTime = timeToMax + timeToTargetY;
-
-        // find the magnitude of the initial velocity in the xz direction
-        float horizontalVelocityMagnitude = range / totalFlightTime;
-
-        // use the unit direction to find the x and z components of initial velocity
-        newVel.x = horizontalVelocityMagnitude * unitDirection.x;
-        newVel.z = horizontalVelocityMagnitude * unitDirection.z;
-
-        return newVel;
+        return result;
     }
 
     IEnumerator Stomp()
