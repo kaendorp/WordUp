@@ -120,6 +120,14 @@ public class BossController : MonoBehaviour
                 bossSequenceList.Add(bossEvents.stomp);
                 bossSequenceList.Add(bossEvents.roarIdle);
                 break;
+            case bossSequence.level3:
+                bossSequenceList.Add(bossEvents.inactive);
+                bossSequenceList.Add(bossEvents.shoot);
+                bossSequenceList.Add(bossEvents.bounce);
+                bossSequenceList.Add(bossEvents.arc);
+                bossSequenceList.Add(bossEvents.stomp);
+                bossSequenceList.Add(bossEvents.roarIdle);
+                break;
             default:
                 bossSequenceList.Add(bossEvents.inactive);
                 bossSequenceList.Add(bossEvents.shoot);
