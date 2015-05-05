@@ -63,6 +63,7 @@ public class BossController : MonoBehaviour
 
     // BOUNCE
     [Header("BOUNCE")]
+    public GameObject bouncePrefab;
     public int bouncePoints = 4;
     public float bounceDistance = 2f;
     public float bounceHeight = 2f;
@@ -71,9 +72,18 @@ public class BossController : MonoBehaviour
     private bool goingDown = true;          // bouncy projectile going down?
     private Vector2[] bouncyPath;
 
+    // ARC
+    [Header("ARC")]
+    public GameObject arcPrefab;
+
     // ROAR ATTACK
     [Header("ROAR")]
     private bool wasHit = false;
+
+    // ICE
+    [Header("ICE")]
+    public Transform iceSpawn;
+    public GameObject icicles;
 
     /**
      * Awake
@@ -287,7 +297,7 @@ public class BossController : MonoBehaviour
 
     private void BounceProjectile()
     {
-        shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
+        shot = (GameObject)Instantiate(bouncePrefab, firePoint.transform.position, firePoint.transform.rotation);
         SetBouncyPath();
         Vector2[] savedPath = bouncyPath; // might change during fire
         StartCoroutine(MoveToBouncePoint(shot, savedPath, 1));
@@ -375,7 +385,7 @@ public class BossController : MonoBehaviour
 
     private void ArcProjectile()
     {
-        shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
+        shot = (GameObject)Instantiate(arcPrefab, firePoint.transform.position, firePoint.transform.rotation);
         shot.GetComponent<Rigidbody2D>().gravityScale = 1f;
         shot.GetComponent<Rigidbody2D>().angularDrag = 0;
         Vector3 velocity = findInitialVelocity(shot.transform.position, player.transform.position);

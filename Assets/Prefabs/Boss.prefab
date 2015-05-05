@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21298504}
   - 95: {fileID: 9573538}
   - 114: {fileID: 11465322}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 459964}
   - 114: {fileID: 11411246}
   - 60: {fileID: 6086504}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: PolygonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402168}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
@@ -60,9 +60,9 @@ GameObject:
   - 4: {fileID: 407298}
   - 58: {fileID: 5820432}
   - 114: {fileID: 11483100}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: CircleCollider
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,11 +316,15 @@ MonoBehaviour:
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 5
   projectileLifeTime: 8
+  bouncePrefab: {fileID: 189036, guid: e375c73872b0615428a27ecb83ccf59c, type: 2}
   bouncePoints: 4
   bounceDistance: 2
   bounceHeight: 4.5
   bounceSpeed: .699999988
   bounceFirepointHeight: -1
+  arcPrefab: {fileID: 189036, guid: a22d513e0430a014581e1047c9212179, type: 2}
+  iceSpawn: {fileID: 0}
+  icicles: {fileID: 136166, guid: c5138a3e16e579a439f5cdb2147903c1, type: 2}
 --- !u!114 &11483100
 MonoBehaviour:
   m_ObjectHideFlags: 1
