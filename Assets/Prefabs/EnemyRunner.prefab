@@ -14,6 +14,7 @@ GameObject:
   - 61: {fileID: 6182074}
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
+  - 82: {fileID: 8238368}
   m_Layer: 11
   m_Name: EnemyRunner
   m_TagString: Enemy
@@ -74,6 +75,75 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .300000012, y: .230000004}
+--- !u!82 &8238368
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141542}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 40
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -112,8 +182,9 @@ MonoBehaviour:
   currentHealth: 2
   invincibilityDuration: 1.5
   enemyIdleSound: {fileID: 0}
-  attackSound: {fileID: 0}
-  enemyIsHitSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: be35b5de5f22bcd46a7eca72e65e8f53, type: 3}
+  enemyIsHitSound: {fileID: 8300000, guid: ca911c293c4319f4d8ae39a5b7d879a7, type: 3}
+  isPlayed: 0
   moveSpeed: 5
   collideDistance: 0
   edgeDetection: 0

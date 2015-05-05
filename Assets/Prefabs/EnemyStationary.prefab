@@ -212,6 +212,8 @@ MonoBehaviour:
   enemyIdleSound: {fileID: 8300000, guid: 184576fd81af12d49a9ada8bfb2e3683, type: 3}
   attackSound: {fileID: 8300000, guid: 3e44f43d502b63341812456ed170b5a4, type: 3}
   enemyIsHitSound: {fileID: 8300000, guid: dedcc4fe0604f54429eaab569ee46ffb, type: 3}
+  enemyChanged: {fileID: 8300000, guid: 7212e69f5ccefc3458b1b95735b64119, type: 3}
+  isPlayed: 0
   moveSpeed: 0
   collideDistance: 0
   edgeDetection: 0

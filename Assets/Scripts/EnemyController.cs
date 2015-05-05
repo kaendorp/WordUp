@@ -53,9 +53,10 @@ public class EnemyController : MonoBehaviour
 	public AudioClip enemyIdleSound;
 	public AudioClip attackSound;
 	public AudioClip enemyIsHitSound;
+	public AudioClip enemyChanged;
 	public bool isPlayed;
 	private AudioSource _audioSource;
-	private bool runnerIsTrue;
+	private bool playOnce = false;
 
     // Movement
     [Header("MOVEMENT")]
@@ -209,7 +210,10 @@ public class EnemyController : MonoBehaviour
 		} 
 		else if (type == EnemyType.patrol) 
 		{
-			//loop-audio
+			_audioSource.clip = enemyIdleSound;
+			_audioSource.volume = 0.25f;
+			_audioSource.loop = true;
+			_audioSource.Play ();
 		} 
 		else if (type == EnemyType.runner) 
 		{
@@ -411,6 +415,7 @@ public class EnemyController : MonoBehaviour
         if (type == EnemyType.patrol)
         {
             anim.SetFloat("speed", 0);
+			isPlayed = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
         else if (type == EnemyType.floating)
@@ -420,7 +425,11 @@ public class EnemyController : MonoBehaviour
         }
         else if (type == EnemyType.sticky)
         {
-			//growl on sight sound
+			if(!playOnce)
+			{
+				AudioSource.PlayClipAtPoint(enemyIdleSound, startPosition);
+				playOnce = true;
+			}
             AimAtPlayer();
         }
 
@@ -628,7 +637,6 @@ public class EnemyController : MonoBehaviour
             anim.SetTrigger("attacktrigger");
         }
 		AudioSource.PlayClipAtPoint (attackSound, startPosition);
-		StartCoroutine(WaitForAudio(_audioSource));
 
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (type == EnemyType.floating || type == EnemyType.sticky)
@@ -654,11 +662,6 @@ public class EnemyController : MonoBehaviour
         Destroy(projectile, projectileLifeTime);
     }
 
-	IEnumerator WaitForAudio(AudioSource _audioSource)
-	{
-		yield return new WaitForSeconds(_audioSource.clip.length);
-		isPlayed = false;
-	}
     /**
      * Take damage when hit with the players projectile. When this entity gets hit
      * it will get a period in which it can not be hurt ('onCoolDown'), granting
@@ -686,7 +689,6 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("isHit", true);
 
 		AudioSource.PlayClipAtPoint(enemyIsHitSound, startPosition);
-//		StartCoroutine(WaitForAudio(_audioSource));
 
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
@@ -717,7 +719,10 @@ public class EnemyController : MonoBehaviour
         }
         // Instantiate friendly
         spawn = Instantiate(setSpawn, this.transform.position, Quaternion.identity) as GameObject; // Reset rotation for sticky enemy can be rotated
-		//sound enemy dead
+
+		if (enemyChanged != null) {
+			AudioSource.PlayClipAtPoint (enemyChanged, startPosition);
+		}
 
         // If there is a message, it should be send to the friendly
         if (!string.IsNullOrEmpty(message) || setSpawn != friendlyFloating)
