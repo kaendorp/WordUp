@@ -378,7 +378,7 @@ MonoBehaviour:
   friendlyFloating: {fileID: 141542, guid: 421aaf6e405001e4fbc55cca6540ebd2, type: 2}
   enemyDeathEffect: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   message: 
-  currentHealth: 2
+  currentHealth: 1
   invincibilityDuration: 1.5
   moveSpeed: 1
   collideDistance: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
   friendlyFloating: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   enemyDeathEffect: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   message: 
-  currentHealth: 2
+  currentHealth: 1
   invincibilityDuration: 1.5
   moveSpeed: 5
   collideDistance: 0
