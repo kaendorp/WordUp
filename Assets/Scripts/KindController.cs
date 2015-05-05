@@ -38,12 +38,16 @@ public class KindController : MonoBehaviour
     private Collider2D[] collisionObjects;
     private bool playerSpotted = false;         // Has the friendly spotted the player?
 
+	//audio
+	public AudioClip bonusToHealth;
+	private Vector3 position;
+
     // Use this for initialization
     void Start()
     {
         // Vind het KindObject
         Stats = GameObject.Find("Stats");
-
+		position = this.transform.position;
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
@@ -86,7 +90,7 @@ public class KindController : MonoBehaviour
 
             if (plusKind == false)
             {
-                Debug.Log("Trigger");
+                //Debug.Log("Trigger");
                 plusKind = true;
                 Stats.GetComponent<Player>().kindPlus = true;
             }
@@ -96,8 +100,9 @@ public class KindController : MonoBehaviour
                 // Als kind nog niet de healthBonus gegeven heeft
                 if (healthBonus == false)
                 {
-                    Debug.Log("Trigger2");
+                    //Debug.Log("Trigger2");
                     healthBonus = true;
+					AudioSource.PlayClipAtPoint(bonusToHealth, position);
                     Stats.GetComponent<Player>().kindhealthPlus = true;
                 }
             }            

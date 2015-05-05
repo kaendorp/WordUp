@@ -4917,6 +4917,26 @@ Prefab:
       propertyPath: maxLetters
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: Projectile1
+      value: 
+      objectReference: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: Projectile2
+      value: 
+      objectReference: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: Projectile3
+      value: 
+      objectReference: {fileID: 166636, guid: 93477810339f0ac4080a1b5884d7faac, type: 2}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 497102768}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 497102768}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e587890a6a537a847aa77bce79823370, type: 2}
   m_IsPrefabParent: 0

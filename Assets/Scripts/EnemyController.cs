@@ -48,6 +48,16 @@ public class EnemyController : MonoBehaviour
     public float invincibilityDuration = 2f;    // length of damage cooldown
     private bool onCoolDown = false;            // Cooldown active or not
 
+	// Spot
+	[Header("SOUND")]
+	public AudioClip enemyIdleSound;
+	public AudioClip attackSound;
+	public AudioClip enemyIsHitSound;
+	public AudioClip enemyChanged;
+	public bool isPlayed;
+	private AudioSource _audioSource;
+	private bool playOnce = false;
+
     // Movement
     [Header("MOVEMENT")]
     public float moveSpeed = 1f;                // Amount of velocity
@@ -105,6 +115,7 @@ public class EnemyController : MonoBehaviour
     // Sprint
     [Header("SPRINT")]
     public float sprintMinSpeed = 0.05f;
+    private bool lostSight = false;
 
     // Sticky
     [Header("STICKY")]
@@ -113,8 +124,11 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+		//sound
+		_audioSource = GetComponent<AudioSource>();
+		isPlayed = false;
 
+		anim = GetComponent<Animator>();
         if (type == EnemyType.floating)
         {
             startPosition = this.transform.position;
@@ -134,13 +148,25 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyState.idle:
                 //delayCoroutineStarted = false;
-                if (type == EnemyType.stationary || type == EnemyType.sticky || type == EnemyType.runner)
+                if (type == EnemyType.stationary)
                 {
                     Idle();
+					if (!isPlayed)
+						PlaySound();
                 }
+				else if(type == EnemyType.sticky)
+				{
+					Idle();
+				}
+				else if(type == EnemyType.runner)
+				{
+					Idle();
+				}
                 else if (type == EnemyType.patrol)
                 {
                     Patrol();
+					if (!isPlayed)
+						PlaySound();
                 }
                 else if (type == EnemyType.floating)
                 {
@@ -155,6 +181,8 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyState.sprint:
                 Sprint();
+				if (!isPlayed)
+					PlaySound();
                 break;
         }
 
@@ -169,6 +197,33 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+	private void PlaySound()
+	{
+		//loop idle
+		isPlayed = true;
+		if (type == EnemyType.stationary) 
+		{
+			_audioSource.clip = enemyIdleSound;
+			_audioSource.volume = 0.5f;
+			_audioSource.loop = true;
+			_audioSource.Play ();
+		} 
+		else if (type == EnemyType.patrol) 
+		{
+			_audioSource.clip = enemyIdleSound;
+			_audioSource.volume = 0.25f;
+			_audioSource.loop = true;
+			_audioSource.Play ();
+		} 
+		else if (type == EnemyType.runner) 
+		{
+			_audioSource.clip = attackSound;
+			_audioSource.volume = 0.25f;
+			_audioSource.loop = true;
+			_audioSource.Play ();
+		}
+	}
+
     /**
      * Idle state
      *
@@ -176,19 +231,28 @@ public class EnemyController : MonoBehaviour
      */
     private void Idle()
     {
-        if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) <= sprintMinSpeed)
-            anim.SetBool("sprint", false);
-
-        // Will set 'playerSpotted' to true if spotted
+		// Will set 'playerSpotted' to true if spotted
         IsTargetInRange();
         if (playerSpotted)
         {
             if (type == EnemyType.runner)
+			{
                 _state = EnemyState.sprint;
+			}
             else
-                _state = EnemyState.waitThenAttack;
+			{
+				isPlayed = false;
+				_audioSource.Stop ();
+				_state = EnemyState.waitThenAttack;
+			}
         }
-    }
+		if (type == EnemyType.runner && Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.x) <= sprintMinSpeed) 
+		{
+			_audioSource.Stop ();
+			isPlayed = false;
+			anim.SetBool ("sprint", false);
+		}
+	}
 
     /**
      * Patrol script
@@ -247,6 +311,7 @@ public class EnemyController : MonoBehaviour
             IsTargetInRange();
             if (playerSpotted)
             {
+				_audioSource.Stop ();
                 _state = EnemyState.waitThenAttack;
             }
         }
@@ -310,25 +375,31 @@ public class EnemyController : MonoBehaviour
     private void Sprint()
     {
         if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= sprintMinSpeed)
+		{
             anim.SetBool("sprint", true);
+		}
 
         FacePlayer();
         GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed * 5));
 
-        collidingWithWall = Physics2D.Linecast(
-            new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y - (GetComponent<SpriteRenderer>().bounds.size.y / 4))),
-            new Vector2((this.transform.position.x + collideDistance), (this.transform.position.y + (GetComponent<SpriteRenderer>().bounds.size.y / 2))),
-            ~(
-                (1 << LayerMask.NameToLayer(targetLayer)) +
-                (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                (1 << LayerMask.NameToLayer("PlayerProjectile"))
-            ) // Collide with all layers, except the targetlayer and the projectiles
-        );
+        if (!delayCoroutineStarted)
+            StartCoroutine(BlindSprint());
 
-        if (GetComponent<Rigidbody2D>().velocity.x <= sprintMinSpeed)
-            
-            _state = EnemyState.idle;
-            //anim.SetBool("sprint", false);
+        if (!isBlinded)
+        {
+            IsTargetInRange();
+            if (!playerSpotted)
+                _state = EnemyState.idle;
+        }
+    }
+
+    IEnumerator BlindSprint()
+    {
+        delayCoroutineStarted = true;
+        isBlinded = true;
+        yield return new WaitForSeconds(blindedDelay);
+        isBlinded = false;
+        delayCoroutineStarted = false;
     }
 
     /**
@@ -344,6 +415,7 @@ public class EnemyController : MonoBehaviour
         if (type == EnemyType.patrol)
         {
             anim.SetFloat("speed", 0);
+			isPlayed = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
         else if (type == EnemyType.floating)
@@ -353,6 +425,11 @@ public class EnemyController : MonoBehaviour
         }
         else if (type == EnemyType.sticky)
         {
+			if(!playOnce)
+			{
+				AudioSource.PlayClipAtPoint(enemyIdleSound, startPosition);
+				playOnce = true;
+			}
             AimAtPlayer();
         }
 
@@ -559,6 +636,7 @@ public class EnemyController : MonoBehaviour
         {
             anim.SetTrigger("attacktrigger");
         }
+		AudioSource.PlayClipAtPoint (attackSound, startPosition);
 
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (type == EnemyType.floating || type == EnemyType.sticky)
@@ -581,7 +659,6 @@ public class EnemyController : MonoBehaviour
             }
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2((projectileSpeed * -1), GetComponent<Rigidbody2D>().velocity.y);
         }
-
         Destroy(projectile, projectileLifeTime);
     }
 
@@ -597,7 +674,7 @@ public class EnemyController : MonoBehaviour
             if (!onCoolDown && currentHealth > 0)
             {
                 StartCoroutine(coolDownDMG());
-                Debug.Log(this.gameObject.name + ": Au!");
+                //Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
             }
         }
@@ -610,6 +687,9 @@ public class EnemyController : MonoBehaviour
     {
         onCoolDown = true;
         anim.SetBool("isHit", true);
+
+		AudioSource.PlayClipAtPoint(enemyIsHitSound, startPosition);
+
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
         anim.SetBool("isHit", false);
@@ -622,7 +702,7 @@ public class EnemyController : MonoBehaviour
      */
     void EnemyDeath()
     {
-        Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
+        //Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
 
         // Set the friendly spawn type
         if (type == EnemyType.patrol)
@@ -639,6 +719,10 @@ public class EnemyController : MonoBehaviour
         }
         // Instantiate friendly
         spawn = Instantiate(setSpawn, this.transform.position, Quaternion.identity) as GameObject; // Reset rotation for sticky enemy can be rotated
+
+		if (enemyChanged != null) {
+			AudioSource.PlayClipAtPoint (enemyChanged, startPosition);
+		}
 
         // If there is a message, it should be send to the friendly
         if (!string.IsNullOrEmpty(message) || setSpawn != friendlyFloating)
