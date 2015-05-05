@@ -139,6 +139,9 @@ MonoBehaviour:
   message: 
   currentHealth: 2
   invincibilityDuration: 1.5
+  enemyIdleSound: {fileID: 0}
+  attackSound: {fileID: 0}
+  enemyIsHitSound: {fileID: 8300000, guid: 52103dc5d649245439ec3889ec08629f, type: 3}
   moveSpeed: 1
   collideDistance: 0
   edgeDetection: 0

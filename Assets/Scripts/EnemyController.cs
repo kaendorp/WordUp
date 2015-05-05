@@ -53,9 +53,9 @@ public class EnemyController : MonoBehaviour
 	public AudioClip enemyIdleSound;
 	public AudioClip attackSound;
 	public AudioClip enemyIsHitSound;
-	private Vector3 position;
-	private bool isPlayed;
+	public bool isPlayed;
 	private AudioSource _audioSource;
+	private bool runnerIsTrue;
 
     // Movement
     [Header("MOVEMENT")]
@@ -123,7 +123,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
 		//sound
-		position = gameObject.transform.position;
 		_audioSource = GetComponent<AudioSource>();
 		isPlayed = false;
 
@@ -180,6 +179,8 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyState.sprint:
                 Sprint();
+				if (!isPlayed)
+					PlaySound();
                 break;
         }
 
@@ -201,14 +202,21 @@ public class EnemyController : MonoBehaviour
 		if (type == EnemyType.stationary) 
 		{
 			_audioSource.clip = enemyIdleSound;
+			_audioSource.volume = 0.5f;
 			_audioSource.loop = true;
-			_audioSource.Play();
+			_audioSource.Play ();
 		} 
-		else if(type == EnemyType.patrol) 
+		else if (type == EnemyType.patrol) 
 		{
 			//loop-audio
+		} 
+		else if (type == EnemyType.runner) 
+		{
+			_audioSource.clip = attackSound;
+			_audioSource.volume = 0.25f;
+			_audioSource.loop = true;
+			_audioSource.Play ();
 		}
-
 	}
 
     /**
@@ -218,22 +226,28 @@ public class EnemyController : MonoBehaviour
      */
     private void Idle()
     {
-        if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) <= sprintMinSpeed)
-            anim.SetBool("sprint", false);
-
-        // Will set 'playerSpotted' to true if spotted
+		// Will set 'playerSpotted' to true if spotted
         IsTargetInRange();
         if (playerSpotted)
         {
+            if (type == EnemyType.runner)
+			{
+                _state = EnemyState.sprint;
+			}
+            else
+			{
+				isPlayed = false;
+				_audioSource.Stop ();
+				_state = EnemyState.waitThenAttack;
+			}
+        }
+		if (type == EnemyType.runner && Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.x) <= sprintMinSpeed) 
+		{
 			_audioSource.Stop ();
 			isPlayed = false;
-			Debug.Log ("audiosource is stopped");
-            if (type == EnemyType.runner)
-                _state = EnemyState.sprint;
-            else
-                _state = EnemyState.waitThenAttack;
-        }
-    }
+			anim.SetBool ("sprint", false);
+		}
+	}
 
     /**
      * Patrol script
@@ -292,7 +306,6 @@ public class EnemyController : MonoBehaviour
             IsTargetInRange();
             if (playerSpotted)
             {
-				isPlayed = false;
 				_audioSource.Stop ();
                 _state = EnemyState.waitThenAttack;
             }
@@ -358,7 +371,6 @@ public class EnemyController : MonoBehaviour
     {
         if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= sprintMinSpeed)
 		{
-			//trigger sprint sound runner (loop)
             anim.SetBool("sprint", true);
 		}
 
@@ -377,7 +389,8 @@ public class EnemyController : MonoBehaviour
 
         if (GetComponent<Rigidbody2D> ().velocity.x <= sprintMinSpeed) 
 		{
-			_audioSource.Stop();
+			_audioSource.Stop ();
+			isPlayed = false;
 			_state = EnemyState.idle;
 		}
     }
@@ -611,10 +624,7 @@ public class EnemyController : MonoBehaviour
         {
             anim.SetTrigger("attacktrigger");
         }
-
-		_audioSource.clip = attackSound;
-		_audioSource.loop = false;
-		_audioSource.Play();
+		AudioSource.PlayClipAtPoint (attackSound, startPosition);
 		StartCoroutine(WaitForAudio(_audioSource));
 
         projectile = (GameObject)Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
@@ -644,6 +654,7 @@ public class EnemyController : MonoBehaviour
 	IEnumerator WaitForAudio(AudioSource _audioSource)
 	{
 		yield return new WaitForSeconds(_audioSource.clip.length);
+		isPlayed = false;
 	}
     /**
      * Take damage when hit with the players projectile. When this entity gets hit
@@ -671,10 +682,8 @@ public class EnemyController : MonoBehaviour
         onCoolDown = true;
         anim.SetBool("isHit", true);
 
-		_audioSource.clip = enemyIsHitSound;
-		_audioSource.loop = false;
-		_audioSource.Play();
-		StartCoroutine(WaitForAudio(_audioSource));
+		AudioSource.PlayClipAtPoint(enemyIsHitSound, startPosition);
+//		StartCoroutine(WaitForAudio(_audioSource));
 
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
