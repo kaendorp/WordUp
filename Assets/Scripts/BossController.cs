@@ -122,9 +122,9 @@ public class BossController : MonoBehaviour
                 break;
             case bossSequence.level3:
                 bossSequenceList.Add(bossEvents.inactive);
+                bossSequenceList.Add(bossEvents.arc);
                 bossSequenceList.Add(bossEvents.shoot);
                 bossSequenceList.Add(bossEvents.bounce);
-                bossSequenceList.Add(bossEvents.arc);
                 bossSequenceList.Add(bossEvents.stomp);
                 bossSequenceList.Add(bossEvents.roarIdle);
                 break;
@@ -468,6 +468,10 @@ public class BossController : MonoBehaviour
 
     IEnumerator Stomp()
     {
+        if (iceInit != null)
+        {
+            Destroy(iceInit);
+        }
         anim.SetTrigger("StompAttack");
         yield return new WaitForSeconds(0.3f);
         Vector3 startPosition = icePlatform.transform.position;
@@ -475,9 +479,7 @@ public class BossController : MonoBehaviour
         StartCoroutine(IcePlatform(startPosition, endPosition));
 
         iceInit = (GameObject)Instantiate(icicles, iceSpawn.transform.position, iceSpawn.transform.rotation);
-        iceInit.SendMessage("TriggerIceFall");
         yield return new WaitForSeconds(0.5f);
-        Destroy(iceInit, 4);
         setNextAction();
     }
 

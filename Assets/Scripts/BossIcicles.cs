@@ -3,34 +3,16 @@ using System.Collections;
 
 public class BossIcicles : MonoBehaviour {
 
-    public bool triggerFall = false;
     public float lifetime = 3f;
 
 	// Use this for initialization
-	void Start () {
-        foreach (Transform child in this.transform)
-        {
-            child.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        }
-	
+	void Start () {	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (triggerFall) {
-            triggerFall = false;
-
-            StartCoroutine(FallIcicles());
-        }
-	}
-
-    /**
-     * Called by BossController during stomp attack
-     * 
-     */
-    public void TriggerIceFall()
+    void Update()
     {
-        triggerFall = true;
+        StartCoroutine(FallIcicles());
     }
 
     IEnumerator FallIcicles()
@@ -41,5 +23,6 @@ public class BossIcicles : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(lifetime);
+        Destroy(this.gameObject);
     }
 }
