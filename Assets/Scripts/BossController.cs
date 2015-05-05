@@ -399,7 +399,7 @@ public class BossController : MonoBehaviour
         Vector3 velocity = findInitialVelocity(shot.transform.position, player.transform.position);
 
         if (float.IsNaN(velocity.y) || float.IsNaN(velocity.x))
-            velocity = new Vector3(-0.2f, 0.2f);
+            velocity = new Vector3(-2f, 1f, 0);
         shot.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(shot, projectileLifeTime);
     }
@@ -460,15 +460,15 @@ public class BossController : MonoBehaviour
 
     IEnumerator Stomp()
     {
-        //anim.SetBool("Stomp", true);
-        yield return new WaitForSeconds(0.2f);
+        anim.SetTrigger("StompAttack");
+        yield return new WaitForSeconds(0.3f);
         Vector3 startPosition = icePlatform.transform.position;
         Vector3 endPosition = new Vector3(icePlatform.transform.position.x, icePlatform.transform.position.y + platformHeight, icePlatform.transform.position.z);
         StartCoroutine(IcePlatform(startPosition, endPosition));
 
         iceInit = (GameObject)Instantiate(icicles, iceSpawn.transform.position, iceSpawn.transform.rotation);
         iceInit.SendMessage("TriggerIceFall");
-
+        yield return new WaitForSeconds(0.5f);
         Destroy(iceInit, 4);
         setNextAction();
     }
@@ -483,7 +483,7 @@ public class BossController : MonoBehaviour
             icePlatform.transform.position = Vector3.Lerp(from, to, (Time.time - startTime) / iceUpTime);
             yield return null;
         }
-        iceUpTime = 10f;
+        iceUpTime = 6f;
         startTime = Time.time;
         while (Time.time < startTime + iceUpTime)
         {

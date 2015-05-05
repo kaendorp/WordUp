@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9ec43dcadf6014d498c76b1e11a50ad8
-timeCreated: 1430727680
+timeCreated: 1430825282
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -40,6 +40,12 @@ TextureImporter:
     21300066: Boss_RoarAttack_2
     21300068: Boss_RoarAttack_3
     21300070: Boss_RoarAttack_4
+    21300072: Boss_Stomp_0
+    21300074: Boss_Stomp_1
+    21300076: Boss_Stomp_2
+    21300078: Boss_Stomp_3
+    21300080: Boss_Stomp_4
+    21300082: Boss_Stomp_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -432,6 +438,66 @@ TextureImporter:
         y: 361
         width: 115
         height: 115
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 239
+        width: 97
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 239
+        width: 97
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 239
+        width: 97
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 239
+        width: 97
+        height: 95
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_4
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 239
+        width: 97
+        height: 88
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_5
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 239
+        width: 89
+        height: 87
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
