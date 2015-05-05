@@ -14,7 +14,15 @@ public class TriggerBossBattle : MonoBehaviour
         if (col.tag == "Player")
         {
             bossController.isActive = true;
-            bossController.setPlayerObject(col.gameObject);
+            GameObject player = col.gameObject;
+
+            // Make sure we send the parent object
+            // root never returns null, if this Transform doesn't have a parent it returns itself.
+            if (player.transform.root.gameObject != player)
+            {
+                player = player.transform.root.gameObject;
+            }
+            bossController.setPlayerObject(player);
             bossController.beginBossBattle();
         }
     }

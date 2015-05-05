@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21298504}
   - 95: {fileID: 9573538}
   - 114: {fileID: 11465322}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 459964}
   - 114: {fileID: 11411246}
   - 60: {fileID: 6086504}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: PolygonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402168}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
@@ -60,9 +60,9 @@ GameObject:
   - 4: {fileID: 407298}
   - 58: {fileID: 5820432}
   - 114: {fileID: 11483100}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: CircleCollider
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.187000006, y: .898999989, z: 0}
+  m_LocalPosition: {x: -.237000003, y: .898999989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405042}
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   currentSequence: 0
-  currentEvent: 0
+  currentEvent: 6
   polygonCollider: {fileID: 143418}
   circleCollider: {fileID: 152010}
   startHealth: 3
@@ -315,7 +315,18 @@ MonoBehaviour:
   firePoint: {fileID: 402168}
   projectilePrefab: {fileID: 189036, guid: 4d1008bf3dfddef4ea79c29e5c412f49, type: 2}
   projectileSpeed: 5
-  projectileLifeTime: 2
+  projectileLifeTime: 8
+  bouncePrefab: {fileID: 189036, guid: e375c73872b0615428a27ecb83ccf59c, type: 2}
+  bouncePoints: 4
+  bounceDistance: 2
+  bounceHeight: 4.5
+  bounceSpeed: .699999988
+  bounceFirepointHeight: -1
+  arcPrefab: {fileID: 189036, guid: a22d513e0430a014581e1047c9212179, type: 2}
+  iceSpawn: {fileID: 0}
+  icicles: {fileID: 136166, guid: c5138a3e16e579a439f5cdb2147903c1, type: 2}
+  icePlatform: {fileID: 0}
+  platformHeight: 2
 --- !u!114 &11483100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,7 +345,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
@@ -352,7 +363,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300022, guid: 6063fd9af0817634ebd892369d2eb4a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ec43dcadf6014d498c76b1e11a50ad8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

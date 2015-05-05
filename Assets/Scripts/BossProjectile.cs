@@ -13,7 +13,8 @@ public class BossProjectile : MonoBehaviour {
 		{
 			Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
 		}
-		Destroy(gameObject);
+        if (triggered.gameObject.layer.ToString() != "Default")
+		    Destroy(gameObject);
 	}
 
 	void OnCollisionEnter2D(Collision2D collided)
@@ -26,6 +27,7 @@ public class BossProjectile : MonoBehaviour {
 			Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
 		}
 		//If it collides with anything, destroy projectile
-		Destroy(gameObject);
+        if (collided.gameObject.layer.ToString() != "Default")
+            Destroy(gameObject);
 	}
 }

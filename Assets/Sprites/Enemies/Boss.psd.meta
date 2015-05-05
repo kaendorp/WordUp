@@ -1,40 +1,51 @@
 fileFormatVersion: 2
 guid: 9ec43dcadf6014d498c76b1e11a50ad8
-timeCreated: 1430323880
+timeCreated: 1430825282
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Boss_0
-    21300002: Boss_1
-    21300004: Boss_2
-    21300006: Boss_3
-    21300008: Boss_4
-    21300010: Boss_5
-    21300012: Boss_6
-    21300014: Boss_7
-    21300016: Boss_8
-    21300018: Boss_9
-    21300020: Boss_10
-    21300022: Boss_11
-    21300024: Boss_12
-    21300026: Boss_13
-    21300028: Boss_14
-    21300030: Boss_15
-    21300032: Boss_16
-    21300034: Boss_17
-    21300036: Boss_18
-    21300038: Boss_19
-    21300040: Boss_20
-    21300042: Boss_21
-    21300044: Boss_22
-    21300046: Boss_23
-    21300048: Boss_24
+    21300000: Boss_Idle_0
+    21300002: Boss_Idle_1
+    21300004: Boss_Roar_In_0
+    21300006: Boss_Roar_In_1
+    21300008: Boss_Hit
+    21300010: Boss_Roar_In_2
+    21300012: Boss_Roar_In_3
+    21300014: Boss_Roar_0
+    21300016: Boss_Roar_1
+    21300018: Boss_Roar_2
+    21300020: Boss_Shoot_0
+    21300022: Boss_Shoot_1
+    21300024: Boss_Shoot_2
+    21300026: Boss_Shoot_3
+    21300028: Boss_Shoot_4
+    21300030: Boss_Melt_0
+    21300032: Boss_Melt_1
+    21300034: Boss_Melt_2
+    21300036: Boss_Melt_3
+    21300038: Boss_Melt_4
+    21300040: Boss_Melt_5
+    21300042: Boss_Melt_6
+    21300044: Boss_Melt_7
+    21300046: Boss_Melt_8
+    21300048: Boss_Melt_9
     21300050: Boss_25
-    21300052: Boss_26
+    21300052: Boss_Melt_10
     21300054: Boss_OneKnee_01
     21300056: Boss_OneKnee_02
     21300058: Boss_OneKnee_03
     21300060: Boss_OneKnee_04
+    21300062: Boss_RoarAttack_0
+    21300064: Boss_RoarAttack_1
+    21300066: Boss_RoarAttack_2
+    21300068: Boss_RoarAttack_3
+    21300070: Boss_RoarAttack_4
+    21300072: Boss_Stomp_0
+    21300074: Boss_Stomp_1
+    21300076: Boss_Stomp_2
+    21300078: Boss_Stomp_3
+    21300080: Boss_Stomp_4
+    21300082: Boss_Stomp_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -80,7 +91,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Boss_0
+    - name: Boss_Idle_0
       rect:
         serializedVersion: 2
         x: 23
@@ -88,9 +99,9 @@ TextureImporter:
         width: 97
         height: 100
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_1
+    - name: Boss_Idle_1
       rect:
         serializedVersion: 2
         x: 196
@@ -98,9 +109,9 @@ TextureImporter:
         width: 100
         height: 103
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_2
+    - name: Boss_Roar_In_0
       rect:
         serializedVersion: 2
         x: 373
@@ -108,9 +119,9 @@ TextureImporter:
         width: 89
         height: 98
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_3
+    - name: Boss_Roar_In_1
       rect:
         serializedVersion: 2
         x: 539
@@ -118,9 +129,9 @@ TextureImporter:
         width: 92
         height: 103
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_4
+    - name: Boss_Hit
       rect:
         serializedVersion: 2
         x: 683
@@ -128,9 +139,9 @@ TextureImporter:
         width: 97
         height: 100
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_5
+    - name: Boss_Roar_In_2
       rect:
         serializedVersion: 2
         x: 23
@@ -138,9 +149,9 @@ TextureImporter:
         width: 104
         height: 103
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_6
+    - name: Boss_Roar_In_3
       rect:
         serializedVersion: 2
         x: 194
@@ -148,9 +159,9 @@ TextureImporter:
         width: 112
         height: 106
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_7
+    - name: Boss_Roar_0
       rect:
         serializedVersion: 2
         x: 372
@@ -158,9 +169,9 @@ TextureImporter:
         width: 112
         height: 111
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_8
+    - name: Boss_Roar_1
       rect:
         serializedVersion: 2
         x: 539
@@ -168,9 +179,9 @@ TextureImporter:
         width: 112
         height: 115
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_9
+    - name: Boss_Roar_2
       rect:
         serializedVersion: 2
         x: 683
@@ -178,9 +189,9 @@ TextureImporter:
         width: 112
         height: 118
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_10
+    - name: Boss_Shoot_0
       rect:
         serializedVersion: 2
         x: 23
@@ -188,9 +199,9 @@ TextureImporter:
         width: 100
         height: 103
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_11
+    - name: Boss_Shoot_1
       rect:
         serializedVersion: 2
         x: 196
@@ -198,9 +209,9 @@ TextureImporter:
         width: 109
         height: 100
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_12
+    - name: Boss_Shoot_2
       rect:
         serializedVersion: 2
         x: 372
@@ -208,9 +219,9 @@ TextureImporter:
         width: 128
         height: 100
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_13
+    - name: Boss_Shoot_3
       rect:
         serializedVersion: 2
         x: 539
@@ -218,9 +229,9 @@ TextureImporter:
         width: 126
         height: 100
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_14
+    - name: Boss_Shoot_4
       rect:
         serializedVersion: 2
         x: 683
@@ -228,9 +239,9 @@ TextureImporter:
         width: 92
         height: 100
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_15
+    - name: Boss_Melt_0
       rect:
         serializedVersion: 2
         x: 23
@@ -238,9 +249,9 @@ TextureImporter:
         width: 97
         height: 86
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_16
+    - name: Boss_Melt_1
       rect:
         serializedVersion: 2
         x: 196
@@ -248,9 +259,9 @@ TextureImporter:
         width: 97
         height: 69
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_17
+    - name: Boss_Melt_2
       rect:
         serializedVersion: 2
         x: 372
@@ -258,9 +269,9 @@ TextureImporter:
         width: 97
         height: 52
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_18
+    - name: Boss_Melt_3
       rect:
         serializedVersion: 2
         x: 539
@@ -268,9 +279,9 @@ TextureImporter:
         width: 97
         height: 34
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_19
+    - name: Boss_Melt_4
       rect:
         serializedVersion: 2
         x: 683
@@ -278,9 +289,9 @@ TextureImporter:
         width: 97
         height: 20
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_20
+    - name: Boss_Melt_5
       rect:
         serializedVersion: 2
         x: 23
@@ -288,9 +299,9 @@ TextureImporter:
         width: 95
         height: 10
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_21
+    - name: Boss_Melt_6
       rect:
         serializedVersion: 2
         x: 196
@@ -298,9 +309,9 @@ TextureImporter:
         width: 88
         height: 10
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_22
+    - name: Boss_Melt_7
       rect:
         serializedVersion: 2
         x: 372
@@ -308,9 +319,9 @@ TextureImporter:
         width: 82
         height: 8
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_23
+    - name: Boss_Melt_8
       rect:
         serializedVersion: 2
         x: 539
@@ -318,9 +329,9 @@ TextureImporter:
         width: 56
         height: 10
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_24
+    - name: Boss_Melt_9
       rect:
         serializedVersion: 2
         x: 683
@@ -328,27 +339,17 @@ TextureImporter:
         width: 40
         height: 6
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_25
+    - name: Boss_Melt_10
       rect:
         serializedVersion: 2
         x: 805
-        y: 610
-        width: 5
-        height: 4
-      alignment: 7
-      pivot: {x: 1, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Boss_26
-      rect:
-        serializedVersion: 2
-        x: 810
         y: 608
-        width: 17
+        width: 22
         height: 9
       alignment: 7
-      pivot: {x: 1, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Boss_OneKnee_01
       rect:
@@ -387,6 +388,116 @@ TextureImporter:
         y: 487
         width: 80
         height: 81
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_RoarAttack_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 361
+        width: 100
+        height: 104
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_RoarAttack_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 361
+        width: 109
+        height: 104
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_RoarAttack_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 361
+        width: 116
+        height: 113
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_RoarAttack_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 362
+        width: 116
+        height: 115
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_RoarAttack_4
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 361
+        width: 115
+        height: 115
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 239
+        width: 97
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 239
+        width: 97
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 239
+        width: 97
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 239
+        width: 97
+        height: 95
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_4
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 239
+        width: 97
+        height: 88
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Stomp_5
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 239
+        width: 89
+        height: 87
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -58,12 +58,24 @@ public class Letter2ProjectileController : MonoBehaviour {
 				hitPosition = transform.position.y;
 			}
 		}
-
+        if (col.transform.tag == "Boss")
+        {
+            StartCoroutine(ToggleKinematic());
+        }
 	}
     void DestroyProjectile()
     {
         Destroy(gameObject, 5);
     }
-	
 
+    /**
+     * Needed for the boss to register a hit. This projectile can not 
+     * be kinematic if it needs to trigger a collider.
+     */
+    IEnumerator ToggleKinematic()
+    {
+        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+    }
 }

@@ -23,4 +23,13 @@ public class BossCircleCollider : MonoBehaviour {
 			bossController.hitByPlayerProjectile();
 		}
 	}
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("HIT");
+        if (collider.gameObject.tag == "PlayerProjectile")
+        {
+            bossController.hitByPlayerProjectile();
+        }
+    }
 }
