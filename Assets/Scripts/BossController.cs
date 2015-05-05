@@ -558,6 +558,12 @@ public class BossController : MonoBehaviour
      */
     IEnumerator Defeated()
     {
+        // Kill boss minions when defeated
+        if (iceInit != null)
+        {
+            Destroy(iceInit);
+        }
+
         // TODO: Disable player controlls without stopping time
         anim.SetBool("IsDefeated", true);
 
