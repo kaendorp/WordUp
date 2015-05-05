@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   currentSequence: 0
-  currentEvent: 4
+  currentEvent: 6
   polygonCollider: {fileID: 143418}
   circleCollider: {fileID: 152010}
   startHealth: 3
@@ -325,6 +325,8 @@ MonoBehaviour:
   arcPrefab: {fileID: 189036, guid: a22d513e0430a014581e1047c9212179, type: 2}
   iceSpawn: {fileID: 0}
   icicles: {fileID: 136166, guid: c5138a3e16e579a439f5cdb2147903c1, type: 2}
+  icePlatform: {fileID: 0}
+  platformHeight: 2
 --- !u!114 &11483100
 MonoBehaviour:
   m_ObjectHideFlags: 1

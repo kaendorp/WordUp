@@ -20,6 +20,7 @@ public class BossController : MonoBehaviour
         shoot,
         bounce,
         arc,
+        stomp,
         roarIdle,
     }
 
@@ -84,6 +85,9 @@ public class BossController : MonoBehaviour
     [Header("ICE")]
     public Transform iceSpawn;
     public GameObject icicles;
+    public GameObject icePlatform;
+    public float platformHeight = 2f;
+    private GameObject iceInit;
 
     /**
      * Awake
@@ -113,6 +117,7 @@ public class BossController : MonoBehaviour
             case bossSequence.level2:
                 bossSequenceList.Add(bossEvents.inactive);
                 bossSequenceList.Add(bossEvents.arc);
+                bossSequenceList.Add(bossEvents.stomp);
                 bossSequenceList.Add(bossEvents.roarIdle);
                 break;
             default:
@@ -156,6 +161,9 @@ public class BossController : MonoBehaviour
                     break;
                 case bossEvents.arc:
                     StartCoroutine(Arc());
+                    break;
+                case bossEvents.stomp:
+                    StartCoroutine(Stomp());
                     break;
                 case bossEvents.roarAttack:
                     StartCoroutine(RoarAttack());
@@ -389,6 +397,9 @@ public class BossController : MonoBehaviour
         shot.GetComponent<Rigidbody2D>().gravityScale = 1f;
         shot.GetComponent<Rigidbody2D>().angularDrag = 0;
         Vector3 velocity = findInitialVelocity(shot.transform.position, player.transform.position);
+
+        if (float.IsNaN(velocity.y) || float.IsNaN(velocity.x))
+            velocity = new Vector3(-0.2f, 0.2f);
         shot.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(shot, projectileLifeTime);
     }
@@ -400,7 +411,7 @@ public class BossController : MonoBehaviour
      * 
      * @param Vector3 startPosition - the starting position of the projectile
      * @param Vector3 finalPosition - the position that we want to hit
-     * @return Vector3 - the initial velocity of the ball to make it hit the target under the current gravity force.
+     * @return Vector3 - the initial velocity of the projectile to make it hit the target under the current gravity force.
      */
     private Vector3 findInitialVelocity(Vector3 startPosition, Vector3 finalPosition)
     {
@@ -445,6 +456,40 @@ public class BossController : MonoBehaviour
         newVel.z = horizontalVelocityMagnitude * unitDirection.z;
 
         return newVel;
+    }
+
+    IEnumerator Stomp()
+    {
+        //anim.SetBool("Stomp", true);
+        yield return new WaitForSeconds(0.2f);
+        Vector3 startPosition = icePlatform.transform.position;
+        Vector3 endPosition = new Vector3(icePlatform.transform.position.x, icePlatform.transform.position.y + platformHeight, icePlatform.transform.position.z);
+        StartCoroutine(IcePlatform(startPosition, endPosition));
+
+        iceInit = (GameObject)Instantiate(icicles, iceSpawn.transform.position, iceSpawn.transform.rotation);
+        iceInit.SendMessage("TriggerIceFall");
+
+        Destroy(iceInit, 4);
+        setNextAction();
+    }
+
+    IEnumerator IcePlatform(Vector3 from, Vector3 to)
+    {
+        float iceUpTime = 0.1f;
+
+        float startTime = Time.time;
+        while (Time.time < startTime + iceUpTime)
+        {
+            icePlatform.transform.position = Vector3.Lerp(from, to, (Time.time - startTime) / iceUpTime);
+            yield return null;
+        }
+        iceUpTime = 10f;
+        startTime = Time.time;
+        while (Time.time < startTime + iceUpTime)
+        {
+            icePlatform.transform.position = Vector3.Lerp(to, from, (Time.time - startTime) / iceUpTime);
+            yield return null;
+        }
     }
 
     /**
