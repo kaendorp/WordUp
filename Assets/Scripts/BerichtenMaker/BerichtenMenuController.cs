@@ -25,6 +25,12 @@ public class BerichtenMenuController : MonoBehaviour {
 
     public void SetMessage(string message, int stage)
     {
+        if (message == "done")
+        {
+            SendMessageToPrefab();
+            return;
+        }
+
         switch (stage)
         {
             case 0:
@@ -78,5 +84,11 @@ public class BerichtenMenuController : MonoBehaviour {
             buttonRect,
             new GUIContent(selectedText)
                 );
+    }
+
+
+    public void SendMessageToPrefab() 
+    {
+        // TODO
     }
 }

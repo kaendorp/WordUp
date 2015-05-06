@@ -44,7 +44,7 @@ public class BerichtenMakerController : MonoBehaviour
         "En allemaal dankzij ***"
     };
 
-    private static string back = "< terug naar menu";
+    private static string back = "< terug";
 
     private string[] category = new string[8]{
         back,
@@ -161,6 +161,12 @@ public class BerichtenMakerController : MonoBehaviour
 	    " trouwens ",
     };
 
+    private string[] done = new string[2] 
+    {
+        back,
+        "Afronden",
+    };
+
     public int selected = 0;
     public int stage = 0;
 
@@ -192,9 +198,7 @@ public class BerichtenMakerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            selected = 0;
-            wordOptions = baseWord;
-            stage = 0;
+            wordOptions = done;
         }
 
     }
@@ -260,7 +264,8 @@ public class BerichtenMakerController : MonoBehaviour
     {
         if (selectedMessage == back)
         {
-            stage--;
+            if (wordOptions != done)
+                stage--;
             berichtenMenuController.SetMessage(null, stage);
         }
         else
