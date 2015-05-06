@@ -23,7 +23,7 @@ public class PlayerRope : MonoBehaviour {
     Rigidbody2D rigidbody;
 
 	private float xOffset = 0.0f;
-	[System.NonSerialized] float directionToFace = 1;
+	//[System.NonSerialized] float directionToFace = 1; (not used)
 
 	void Awake () {
 		segmentHashTable = new Hashtable ();
@@ -74,8 +74,8 @@ public class PlayerRope : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump"))
             transform.parent.gameObject.GetComponent<RopeSegment>().JumpOff(rawHorizontalAxis, gameObject);
-        if (rawHorizontalAxis != 0)
-            directionToFace = rawHorizontalAxis;
+        //if (rawHorizontalAxis != 0) (not used)
+            //directionToFace = rawHorizontalAxis; (not used)
        }
 
     void LateUpdate()

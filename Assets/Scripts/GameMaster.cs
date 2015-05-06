@@ -27,12 +27,12 @@ public class GameMaster : MonoBehaviour
 
     public IEnumerator RespawnPlayer()
     {
-        Debug.Log("TODO: Add waiting for spawn");
-        player.gameObject.active = false;
+        //Debug.Log("TODO: Add waiting for spawn");
+        //player.gameObject.active = false;
         yield return new WaitForSeconds(spawnDelay);
         Instantiate(RespawnEffect, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
         player.transform.position = currentCheckPoint.transform.position;
-        player.gameObject.active = true;
+        //player.gameObject.active = true;
     }
 
 

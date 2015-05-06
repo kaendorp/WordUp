@@ -210,6 +210,7 @@ public class Player : MonoBehaviour {
                         if (letters[0].text == "")
                         {                            
                              letters[0].text = collision.gameObject.name;
+								Debug.Log (collision.gameObject.name);
                              lettersHUD[0].text = collision.gameObject.name;
                         }
                         else if (letters[1].text == "")

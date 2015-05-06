@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnitySampleAssets.CrossPlatformInput;
 
@@ -84,7 +84,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         CurrentLetters = Projectile1;
     }
 
-    private void Update()
+	private void Update()
     {
         if (!jump)
         {
@@ -198,7 +198,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     public void Move(float move, bool crouch, bool jump, bool crouched)
     {
 
-        float curSpeed = anim.GetFloat("Speed");
+        //float curSpeed = anim.GetFloat("Speed"); (not used)
 
         // If crouching, check to see if the character can stand up
         if (!crouch && anim.GetBool("Crouch"))

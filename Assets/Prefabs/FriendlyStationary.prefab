@@ -32,6 +32,7 @@ GameObject:
   - 61: {fileID: 6129926}
   - 95: {fileID: 9564636}
   - 114: {fileID: 11475766}
+  - 82: {fileID: 8284174}
   m_Layer: 13
   m_Name: FriendlyStationary
   m_TagString: Friendly
@@ -171,6 +172,75 @@ BoxCollider2D:
   m_Offset: {x: -0, y: .0399999991}
   serializedVersion: 2
   m_Size: {x: .419999987, y: .959999979}
+--- !u!82 &8284174
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141542}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9564636
 Animator:
   serializedVersion: 3
@@ -242,6 +312,10 @@ MonoBehaviour:
   messageObject: {fileID: 105374}
   currentHealth: 5
   invincibilityDuration: 2
+  idleSound: {fileID: 0}
+  friendlyIsAangevallen: {fileID: 0}
+  talking: []
+  friendlyConvertToEnemy: {fileID: 0}
   walkSpeed: 0
   collideDistance: .5
   edgeDetection: 0
@@ -249,6 +323,11 @@ MonoBehaviour:
   spotRadius: 3
   drawSpotRadiusGismo: 1
   blindedDelay: 0
+  number1: {fileID: 8300000, guid: 6190e4ce4a6ec3a4ba8b4eaa4c885432, type: 3}
+  number2: {fileID: 8300000, guid: 9514e2890f076744891d791c19798d8a, type: 3}
+  number3: {fileID: 8300000, guid: 1fd12025871833b4a9b92d0bb53465f4, type: 3}
+  number4: {fileID: 8300000, guid: 0cec9bfbc4f544842867c08ff7fbcb8e, type: 3}
+  speed: .0199999996
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
