@@ -42,12 +42,24 @@ public class KindController : MonoBehaviour
 	public AudioClip bonusToHealth;
 	private Vector3 position;
 
+	//voice
+	[Header("SPEECH")]
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	
+	public float speed;
+	private byte[] low;
+	private AudioSource _audioSource;
+
     // Use this for initialization
     void Start()
     {
         // Vind het KindObject
         Stats = GameObject.Find("Stats");
 		position = this.transform.position;
+		_audioSource = gameObject.GetComponent<AudioSource> ();
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
@@ -63,7 +75,6 @@ public class KindController : MonoBehaviour
             anim.SetBool("IsFynn", true);
         else
             anim.SetBool("IsFynn", false);
-
     }
 
     // Update is called once per frame
@@ -83,11 +94,10 @@ public class KindController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
-
+			StartCoroutine(PlaySound (message));
             if (plusKind == false)
             {
                 //Debug.Log("Trigger");
@@ -116,6 +126,47 @@ public class KindController : MonoBehaviour
             messageObject.GetComponent<TextMesh>().text = "";
         }
     }
+
+	/**
+     * Converts any string in message to sound
+     */
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			//Debug.Log (b);
+			if(b < 65)
+			{
+				_audioSource.clip = number1;
+				_audioSource.volume = 0.2f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 65 && b < 105)
+			{
+				_audioSource.clip = number2;
+				_audioSource.volume = 0.4f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				_audioSource.clip = number3;
+				_audioSource.volume = 0.6f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else
+			{	
+				_audioSource.clip = number4;
+				_audioSource.volume = 0.8f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+		}
+		
+	}
 
 
     /**
