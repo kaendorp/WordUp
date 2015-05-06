@@ -18,6 +18,11 @@ public class WaterScript : MonoBehaviour
 	
 	}
 
+	void OnTriggerExit2D(Collider2D collision)
+	{
+		isSplashPlayed = false;
+	}
+
     void OnTriggerEnter2D (Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")

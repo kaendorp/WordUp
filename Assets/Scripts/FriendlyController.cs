@@ -49,7 +49,6 @@ public class FriendlyController : MonoBehaviour
 	public AudioClip friendlyIsAangevallen;
 	public AudioClip[] talking;
 	public AudioClip friendlyConvertToEnemy;
-	private Vector3 position;
 	private bool isPlayed;
 
     // Patrol
@@ -82,12 +81,23 @@ public class FriendlyController : MonoBehaviour
     private bool isBlinded = false;
     public float blindedDelay = 2f;
 
+	//voice
+	[Header("SPEECH")]
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	
+	public float speed;
+	private byte[] low;
+	private AudioSource _audioSource;
+
     void Start()
     {
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
-
+		_audioSource = gameObject.GetComponent<AudioSource> ();
         anim = GetComponent<Animator>();
     }
 
@@ -255,6 +265,11 @@ public class FriendlyController : MonoBehaviour
      */
     void OnTriggerEnter2D(Collider2D collision)
     {
+		if (collision.gameObject.tag == "Player") 
+		{
+			StartCoroutine(PlaySound(message));
+		}
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
         {
             if (!onCoolDown && currentHealth > 0)
@@ -278,6 +293,46 @@ public class FriendlyController : MonoBehaviour
         onCoolDown = false;
         anim.SetBool("isHit", false);
     }
+
+	/**
+     * Converts any string in message to sound
+     */
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			//Debug.Log (b);
+			if(b < 65)
+			{
+				_audioSource.clip = number1;
+				_audioSource.volume = 0.2f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 65 && b < 105)
+			{
+				_audioSource.clip = number2;
+				_audioSource.volume = 0.4f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				_audioSource.clip = number3;
+				_audioSource.volume = 0.6f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else
+			{	
+				_audioSource.clip = number4;
+				_audioSource.volume = 0.8f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+		}
+	}
 
     /**
      * Friendly death
@@ -415,7 +470,6 @@ public class FriendlyController : MonoBehaviour
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
-			//geluid van string to sound (oneshot) isPlayed = true
         }
     }
 

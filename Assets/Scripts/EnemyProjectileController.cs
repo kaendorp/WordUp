@@ -15,7 +15,7 @@ public class EnemyProjectileController : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("EnemyProjectile"));
 
 		projectileHits = gameObject.GetComponent<AudioSource> ().clip;
-		positie = gameObject.transform.position;
+		positie = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     void onTriggerEnter2D(Collision2D triggered)

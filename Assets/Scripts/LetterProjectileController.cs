@@ -34,14 +34,14 @@ public class LetterProjectileController : MonoBehaviour {
 
 	void onTriggerEnter2D(Collision2D obj)
     {
-		Debug.Log ("Hit");
-			Instantiate(enemyDeathEffect, obj.transform.position, obj.transform.rotation);
-            Destroy(this.gameObject);		
+		//Debug.Log ("Hit");
+		Instantiate(enemyDeathEffect, obj.transform.position, obj.transform.rotation);
+        Destroy(this.gameObject);		
     }
 
 	void OnCollisionEnter2D(Collision2D collider)
 	{ 
-		Debug.Log("Collision Detected");
+		//Debug.Log("Collision Detected");
 		
 		if (collider.gameObject.tag == "Enemy") {
 			Instantiate (enemyDeathEffect, collider.transform.position, collider.transform.rotation);

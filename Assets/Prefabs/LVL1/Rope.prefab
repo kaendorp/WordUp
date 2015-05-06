@@ -89,6 +89,7 @@ GameObject:
   - 114: {fileID: 11472972}
   - 233: {fileID: 23350440}
   - 61: {fileID: 6181058}
+  - 82: {fileID: 8272602}
   m_Layer: 0
   m_Name: RopePart 1
   m_TagString: Rope
@@ -333,6 +334,75 @@ BoxCollider2D:
   m_Offset: {x: -4.76837158e-07, y: -.000766277313}
   serializedVersion: 2
   m_Size: {x: .200000003, y: .679335177}
+--- !u!82 &8272602
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176466}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2cba21d8b98b6d943a317a74ec17a389, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11405190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -518,7 +588,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176466}
   m_Enabled: 1
-  m_CollideConnected: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5056346}
   m_Anchor: {x: .0169334412, y: .370646238}
   m_ConnectedAnchor: {x: .0169334412, y: -.139353275}
@@ -537,7 +607,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175716}
   m_Enabled: 1
-  m_CollideConnected: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5040712}
   m_Anchor: {x: .00983428955, y: .368397951}
   m_ConnectedAnchor: {x: .00983428955, y: -.314602137}
@@ -556,7 +626,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176466}
   m_Enabled: 1
-  m_CollideConnected: 0
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5040712}
   m_Anchor: {x: 0, y: -.340000004}
   m_ConnectedAnchor: {x: 0, y: .340000004}
@@ -575,7 +645,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106932}
   m_Enabled: 1
-  m_CollideConnected: 0
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_Anchor: {x: 0, y: -.770000458}
   m_ConnectedAnchor: {x: -23.506012, y: -4.98721409}
@@ -594,7 +664,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160872}
   m_Enabled: 1
-  m_CollideConnected: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5063378}
   m_Anchor: {x: .0169334412, y: .340000004}
   m_ConnectedAnchor: {x: .0169334412, y: -.337000132}
@@ -613,7 +683,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160872}
   m_Enabled: 1
-  m_CollideConnected: 0
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5083992}
   m_Anchor: {x: 0, y: -.340000004}
   m_ConnectedAnchor: {x: 0, y: .339999914}
@@ -632,7 +702,7 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179958}
   m_Enabled: 1
-  m_CollideConnected: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_Anchor: {x: .0320014954, y: .164999962}
   m_ConnectedAnchor: {x: 36.3359871, y: 4.30778694}

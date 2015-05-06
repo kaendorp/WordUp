@@ -115,7 +115,6 @@ public class EnemyController : MonoBehaviour
     // Sprint
     [Header("SPRINT")]
     public float sprintMinSpeed = 0.05f;
-    private bool lostSight = false;
 
     // Sticky
     [Header("STICKY")]

@@ -9,11 +9,10 @@ public class GladScript : MonoBehaviour
     public bool glijRechts;
 
 	private AudioSource _audioSource;
-	private bool isPlayed;
+
     // Use this for initialization
     void Start()
     {
-		isPlayed = false;
 		_audioSource = gameObject.GetComponent<AudioSource>();
     }
 

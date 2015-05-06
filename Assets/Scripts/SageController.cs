@@ -37,12 +37,22 @@ public class SageController : MonoBehaviour {
     private Collider2D[] collisionObjects;
     private bool playerSpotted = false;         // Has the friendly spotted the player?
 
+	//voice
+	[Header("SPEECH")]
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	
+	public float speed;
+	private byte[] low;
+	private AudioSource _audioSource;
+
     // Use this for initialization
     void Start()
     {
         // Vind het KindObject
         Stats = GameObject.Find("Stats");
-        
         lettersNeeded = Stats.GetComponent<Player>().maxLetters;
 
         // Normaal gezien is een bericht een enkele regel
@@ -58,6 +68,7 @@ public class SageController : MonoBehaviour {
         else
             anim.SetBool("IsFynn", false);
 
+		_audioSource = gameObject.GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -91,6 +102,7 @@ public class SageController : MonoBehaviour {
             {
                 messageObject.GetComponent<TextMesh>().text = "Je hebt nog niet voldoende \n letters verzameld jongeling. \n Ga terug en wederkeer als \n je alle " + lettersNeeded + " letters gevonden hebt.";
             }
+			StartCoroutine(PlaySound (succesMessage));
         }
     }
 
@@ -102,6 +114,42 @@ public class SageController : MonoBehaviour {
         }
     }
 
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			//Debug.Log (b);
+			if(b < 65)
+			{
+				_audioSource.clip = number1;
+				_audioSource.volume = 0.2f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 65 && b < 105)
+			{
+				_audioSource.clip = number2;
+				_audioSource.volume = 0.4f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				_audioSource.clip = number3;
+				_audioSource.volume = 0.6f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else
+			{	
+				_audioSource.clip = number4;
+				_audioSource.volume = 0.8f;
+				_audioSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+		}
+	}
 
     /**
  * Checks to see if an entity of the "Player" layer has entered the range of the Friendly.
