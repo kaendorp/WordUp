@@ -601,6 +601,8 @@ GameObject:
   - 114: {fileID: 11495104}
   - 114: {fileID: 11464118}
   - 114: {fileID: 11462434}
+  - 114: {fileID: 11402182}
+  - 114: {fileID: 11468600}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1001,6 +1003,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &173558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22425120}
+  - 222: {fileID: 22201944}
+  - 114: {fileID: 11423882}
+  m_Layer: 5
+  m_Name: BerichtMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &173952
 GameObject:
   m_ObjectHideFlags: 1
@@ -1503,6 +1522,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &11402182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c522a1ea95a8ef4c944e24a5f96e31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berichtenMaker: {fileID: 22425120}
+  berichtenPrefabs: []
+  berichtMakerActive: 0
 --- !u!114 &11402468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2014,6 +2047,27 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: b9e88f5f51104b2418423e14aca92c6f, type: 3}
   m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &11423882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .760784388, g: .760784388, b: .760784388, a: 1}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3034,6 +3088,17 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 2, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &11468600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687b7072194b0274d9048186f1bbea40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11470224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3616,6 +3681,12 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 2, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!222 &22201944
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173558}
 --- !u!222 &22202158
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -4581,6 +4652,23 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: 2.23083496}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: .5, y: .5}
+--- !u!224 &22425120
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22433294}
+  m_RootOrder: 11
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 3.25, y: .5}
+  m_SizeDelta: {x: 6.5, y: 1}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22425680
 RectTransform:
   m_ObjectHideFlags: 1
@@ -4721,6 +4809,7 @@ RectTransform:
   - {fileID: 22427570}
   - {fileID: 22417796}
   - {fileID: 22408536}
+  - {fileID: 22425120}
   - {fileID: 22462588}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5067,7 +5156,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22433294}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1, y: 2}

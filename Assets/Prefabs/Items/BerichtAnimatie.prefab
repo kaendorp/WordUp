@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba04b3d11fc09f14c8c25cafe18642e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageKey: 0
   targetLayer: Player
   message: Druk op 'w' \n om te springen.
   messageObject: {fileID: 164504}
