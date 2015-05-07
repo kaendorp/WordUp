@@ -502,6 +502,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &138892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22498016}
+  - 222: {fileID: 22269036}
+  - 114: {fileID: 11454410}
+  m_Layer: 5
+  m_Name: BerichtMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &141322
 GameObject:
   m_ObjectHideFlags: 1
@@ -930,6 +947,8 @@ GameObject:
   - 114: {fileID: 11497518}
   - 114: {fileID: 11481716}
   - 114: {fileID: 11420558}
+  - 114: {fileID: 11416740}
+  - 114: {fileID: 11443610}
   m_Layer: 5
   m_Name: HUD_LVL1
   m_TagString: Untagged
@@ -1836,6 +1855,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '- Woordspel -'
+--- !u!114 &11416740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c522a1ea95a8ef4c944e24a5f96e31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berichtenMaker: {fileID: 22498016}
+  berichtenPrefabs: []
+  berichtMakerActive: 0
 --- !u!114 &11417778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2378,6 +2411,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &11443610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687b7072194b0274d9048186f1bbea40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11444288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2622,6 +2666,27 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11454410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .760784388, g: .760784388, b: .760784388, a: 1}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11454666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3904,6 +3969,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103770}
+--- !u!222 &22269036
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138892}
 --- !u!222 &22269300
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -4443,7 +4514,7 @@ RectTransform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 22488588}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 140, y: -51}
@@ -5194,6 +5265,7 @@ RectTransform:
   - {fileID: 22445946}
   - {fileID: 22463934}
   - {fileID: 22405008}
+  - {fileID: 22498016}
   - {fileID: 22421390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5427,6 +5499,23 @@ RectTransform:
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 2, y: 2.23083496}
   m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22498016
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22488588}
+  m_RootOrder: 10
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 3.25, y: .5}
+  m_SizeDelta: {x: 6.5, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22499062
 RectTransform:
