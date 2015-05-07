@@ -5,15 +5,12 @@ public class BerichtenMenuController : MonoBehaviour
 {
     public RectTransform berichtenMaker;
     public GameObject[] berichtenPrefabs;
-    public BerichtGetSet berichtGetSet;
+    private BerichtGetSet berichtGetSet;
 
     public bool berichtMakerActive = false;
     private GUISkin skin;
-    [TextArea(1, 2)]
-    public string selectedText = "zz";
-    [TextArea(1, 2)]
-    public string setText = "";
-
+    private string selectedText = "zz";
+    private string setText = "";
     private RectTransform window;
 
     private string[] messageList = new string[7];
@@ -22,10 +19,10 @@ public class BerichtenMenuController : MonoBehaviour
 
     private string[] wordOptions;
 
-    public string selectedMessage;
+    private string selectedMessage;
 
-    public int selected = 0;
-    public int stage = 0;
+    private int selected = 0;
+    private int stage = 0;
 
     private Rect buttonRect = new Rect(15, 20, 260, 30);
 
