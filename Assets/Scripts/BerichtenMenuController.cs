@@ -345,6 +345,13 @@ public class BerichtenMenuController : MonoBehaviour
     public void SendMessageToPrefab()
     {
         messagePrefab.GetComponent<BerichtController>().message = selectedText;
+
+        int key = messagePrefab.GetComponent<BerichtController>().messageKey;
+
+        // TODO: Get unique userkey from playerData
+        string user = "Guest";
+
+        StartCoroutine(berichtGetSet.submitMessage(key, user, selectedText));
     }
 
     int menuSelection(string[] buttonsArray, int selectedItem, string direction)

@@ -87,6 +87,10 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &190331974 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196694, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
+  m_PrefabInternal: {fileID: 364706954}
 --- !u!1001 &364706954
 Prefab:
   m_ObjectHideFlags: 0
@@ -133,6 +137,10 @@ Prefab:
     - target: {fileID: 446556, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441094, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
+      propertyPath: messageKey
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
@@ -570,9 +578,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   berichtenMaker: {fileID: 836904519}
+  berichtenPrefabs:
+  - {fileID: 190331974}
+  berichtGetSet: {fileID: 0}
   berichtMakerActive: 0
   selectedText: 
   setText: 
   selectedMessage: 
   selected: 0
   stage: 0
+--- !u!114 &2141184532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2141184530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687b7072194b0274d9048186f1bbea40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

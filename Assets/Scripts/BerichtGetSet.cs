@@ -29,9 +29,9 @@ public class BerichtGetSet : MonoBehaviour {
     //    }
     //}
 
-    private IEnumerator submitMessage(int retrievalNr, string user, string message)
+    public IEnumerator submitMessage(int retrievalNr, string user, string message)
     {
-        string url = ("http://wordupgame.tk/insert_message.php?RetrievalNr=" + retrievalNr + "&User=" + user + "&Message=" + message);
+        string url = ("http://wordupgame.tk/insert_message.php?RetrievalNr=" + retrievalNr + "&User=" + WWW.EscapeURL(user) + "&Message=" + WWW.EscapeURL(message));
         Debug.Log(url);
         WWW webRequest = new WWW(url);
         yield return webRequest;
@@ -52,10 +52,10 @@ public class BerichtGetSet : MonoBehaviour {
         {
             yield return new WaitForSeconds(0.2f);
         }
-        string[] lines = webRequest.text.Split('\n');
+        string[] lines = webRequest.text.Split(';');
 
         System.Random randomMessage = new System.Random();
-        int selectedMessage = randomMessage.Next(0, (lines.Length - 1));
+        int selectedMessage = randomMessage.Next(0, lines.Length);
 
         result = lines[selectedMessage];
 

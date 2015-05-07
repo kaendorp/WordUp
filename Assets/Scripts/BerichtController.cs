@@ -9,6 +9,7 @@ public class BerichtController : MonoBehaviour {
     public string targetLayer = "Player";
     
     // Bericht
+    [TextArea(1, 2)]
     public string message = "";         // Het bericht wat getoont moet worden, gebruik \n om een nieuwe regel te beginnen
     public GameObject messageObject;    // TextMesh
 
