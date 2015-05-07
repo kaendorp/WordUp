@@ -10,7 +10,6 @@ public class BerichtenMenuController : MonoBehaviour
     public bool berichtMakerActive = false;                 // Bool to trigger the menu
     private GUISkin skin;                                   // GUI Skin
     private string selectedText = "";                       // Selected text, set after the menu selection
-    private RectTransform window;                           // this.gameObject.RectTransform
 
     private string[] messageList = new string[7];           // Text stored in between selections, back and forth
 
@@ -185,7 +184,6 @@ public class BerichtenMenuController : MonoBehaviour
     {
         berichtGetSet = this.gameObject.GetComponent<BerichtGetSet>();
         skin = Resources.Load("BerichtWoordSkin") as GUISkin;
-        window = this.gameObject.GetComponent<RectTransform>();
 
         PopulateBerichten();            // Starts the population of messages to prefabs
         wordOptions = baseWord;         // Default menu list
@@ -303,8 +301,6 @@ public class BerichtenMenuController : MonoBehaviour
     {
         if (berichtMakerActive == true)
         {
-            //buttonRect.width = window.rect.width;
-            //buttonRect.x = (window.rect.width / 2) - (buttonRect.width / 2);
             buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
             buttonRect.x = (Screen.width / 2) - (buttonRect.width / 2);
 
