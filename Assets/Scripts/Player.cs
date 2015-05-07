@@ -407,7 +407,7 @@ public class Player : MonoBehaviour {
 	void Update () 
 	{
 
-        if (HUD.GetComponent<WordGameScript>().Active != true && HUD.GetComponent<WinMenuScript>().WinActive != true && HUD.GetComponent<GameOverScript>().GameOverActive != true)
+        if (HUD.GetComponent<WordGameScript>().Active != true && HUD.GetComponent<WinMenuScript>().WinActive != true && HUD.GetComponent<GameOverScript>().GameOverActive != true && HUD.GetComponent<BerichtenMenuController>().berichtMakerActive != true)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {

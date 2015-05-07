@@ -166,13 +166,13 @@ public class BerichtenMenuController : MonoBehaviour
 
     private string[] tussenvoegsel = new string[8]{
         back,
-	    ", ",
-	    " en dan ",
-	    " maar ",
-	    " daarom ",
-	    " of ",
-	    " dus ",
-	    " trouwens ",
+	    ",\n",
+	    " en dan\n",
+	    " maar\n",
+	    " daarom\n",
+	    " of\n",
+	    " dus\n",
+	    " trouwens\n",
     };
 
     private string[] done = new string[3] 
@@ -322,7 +322,7 @@ public class BerichtenMenuController : MonoBehaviour
 
     public void SendMessageToPrefab()
     {
-        // TODO
+        messagePrefab.GetComponent<BerichtController>().message = selectedText;
     }
 
     int menuSelection(string[] buttonsArray, int selectedItem, string direction)
