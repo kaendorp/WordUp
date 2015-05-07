@@ -8,58 +8,58 @@ public class TestMessage : MonoBehaviour {
     //Id of messagepoint (where you obtain the message)
     public int retrievalNr = 1;
     //Facebook Id > Name of user, or when not logged in a give name
-    public string user;
+    public string user ="3";
     //Message
-    public string message;
+    public string message = "Hoi";
     //text on button
     private string btnText = "Submit Message";
-    
+   
     //resultaat van query
     public string result;
    
     //get messages - tijdelijk
-    public int id;
     public int retrievalNrget = 1;
 
-    void OnGUI()
+    public void OnGUI()
     {
+
         if (GUI.Button(new Rect(10, 10, 200, 50), btnText))
         {
-            StartCoroutine(submitMessage(retrievalNr, user, message));
+            StartCoroutine(submitMessage(1, user, message));
         }
 
     }
 
     private IEnumerator submitMessage(int retrievalNr, string user, string message)
     {
-        id = UnityEngine.Random.Range(1, 10);
-        WWW webRequest = new WWW("http://wordupgame.tk/insert_message.php?RetrievalNr=" + retrievalNr + "&User=" + user + "&Message=" + message);
+        Debug.Log(user);
+        Debug.Log("test");
+
+        string url = ("http://wordupgame.tk/insert_message.php?RetrievalNr=" + retrievalNr + "&User=" + user + "&Message=" + message);
+        Debug.Log(url);
+        WWW webRequest = new WWW(url);
         yield return webRequest;
-        yield return retrieveMessages(id, retrievalNrget);
+        StartCoroutine( retrieveMessages(retrievalNrget));
     }
 
     void Start()
     {
-        StartCoroutine(retrieveMessages(id, retrievalNrget));
+        message = "hoi";
+        user = "3";
     }
 
-    IEnumerator retrieveMessages(int id, int retrievalNrget)
+    IEnumerator retrieveMessages(int retrievalNrget)
     {
-        WWW webRequest = new WWW("http://wordupgame.tk/get_message.php?Id=" + id + "&RetrievalNr" + retrievalNrget);
+
+        Debug.Log("1");
+        WWW webRequest = new WWW("http://wordupgame.tk/get_message.php?RetrievalNr=" + retrievalNr);
         yield return webRequest;
 
-        string[] lines = webRequest.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries); //Split the response by newlines.
+        string[] lines = webRequest.text.Split('\n');
 
-        foreach (string line in lines) //Parse every line
+        foreach (string line in lines) 
         {
-            string[] parts = line.Split(',');
-
-            int result_id = int.Parse(parts[0]);
-            int result_retrievalNr = int.Parse(parts[1]);
-            String result_user = parts[3].ToString();
-            String result_message = parts[4].ToString();;
-
-            result = result_id + result_retrievalNr + result_user + result_message;
+            result = line;
             Debug.Log(result);
         }
     }
