@@ -17,7 +17,6 @@ public class BerichtController : MonoBehaviour {
 	private Vector3 position;
 	private bool isPlayed;
 
-    // Zet menu's active
     private GameObject HUD;
     private Transform berichtMaker;
 
@@ -40,10 +39,6 @@ public class BerichtController : MonoBehaviour {
         berichtMaker.gameObject.SetActive(false);
 	}
 
-	// Update is called once per frame
-	void Update () {
-	}
-
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "Player" && isPlayed == false) 
@@ -53,6 +48,11 @@ public class BerichtController : MonoBehaviour {
 		}
 	}
 
+    /**
+     * If the player stands in the trigger of the messageprefab and presses
+     * space, it will spawn the berichtMaker menu and sends this gameobject 
+     * to be processed there.
+     */
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == targetLayer)

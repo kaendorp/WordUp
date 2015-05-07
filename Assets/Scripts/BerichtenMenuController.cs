@@ -3,28 +3,29 @@ using System.Collections;
 
 public class BerichtenMenuController : MonoBehaviour
 {
-    public RectTransform berichtenMaker;
-    public GameObject[] berichtenPrefabs;
-    private BerichtGetSet berichtGetSet;
+    public RectTransform berichtenMaker;                    // BerichtenMaker background (Located in HUD)
+    public GameObject[] berichtenPrefabs;                   // List messagepoints in a level
+    private BerichtGetSet berichtGetSet;                    // Used to get access to the script
 
-    public bool berichtMakerActive = false;
-    private GUISkin skin;
-    private string selectedText = "zz";
-    private string setText = "";
-    private RectTransform window;
+    public bool berichtMakerActive = false;                 // Bool to trigger the menu
+    private GUISkin skin;                                   // GUI Skin
+    private string selectedText = "";                       // Selected text, set after the menu selection
+    private RectTransform window;                           // this.gameObject.RectTransform
 
-    private string[] messageList = new string[7];
+    private string[] messageList = new string[7];           // Text stored in between selections, back and forth
 
-    private GameObject messagePrefab;
+    private GameObject messagePrefab;                       // Used to set the message to this prefab, instaid of from the server
 
-    private string[] wordOptions;
+    private string selectedMessage;                         // Selected part of the message after menu selection
 
-    private string selectedMessage;
+    private int selected = 0;                               // Currently selected item by arrayId
+    private int stage = 0;                                  // Current menu stage
 
-    private int selected = 0;
-    private int stage = 0;
+    private Rect buttonRect = new Rect(15, 20, 260, 30);    // Default button size
 
-    private Rect buttonRect = new Rect(15, 20, 260, 30);
+    private string[] wordOptions;                           // Menuitems
+
+    private static string back = "< terug";                 // Static string, subject to change and used by many stringArrays
 
     private string[] baseWord = new string[12] {
         "***",
@@ -56,8 +57,6 @@ public class BerichtenMenuController : MonoBehaviour
         "Hoera voor ***!",
         "En allemaal dankzij ***"
     };
-
-    private static string back = "< terug";
 
     private string[] category = new string[8]{
         back,
@@ -185,18 +184,20 @@ public class BerichtenMenuController : MonoBehaviour
     void Start()
     {
         berichtGetSet = this.gameObject.GetComponent<BerichtGetSet>();
-        PopulateBerichten();
         skin = Resources.Load("BerichtWoordSkin") as GUISkin;
-
-        selected = 0;
-        wordOptions = baseWord;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         window = this.gameObject.GetComponent<RectTransform>();
 
+        PopulateBerichten();            // Starts the population of messages to prefabs
+        wordOptions = baseWord;         // Default menu list
+    }
+
+    /**
+     * Controls to navigate the menus.
+     *
+     * Escape triggers the 'done' menu to finalise or cancel setting a new message.
+     */
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.W))
         {
             selected = menuSelection(wordOptions, selected, "up");
@@ -209,148 +210,25 @@ public class BerichtenMenuController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Escape!");
             wordOptions = done;
         }
     }
 
-    public void PopulateBerichten()
-    {
-        foreach (GameObject berichtenPrefab in berichtenPrefabs)
-        {
-            StartCoroutine(PopulateBericht(berichtenPrefab));
-        }
-    }
-
-    IEnumerator PopulateBericht(GameObject berichtprefb)
-    {
-        int prefabKey = berichtprefb.GetComponent<BerichtController>().messageKey;
-        if (prefabKey > 0)
-        {
-            yield return StartCoroutine(berichtGetSet.RetrieveMessagesFromServer(prefabKey, (getResult) =>
-            {
-                if (!string.IsNullOrEmpty(getResult))
-                    berichtprefb.GetComponent<BerichtController>().message = getResult;
-            }));
-        }
-    }
-
-    public void SetMessage(string message, int stage)
-    {
-        if (message == "Afronden")
-        {
-            SendMessageToPrefab();
-            Time.timeScale = 1;
-            berichtMakerActive = false;
-            berichtenMaker.gameObject.SetActive(false);
-            return;
-        }
-        else if (message == "Annuleren")
-        {
-            Time.timeScale = 1;
-            berichtMakerActive = false;
-            berichtenMaker.gameObject.SetActive(false);
-        }
-
-        switch (stage)
-        {
-            case 0:
-                messageList[0] = message;
-                break;
-            case 1:
-                messageList[1] = messageList[0];
-                break;
-            case 2:
-                if (message != null)
-                    messageList[2] = messageList[1].Replace("***", message);
-                else
-                    messageList[2] = messageList[1];
-                break;
-            case 3:
-                messageList[3] = messageList[2] + message;
-                break;
-            case 4:
-                messageList[4] = messageList[3] + message;
-                break;
-            case 5:
-                messageList[5] = messageList[4];
-                break;
-            case 6:
-                if (message != null)
-                    messageList[6] = messageList[5].Replace("***", message);
-                else
-                    messageList[6] = messageList[5];
-                break;
-            case 7:
-                // Confirm message
-                break;
-        }
-        if (stage != 7)
-            selectedText = messageList[stage];
-    }
-
-    void OnGUI()
-    {
-        if (berichtMakerActive == true)
-        {
-            buttonRect.width = window.rect.width;
-            buttonRect.x = (window.rect.width / 2) - (buttonRect.width / 2);
-            //buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2);
-
-            Time.timeScale = 0;
-            berichtenMaker.gameObject.SetActive(true);
-            
-            if (wordOptions != done)
-                ChangeMenuItems();
-            buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
-            buttonRect.x = (Screen.width / 2) - (buttonRect.width / 2);
-            //buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2);
-
-            // Set the skin to use
-            GUI.skin = skin;
-            float height = buttonRect.y + 6f;
-
-            GUI.SetNextControlName("Bericht");
-            GUI.Label(
-                buttonRect,
-                new GUIContent(selectedText)
-                    );
-
-            for (int i = 0; i < wordOptions.Length; i++)
-            {
-                Rect buttonRectTemp = buttonRect;
-                buttonRectTemp.y += height * i;
-
-                GUI.SetNextControlName(wordOptions[i]);
-                //buttonRect.y += (height*i);
-                if (GUI.Button(buttonRectTemp, wordOptions[i]))
-                {
-                    selectedMessage = wordOptions[i];
-                    selected = 0;
-                    SendMessage();
-                }
-            }
-            GUI.FocusControl(wordOptions[selected]);
-        }
-    }
-
+    /**
+     * Called by BerichtController.OnTriggerStay2D()
+     *
+     * Used to pass itself to this controller.
+     */
     public void GetMessagePrefab(GameObject messageObject)
     {
         messagePrefab = messageObject;
     }
 
-    public void SendMessageToPrefab()
-    {
-        messagePrefab.GetComponent<BerichtController>().message = selectedText;
-
-        int key = messagePrefab.GetComponent<BerichtController>().messageKey;
-
-        // TODO: Get unique userkey from playerData
-        string user = "Guest";
-
-        StartCoroutine(berichtGetSet.submitMessage(key, user, selectedText));
-    }
-
+    /**
+     * Used in the Update()
+     *
+     * Sets the selectedItem one up or down, depending on what button is pressed in Update()
+     */
     int menuSelection(string[] buttonsArray, int selectedItem, string direction)
     {
         if (direction == "up")
@@ -380,27 +258,99 @@ public class BerichtenMenuController : MonoBehaviour
         return selectedItem;
     }
 
-    public void SendMessage()
+    /**
+     * Triggerd by Start()
+     *
+     * Will attempt to set a message for every messageprefab in the level by a one
+     * from the database. This by using the PopulateBericht coroutine for each
+     * messageprefab.
+     */
+    public void PopulateBerichten()
     {
-        if (selectedMessage == back)
+        foreach (GameObject berichtenPrefab in berichtenPrefabs)
         {
-            if (wordOptions != done)
-            {
-                stage--;
-            }
-            else
-            {
-                wordOptions = baseWord;
-            }
-            SetMessage(null, stage);
-        }
-        else
-        {
-            SetMessage(selectedMessage, stage);
-            stage++;
+            StartCoroutine(PopulateBericht(berichtenPrefab));
         }
     }
 
+    /**
+     * Contact the database to get a message.
+     *
+     * Each prefab should have an unique key, with 0 being the default value. 
+     * Therefore it should not be used, maybe usefull for special Dev Messages that 
+     * you don't want to have overwritten.
+     *
+     * It could happen that the database returns null, in that case do nothing and 
+     * use the default message given to the gameObject in the scene.
+     */
+    IEnumerator PopulateBericht(GameObject berichtprefb)
+    {
+        int prefabKey = berichtprefb.GetComponent<BerichtController>().messageKey;
+        if (prefabKey > 0)
+        {
+            yield return StartCoroutine(berichtGetSet.RetrieveMessagesFromServer(prefabKey, (getResult) =>
+            {
+                if (!string.IsNullOrEmpty(getResult))
+                    berichtprefb.GetComponent<BerichtController>().message = getResult;
+            }));
+        }
+    }
+
+    /**
+     * Draws the menu's, label and buttons
+     */
+    void OnGUI()
+    {
+        if (berichtMakerActive == true)
+        {
+            //buttonRect.width = window.rect.width;
+            //buttonRect.x = (window.rect.width / 2) - (buttonRect.width / 2);
+            buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
+            buttonRect.x = (Screen.width / 2) - (buttonRect.width / 2);
+
+            Time.timeScale = 0;                             // Pause the game and activate the menu
+            berichtenMaker.gameObject.SetActive(true);      // Activate the menu
+
+            if (wordOptions != done)                        // Done is not part of the stages, so it needs to prevent the changing of the menus
+                ChangeMenuItems();                          // Overwrite the menuItems 'wordOptions' with selected menu
+
+            GUI.skin = skin;                                // Set the skin to use
+
+            GUI.SetNextControlName("Bericht");              // Display the result of your selection
+            GUI.Label(
+                buttonRect,
+                new GUIContent(selectedText)
+                    );
+
+            for (int i = 0; i < wordOptions.Length; i++)    // For every item in menu, make a button
+            {
+                Rect buttonRectTemp = buttonRect;
+                float height = buttonRect.y + 6f;
+                buttonRectTemp.y += height * i;
+
+                GUI.SetNextControlName(wordOptions[i]);
+                if (GUI.Button(buttonRectTemp, wordOptions[i]))
+                {
+                    selectedMessage = wordOptions[i];       // Set the selected word after button is pressed
+                    selected = 0;                           // Reset select cursur
+                    SendMessage();                          // Send the selected word for processing
+                }
+            }
+            GUI.FocusControl(wordOptions[selected]);
+        }
+    }
+
+    /**
+     * Constructing messages goes in stages, 
+     * in stage 0 you select the kind of base sentaince to use
+     * in stage 1 you select a category
+     * in stage 2 you use the item in a category to place in the sentaince selected in stage 1
+     * in stage 3 is your connection betweet the first part of the sentaince and the second
+     * stage 4, 5 and 6 are repeats of 0,1 and 2.
+     * in stage 7 the message is considered complete
+     *
+     * Called in OnGUI(), after button press
+     */
     public void ChangeMenuItems()
     {
         switch (stage)
@@ -433,9 +383,14 @@ public class BerichtenMenuController : MonoBehaviour
         }
     }
 
-    public void ChangeCategory(string message)
+    /**
+     * Called in ChangeMenuItems()
+     * 
+     * Sets the menu items to the category selected in stage 2 and 5.
+     */
+    public void ChangeCategory(string messagePassed)
     {
-        switch (message)
+        switch (messagePassed)
         {
             case ("Wezens"):
                 wordOptions = wezens;
@@ -460,4 +415,119 @@ public class BerichtenMenuController : MonoBehaviour
                 break;
         }
     }
+
+    /**
+     * Manages how the menu switches stages 
+     * and calls SetMessage() with the intended stage.
+     */
+    public void SendMessage()
+    {
+        if (selectedMessage != back)
+        {
+            SetMessage(selectedMessage, stage);
+            if (stage < 7)      // stage 7 is considered: message complete
+                stage++;
+        }
+        else
+        {
+            if (wordOptions == done)    // Going back from done menu
+            {
+                wordOptions = baseWord;
+            }
+            else
+            {
+                stage--;
+            }
+            SetMessage(null, stage);
+        }
+    }
+
+    /**
+     * Processes the selected message.
+     * Called in SendMessage().
+     *
+     * First it checks if the player wants to stop, either because he is done
+     * or wants to cancel.
+     *
+     * If the player wants to continue it will process the message.
+     * Depending on what state it is, it will add to the string or replace
+     * placeholder. It writes it in an array so that it's easier to go back
+     * through the stages.
+     *
+     * At the end it sets the processed message in the selectedText string.
+     * This string is used to send to the label in the GUI, the prefab and the database.
+     */
+    public void SetMessage(string messagePassed, int stagePassed)
+    {
+        if (messagePassed == "Afronden")
+        {
+            SendMessageToPrefab();
+            stage = 0;
+            Time.timeScale = 1;
+            berichtMakerActive = false;
+            berichtenMaker.gameObject.SetActive(false);
+            return;
+        }
+        else if (messagePassed == "Annuleren")
+        {
+            messageList = new string[7];
+            Time.timeScale = 1;
+            berichtMakerActive = false;
+            berichtenMaker.gameObject.SetActive(false);
+            return;
+        }
+
+        switch (stagePassed)
+        {
+            case 0:
+                messageList[0] = messagePassed;
+                break;
+            case 1:
+                messageList[1] = messageList[0];
+                break;
+            case 2:
+                if (messagePassed != null)
+                    messageList[2] = messageList[1].Replace("***", messagePassed);
+                else
+                    messageList[2] = messageList[1];
+                break;
+            case 3:
+                messageList[3] = messageList[2] + messagePassed;
+                break;
+            case 4:
+                messageList[4] = messageList[3] + messagePassed;
+                break;
+            case 5:
+                messageList[5] = messageList[4];
+                break;
+            case 6:
+                if (messagePassed != null)
+                    messageList[6] = messageList[5].Replace("***", messagePassed);
+                else
+                    messageList[6] = messageList[5];
+                break;
+        }
+
+        if (stagePassed != 7) // user is done with the message
+            selectedText = messageList[stagePassed];
+    }
+
+    /**
+     * Triggered by SetMessage() after the player selected "Afronden".
+     *
+     * Sends the finished message to the prefab for the player to enjoy,
+     * then sends it to the database.
+     */
+    public void SendMessageToPrefab()
+    {
+        messagePrefab.GetComponent<BerichtController>().message = selectedText;
+
+        int key = messagePrefab.GetComponent<BerichtController>().messageKey;
+
+        // TODO: Get unique userkey from playerData
+        string user = "Guest";
+
+        StartCoroutine(berichtGetSet.submitMessage(key, user, selectedText));
+    }
+
 }
