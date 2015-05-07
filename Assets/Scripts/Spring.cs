@@ -50,12 +50,11 @@ public class Spring : MonoBehaviour
 		{
 			animator.SetBool("Pressing", true);
 			animator.SetBool("Releasing", false);
-			player = hit.collider.gameObject;
 			canJump = true;
 		}
 		else if (other.gameObject.tag == "Player" && canJump == true)
 		{
-			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
+			other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
 			canJump = false;
 		}
 		else if (other.gameObject.tag == "Player")

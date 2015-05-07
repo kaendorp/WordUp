@@ -25,9 +25,10 @@ public class IJstandScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (isPlayed) {
+		if (!isPlayed) 
+		{
 			AudioSource.PlayClipAtPoint (_audioSource, positie);
-			isPlayed = false;
+			isPlayed = true;
 		}
 	}
 
@@ -37,7 +38,6 @@ public class IJstandScript : MonoBehaviour {
         {
             rigid.gravityScale = 0.5f;
             StartCoroutine(LifeCycle()); 
-			isPlayed = true;
         }        
     }
 

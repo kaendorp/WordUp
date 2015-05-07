@@ -42,6 +42,14 @@ public class IntroManager : MonoBehaviour
     public float fadeOutSpeed = 1.5f;       // Speed that the screen fades to black.
     public Image overlay;                   // Object in HUD that fills screen with a full alpha, black image
 
+	[Header("VOICE")]
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	public float speedVoice;
+	private byte[] low;
+	private AudioSource bossSource;
     // Use this for initialization
     void Start()
     {
@@ -68,6 +76,9 @@ public class IntroManager : MonoBehaviour
 
         // Start the intro with a fade to clear
         StartCoroutine(FadeToClear());
+
+		// for spoken tekst
+		bossSource = gameObject.GetComponent<AudioSource>();
     }
 
     /**
@@ -102,12 +113,16 @@ public class IntroManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         bossAnim.SetTrigger("IntroBossRoarIdle");
         yield return new WaitForSeconds(1);
-        messageObject.GetComponent<TextMesh>().text = "Je woorden zijn zwak,\nniets wat je zegt\nkan mij raken!";
+		string endMessage1 = "Je woorden zijn zwak,\nniets wat je zegt\nkan mij raken!";
+		messageObject.GetComponent<TextMesh>().text = endMessage1;
+		StartCoroutine(PlaySound (endMessage1));
         yield return new WaitForSeconds(4);
         messageObject.GetComponent<TextMesh>().text = "";
         bossAnim.SetTrigger("IntroBossRoarIdle");
         yield return new WaitForSeconds(1);
-        messageObject.GetComponent<TextMesh>().text = "Niemand hier kan je helpen,\nhahaha!";
+		string endMessage2 = "Niemand hier kan je helpen,\nhahaha!";
+        messageObject.GetComponent<TextMesh>().text = endMessage2;
+		StartCoroutine(PlaySound (endMessage2));
         yield return new WaitForSeconds(5);
         messageObject.GetComponent<TextMesh>().text = "";
 
@@ -164,4 +179,44 @@ public class IntroManager : MonoBehaviour
         }
         overlay.color = Color.black;
     }
+
+	/**
+     * Converts any string in message to sound
+     */
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			Debug.Log (b);
+			if(b < 65)
+			{
+				bossSource.clip = number1;
+				bossSource.volume = 0.2f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speedVoice);
+			}
+			else if(b > 65 && b < 105)
+			{
+				bossSource.clip = number2;
+				bossSource.volume = 0.4f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speedVoice);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				bossSource.clip = number3;
+				bossSource.volume = 0.6f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speedVoice);
+			}
+			else
+			{	
+				bossSource.clip = number4;
+				bossSource.volume = 0.8f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speedVoice);
+			}
+		}
+	}
 }
