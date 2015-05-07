@@ -2282,6 +2282,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 725745769}
   - 114: {fileID: 725745770}
+  - 82: {fileID: 725745771}
   m_Layer: 0
   m_Name: IntroManager
   m_TagString: Untagged
@@ -2324,6 +2325,80 @@ MonoBehaviour:
   fadeInSpeed: .5
   fadeOutSpeed: .119999997
   overlay: {fileID: 1004883027}
+  number1: {fileID: 8300000, guid: 92b8bbabc627e524ab071edb385d8f4b, type: 3}
+  number2: {fileID: 8300000, guid: 8b2e017e9a09caa499f7a9c79a4c64b9, type: 3}
+  number3: {fileID: 8300000, guid: e8d6e2943eb1cc14780228c6d61ec25c, type: 3}
+  number4: {fileID: 8300000, guid: 773eada9b2aa3e542b9734865d8739ad, type: 3}
+  speedVoice: .0399999991
+--- !u!82 &725745771
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725745768}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &736493177
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,6 +4449,46 @@ Prefab:
     - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: number1
+      value: 
+      objectReference: {fileID: 8300000, guid: 92b8bbabc627e524ab071edb385d8f4b, type: 3}
+    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: number2
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b2e017e9a09caa499f7a9c79a4c64b9, type: 3}
+    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: number3
+      value: 
+      objectReference: {fileID: 8300000, guid: e8d6e2943eb1cc14780228c6d61ec25c, type: 3}
+    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: number4
+      value: 
+      objectReference: {fileID: 8300000, guid: 773eada9b2aa3e542b9734865d8739ad, type: 3}
+    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: speed
+      value: .0399999991
+      objectReference: {fileID: 0}
+    - target: {fileID: 8246090, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_Volume
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272918, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174142, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183652, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 148302, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}

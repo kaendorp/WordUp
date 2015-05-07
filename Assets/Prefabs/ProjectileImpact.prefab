@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 493844}
   - 198: {fileID: 19896466}
   - 199: {fileID: 19967326}
-  - 114: {fileID: 11470412}
   m_Layer: 0
   m_Name: ProjectileImpact
   m_TagString: Untagged
@@ -41,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.925999999, y: 1.24000001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493844}
@@ -67,24 +66,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 199018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
+  m_Script: {fileID: 11500000, guid: e9599d0bd5bf67b479dcd0448fc8da48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDuration: 1
-  maxDuration: 2
---- !u!114 &11470412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDuration: 1
-  maxDuration: 1
+  lifeTime: 2
 --- !u!198 &19896466
 ParticleSystem:
   m_ObjectHideFlags: 1

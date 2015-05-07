@@ -90,6 +90,28 @@ public class BossController : MonoBehaviour
     public float platformHeight = 2f;
     private GameObject iceInit;
 
+	[Header("MUSIC")]
+	public GameObject battleMusic;
+	public GameObject bossIsDefeatedMusic;
+	public GameObject bossIntroMusic;
+
+	[Header("SOUNDS")]
+	public AudioClip evilLaugh;
+	public AudioClip shoot;
+	public AudioClip shootUp;
+	public AudioClip shootDown;
+	public AudioClip woosh;
+	public AudioClip stomp;
+	public AudioClip bossIsHit;
+	private AudioSource bossSource;
+
+	[Header("VOICE")]
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	public float speed;
+	private byte[] low;
     /**
      * Awake
      *
@@ -144,6 +166,8 @@ public class BossController : MonoBehaviour
      */
     private void Start()
     {
+		bossIsDefeatedMusic.SetActive (false);
+		bossSource = gameObject.GetComponent<AudioSource>();
         if (!string.IsNullOrEmpty(endMessage1))
             endMessage1 = endMessage1.Replace("\\n", "\n");
         if (!string.IsNullOrEmpty(endMessage2))
@@ -252,7 +276,11 @@ public class BossController : MonoBehaviour
 
         for (int fired = 0; fired < fireAmount; fired++)
         {
-            FireProjectile();
+			bossSource.clip = shoot;
+			bossSource.loop = false;
+			bossSource.volume = 0.5f;
+			bossSource.Play();
+			FireProjectile();
             yield return new WaitForSeconds(cooldownTime);
         }
 
@@ -272,7 +300,8 @@ public class BossController : MonoBehaviour
         shot = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
         Vector2 force = (Vector2)player.transform.position - (Vector2)firePoint.transform.position;
         shot.GetComponent<Rigidbody2D>().AddForce(force.normalized * (projectileSpeed * 30));
-        Destroy(shot, projectileLifeTime);
+
+		Destroy(shot, projectileLifeTime);
 
         Debug.DrawRay(firePoint.transform.position, force, Color.yellow);
     }
@@ -290,13 +319,24 @@ public class BossController : MonoBehaviour
 
         for (int fired = 0; fired < fireAmount; fired++)
         {
+			//play fired sound
             if (firePointUp)
             {
+				bossSource.clip = shootDown;
+				bossSource.loop = false;
+				bossSource.volume = 0.5f;
+				bossSource.Play();
+
                 goingDown = true;
                 firePointUp = false;
             }
             else
             {
+				bossSource.clip = shootDown;
+				bossSource.loop = false;
+				bossSource.volume = 0.5f;
+				bossSource.Play();
+
                 goingDown = false;
                 firePointUp = true;
             }
@@ -390,6 +430,11 @@ public class BossController : MonoBehaviour
 
         for (int fired = 0; fired < fireAmount; fired++)
         {
+			bossSource.clip = shootUp;
+			bossSource.loop = false;
+			bossSource.volume = 1f;
+			bossSource.Play();
+
             ArcProjectile();
             yield return new WaitForSeconds(cooldownTime);
         }
@@ -453,7 +498,12 @@ public class BossController : MonoBehaviour
         {
             Destroy(iceInit);
         }
+		bossSource.clip = stomp;
+		bossSource.loop = false;
+		bossSource.volume = 0.5f;
+		bossSource.Play();
         anim.SetTrigger("StompAttack");
+
         yield return new WaitForSeconds(0.3f);
         Vector3 startPosition = icePlatform.transform.position;
         Vector3 endPosition = new Vector3(icePlatform.transform.position.x, icePlatform.transform.position.y + platformHeight, icePlatform.transform.position.z);
@@ -484,10 +534,9 @@ public class BossController : MonoBehaviour
     }
 
     /**
-     * Roar attack (laughs at player)
+     * Roar attack: boss is hit by the player
      *
-     * Triggers the roar animation and activates the circleCollider.
-     * The player can then shoot the boss in the mouth.
+     * Trigger an animation and push the player back
      */
     IEnumerator RoarAttack()
     {
@@ -506,7 +555,10 @@ public class BossController : MonoBehaviour
     IEnumerator PushPlayerLeft()
     {
         float elapsedTime = 0f;
-        
+		bossSource.clip = woosh;
+		bossSource.loop = false;
+		bossSource.volume = 0.5f;
+		bossSource.Play();
         while (elapsedTime < 1)
         {
             player.GetComponent<Rigidbody2D>().AddForce(transform.right * -600);
@@ -523,14 +575,23 @@ public class BossController : MonoBehaviour
      */
     IEnumerator Roar()
     {
+		//sound of evil laughing start
+		bossSource.clip = evilLaugh;
+		bossSource.loop = true;
+		bossSource.volume = 1f;
+		bossSource.Play();
+
         anim.SetBool("RoarIdle", true);
         yield return new WaitForSeconds(1f);
         circleCollider.SetActive(true);
         yield return new WaitForSeconds(2.17f);
         circleCollider.SetActive(false);
         anim.SetBool("RoarIdle", false);
+
+		//stop laughing you ass
+		bossSource.Stop ();
         yield return new WaitForSeconds(1f);
-        //Debug.Log("ROAR DONE");
+		//Debug.Log("ROAR DONE");
         setNextAction();
     }
 
@@ -543,14 +604,19 @@ public class BossController : MonoBehaviour
     {
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", true);
-        currentHealth--;
+        
+		currentHealth--;
         wasHit = true; // can trigger roarAttack
 
-        if (currentHealth <= 0)
-        {
-            StartCoroutine(Defeated());
-            isActive = false; // Makes sure the next action isn't accidentally called in Update()
-        }
+        if (currentHealth <= 0) {
+			StartCoroutine (Defeated ());
+			isActive = false; // Makes sure the next action isn't accidentally called in Update()
+		} else {
+			bossSource.clip = bossIsHit;
+			bossSource.loop = false;
+			bossSource.volume = 0.25f;
+			bossSource.Play ();
+		}
     }
 
     /**
@@ -558,6 +624,9 @@ public class BossController : MonoBehaviour
      */
     IEnumerator Defeated()
     {
+		// Stop battle music, cue evil discussion music
+		StartCoroutine(ChangeMusic());
+
         // Kill boss minions when defeated
         if (iceInit != null)
         {
@@ -569,10 +638,13 @@ public class BossController : MonoBehaviour
 
         messageObject.SetActive(true);
         messageObject.GetComponent<TextMesh>().text = endMessage1;
-        yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(1f);
+		StartCoroutine(PlaySound (endMessage1));
+        yield return new WaitForSeconds(3f);
         messageObject.GetComponent<TextMesh>().text = "";
         yield return new WaitForSeconds(1f);
         messageObject.GetComponent<TextMesh>().text = endMessage2;
+		StartCoroutine(PlaySound (endMessage2));
         yield return new WaitForSeconds(4f);
         messageObject.GetComponent<TextMesh>().text = "";
         yield return new WaitForSeconds(1f);
@@ -585,6 +657,66 @@ public class BossController : MonoBehaviour
         PlayerVictory();
     }
 
+	/**
+     * Converts any string in message to sound
+     */
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			Debug.Log (b);
+			if(b < 65)
+			{
+				bossSource.clip = number1;
+				bossSource.volume = 0.2f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 65 && b < 105)
+			{
+				bossSource.clip = number2;
+				bossSource.volume = 0.4f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				bossSource.clip = number3;
+				bossSource.volume = 0.6f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else
+			{	
+				bossSource.clip = number4;
+				bossSource.volume = 0.8f;
+				bossSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+		}
+	}
+
+
+	/**
+     * change from battle music to ominous music for dialogue
+     */
+	private IEnumerator ChangeMusic()
+	{
+		float fTimeCounter = 0f;
+		bossIsDefeatedMusic.SetActive (true);
+		AudioSource _audioSource = battleMusic.GetComponent<AudioSource> ();
+		AudioSource _audioSource2 = bossIsDefeatedMusic.GetComponent<AudioSource> ();
+		while(!(Mathf.Approximately(fTimeCounter, 0.5f)))
+		{
+			fTimeCounter = Mathf.Clamp01(fTimeCounter + Time.deltaTime);
+			_audioSource.volume = 0.5f - fTimeCounter;
+			_audioSource2.volume = fTimeCounter;
+			yield return new WaitForSeconds(0.02f);
+		}
+		StopCoroutine("ChangeMusic");
+	}
+
     /**
      * Initiates the victory screen
      */
@@ -595,7 +727,7 @@ public class BossController : MonoBehaviour
         wScript.WinActive = true;
     }
 
-    private void OnDrawGizmos()
+	private void OnDrawGizmos()
     {
         if (bouncyPath != null && bouncyPath.Length > 0)
         {
