@@ -125,7 +125,7 @@ MonoBehaviour:
     m_RichText: 1
     m_TextClipping: 1
     m_ImagePosition: 0
-    m_ContentOffset: {x: 25, y: 0}
+    m_ContentOffset: {x: 50.1399994, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 0
@@ -238,12 +238,12 @@ MonoBehaviour:
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 3
+    m_Alignment: 4
     m_WordWrap: 1
     m_RichText: 1
     m_TextClipping: 1
     m_ImagePosition: 0
-    m_ContentOffset: {x: 24.3299999, y: -12.9700003}
+    m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1

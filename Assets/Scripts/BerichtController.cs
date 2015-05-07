@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class BerichtController : MonoBehaviour {
+
+    public string messageKey;
     // Target (usually the player)
     public string targetLayer = "Player";
     
@@ -13,6 +15,11 @@ public class BerichtController : MonoBehaviour {
 	private AudioClip _audioSource;
 	private Vector3 position;
 	private bool isPlayed;
+
+    // Zet menu's active
+    private GameObject HUD;
+    private GameObject berichtMaker;
+
 	// Use this for initialization
 	void Start () {
         // Normaal gezien is een bericht een enkele regel
@@ -22,6 +29,15 @@ public class BerichtController : MonoBehaviour {
 		_audioSource = this.GetComponent<AudioSource> ().clip;
 		position = this.transform.position;
 		isPlayed = false;
+
+        // HUD
+        HUD = GameObject.Find("HUD");
+
+        berichtMaker = GameObject.Find("BerichtMaker");
+        if (berichtMaker == null)
+            Debug.Log("BerichtMaker not found!");
+
+        berichtMaker.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -42,6 +58,12 @@ public class BerichtController : MonoBehaviour {
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                HUD.GetComponent<BerichtenMenuController>().GetMessagePrefab(this.gameObject);
+                HUD.GetComponent<BerichtenMenuController>().berichtMakerActive = true;
+            }
         }
     }
 
