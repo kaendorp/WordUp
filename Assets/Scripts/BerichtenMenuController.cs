@@ -4,6 +4,8 @@ using System.Collections;
 public class BerichtenMenuController : MonoBehaviour
 {
     public RectTransform berichtenMaker;
+    public GameObject[] berichtenPrefabs;
+    public BerichtGetSet berichtGetSet;
 
     public bool berichtMakerActive = false;
     private GUISkin skin;
@@ -185,6 +187,8 @@ public class BerichtenMenuController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        berichtGetSet = this.gameObject.GetComponent<BerichtGetSet>();
+        PopulateBerichten();
         skin = Resources.Load("BerichtWoordSkin") as GUISkin;
 
         selected = 0;
@@ -210,6 +214,27 @@ public class BerichtenMenuController : MonoBehaviour
         {
             Debug.Log("Escape!");
             wordOptions = done;
+        }
+    }
+
+    public void PopulateBerichten()
+    {
+        foreach (GameObject berichtenPrefab in berichtenPrefabs)
+        {
+            StartCoroutine(PopulateBericht(berichtenPrefab));
+        }
+    }
+
+    IEnumerator PopulateBericht(GameObject berichtprefb)
+    {
+        int prefabKey = berichtprefb.GetComponent<BerichtController>().messageKey;
+        if (prefabKey > 0)
+        {
+            yield return StartCoroutine(berichtGetSet.RetrieveMessagesFromServer(prefabKey, (getResult) =>
+            {
+                if (!string.IsNullOrEmpty(getResult))
+                    berichtprefb.GetComponent<BerichtController>().message = getResult;
+            }));
         }
     }
 
@@ -269,23 +294,20 @@ public class BerichtenMenuController : MonoBehaviour
 
     void OnGUI()
     {
-        buttonRect.width = window.rect.width;
-        buttonRect.x = (window.rect.width / 2) - (buttonRect.width / 2);
-        //buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2);
-
         if (berichtMakerActive == true)
         {
+            buttonRect.width = window.rect.width;
+            buttonRect.x = (window.rect.width / 2) - (buttonRect.width / 2);
+            //buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2);
+
             Time.timeScale = 0;
             berichtenMaker.gameObject.SetActive(true);
-
-            //OverwriteSpacebar();
-
+            
             if (wordOptions != done)
                 ChangeMenuItems();
             buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
             buttonRect.x = (Screen.width / 2) - (buttonRect.width / 2);
             //buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2);
-
 
             // Set the skin to use
             GUI.skin = skin;
@@ -432,18 +454,6 @@ public class BerichtenMenuController : MonoBehaviour
             case ("Overpeinzingen"):
                 wordOptions = overpeinzingen;
                 break;
-        }
-    }
-
-    private void OverwriteSpacebar()
-    {
-        if (Event.current.type == EventType.keyDown)
-        {
-            if (Event.current.keyCode == KeyCode.Space)
-            {
-                Debug.Log("Space was pressed, default unity hotkey is overridden.");
-                Event.current.Use();    // if you don't use the event, the default action will still take place.
-            }
         }
     }
 }

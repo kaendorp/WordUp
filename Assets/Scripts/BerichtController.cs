@@ -4,7 +4,7 @@ using System.Collections;
 
 public class BerichtController : MonoBehaviour {
 
-    public string messageKey;
+    public int messageKey;
     // Target (usually the player)
     public string targetLayer = "Player";
     
@@ -18,7 +18,7 @@ public class BerichtController : MonoBehaviour {
 
     // Zet menu's active
     private GameObject HUD;
-    private GameObject berichtMaker;
+    private Transform berichtMaker;
 
 	// Use this for initialization
 	void Start () {
@@ -32,12 +32,11 @@ public class BerichtController : MonoBehaviour {
 
         // HUD
         HUD = GameObject.Find("HUD");
-
-        berichtMaker = GameObject.Find("BerichtMaker");
+        berichtMaker = HUD.gameObject.transform.FindChild("BerichtMaker");
         if (berichtMaker == null)
             Debug.Log("BerichtMaker not found!");
 
-        berichtMaker.SetActive(false);
+        berichtMaker.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
