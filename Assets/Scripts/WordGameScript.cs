@@ -33,19 +33,15 @@ public class WordGameScript : MonoBehaviour {
     private Rect letter4Rect = new Rect(15, 15, 50, 50);
     private Rect letter5Rect = new Rect(15, 15, 50, 50);
     private Rect letter6Rect = new Rect(15, 15, 50, 50);
-    private Rect letter7Rect = new Rect(15, 15, 50, 50);
+    private Rect letter7Rect = new Rect(15, 15, 50, 50);	
 
-	// Keyboard control
-    string[] buttons = new string[8] { "1", "2", "3", "4", "5", "6", "7", "Correct" };	
-	private int selected = 0;
+    public int wordGameLevel;
 
 	// Use this for initialization
 	void Start ()
 	{
 		skin = Resources.Load("WordgameButton") as GUISkin;
-		menuskin = Resources.Load("ButtonSkin") as GUISkin;
-
-		selected = 0;        
+		menuskin = Resources.Load("ButtonSkin") as GUISkin;		       
 	}
 	
 	// Update is called once per frame
@@ -126,57 +122,8 @@ public class WordGameScript : MonoBehaviour {
                 lettersText[5].text = "";
                 klik = 0;
             }
-        }        
-
-		if(Input.GetKeyDown(KeyCode.D))
-		{			
-			selected = menuSelection(buttons, selected, "right");			
-		}
-		
-		if(Input.GetKeyDown(KeyCode.A))
-		{
-			
-			selected = menuSelection(buttons, selected, "left");			
-		}
-		if(Input.GetKeyDown(KeyCode.S))
-		{
-			
-			selected = menuSelection(buttons, selected, "done");			
-		}
-	}
-
-	int menuSelection (string[] buttonsArray, int selectedItem, string direction) 
-	{		
-		if (direction == "left") 
-		{			
-			if (selectedItem == 0) 
-			{				
-				selectedItem = buttonsArray.Length - 1;				
-			} 
-			else 
-			{				
-				selectedItem -= 1;				
-			}			
-		}
-		
-		if (direction == "right") {
-			
-			if (selectedItem == buttonsArray.Length - 1) 
-			{
-				
-				selectedItem = 0;				
-			} 
-			else 
-			{				
-				selectedItem += 1;				
-			}			
-		}
-		if (direction == "done") 
-		{
-			selectedItem = 7;
-		}
-		return selectedItem;		
-	}
+        }    		
+	}	
 
 	void OnGUI()
 	{
@@ -203,8 +150,7 @@ public class WordGameScript : MonoBehaviour {
 
         letter7Rect.x = (Screen.width / 2) - (letter7Rect.width / 2);
         letter7Rect.y = (Screen.height / 2) - (letter7Rect.height / 2);
-
-		GUI.FocusControl(buttons[selected]);
+		
 		if (Active == true) 
 		{
             if (aantalLetters == 3)
@@ -284,8 +230,7 @@ public class WordGameScript : MonoBehaviour {
 
                 // Set the skin to use
                 GUI.skin = skin;
-
-                GUI.SetNextControlName(buttons[0]);
+                
                 // Eerste letter
                 if (GUI.Button(  
                     letter1Rect,
@@ -322,7 +267,7 @@ public class WordGameScript : MonoBehaviour {
                         lettersText[6].text = letterKeuze[0];
                     }
                 }
-                GUI.SetNextControlName(buttons[1]);
+                
                 // Tweede letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -360,8 +305,7 @@ public class WordGameScript : MonoBehaviour {
                         lettersText[6].text = letterKeuze[1];
                     }
                 }
-
-                GUI.SetNextControlName(buttons[2]);
+               
                 // Derde letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -402,8 +346,7 @@ public class WordGameScript : MonoBehaviour {
             }
 			
             if (aantalLetters >= 4)
-            {               
-               GUI.SetNextControlName(buttons[3]);
+            {          
                 // Vierde letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -444,8 +387,7 @@ public class WordGameScript : MonoBehaviour {
             }
 
             if (aantalLetters >= 6)
-            {               
-                GUI.SetNextControlName(buttons[4]);
+            {            
                 // Vierde letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -483,8 +425,7 @@ public class WordGameScript : MonoBehaviour {
                         lettersText[6].text = letterKeuze[4];
                     }
                 }
-
-                GUI.SetNextControlName(buttons[5]);
+                
                 // Vierde letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -526,8 +467,7 @@ public class WordGameScript : MonoBehaviour {
             }
 
             if (aantalLetters >= 7)
-            {            
-                GUI.SetNextControlName(buttons[6]);
+            {           
                 // Vierde letter
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -570,18 +510,17 @@ public class WordGameScript : MonoBehaviour {
 
 		if (WGcomplete == true) 
 		{
+            // Stuur bericht naar Gamecontrol voor achievements
+            GameControl.control.WordGameComplete(wordGameLevel);
+
             Active = false;
             gevondenLetters.gameObject.SetActive(false);
 			// Plaatsing buttons
-			button1Rect.y = button1Rect.y + 125;
-
-			// Selecteert automatisch correct button, als het woord goed is.
-			selected = menuSelection(buttons, selected, "done");
+			button1Rect.y = button1Rect.y + 125;			
 
 			// Set the skin to use
 			GUI.skin = menuskin;
-
-			GUI.SetNextControlName(buttons[7]);
+			
 			// Correct Button
 			if (GUI.Button (
 				// Center in X, 2/3 of the height in Y

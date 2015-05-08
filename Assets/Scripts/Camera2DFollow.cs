@@ -26,6 +26,14 @@ namespace UnitySampleAssets._2D
             lastTargetPosition = target.position;
             offsetZ = (transform.position - target.position).z;
             transform.parent = null;
+
+            GameObject player = GameObject.Find("Player");
+            if (player == null)
+            {
+                player = GameObject.Find("Player2");
+            }
+
+            target = player.GetComponent<Transform>();
         }
 
         // Update is called once per frame

@@ -83,8 +83,7 @@ public class FBHolder : MonoBehaviour {
         }
         else
         {
-            UIFB_IsLoggedIn.SetActive(false);
-            UIFB_IsNotLoggedIn.SetActive(true);
+            
         }
     }
 
