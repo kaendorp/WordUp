@@ -17,6 +17,8 @@ public class LevelSelect : MonoBehaviour {
     private Rect button3Rect = new Rect(15, 15, 160, 30);
     private Rect button4Rect = new Rect(15, 15, 160, 30);
 
+    public AudioSource _audioSource;
+
     void Start()
     {
         // Load a skin for the buttons
@@ -54,6 +56,7 @@ public class LevelSelect : MonoBehaviour {
         ))
         {
             GameControl.control.loadLevel = "Tutorial"; // Zet laadlevel op Tutorial          
+            _audioSource.Play();
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
@@ -69,6 +72,7 @@ public class LevelSelect : MonoBehaviour {
         ))
         {
             GameControl.control.loadLevel = "Level1"; // Zet laadlevel op level 1            
+            _audioSource.Play();
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
@@ -84,6 +88,7 @@ public class LevelSelect : MonoBehaviour {
         ))
         {
             GameControl.control.loadLevel = "Level2-1"; // Zet laadlevel op level 2            
+            _audioSource.Play();
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
@@ -99,6 +104,7 @@ public class LevelSelect : MonoBehaviour {
         ))
         {
             GameControl.control.loadLevel = "Level3-1";  // Zet laadlevel op level 3            
+            _audioSource.Play();
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);

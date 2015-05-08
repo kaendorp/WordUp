@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
 			"START"
 		)) 
 		{
+            _audioSource.Play();
             GameControl.control.isMainMenu = false;
 			Application.LoadLevel (GameControl.control.loadLevel); // Load Intro
 		}
@@ -65,7 +66,7 @@ public class MainMenu : MonoBehaviour
             "Speler"
         ))
         {
-            _audioSource.enabled = true;
+            _audioSource.Play();
             speler.SetActive(true); // Select Speler
             this.gameObject.SetActive(false);
         }
@@ -76,7 +77,8 @@ public class MainMenu : MonoBehaviour
             button3Rect,
             "Level"
         ))
-        {            
+        {
+            _audioSource.Play();
             level.SetActive(true);// Select Level
             this.gameObject.SetActive(false);
         }
@@ -88,12 +90,8 @@ public class MainMenu : MonoBehaviour
 			"Prestaties"
 		)) 
 		{
+            _audioSource.Play();
              // Load Prestaties Scene
 		}		
 	}
-
-    void OnPointerEnter()
-    {
-        
-    }
 }

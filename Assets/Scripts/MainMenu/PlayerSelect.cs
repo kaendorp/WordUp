@@ -13,7 +13,9 @@ public class PlayerSelect : MonoBehaviour {
     private int selected;
 
     private Rect button1Rect = new Rect(15, 15, 160, 30);
-    private Rect button2Rect = new Rect(15, 15, 160, 30);   
+    private Rect button2Rect = new Rect(15, 15, 160, 30);
+
+    public AudioSource _audioSource;
 
     void Start()
     {
@@ -45,8 +47,9 @@ public class PlayerSelect : MonoBehaviour {
             "Fynn"
         ))
         {
-            GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn          
-            
+            GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn 
+            _audioSource.Play();
+
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
             selected = 0;
@@ -61,6 +64,7 @@ public class PlayerSelect : MonoBehaviour {
         ))
         {
             GameControl.control.selectPlayer = "Fiona"; // Zet speler op Fiona           
+            _audioSource.Play();
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
