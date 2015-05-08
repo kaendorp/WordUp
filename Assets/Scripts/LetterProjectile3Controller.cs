@@ -9,10 +9,15 @@ public class LetterProjectile3Controller : MonoBehaviour {
 	public GameObject impactEffect;
 	public GameObject projectile;
 
+	private AudioClip _audioClip;
+	private Vector3 position;
+	private bool isPlayed;
 	// Use this for initialization
 	void Start () {
 		// Debug.Log ("help");
+		_audioClip = gameObject.GetComponent<AudioSource>().clip;
 		player = FindObjectOfType<PlatformerCharacter2D>();
+		position = gameObject.transform.position;
         if (player.transform.localScale.x < 0)
         {
             speed = -1f;
@@ -25,9 +30,12 @@ public class LetterProjectile3Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(speed * Time.deltaTime, 6f * Time.deltaTime, 0);	
+		if (!isPlayed) {
+			AudioSource.PlayClipAtPoint (_audioClip, position, 0.1f);
+			isPlayed = true;
+		}
         if (this.gameObject != null)
 		    Destroy (this.gameObject,5);
-		// Destroy (this.impactEffect);
 	}
 
 	void onTriggerEnter2D(Collision2D obj)
@@ -37,8 +45,7 @@ public class LetterProjectile3Controller : MonoBehaviour {
     }
 
 	void OnCollisionEnter2D(Collision2D collider)
-	{ 
-		
+	{ 	
 		if (collider.gameObject.tag == "Enemy") {
 			Instantiate (enemyDeathEffect, collider.transform.position, collider.transform.rotation);
 		}

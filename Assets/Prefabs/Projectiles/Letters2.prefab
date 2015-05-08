@@ -12,6 +12,7 @@ GameObject:
   - 212: {fileID: 21264760}
   - 50: {fileID: 5070592}
   - 58: {fileID: 5880256}
+  - 82: {fileID: 8208032}
   m_Layer: 15
   m_Name: Letters2
   m_TagString: PlayerProjectile
@@ -59,6 +60,75 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .0850000009
+--- !u!82 &8208032
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110568}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 82758f6ee5c998848853fbc0be78a8cd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11462998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,8 +146,8 @@ MonoBehaviour:
   bounceHeight: .699999988
   heightDifference: 0
   hitPosition: 0
-  enemyDeathEffect: {fileID: 0}
-  impactEffect: {fileID: 0}
+  enemyDeathEffect: {fileID: 149578, guid: bd10896924509c34cae544ada954484e, type: 2}
+  impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   projectile: {fileID: 110568}
 --- !u!212 &21264760
 SpriteRenderer:

@@ -6,7 +6,7 @@ public class BossProjectile : MonoBehaviour {
 
 	void onTriggerEnter2D(Collision2D triggered)
 	{
-		Debug.Log("Enemy projectile: HIT");
+		//Debug.Log("Enemy projectile: HIT");
 		
 		//If collides with player
 		if (triggered.gameObject.tag == "Player")
@@ -19,7 +19,7 @@ public class BossProjectile : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collided)
 	{
-		Debug.Log("Enemy projectile: HIT");
+		//Debug.Log("Enemy projectile: HIT");
 		
 		//If collides with player
 		if (collided.gameObject.tag == "Player")

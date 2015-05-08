@@ -21,7 +21,6 @@ public class EnemyProjectileController : MonoBehaviour {
     void onTriggerEnter2D(Collision2D triggered)
     {
         //Debug.Log("Enemy projectile: HIT");
-
         //If collides with player
         if (triggered.gameObject.tag == "Player" || triggered.gameObject.tag == "Friendly")
         {
@@ -33,7 +32,6 @@ public class EnemyProjectileController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collided)
     {
         //Debug.Log("Enemy projectile: HIT");
-        
         //If collides with player
         if (collided.gameObject.tag == "Player" || collided.gameObject.tag == "Friendly")
         {
@@ -42,7 +40,5 @@ public class EnemyProjectileController : MonoBehaviour {
         //If it collides with anything, destroy projectile
 		AudioSource.PlayClipAtPoint (projectileHits, positie, 0.5f);
 		Destroy(this.gameObject);
-
-		//sound projectile destroyed
     }
 }

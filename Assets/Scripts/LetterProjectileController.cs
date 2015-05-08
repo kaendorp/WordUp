@@ -9,8 +9,7 @@ public class LetterProjectileController : MonoBehaviour {
 	public GameObject enemyDeathEffect;
 	public GameObject impactEffect;
 	public GameObject projectile;
-
-
+	
 	// Use this for initialization
 	void Start () {
 		// Debug.Log ("help");
@@ -29,7 +28,6 @@ public class LetterProjectileController : MonoBehaviour {
 		GetComponent<Rigidbody2D>().velocity = new Vector2 (speed, GetComponent<Rigidbody2D>().velocity.y);
         if (this.gameObject != null)
 		    Destroy (this.gameObject,2);
-		// Destroy (this.impactEffect);
 	}
 
 	void onTriggerEnter2D(Collision2D obj)
@@ -42,7 +40,6 @@ public class LetterProjectileController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collider)
 	{ 
 		//Debug.Log("Collision Detected");
-		
 		if (collider.gameObject.tag == "Enemy") {
 			Instantiate (enemyDeathEffect, collider.transform.position, collider.transform.rotation);
 		}
