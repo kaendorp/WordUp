@@ -1364,6 +1364,8 @@ MonoBehaviour:
   startHealth: 3
   currentHealth: 3
   bossDeathFX: {fileID: 141926, guid: 6ef1af0cc9538dc469e51aacb2311b3a, type: 2}
+  bossDoves: {fileID: 100220, guid: 54ebb4a017b79ad44be1e93666cb9e53, type: 2}
+  finalFight: 0
   messageObject: {fileID: 111418}
   endMessage1: 'Hmm, dus je was
 

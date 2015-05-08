@@ -41,7 +41,12 @@ public class BossController : MonoBehaviour
     [Header("HEALTH")]
     public int startHealth = 3;
     public int currentHealth = 3;
+
+    // DEATH
+    [Header("DEATH")]
     public GameObject bossDeathFX = null;
+    public GameObject bossDoves;
+    public bool finalFight;
 
     // MESSAGE
     [Header("MESSAGE")]
@@ -648,10 +653,19 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(4f);
         messageObject.GetComponent<TextMesh>().text = "";
         yield return new WaitForSeconds(1f);
-        anim.SetTrigger("StandAndFlee");
 
-        yield return new WaitForSeconds(1.1f);
-        Instantiate(bossDeathFX, this.transform.position, Quaternion.identity);
+        if (!finalFight)
+        {
+            anim.SetTrigger("StandAndFlee");
+
+            yield return new WaitForSeconds(1.1f);
+            Instantiate(bossDeathFX, this.transform.position, Quaternion.identity);
+            Instantiate(bossDoves, this.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            anim.SetTrigger("FallAndDie");
+        }
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
         PlayerVictory();
