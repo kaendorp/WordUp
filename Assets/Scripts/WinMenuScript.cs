@@ -12,65 +12,18 @@ public class WinMenuScript : MonoBehaviour
     private Rect button2Rect = new Rect(15, 15, 160, 30);
 
     public string levelText;
-    public string levelKeuze;
-
-    // Keyboard control
-    string[] buttons = new string[2] { "Menu", "Volgende level" };
-    private int selected = 0;
+    public string levelKeuze;    
 
     public bool laatstelevel;
+
+    public int levelEnBoss;
 
 	// Use this for initialization
 	void Start () 
     {
         // Load a skin for the buttons
         skin = Resources.Load("ButtonSkin") as GUISkin;
-
-        selected = 0;
-	}
-
-    int menuSelection(string[] buttonsArray, int selectedItem, string direction)
-    {
-        if (direction == "up")
-        {
-            if (selectedItem == 0)
-            {
-                selectedItem = buttonsArray.Length - 1;
-            }
-            else
-            {
-                selectedItem -= 1;
-            }
-        }
-
-        if (direction == "down")
-        {
-
-            if (selectedItem == buttonsArray.Length - 1)
-            {
-                selectedItem = 0;
-            }
-            else
-            {
-                selectedItem += 1;
-            }
-        }
-        return selectedItem;
-    }
-	
-	// Update is called once per frame
-	void Update () 
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            selected = menuSelection(buttons, selected, "up");
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            selected = menuSelection(buttons, selected, "down");
-        }
-	}
+	}    
 
     void OnGUI()
     {
@@ -78,13 +31,15 @@ public class WinMenuScript : MonoBehaviour
         button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
 
         button2Rect.x = (Screen.width / 2) - (button2Rect.width / 2);
-        button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);
-
-        GUI.FocusControl(buttons[selected]);        
+        button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);        
 
         // Gewonnen menu
         if (WinActive == true)
         {
+            // Stuur bericht naar Gamecontrol voor achievements
+            GameControl.control.LevelComplete(levelEnBoss);
+            GameControl.control.StilteVerslagen(levelEnBoss);
+
             button1Rect.y = button1Rect.y + 75;
             button2Rect.y = button2Rect.y - 15;
 
@@ -98,8 +53,7 @@ public class WinMenuScript : MonoBehaviour
             GUI.skin = skin;
 
             if (laatstelevel == false)
-            {
-                GUI.SetNextControlName(buttons[0]);
+            {                
                 // Naar volgende level Button
                 if (GUI.Button(
                     // Center in X, 2/3 of the height in Y
@@ -114,7 +68,6 @@ public class WinMenuScript : MonoBehaviour
                 }
             }            
 
-            GUI.SetNextControlName(buttons[1]);
             // Naar main menu Button
             if (GUI.Button(
                 // Center in X, 2/3 of the height in Y

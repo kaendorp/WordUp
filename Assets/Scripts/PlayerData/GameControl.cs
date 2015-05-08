@@ -8,22 +8,119 @@ public class GameControl : MonoBehaviour {
     public static GameControl control;
     
     // Level select
-    public string loadLevel = "Tutorial";
-    
-    // Tutorial = 0 || Level 1 = 1 || Level 2 = 2 || Level 3 = 3
-    public bool[] unlockedLevels = new bool[4];
+    public string loadLevel = "Tutorial";   
 
     // Player select
     public string selectPlayer;
     public bool isMainMenu;
 
-    // Achievements
-    
-
     // Highscore
-    public int aantalGevondenKinderen;
-    public Time tijd;
+    public int highScore;
 
+    // Achievements level
+    // Tutorial = 0 || Level 1 = 1 || Level 2 = 2 || Level 3 = 3
+    public bool[] unlockedLevels = new bool[4];
+
+    // Achievements Boss
+    public bool[] verslaStilte = new bool[4];
+
+    // Achievements Wordgame
+    public bool[] wordGame = new bool[4];
+
+    // Achievements 
+    public bool kinderenTutorial;
+    public bool[] kinderenLevel1 = new bool[4];
+    public bool[] kinderenLevel2 = new bool[5];
+    public bool[] kinderenLevel3 = new bool[6];
+
+    public void LevelComplete(int level)
+    {
+        unlockedLevels[level] = true;
+
+        if (level == 0)
+        {
+            // unlock
+        }
+        else if (level == 1)
+        {
+            // unlock
+        }
+        else if (level == 2)
+        {
+            // unlock
+        }
+        else if (level == 3)
+        {
+            // unlock
+        }
+
+        // Als alle items waar zijn
+        if (System.Array.TrueForAll(unlockedLevels, item => item) == true)
+        {
+            // unlock Achievement          
+        }
+    }
+
+    public void StilteVerslagen(int baas)
+    {
+        verslaStilte[baas] = true;
+
+        if (baas == 0)
+        {
+            // unlock
+        }
+        else if (baas == 1)
+        {
+            // unlock
+        }
+        else if (baas == 2)
+        {
+            // unlock
+        }
+        else if (baas == 3)
+        {
+            // unlock
+        }
+        
+        // Als alle items waar zijn
+        if (System.Array.TrueForAll(verslaStilte, item => item) == true)
+        {
+            // unlock Achievement          
+        }
+    }
+
+    public void WordGameComplete(int wg)
+    {
+        wordGame[wg] = true;
+
+        if (wg == 0)
+        {
+            // unlock
+        }
+        else if (wg == 1)
+        {
+            // unlock
+        }
+        else if (wg == 2)
+        {
+            // unlock
+        }
+        else if (wg == 3)
+        {
+            // unlock
+        }
+
+        // Als alle items waar zijn
+        if (System.Array.TrueForAll(wordGame, item => item) == true)
+        {
+            // unlock Achievement          
+        }
+    }
+
+    void Update()
+    {
+        
+    }
 
 	void Awake () 
     {
@@ -37,6 +134,8 @@ public class GameControl : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        loadLevel = "Tutorial";
 
         // Laad de juist speler
         GameObject fynn = GameObject.Find("Player");
@@ -54,8 +153,7 @@ public class GameControl : MonoBehaviour {
                 fynn.SetActive(false);
                 fiona.SetActive(true);
             }
-        }
-        
+        }        
 	}
 
     // toont de volgende waardes in elk level

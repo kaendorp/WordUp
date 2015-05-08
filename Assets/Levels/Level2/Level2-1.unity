@@ -15935,6 +15935,18 @@ Prefab:
       propertyPath: levelKeuze
       value: Level3-1
       objectReference: {fileID: 0}
+    - target: {fileID: 11404916, guid: ed35e091f5035ce429f31f1dff5a8597, type: 2}
+      propertyPath: levelEnBoss
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439566, guid: ed35e091f5035ce429f31f1dff5a8597, type: 2}
+      propertyPath: wordGameLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481356, guid: ed35e091f5035ce429f31f1dff5a8597, type: 2}
+      propertyPath: herstartlevel
+      value: Level2-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed35e091f5035ce429f31f1dff5a8597, type: 2}
   m_IsPrefabParent: 0

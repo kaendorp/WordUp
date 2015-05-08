@@ -14,13 +14,15 @@ public class MainMenu : MonoBehaviour
 	private Rect button3Rect = new Rect(15,15,160,30);
 	private Rect button4Rect = new Rect(15,15,160,30);
 
+    public AudioSource _audioSource;
+
 	void Start()
 	{
         level.SetActive(false);
         speler.SetActive(false);
 
 		// Load a skin for the buttons
-		skin = Resources.Load("ButtonSkin") as GUISkin;		
+		skin = Resources.Load("ButtonSkin") as GUISkin;	
 	}	
 	
 	void OnGUI()
@@ -63,6 +65,7 @@ public class MainMenu : MonoBehaviour
             "Speler"
         ))
         {
+            _audioSource.enabled = true;
             speler.SetActive(true); // Select Speler
             this.gameObject.SetActive(false);
         }
@@ -88,4 +91,9 @@ public class MainMenu : MonoBehaviour
              // Load Prestaties Scene
 		}		
 	}
+
+    void OnPointerEnter()
+    {
+        
+    }
 }

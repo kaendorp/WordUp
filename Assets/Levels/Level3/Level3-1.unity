@@ -7294,6 +7294,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11440140, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
+      propertyPath: wordGameLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407362, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
+      propertyPath: huidigeLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407362, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
+      propertyPath: levelEnBoss
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456228, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
+      propertyPath: herstartlevel
+      value: Level3-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
   m_IsPrefabParent: 0
