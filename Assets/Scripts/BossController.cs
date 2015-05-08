@@ -665,6 +665,7 @@ public class BossController : MonoBehaviour
         else
         {
             anim.SetTrigger("FallAndDie");
+            polygonCollider.SetActive(false);
         }
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
