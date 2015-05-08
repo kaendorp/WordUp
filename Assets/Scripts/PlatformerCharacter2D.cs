@@ -22,7 +22,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     //Enviroment Check
     private Transform groundCheck; // fA position marking where to check if the player is grounded.
     private float groundedRadius = .17f; // Radius of the overlap circle to determine if grounded
-    private bool grounded = false; // Whether or not the player is grounded.
+    public bool grounded = false; // Whether or not the player is grounded.
     private Transform ceilingCheck; // A position marking where to check for ceilings
     private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
 
@@ -40,9 +40,8 @@ public class PlatformerCharacter2D : MonoBehaviour
     bool collidingWall;
 
     //Ladders
-    public bool isClimbing = false;
     public bool climbingSwitch = false;
-    private bool climbing = false;
+    public bool climbing = false;
     float moveVertical;
     float h;
     //Knockback
@@ -59,8 +58,8 @@ public class PlatformerCharacter2D : MonoBehaviour
     public GameObject Projectile1;
     public GameObject Projectile2;
     public GameObject Projectile3;
-    public GameObject CurrentLetters;
     public float shotDelay;
+	private GameObject CurrentLetters;
     private float shotDelayCounter;
 
     //Camera
@@ -74,6 +73,22 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     private PlatformerCharacter2D character;
 
+	//Audio
+	[Header("SPEECH")]
+	//voice
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	//effects
+	public AudioClip playerFire;
+	public AudioClip playerJumpSound;
+	public float speed; //for talking (voice speed)
+
+	private byte[] low;
+	private AudioSource _playerSource; //get the audiosource to attach any clips
+	private bool isPlayed; //for playing any sound only once
+
     private void Awake()
     {
         //References
@@ -83,6 +98,12 @@ public class PlatformerCharacter2D : MonoBehaviour
         character = GetComponent<PlatformerCharacter2D>();
         CurrentLetters = Projectile1;
     }
+
+	private void Start()
+	{
+		//audio
+		_playerSource = gameObject.GetComponent<AudioSource> ();
+	}
 
 	private void Update()
     {
@@ -124,12 +145,16 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
         climbing = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsClimbable);
+		if (climbingSwitch) {
+			grounded = false;
+		}
         anim.SetBool("Ground", grounded);
         anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
 
         //Climbing
         float move = Input.GetAxis("Horizontal");
         Climb(move);
+
         //Sliding down walls
         if (!collidingWall || grounded)
         {
@@ -178,7 +203,6 @@ public class PlatformerCharacter2D : MonoBehaviour
                     }
                 }
                 climbingSwitch = true;
-
             }
             else
             {
@@ -197,25 +221,39 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump, bool crouched)
     {
-
-        //float curSpeed = anim.GetFloat("Speed"); (not used)
-
-        // If crouching, check to see if the character can stand up
+        //If crouching and button pressed, check to see if the character can stand up
         if (!crouch && anim.GetBool("Crouch"))
         {
             if (Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
                 crouch = true;
         }
 
+		// Check whether you may jump (grounded = true, button pressed, proper animation)
         if (grounded && jump && anim.GetBool("Ground"))
         {
             anim.SetBool("Ground", false);
             grounded = false;
+			//play jump sound here
+			_playerSource.clip = playerJumpSound;
+			_playerSource.volume = 0.25f;
+			_playerSource.loop = false;
+			_playerSource.Play ();
+
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
         }
+	
+		/*
+		* Checks when it's legit to use the shield, also, stop climbing when grounded 
+		*/
+		if (grounded) {
+			anim.SetBool ("Climbing", false);
+			canUseShield = true;
+		} else {
+			canUseShield = false;
+		}
 
+		// Move your body every body!
         moveVelocity = 0f;
-
         if (Input.GetKey(KeyCode.D))
         {
             moveVelocity = CrossPlatformInputManager.GetAxis("Horizontal") + 2f;
@@ -226,14 +264,14 @@ public class PlatformerCharacter2D : MonoBehaviour
             moveVelocity = CrossPlatformInputManager.GetAxis("Horizontal") - 2f;
         }
 
-        // Facing position fix
+        // Facing position left/right
         if (move > 0 && !facingRight)
             Flip();
 
         else if (move < 0 && facingRight)
             Flip();
 
-        //only control the player if grounded or airControl is turned on
+        // Only control the player if grounded or airControl is turned on
         if (grounded || airControl)
         {
             move = (crouch ? move * crouchSpeed : move);
@@ -260,72 +298,68 @@ public class PlatformerCharacter2D : MonoBehaviour
             StartCoroutine(knockbackWait());
         }
 
-        //Player actions
-        if (Input.GetKey(KeyCode.Space))
-        {
-            shotDelayCounter -= Time.deltaTime;
-            if (shotDelayCounter <= 0)
-            {
-                Instantiate(CurrentLetters, firePoint.position, firePoint.rotation);
-                anim.SetBool("Shoot", true);
-                StartCoroutine(Wait());
-                // Destroy(letters, 2);
-                shotDelayCounter = shotDelay;
-            }
-        }
+		// Fire chosen projectile
         if (Input.GetKeyDown(KeyCode.Space))
         {
+			_playerSource.clip = playerFire;
+			_playerSource.volume = 0.5f;
+			_playerSource.loop = false;
+			_playerSource.Play ();
+
             Instantiate(CurrentLetters, firePoint.position, firePoint.rotation);
             anim.SetBool("Shoot", true);
             StartCoroutine(Wait());
-            // Destroy(letters, 2);
         }
 
-        if (!climbing)
-            if (Input.GetKey(KeyCode.S))
-            {
-                if (canUseShield)
-                {
-                    anim.SetBool("Crouch", true);
-                    shield.SetActive(true);
-                    jumpForce = 100f;
-                    maxSpeed = 1f;
-                }
-                else
-                {
-                }
-            }
-            else
-            {
-                anim.SetBool("Crouch", false);
-                shield.SetActive(false);
-                jumpForce = 450f;
-                maxSpeed = 3f;
-            }
+		// Shield up!
+        if (!climbing) {
+			if (Input.GetKey (KeyCode.S)) {
+				if (canUseShield) {
+					anim.SetBool ("Crouch", true);
+					shield.SetActive (true);
+					jumpForce = 100f;
+					maxSpeed = 1f;
+				} else {
+				}
+			} else {
+				anim.SetBool ("Crouch", false);
+				shield.SetActive (false);
+				jumpForce = 450f;
+				maxSpeed = 3f;
+			}
+		}
 
-        //Switching Weapons
+        // Switching projectiles
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CurrentLetters = Projectile1;
+			isPlayed = false;
+			if(!isPlayed)
+			{
+				StartCoroutine(PlaySound("b"));
+				isPlayed = true;
+			}
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CurrentLetters = Projectile2;
+			isPlayed = false;
+			if(!isPlayed)
+			{
+				StartCoroutine(PlaySound("ycn"));
+				isPlayed = true;
+			}
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CurrentLetters = Projectile3;
+			isPlayed = false;
+			if(!isPlayed)
+			{
+				StartCoroutine(PlaySound("bouncy"));
+				isPlayed = false;
+			}
         }
-    }
-
-    public void getSpeed(float speed)
-    {
-        speed = anim.GetFloat("Speed");
-    }
-
-    public void getVSpeed(float vSpeed)
-    {
-        vSpeed = anim.GetFloat("vSpeed");
     }
 
     //Timer for shoot animation
@@ -385,7 +419,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             SetLayerRecursively(child.gameObject, layerNumber);
         }
     }
-
+	//properly face character left or right before moving
     private void Flip()
     {
         facingRight = !facingRight;
@@ -394,33 +428,29 @@ public class PlatformerCharacter2D : MonoBehaviour
         transform.localScale = theScale;
     }
 
+	//the player triggers lots of things
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Trigger")
+		//de ladder
+        if (col.gameObject.tag == "AboveTrigger")
         {
+			anim.SetBool("ClimbUp", true);
             target.SetActive(true);
         }
-        if (col.gameObject.tag == "AboveLadder")
-        {
-            anim.SetBool("ClimbUp", true);
-        }
-        else
-        {
-            anim.SetBool("ClimbUp", false);
-            climbing = false;
-            canUseShield = true;
 
-        }
+        if (col.gameObject.tag == "AboveLadder") {
+			anim.SetBool ("ClimbUp", false);
+		} else {
+			climbing = false;
+		}
 
-        if (col.gameObject.tag == "Ladder")
-        {
-            anim.SetBool("Climbing", true);
-        }
-
+		//boss battle triggeren
         if (col.gameObject.tag == "TriggerBossBattle")
         {
             Camera.main.transform.position = transform.position;
         }
+
+		//knockback on collision met enemy
         if (col.gameObject.tag == "Enemy")
         {
             knockbackCount = knockbackLength;
@@ -431,26 +461,94 @@ public class PlatformerCharacter2D : MonoBehaviour
                 knockFromRight = false;
         }
     }
+
+	//for colliding with the ladder, as player stays climbing
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "LadderTrigger" || col.gameObject.tag == "AboveLadder")
-        {
-            canUseShield = false;
-        }
-        else
-        {
-            climbing = false;
-            canUseShield = true;
-        }
+		//de ladder (als de speler in de trigger is en op W/S drukt, dan klim)
+		//if (col.gameObject.tag == "Ladder" && Input.GetKey (KeyCode.W) || col.gameObject.tag == "Ladder" && Input.GetKey (KeyCode.S)) {
+		if (col.gameObject.tag == "Ladder") 
+		{
+			if(Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S) )
+			{
+				anim.SetBool ("Climbing", true);
+				anim.speed = 1f;
+				canUseShield = false;
+				grounded = false; //als dit anders gechecked kan worden werkt dit goed (nu grounded on stop)
+			}
+			else{
+				canUseShield = false;
+				if(climbingSwitch)
+				{
+					anim.speed = 0f;
+				}
+				grounded = false;
+			}
+		}
 
-
+		if (col.gameObject.tag == "LadderTrigger" || col.gameObject.tag == "AboveLadder")
+        {
+			anim.SetBool ("ClimbUp", false);
+			canUseShield = false;
+			anim.speed = 1f;
+			grounded = false;//als dit anders gechecked kan worden werkt dit goed (nu grounded on stop)
+        }
     }
-    void OnTriggerExit2d(Collider2D col)
+
+	//for colliding with the ladder, as player finishes climbing
+    void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "AboveLadder")
+		//de ladder (stop met klimmen/opklimmen als je niet in de ladder zit!)
+		if (col.gameObject.tag == "AbovePlatform" || col.gameObject.tag == "Ladder") {
+			climbing = false;
+			anim.SetBool ("ClimbUp", false);
+			anim.speed = 1f;
+		}
+
+		if (col.gameObject.tag == "AboveLadder")
         {
             climbing = false;
-            canUseShield = true;
+			anim.speed = 1f;
         }
     }
+
+	/**
+     * Converts any string in message to sound
+     */
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			//Debug.Log (b);
+			if(b < 65)
+			{
+				_playerSource.clip = number1;
+				_playerSource.volume = 0.2f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 65 && b < 105)
+			{
+				_playerSource.clip = number2;
+				_playerSource.volume = 0.4f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				_playerSource.clip = number3;
+				_playerSource.volume = 0.6f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else
+			{	
+				_playerSource.clip = number4;
+				_playerSource.volume = 0.8f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+		}
+	}
 }

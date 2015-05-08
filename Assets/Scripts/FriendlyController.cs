@@ -288,7 +288,7 @@ public class FriendlyController : MonoBehaviour
     {
         onCoolDown = true;
         anim.SetBool("isHit", true);
-		//friendly = hit sound
+		StartCoroutine(PlaySound("Au"));
         yield return new WaitForSeconds(invincibilityDuration);
         onCoolDown = false;
         anim.SetBool("isHit", false);

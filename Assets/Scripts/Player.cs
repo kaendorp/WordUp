@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 	private Text boodschap;
 
     // Kinderen
+	[Header("KIDS")]
     public bool kindhealthPlus;
     public bool kindPlus;
 	private Text kindText; // Kind counter for UI
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour {
 	}
 	public int maxKids; // Maximum amount of kids in level
 
+	[Header("LETTERS")]
 	private RectTransform letterPanel;
 
 	public int countLetters;
@@ -70,6 +72,17 @@ public class Player : MonoBehaviour {
 	//audio get letters
 	private AudioClip _audioSource;
 	private Vector3 positie;
+
+	//voice
+	[Header("SPEECH")]
+	public AudioClip number1;
+	public AudioClip number2;
+	public AudioClip number3;
+	public AudioClip number4;
+	
+	public float speed;
+	private byte[] low;
+	private AudioSource _playerSource;
 
 	// Methods //
 	void Start()
@@ -104,6 +117,9 @@ public class Player : MonoBehaviour {
 
 		kindText.text = countKids + "  " + maxKids;
 		kindTextHUD.text = countKids + "  " + maxKids;
+
+		//audio
+		_playerSource = gameObject.GetComponent<AudioSource> ();
 	}
 
 	private void HandleHealth()
@@ -142,8 +158,8 @@ public class Player : MonoBehaviour {
 
 	IEnumerator coolDownDMG()
 	{
-		//to do speel geluidje hit enemy (!)
 		onCoolDown = true;
+		StartCoroutine(PlaySound("Au"));
 		yield return new WaitForSeconds (coolDown);
 		onCoolDown = false;
 	}
@@ -210,7 +226,6 @@ public class Player : MonoBehaviour {
                         if (letters[0].text == "")
                         {                            
                              letters[0].text = collision.gameObject.name;
-								Debug.Log (collision.gameObject.name);
                              lettersHUD[0].text = collision.gameObject.name;
                         }
                         else if (letters[1].text == "")
@@ -447,5 +462,45 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         plusOne.gameObject.SetActive(false);
     }
+
+	/**
+     * Converts any string in message to sound
+     */
+	IEnumerator PlaySound(string input)
+	{
+		low = System.Text.Encoding.UTF8.GetBytes(input);
+		foreach(byte b in low)
+		{
+			//Debug.Log (b);
+			if(b < 65)
+			{
+				_playerSource.clip = number1;
+				_playerSource.volume = 0.2f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 65 && b < 105)
+			{
+				_playerSource.clip = number2;
+				_playerSource.volume = 0.4f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else if(b > 105 && b < 115)
+			{	
+				_playerSource.clip = number3;
+				_playerSource.volume = 0.6f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+			else
+			{	
+				_playerSource.clip = number4;
+				_playerSource.volume = 0.8f;
+				_playerSource.Play ();
+				yield return new WaitForSeconds(speed);
+			}
+		}
+	}
 }
 

@@ -13,18 +13,22 @@ public class Letter2ProjectileController : MonoBehaviour {
 	public GameObject enemyDeathEffect;
 	public GameObject impactEffect;
 	public GameObject projectile;
+	private RaycastHit2D hit = new RaycastHit2D();
+
+	private AudioClip _audioClip;
+	private Vector3 position;
 
 	// Use this for initialization
 	void Start () {
-
+		_audioClip = gameObject.GetComponent<AudioSource>().clip;
 		player = FindObjectOfType<PlatformerCharacter2D>();
+		position = gameObject.transform.position;
 		if (player.transform.localScale.x < 0)
 		{
 			speed = -speed;
 		}
 		if (player.transform.localScale.x > 0) {
             speed = 2.0f;
-
 		}
 	}
 	
@@ -40,21 +44,19 @@ public class Letter2ProjectileController : MonoBehaviour {
 			transform.Translate(speed * Time.deltaTime, -3f * Time.deltaTime, 0);	
 		}
 	}
-
-
-
+	
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.transform.tag == "Untagged") {
-
-            RaycastHit2D hit = new RaycastHit2D();
-            if (Physics2D.Raycast(transform.position, new Vector2(1, 0), hit.distance - 0.5f, 1) || Physics2D.Raycast(transform.position, new Vector2(-1, 0), hit.distance - 0.5f, 1))
+		if (col.transform.tag == "Untagged") 
+		{
+			if (Physics2D.Raycast(transform.position, new Vector2(1, 0), hit.distance - 0.5f, 0) || Physics2D.Raycast(transform.position, new Vector2(-1, 0), hit.distance - 0.5f, 0))
 			{
-				Destroy(gameObject);
+				Destroy(this.gameObject);
 			}
 			else
             {
 				bounceUp = true;
+				AudioSource.PlayClipAtPoint(_audioClip, position, 0.2f);
 				hitPosition = transform.position.y;
 			}
 		}
@@ -62,12 +64,12 @@ public class Letter2ProjectileController : MonoBehaviour {
         {
             StartCoroutine(ToggleKinematic());
         }
+		if (col.transform.tag == "Enemy") {
+			Destroy(this.gameObject);
+		}
+		Destroy(this.gameObject, 3.5f);
 	}
-    void DestroyProjectile()
-    {
-        Destroy(gameObject, 5);
-    }
-
+	
     /**
      * Needed for the boss to register a hit. This projectile can not 
      * be kinematic if it needs to trigger a collider.
