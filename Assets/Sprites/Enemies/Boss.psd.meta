@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9ec43dcadf6014d498c76b1e11a50ad8
-timeCreated: 1430825282
+timeCreated: 1431096290
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -46,6 +46,14 @@ TextureImporter:
     21300078: Boss_Stomp_3
     21300080: Boss_Stomp_4
     21300082: Boss_Stomp_5
+    21300084: Boss_Death_0
+    21300086: Boss_Death_1
+    21300088: Boss_Death_2
+    21300090: Boss_Death_3
+    21300092: Boss_Death_4
+    21300094: Boss_Death_5
+    21300096: Boss_Death_6
+    21300098: Boss_Death_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -500,6 +508,86 @@ TextureImporter:
         height: 87
       alignment: 7
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 136
+        width: 80
+        height: 81
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 136
+        width: 89
+        height: 76
+      alignment: 9
+      pivot: {x: .550000012, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 136
+        width: 85
+        height: 76
+      alignment: 9
+      pivot: {x: .600000024, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 136
+        width: 102
+        height: 63
+      alignment: 9
+      pivot: {x: .699999988, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_4
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 137
+        width: 103
+        height: 41
+      alignment: 9
+      pivot: {x: .75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_5
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 136
+        width: 110
+        height: 36
+      alignment: 9
+      pivot: {x: .75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_6
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 78
+        width: 109
+        height: 28
+      alignment: 9
+      pivot: {x: .75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Boss_Death_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 78
+        width: 109
+        height: 28
+      alignment: 9
+      pivot: {x: .75, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

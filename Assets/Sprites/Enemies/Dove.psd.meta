@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: c05cae2424bfdf348bd2aa9644bfa144
-timeCreated: 1429202894
+timeCreated: 1431075584
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Dove_0
     21300002: Dove_1
+    21300004: Dove_2
+    21300006: Dove_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,6 +68,26 @@ TextureImporter:
         serializedVersion: 2
         x: 46
         y: 291
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dove_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 260
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dove_3
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 260
         width: 26
         height: 26
       alignment: 0
