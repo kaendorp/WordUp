@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.55000019, y: 1.96000004, z: 0}
+  m_LocalPosition: {x: -4.42000008, y: -1.55999994, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 439206}
@@ -335,9 +335,9 @@ MonoBehaviour:
   knockFromRight: 0
   impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 473800}
-  Projectile1: {fileID: 100002, guid: 1880a732ad112a541100162a44295342, type: 2}
-  Projectile2: {fileID: 100002, guid: a29e133e3841243b7b0ec432e3573cdd, type: 2}
-  Projectile3: {fileID: 100002, guid: b0a1f6772f39e47fdae4d55c17d8ac35, type: 2}
+  Projectile1: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
+  Projectile2: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
+  Projectile3: {fileID: 166636, guid: 93477810339f0ac4080a1b5884d7faac, type: 2}
   CurrentLetters: {fileID: 0}
   shotDelay: .600000024
   target: {fileID: 0}
@@ -361,11 +361,23 @@ MonoBehaviour:
   kindhealthPlus: 0
   kindPlus: 0
   kindTextHUD: {fileID: 0}
-  maxKids: 1
+  maxKids: 5
   countLetters: 0
-  maxLetters: 3
-  letters: []
-  lettersHUD: []
+  maxLetters: 6
+  letters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lettersHUD:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &21215412
 SpriteRenderer:
   m_ObjectHideFlags: 1

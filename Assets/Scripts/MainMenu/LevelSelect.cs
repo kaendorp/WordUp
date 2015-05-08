@@ -4,14 +4,13 @@ using System.Collections;
 
 public class LevelSelect : MonoBehaviour {
 
-    public GameObject mainMenu;
-    public Text levelSelect;
+    public GameObject mainMenu;    
 
     private GUISkin skin;
 
     // Keyboard control
     string[] buttons = new string[4] { "Tutorial", "Level 1", "Level 2", "Level 3" };
-    private int selected = 0;
+    private int selected;
 
     private Rect button1Rect = new Rect(15, 15, 160, 30);
     private Rect button2Rect = new Rect(15, 15, 160, 30);
@@ -21,52 +20,8 @@ public class LevelSelect : MonoBehaviour {
     void Start()
     {
         // Load a skin for the buttons
-        skin = Resources.Load("ButtonSkin") as GUISkin;
-
-        selected = 0;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            selected = menuSelection(buttons, selected, "up");
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            selected = menuSelection(buttons, selected, "down");
-        }
-    }
-
-    int menuSelection(string[] buttonsArray, int selectedItem, string direction)
-    {
-        if (direction == "up")
-        {
-            if (selectedItem == 0)
-            {
-                selectedItem = buttonsArray.Length - 1;
-            }
-            else
-            {
-                selectedItem -= 1;
-            }
-        }
-
-        if (direction == "down")
-        {
-
-            if (selectedItem == buttonsArray.Length - 1)
-            {
-                selectedItem = 0;
-            }
-            else
-            {
-                selectedItem += 1;
-            }
-        }
-        return selectedItem;
-    }
+        skin = Resources.Load("ButtonSkin") as GUISkin;        
+    }    
 
     void OnGUI()
     {
@@ -98,11 +53,11 @@ public class LevelSelect : MonoBehaviour {
             "Tutorial"
         ))
         {
-            GameControl.control.loadLevel = "Tutorial"; // Zet laadlevel op Tutorial
-            levelSelect.text = ": Tutorial";
+            GameControl.control.loadLevel = "Tutorial"; // Zet laadlevel op Tutorial          
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
+            selected = 0;
         }
 
         GUI.SetNextControlName(buttons[1]);
@@ -113,11 +68,11 @@ public class LevelSelect : MonoBehaviour {
             "Level  1"
         ))
         {
-            GameControl.control.loadLevel = "Level1"; // Zet laadlevel op level 1
-            levelSelect.text = ": Level 1";
+            GameControl.control.loadLevel = "Level1"; // Zet laadlevel op level 1            
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
+            selected = 1;
         }
 
         GUI.SetNextControlName(buttons[2]);
@@ -128,11 +83,11 @@ public class LevelSelect : MonoBehaviour {
             "Level  2"
         ))
         {
-            GameControl.control.loadLevel = "Level2"; // Zet laadlevel op level 2
-            levelSelect.text = ": Level 2";
+            GameControl.control.loadLevel = "Level2-1"; // Zet laadlevel op level 2            
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
+            selected = 2;
         }
 
         GUI.SetNextControlName(buttons[3]);
@@ -140,14 +95,14 @@ public class LevelSelect : MonoBehaviour {
         if (GUI.Button(
             // Center in X, 2/3 of the height in Y
             button4Rect,
-            "Level  3"
+            "Level 3"
         ))
         {
-            GameControl.control.loadLevel = "Level3";  // Zet laadlevel op level 3
-            levelSelect.text = ": Level 3";
+            GameControl.control.loadLevel = "Level3-1";  // Zet laadlevel op level 3            
 
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
+            selected = 3;
         }
 
         GUI.FocusControl(buttons[selected]);

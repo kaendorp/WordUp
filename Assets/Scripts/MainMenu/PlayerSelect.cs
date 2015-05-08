@@ -4,15 +4,13 @@ using System.Collections;
 
 public class PlayerSelect : MonoBehaviour {
 
-    public GameObject mainMenu;
-    public GameObject fynn;
-    public GameObject fiona;
+    public GameObject mainMenu;    
 
     private GUISkin skin;
 
     // Keyboard control
     string[] buttons = new string[2] { "Fynn", "Fiona"};
-    private int selected = 0;
+    private int selected;
 
     private Rect button1Rect = new Rect(15, 15, 160, 30);
     private Rect button2Rect = new Rect(15, 15, 160, 30);   
@@ -20,52 +18,8 @@ public class PlayerSelect : MonoBehaviour {
     void Start()
     {
         // Load a skin for the buttons
-        skin = Resources.Load("ButtonSkin") as GUISkin;
-
-        selected = 0;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            selected = menuSelection(buttons, selected, "up");
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            selected = menuSelection(buttons, selected, "down");
-        }
-    }
-
-    int menuSelection(string[] buttonsArray, int selectedItem, string direction)
-    {
-        if (direction == "up")
-        {
-            if (selectedItem == 0)
-            {
-                selectedItem = buttonsArray.Length - 1;
-            }
-            else
-            {
-                selectedItem -= 1;
-            }
-        }
-
-        if (direction == "down")
-        {
-
-            if (selectedItem == buttonsArray.Length - 1)
-            {
-                selectedItem = 0;
-            }
-            else
-            {
-                selectedItem += 1;
-            }
-        }
-        return selectedItem;
-    }
+        skin = Resources.Load("ButtonSkin") as GUISkin;        
+    }   
 
     void OnGUI()
     {
@@ -78,8 +32,7 @@ public class PlayerSelect : MonoBehaviour {
         button1Rect.y = button1Rect.y - 80;
         button1Rect.x = button1Rect.x;
         button2Rect.y = button2Rect.y - 30;
-        button2Rect.x = button2Rect.x;
-       
+        button2Rect.x = button2Rect.x;       
 
         // Set the skin to use
         GUI.skin = skin;
@@ -92,14 +45,11 @@ public class PlayerSelect : MonoBehaviour {
             "Fynn"
         ))
         {
-            GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn
-            
-            // Past UI selectie aan
-            fynn.SetActive(true);
-            fiona.SetActive(false);
+            GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn          
             
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
+            selected = 0;
         }
 
         GUI.SetNextControlName(buttons[1]);
@@ -110,16 +60,12 @@ public class PlayerSelect : MonoBehaviour {
             "Fiona"
         ))
         {
-            GameControl.control.selectPlayer = "Fiona"; // Zet speler op Fiona
-            
-            // Past UI selectie aan
-            fiona.SetActive(true);
-            fynn.SetActive(false);
-            
+            GameControl.control.selectPlayer = "Fiona"; // Zet speler op Fiona           
+
             this.gameObject.SetActive(false);
             mainMenu.SetActive(true);
-        }      
-
+            selected = 1;
+        }   
         GUI.FocusControl(buttons[selected]);
     }
 }

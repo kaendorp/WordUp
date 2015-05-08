@@ -9,6 +9,7 @@ public class GameControl : MonoBehaviour {
     
     // Level select
     public string loadLevel = "Tutorial";
+    
     // Tutorial = 0 || Level 1 = 1 || Level 2 = 2 || Level 3 = 3
     public bool[] unlockedLevels = new bool[4];
 
