@@ -136,6 +136,7 @@ public class GameControl : MonoBehaviour {
         }
 
         loadLevel = "Tutorial";
+        selectPlayer = "Fynn";
 
         // Laad de juist speler
         GameObject fynn = GameObject.Find("Player");
