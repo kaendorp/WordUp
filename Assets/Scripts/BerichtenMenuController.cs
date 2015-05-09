@@ -21,7 +21,7 @@ public class BerichtenMenuController : MonoBehaviour
 
     private int stage = 0;                                  // Current menu stage
 
-    private Rect buttonRect = new Rect(15, 40, 260, 15);    // Default button size
+    private Rect buttonRect = new Rect(15, 40, 195, 15);    // Default button size
 
     public string[] wordOptions;                            // Menuitems
 
