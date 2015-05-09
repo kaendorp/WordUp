@@ -23,12 +23,9 @@ public class FBHolder : MonoBehaviour {
     }
     
     private void SetInit()
-    {
-        Debug.Log("FB Initialized");
-
+    {       
         if (FB.IsLoggedIn)
-        {
-            Debug.Log("FB logged in");
+        {            
             HandleFBMenus(true);
         }
         else
@@ -57,13 +54,11 @@ public class FBHolder : MonoBehaviour {
     void AuthCallBack(FBResult result)
     {
         if (FB.IsLoggedIn)
-        {
-            Debug.Log("FB logged in");
+        {            
             HandleFBMenus(true);
         }
         else
-        {
-            Debug.Log("FB login failed");
+        {            
             HandleFBMenus(false);
         }
     }
@@ -93,8 +88,7 @@ public class FBHolder : MonoBehaviour {
     void HandleAvatar(FBResult result)
     {
         if (result.Error != null)
-        {
-            Debug.Log("problem with getting avatar");
+        {            
             FB.API(Util.GetPictureURL("me", 128, 128), Facebook.HttpMethod.GET, HandleAvatar);
             return;
         }
@@ -106,8 +100,7 @@ public class FBHolder : MonoBehaviour {
     void HandleUserName(FBResult result)
     {
         if (result.Error != null)
-        {
-            Debug.Log("problem with getting username");
+        {           
             FB.API(Util.GetPictureURL("me", 128, 128), Facebook.HttpMethod.GET, HandleAvatar);
             return;
         }
@@ -143,16 +136,13 @@ public class FBHolder : MonoBehaviour {
     }
 
     private void ScoresCallback(FBResult result)
-    {
-        Debug.Log("Scores callback: " + result.Text);
-
+    {       
         scoresList = Util.DeserializeScores(result.Text);
 
         foreach (Transform item in ScoreScrollList.transform)
         {
             GameObject.Destroy(item.gameObject);
         }
-
     
         foreach (object score in scoresList)
         {
@@ -187,7 +177,6 @@ public class FBHolder : MonoBehaviour {
                     userAvatar.sprite = Sprite.Create(pictureResult.Texture, new Rect(0, 0, 128, 128), new Vector2(0, 0));
                 }
             });
-
         }
     }   
 
@@ -196,7 +185,7 @@ public class FBHolder : MonoBehaviour {
         var scoreData = new Dictionary<string, string>();
         
         //test: insert score
-        scoreData["score"] = Random.Range(10, 200).ToString();
+        scoreData["score"] = GameControl.control.highScore;
         
         FB.API("/me/scores", Facebook.HttpMethod.POST, delegate(FBResult result)
         {

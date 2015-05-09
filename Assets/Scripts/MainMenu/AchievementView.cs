@@ -34,8 +34,6 @@ public class AchievementView : MonoBehaviour {
 
         achievement.text = "Kindvriendelijk";
 
-        string list = string.Join(",", GameControl.control.namen.ToArray());
-
         unlock.text = "Nee";
         // if unlocked
         
@@ -432,9 +430,8 @@ public class AchievementView : MonoBehaviour {
         ))
         {
             _audioSource.Play();
-
             this.gameObject.SetActive(false);
-            mainMenu.SetActive(true);            
+            mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;         
         }
     }
 }

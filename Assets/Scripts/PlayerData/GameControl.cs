@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Facebook;
 
 public class GameControl : MonoBehaviour {    
 
@@ -42,25 +43,25 @@ public class GameControl : MonoBehaviour {
 
         if (level == 0)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_HetAvontuurBegint.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_HetAvontuurBegint.html".ToString());
         }
         else if (level == 1)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_DeHoogteIn.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_DeHoogteIn.html".ToString());
         }
         else if (level == 2)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Ijsbreker.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Ijsbreker.html".ToString());            
         }
         else if (level == 3)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Intellectueel.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Intellectueel.html".ToString());
         }
 
         // Als alle items waar zijn
         if (System.Array.TrueForAll(unlockedLevels, item => item) == true)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_WordUp.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_WordUp.html".ToString());
         }
     }
 
@@ -70,19 +71,19 @@ public class GameControl : MonoBehaviour {
 
         if (baas == 0)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVoorDeStorm.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVoorDeStorm.html".ToString());
         }
         else if (baas == 1)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerstoorder.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerstoorder.html".ToString());
         }
         else if (baas == 2)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteOntregelaar.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteOntregelaar.html".ToString());
         }
         else if (baas == 3)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerbreker.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerbreker.html".ToString());
         }      
     }
 
@@ -92,97 +93,33 @@ public class GameControl : MonoBehaviour {
 
         if (wg == 0)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Lef.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Lef.html".ToString());
         }
         else if (wg == 1)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Luid.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Luid.html".ToString());
         }
         else if (wg == 2)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Warmte.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Warmte.html".ToString());
         }
         else if (wg == 3)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Familie.html");
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Familie.html".ToString());
         }
 
         // Als alle items waar zijn
         if (System.Array.TrueForAll(wordGame, item => item) == true)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Images/Achievements/Smooth-talker.jpg");         
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_VlotteSpreker.html".ToString());         
         }
     }
 
     public void AchievementCheck()
     {
         if (isMainMenu == true)
-        {
-            GameObject FB = GameObject.Find("FB Achievements");
-            FBAchievement fbAchie = FB.GetComponent<FBAchievement>();
-            fbAchie.GetAllAppAchievements();            
-
-            //FBAchievement.fbControl.GetAllAppAchievements();
-
-            List<string> ids = fbAchie.ids;
-            namen = fbAchie.namen;
-
-            string list = "Iets: " + string.Join(", ", FBAchievement.fbControl.namen.ToArray());
-            Debug.Log(list);
-
-            // Zet level unlock op true || 5 Achievements
-            if (namen.Contains("Starting out"))
-            {
-                unlockedLevels[0] = true;
-            }
-            if (namen.Contains("De hoogte in"))
-            {
-                unlockedLevels[1] = true;
-            }
-            if (namen.Contains("IJsbreker"))
-            {
-                unlockedLevels[2] = true;
-            }
-            if (namen.Contains("Intellectueel"))
-            {
-                unlockedLevels[3] = true;
-            }
-
-            // Zet Stilte verslagen op true || 4 achievements
-            if (namen.Contains("Stilte voor de storm"))
-            {
-                verslaStilte[0] = true;
-            }
-            if (namen.Contains("Stilteverstoorder"))
-            {
-                verslaStilte[1] = true;
-            }
-            if (namen.Contains("Stilteontregelaar"))
-            {
-                verslaStilte[2] = true;
-            }
-            if (namen.Contains("Stilteverbreker"))
-            {
-                verslaStilte[3] = true;
-            }            
-
-            // Zet Wordgame op true || 5 achievements
-            else if (namen.Contains("Lef"))
-            {
-                wordGame[0] = true;                
-            }
-            if (namen.Contains("Luid"))
-            {
-                wordGame[1] = true;
-            }
-            if (namen.Contains("Warmte"))
-            {
-                wordGame[2] = true;
-            }
-            if (namen.Contains("Familie"))
-            {
-                wordGame[3] = true;
-            }            
+        {                       
+            FBAchievement.fbControl.GetAllAchievements();                                
         }
     }
 
@@ -221,10 +158,63 @@ public class GameControl : MonoBehaviour {
         }        
 	}
 
-    // toont de volgende waardes in elk level
+    // Zet de waardes van de achievements goed
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 70, 150, 30), "Level: " + loadLevel);
-        GUI.Label(new Rect(10, 80, 150, 30), "Speler: " + selectPlayer);
+        namen = FBAchievement.fbControl.namen;               
+
+        // Zet level unlock op true || 5 Achievements
+        if (namen.Contains("Het avontuur begint"))
+        {
+            unlockedLevels[0] = true;
+        }
+        if (namen.Contains("De hoogte in"))
+        {
+            unlockedLevels[1] = true;
+        }
+        if (namen.Contains("Ijsbreker"))
+        {
+            unlockedLevels[2] = true;
+        }
+        if (namen.Contains("Intellectueel"))
+        {
+            unlockedLevels[3] = true;
+        }
+
+        // Zet Stilte verslagen op true || 4 achievements
+        if (namen.Contains("Stilte voor de storm"))
+        {
+            verslaStilte[0] = true;
+        }
+        if (namen.Contains("Stilteverstoorder"))
+        {
+            verslaStilte[1] = true;
+        }
+        if (namen.Contains("Stilteontregelaar"))
+        {
+            verslaStilte[2] = true;
+        }
+        if (namen.Contains("Stilteverbreker"))
+        {
+            verslaStilte[3] = true;
+        }
+
+        // Zet Wordgame op true || 5 achievements
+        if (namen.Contains("Lef"))
+        {
+            wordGame[0] = true;
+        }
+        if (namen.Contains("Luid"))
+        {
+            wordGame[1] = true;
+        }
+        if (namen.Contains("Warmte"))
+        {
+            wordGame[2] = true;
+        }
+        if (namen.Contains("Familie"))
+        {
+            wordGame[3] = true;
+        }         
     }
 }
