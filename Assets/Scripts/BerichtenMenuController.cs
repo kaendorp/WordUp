@@ -23,7 +23,7 @@ public class BerichtenMenuController : MonoBehaviour
 
     private Rect buttonRect = new Rect(15, 40, 195, 15);    // Default button size
 
-    public string[] wordOptions;                            // Menuitems
+    private string[] wordOptions;                            // Menuitems
 
     private static string back = "< terug";                 // Static string, subject to change and used by many stringArrays
 
