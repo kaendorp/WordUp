@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject level;
     public GameObject speler;
+    public GameObject prestaties;
     
     private GUISkin skin;	
 
@@ -91,7 +92,8 @@ public class MainMenu : MonoBehaviour
 		)) 
 		{
             _audioSource.Play();
-             // Load Prestaties Scene
+            prestaties.SetActive(true);
+            this.gameObject.SetActive(false);
 		}		
 	}
 }

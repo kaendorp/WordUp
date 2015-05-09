@@ -51,7 +51,7 @@ public class FBHolder : MonoBehaviour {
 
     public void FBLogin()
     {
-        FB.Login("email, publish_actions", AuthCallBack);
+        FB.Login("email, publish_actions", AuthCallBack);        
     }
 
     void AuthCallBack(FBResult result)
@@ -80,6 +80,9 @@ public class FBHolder : MonoBehaviour {
 
             //get username
             FB.API("/me?fields=id,first_name", Facebook.HttpMethod.GET, HandleUserName);
+
+            // Check for Achievements            
+            GameControl.control.AchievementCheck();
         }
         else
         {

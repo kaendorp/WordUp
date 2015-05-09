@@ -9,7 +9,11 @@ using System.Text;
 
 public class FBAchievement : MonoBehaviour
 {
-    //Achievement URL (moet meegegeven worden bij zowel GIVE als GET methoden, toString() is belangrijk!
+    public static FBAchievement fbControl;
+
+    // Lijst voor achievement
+    public List<string> ids = new List<string>();
+    public List<string> namen = new List<string>();
 
     //Voor TestScene
     private string btnText = "Give achievement";
@@ -19,7 +23,18 @@ public class FBAchievement : MonoBehaviour
     private List<object> dataList = null;
     void Awake()
     {
-        FB.Init(SetInit, OnHideUnity);
+        // Creerd GameControl als deze er niet is en vangt af als hij er wel al is
+        if (fbControl == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            fbControl = this;
+        }
+        else if (fbControl != this)
+        {
+            Destroy(gameObject);
+        } 
+
+        FB.Init(SetInit, OnHideUnity);        
     }
 
     //Bottom of code (last method), aangeroepen, (eerst ervoor zorgen dat facebook geinitialized is en de user dus ingelogged is);
@@ -51,13 +66,13 @@ public class FBAchievement : MonoBehaviour
         FB.API(FB.UserId + "/achievements/" + achievementId, Facebook.HttpMethod.GET, HandleGetAchievement, dict);
     }
 
-    void GetAllAchievements()
+    public void GetAllAchievements()
     {
         FB.API(FB.UserId + "/achievements", Facebook.HttpMethod.GET, HandleGetAchievement);
     }
 
     //ACHIEVEMENT METHOD APP
-    void GetAllAppAchievements()
+    public void GetAllAppAchievements()
     {
         FB.API(FB.AppId + "/achievements", Facebook.HttpMethod.GET, HandleGetAllAppAchievements);
     }
@@ -91,8 +106,12 @@ public class FBAchievement : MonoBehaviour
                 var entry = (Dictionary<string, object>)dataInstance;
 
                 Debug.Log(entry["id"].ToString());
+                ids.Add(entry["id"].ToString());
                 Debug.Log(entry["title"].ToString());
-                Debug.Log(entry["description"].ToString());
+                namen.Add(entry["title"].ToString());
+
+                string iets = string.Join(",", namen.ToArray());
+                Debug.Log(iets);
 
                 List<object> images = entry["image"] as List<object>;
                 foreach (object image in images)
@@ -100,12 +119,8 @@ public class FBAchievement : MonoBehaviour
                     var imageEntry = (Dictionary<string, object>)image;
                     Debug.Log(imageEntry["url"].ToString());
                 }
-
-             
-
             }
         }
-
     }
 
     //METHODS FOR TESTSCENE
