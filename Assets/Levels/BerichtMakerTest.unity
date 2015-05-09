@@ -87,10 +87,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &190331974 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 196694, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
-  m_PrefabInternal: {fileID: 364706954}
 --- !u!1001 &364706954
 Prefab:
   m_ObjectHideFlags: 0
@@ -355,17 +351,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!1001 &1753471379
+--- !u!1001 &1842055619
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11402182, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
-      propertyPath: berichtenPrefabs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22433294, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -438,10 +430,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11402182, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
-      propertyPath: berichtenPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 190331974}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
   m_IsPrefabParent: 0
