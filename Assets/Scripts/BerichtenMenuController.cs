@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BerichtenMenuController : MonoBehaviour
 {
     public RectTransform berichtenMaker;                    // BerichtenMaker background (Located in HUD)
+    public Text displayText;
     public GameObject[] berichtenPrefabs;                   // List messagepoints in a level
     private BerichtGetSet berichtGetSet;                    // Used to get access to the script
 
@@ -11,18 +13,17 @@ public class BerichtenMenuController : MonoBehaviour
     private GUISkin skin;                                   // GUI Skin
     private string selectedText = "";                       // Selected text, set after the menu selection
 
-    private string[] messageList = new string[7];           // Text stored in between selections, back and forth
+    private string[] messageList = new string[8];           // Text stored in between selections, back and forth
 
     private GameObject messagePrefab;                       // Used to set the message to this prefab, instaid of from the server
 
     private string selectedMessage;                         // Selected part of the message after menu selection
 
-    private int selected = 0;                               // Currently selected item by arrayId
     private int stage = 0;                                  // Current menu stage
 
-    private Rect buttonRect = new Rect(15, 20, 260, 30);    // Default button size
+    private Rect buttonRect = new Rect(15, 40, 260, 15);    // Default button size
 
-    private string[] wordOptions;                           // Menuitems
+    public string[] wordOptions;                            // Menuitems
 
     private static string back = "< terug";                 // Static string, subject to change and used by many stringArrays
 
@@ -172,17 +173,26 @@ public class BerichtenMenuController : MonoBehaviour
 	    " trouwens\n",
     };
 
-    private string[] done = new string[3] 
+    private string[] done = new string[4] 
     {
         back,
-        "Annuleren",
         "Afronden",
+        "Doorgaan",
+        "Annuleren",
+    };
+
+    private string[] done2 = new string[3] 
+    {
+        back,
+        "Afronden",
+        "Annuleren",
     };
 
     // Use this for initialization
     void Start()
     {
         berichtGetSet = this.gameObject.GetComponent<BerichtGetSet>();
+
         skin = Resources.Load("BerichtWoordSkin") as GUISkin;
 
         PopulateBerichten();            // Starts the population of messages to prefabs
@@ -196,20 +206,10 @@ public class BerichtenMenuController : MonoBehaviour
      */
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            selected = menuSelection(wordOptions, selected, "up");
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            selected = menuSelection(wordOptions, selected, "down");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            wordOptions = done;
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    wordOptions = done;
+        //}
     }
 
     /**
@@ -220,40 +220,6 @@ public class BerichtenMenuController : MonoBehaviour
     public void GetMessagePrefab(GameObject messageObject)
     {
         messagePrefab = messageObject;
-    }
-
-    /**
-     * Used in the Update()
-     *
-     * Sets the selectedItem one up or down, depending on what button is pressed in Update()
-     */
-    int menuSelection(string[] buttonsArray, int selectedItem, string direction)
-    {
-        if (direction == "up")
-        {
-            if (selectedItem == 0)
-            {
-                selectedItem = buttonsArray.Length - 1;
-            }
-            else
-            {
-                selectedItem -= 1;
-            }
-        }
-
-        if (direction == "down")
-        {
-
-            if (selectedItem == buttonsArray.Length - 1)
-            {
-                selectedItem = 0;
-            }
-            else
-            {
-                selectedItem += 1;
-            }
-        }
-        return selectedItem;
     }
 
     /**
@@ -301,38 +267,31 @@ public class BerichtenMenuController : MonoBehaviour
     {
         if (berichtMakerActive == true)
         {
-            buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
+            //buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
             buttonRect.x = (Screen.width / 2) - (buttonRect.width / 2);
-
+            buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2) - 80f;
             Time.timeScale = 0;                             // Pause the game and activate the menu
             berichtenMaker.gameObject.SetActive(true);      // Activate the menu
 
-            if (wordOptions != done)                        // Done is not part of the stages, so it needs to prevent the changing of the menus
-                ChangeMenuItems();                          // Overwrite the menuItems 'wordOptions' with selected menu
+            ChangeMenuItems();                          // Overwrite the menuItems 'wordOptions' with selected menu
 
             GUI.skin = skin;                                // Set the skin to use
 
-            GUI.SetNextControlName("Bericht");              // Display the result of your selection
-            GUI.Label(
-                buttonRect,
-                new GUIContent(selectedText)
-                    );
+            displayText.GetComponent<Text>().text = selectedText;
 
             for (int i = 0; i < wordOptions.Length; i++)    // For every item in menu, make a button
             {
                 Rect buttonRectTemp = buttonRect;
-                float height = buttonRect.y + 6f;
+                float height = 20f;
                 buttonRectTemp.y += height * i;
-
+                
                 GUI.SetNextControlName(wordOptions[i]);
-                if (GUI.Button(buttonRectTemp, wordOptions[i]))
+                if (GUI.Button(buttonRectTemp, wordOptions[i].Replace("\n","")))
                 {
                     selectedMessage = wordOptions[i];       // Set the selected word after button is pressed
-                    selected = 0;                           // Reset select cursur
                     SendMessage();                          // Send the selected word for processing
                 }
             }
-            GUI.FocusControl(wordOptions[selected]);
         }
     }
 
@@ -341,9 +300,10 @@ public class BerichtenMenuController : MonoBehaviour
      * in stage 0 you select the kind of base sentaince to use
      * in stage 1 you select a category
      * in stage 2 you use the item in a category to place in the sentaince selected in stage 1
-     * in stage 3 is your connection betweet the first part of the sentaince and the second
-     * stage 4, 5 and 6 are repeats of 0,1 and 2.
-     * in stage 7 the message is considered complete
+     * in stage 3 the player is asked to continue, stop or finish
+     * in stage 4 is your connection betweet the first part of the sentaince and the second
+     * stage 5, 6 and 7 are repeats of 0,1 and 2.
+     * in stage 8 the message is considered complete
      *
      * Called in OnGUI(), after button press
      */
@@ -363,18 +323,24 @@ public class BerichtenMenuController : MonoBehaviour
             case 2:
                 ChangeCategory(selectedMessage);
                 break;
-            // tussenvoegsel
             case 3:
+                wordOptions = done;
+                break;
+            // tussenvoegsel
+            case 4:
                 wordOptions = tussenvoegsel;
                 break;
-            case 4:
+            case 5:
                 wordOptions = baseWord2;
                 break;
-            case 5:
+            case 6:
                 wordOptions = category;
                 break;
-            case 6:
+            case 7:
                 ChangeCategory(selectedMessage);
+                break;
+            case 8:
+                wordOptions = done2;
                 break;
         }
     }
@@ -421,16 +387,16 @@ public class BerichtenMenuController : MonoBehaviour
         if (selectedMessage != back)
         {
             SetMessage(selectedMessage, stage);
-            if (stage < 7)      // stage 7 is considered: message complete
+            if (stage < 8)
                 stage++;
         }
         else
         {
-            if (wordOptions == done)    // Going back from done menu
+            if (stage == 8 || stage == 3)
             {
-                wordOptions = baseWord;
+                stage -= 2;
             }
-            else
+            else if (stage >= 1)
             {
                 stage--;
             }
@@ -466,7 +432,8 @@ public class BerichtenMenuController : MonoBehaviour
         }
         else if (messagePassed == "Annuleren")
         {
-            messageList = new string[7];
+            messageList = new string[8];
+            stage = 0;
             Time.timeScale = 1;
             berichtMakerActive = false;
             berichtenMaker.gameObject.SetActive(false);
@@ -488,23 +455,30 @@ public class BerichtenMenuController : MonoBehaviour
                     messageList[2] = messageList[1];
                 break;
             case 3:
-                messageList[3] = messageList[2] + messagePassed;
+                    messageList[3] = messageList[2];
                 break;
             case 4:
                 messageList[4] = messageList[3] + messagePassed;
                 break;
             case 5:
-                messageList[5] = messageList[4];
+                messageList[5] = messageList[4] + messagePassed;
                 break;
             case 6:
-                if (messagePassed != null)
-                    messageList[6] = messageList[5].Replace("***", messagePassed);
-                else
-                    messageList[6] = messageList[5];
+                messageList[6] = messageList[5];
                 break;
+            case 7:
+                if (messagePassed != null)
+                    messageList[7] = messageList[6].Replace("***", messagePassed);
+                else
+                    messageList[7] = messageList[6];
+                break;
+            case 8:
+                messageList[8] = messageList[7];
+                break;
+
         }
 
-        if (stagePassed != 7) // user is done with the message
+        if (stagePassed != 9) // user is done with the message
             selectedText = messageList[stagePassed];
     }
 
