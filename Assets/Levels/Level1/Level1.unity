@@ -2638,11 +2638,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 25.4300003
+      value: -5.30000019
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.25999999
+      value: .699999988
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2666,9 +2666,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11414636, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+    - target: {fileID: 0}
       propertyPath: parent
       value: 
       objectReference: {fileID: 0}
@@ -3348,7 +3348,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 166770, guid: b53534b326de90e4ca84b4580843fd62, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b53534b326de90e4ca84b4580843fd62, type: 2}
@@ -5526,22 +5526,6 @@ MonoBehaviour:
   hasALeftBuddy: 0
   reverseScale: 0
   parents: {fileID: 0}
---- !u!1 &638572587 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 157408, guid: 08f42665212e559419a184bfa3f173be, type: 2}
-  m_PrefabInternal: {fileID: 312473618}
---- !u!114 &638572596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 638572587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48f6839adb8e744eab8579bede087bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextParent: {fileID: 0}
 --- !u!1 &639119182
 GameObject:
   m_ObjectHideFlags: 0
@@ -9665,11 +9649,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 26.4500008
+      value: -5.0999999
       objectReference: {fileID: 0}
     - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.46000004
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9693,7 +9677,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11476612, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: kindTextHUD
