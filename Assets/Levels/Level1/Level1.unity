@@ -1046,7 +1046,7 @@ Transform:
   - {fileID: 536287435}
   - {fileID: 1275333840}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
 --- !u!1001 &132366373
 Prefab:
   m_ObjectHideFlags: 0
@@ -3410,7 +3410,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 166770, guid: b53534b326de90e4ca84b4580843fd62, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b53534b326de90e4ca84b4580843fd62, type: 2}
@@ -13261,7 +13261,7 @@ Transform:
   - {fileID: 1393872716}
   - {fileID: 996973984}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1 &1371890130
 GameObject:
   m_ObjectHideFlags: 0
@@ -13517,7 +13517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
 --- !u!1 &1391929813
 GameObject:
   m_ObjectHideFlags: 0
@@ -13900,7 +13900,7 @@ Transform:
   - {fileID: 967978892}
   - {fileID: 1872499237}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!4 &1509439542 stripped
 Transform:
   m_PrefabParentObject: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}

@@ -5248,7 +5248,7 @@ Transform:
   m_Children:
   - {fileID: 391543737}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!1 &648325454
 GameObject:
   m_ObjectHideFlags: 0
@@ -6559,7 +6559,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
 --- !u!1 &793628982
 GameObject:
   m_ObjectHideFlags: 0
@@ -14742,7 +14742,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 151086, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
