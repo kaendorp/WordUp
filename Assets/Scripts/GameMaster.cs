@@ -11,7 +11,7 @@ public class GameMaster : MonoBehaviour
 
     public Transform playerPrefab;
     public Transform checkPoint;
-    public int spawnDelay = 2;
+    public int spawnDelay = 1;
     public Transform spawnPrefab;
 
 
@@ -29,7 +29,7 @@ public class GameMaster : MonoBehaviour
     {
         //Debug.Log("TODO: Add waiting for spawn");
         //player.gameObject.active = false;
-        yield return new WaitForSeconds(spawnDelay);
+        yield return new WaitForSeconds(1);
         Instantiate(RespawnEffect, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
         player.transform.position = currentCheckPoint.transform.position;
         //player.gameObject.active = true;
