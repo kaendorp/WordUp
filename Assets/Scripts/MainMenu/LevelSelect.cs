@@ -63,7 +63,7 @@ public class LevelSelect : MonoBehaviour {
             selected = 0;
         }
 
-        if (GameControl.control.unlockedLevels[1] == true)
+        if (GameControl.control.unlockedLevels[0] == true)
         {
             GUI.SetNextControlName(buttons[1]);
             // Prestaties Button
@@ -81,7 +81,7 @@ public class LevelSelect : MonoBehaviour {
                 selected = 1;
             }
         }
-        if (GameControl.control.unlockedLevels[2] == true)
+        if (GameControl.control.unlockedLevels[1] == true)
         {
             GUI.SetNextControlName(buttons[2]);
             // Opties Button
@@ -99,7 +99,7 @@ public class LevelSelect : MonoBehaviour {
                 selected = 2;
             }
         }
-        if (GameControl.control.unlockedLevels[3] == true)
+        if (GameControl.control.unlockedLevels[2] == true)
         {
             GUI.SetNextControlName(buttons[3]);
             // Exit Button
