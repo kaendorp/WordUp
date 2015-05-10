@@ -1621,7 +1621,7 @@ GameObject:
   - 114: {fileID: 224127861}
   m_Layer: 0
   m_Name: BridgeTile1
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2048,9 +2048,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleWall: {fileID: 1715078020}
+  puzzleBlock: {fileID: 1591521092}
   player: {fileID: 638572587}
   canDestroy: 0
   camera: {fileID: 1280017658}
+  inBounds: 1
   wallUp: {fileID: 8300000, guid: 52eaf152a7ccf6447926696db259c84a, type: 3}
   pressurePlate: {fileID: 8300000, guid: d2bdfe039f41fcd4a9c9d2b474578092, type: 3}
 --- !u!4 &259431840
@@ -2456,10 +2458,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
   m_PrefabInternal: {fileID: 1462293203}
---- !u!4 &283500900
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-  m_PrefabInternal: {fileID: 1271544367}
 --- !u!1001 &312473618
 Prefab:
   m_ObjectHideFlags: 0
@@ -2469,11 +2467,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 16.3899994
+      value: 53.7999992
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .720000029
+      value: 21.8700008
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2841,7 +2839,7 @@ GameObject:
   - 114: {fileID: 346582725}
   m_Layer: 0
   m_Name: BridgeTile8
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3588,7 +3586,7 @@ GameObject:
   - 114: {fileID: 392496564}
   m_Layer: 0
   m_Name: BridgeTile3
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3788,7 +3786,7 @@ GameObject:
   - 114: {fileID: 400346264}
   m_Layer: 0
   m_Name: BridgeTile5
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4660,7 +4658,7 @@ GameObject:
   - 114: {fileID: 525999614}
   m_Layer: 0
   m_Name: BridgeTile9
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5013,17 +5011,17 @@ Transform:
   - {fileID: 765331777}
   - {fileID: 1549698450}
   - {fileID: 1600670158}
-  - {fileID: 283500900}
   - {fileID: 2135779151}
   - {fileID: 1578221605}
-  - {fileID: 1440713632}
   - {fileID: 1962810741}
+  - {fileID: 1440713632}
+  - {fileID: 1042679864}
   - {fileID: 1904699221}
   - {fileID: 985973505}
-  - {fileID: 279860099}
   - {fileID: 2006892844}
-  - {fileID: 1042679864}
+  - {fileID: 279860099}
   - {fileID: 772733438}
+  - {fileID: 1109871275}
   m_Father: {fileID: 516157652}
   m_RootOrder: 1
 --- !u!1 &567726140
@@ -5392,7 +5390,7 @@ GameObject:
   - 114: {fileID: 634594413}
   m_Layer: 0
   m_Name: BridgeTile10
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5679,7 +5677,7 @@ GameObject:
   - 114: {fileID: 639119188}
   m_Layer: 0
   m_Name: BridgeTile10
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6587,7 +6585,7 @@ GameObject:
   - 4: {fileID: 765331777}
   m_Layer: 0
   m_Name: WonkyBridge
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6637,7 +6635,7 @@ GameObject:
   - 114: {fileID: 766960970}
   m_Layer: 0
   m_Name: BridgeTile13
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7442,7 +7440,7 @@ GameObject:
   - 114: {fileID: 817892207}
   m_Layer: 0
   m_Name: BridgeTile6
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8037,7 +8035,7 @@ GameObject:
   - 114: {fileID: 887031372}
   m_Layer: 0
   m_Name: BridgeTile4
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8422,7 +8420,7 @@ GameObject:
   - 114: {fileID: 936481923}
   m_Layer: 0
   m_Name: BridgeTile1
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9154,7 +9152,7 @@ GameObject:
   - 114: {fileID: 955827484}
   m_Layer: 0
   m_Name: BridgeTile13
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9472,7 +9470,7 @@ GameObject:
   - 114: {fileID: 967978890}
   m_Layer: 0
   m_Name: DeathLineDown
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9581,7 +9579,7 @@ GameObject:
   - 114: {fileID: 990730439}
   m_Layer: 0
   m_Name: BridgeTile7
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9935,7 +9933,7 @@ GameObject:
   - 114: {fileID: 1022134422}
   m_Layer: 0
   m_Name: BridgeTile2
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10280,7 +10278,7 @@ Transform:
   - {fileID: 721428350}
   - {fileID: 903618148}
   m_Father: {fileID: 563128486}
-  m_RootOrder: 17
+  m_RootOrder: 12
 --- !u!4 &1046813633
 Transform:
   m_PrefabParentObject: {fileID: 448260, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
@@ -10390,7 +10388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_LocalScale.x
@@ -11079,6 +11077,10 @@ PolygonCollider2D:
       - {x: 1.64250016, y: -2.94023418}
       - {x: 1.64250016, y: -2.66679668}
       - {x: 2.58000016, y: -2.66679668}
+--- !u!4 &1109871275
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+  m_PrefabInternal: {fileID: 1155774829}
 --- !u!1 &1111077980
 GameObject:
   m_ObjectHideFlags: 0
@@ -11096,7 +11098,7 @@ GameObject:
   - 114: {fileID: 1111077986}
   m_Layer: 0
   m_Name: BridgeTile2
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11377,6 +11379,52 @@ Transform:
   - {fileID: 1641316962}
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!1001 &1155774829
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 563128486}
+    m_Modifications:
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 47.0699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 21.9099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+      propertyPath: m_Name
+      value: Spring 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &1180983125
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11455650, guid: b53534b326de90e4ca84b4580843fd62,
@@ -11744,7 +11792,7 @@ GameObject:
   - 114: {fileID: 1246365495}
   m_Layer: 0
   m_Name: BridgeTile11
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12082,72 +12130,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 929952534}
   m_RootOrder: 3
---- !u!1001 &1271544367
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 563128486}
-    m_Modifications:
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 47.0200005
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 21.9029999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalScale.x
-      value: .200000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .200000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 11400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: playerLayerMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: springForce
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_Name
-      value: Spring 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1275333839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12536,7 +12518,7 @@ GameObject:
   - 114: {fileID: 1308945137}
   m_Layer: 0
   m_Name: BridgeTile7
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13258,7 +13240,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_LocalScale.x
@@ -13412,7 +13394,7 @@ GameObject:
   - 114: {fileID: 1395255667}
   m_Layer: 0
   m_Name: BridgeTile4
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13812,7 +13794,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_LocalScale.x
@@ -13921,7 +13903,7 @@ GameObject:
   - 114: {fileID: 1519921332}
   m_Layer: 0
   m_Name: BridgeTile8
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14114,7 +14096,7 @@ GameObject:
   - 4: {fileID: 1549698450}
   m_Layer: 0
   m_Name: WonkyBridge 1
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14240,7 +14222,7 @@ GameObject:
   - 114: {fileID: 1562055532}
   m_Layer: 0
   m_Name: BridgeTile12
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14423,23 +14405,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!1 &1573399844
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-  m_PrefabInternal: {fileID: 1271544367}
---- !u!61 &1573399849
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1573399844}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: -1.52587891e-05, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 3.5, y: 2.5}
 --- !u!1001 &1578221604
 Prefab:
   m_ObjectHideFlags: 0
@@ -14477,7 +14442,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_LocalScale.x
@@ -14779,7 +14744,7 @@ GameObject:
   - 114: {fileID: 1600072265}
   m_Layer: 0
   m_Name: BridgeTile6
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15117,7 +15082,7 @@ GameObject:
   - 114: {fileID: 1628490023}
   m_Layer: 0
   m_Name: BridgeTile9
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15627,7 +15592,7 @@ GameObject:
   - 114: {fileID: 1665629647}
   m_Layer: 0
   m_Name: BridgeTile3
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15983,7 +15948,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_LocalScale.x
@@ -16365,7 +16330,7 @@ GameObject:
   - 114: {fileID: 1768047534}
   m_Layer: 0
   m_Name: BridgeTile12
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16565,7 +16530,7 @@ GameObject:
   - 114: {fileID: 1778619005}
   m_Layer: 0
   m_Name: BridgeTile5
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17327,7 +17292,7 @@ GameObject:
   - 114: {fileID: 1878169897}
   m_Layer: 0
   m_Name: BridgeTile11
-  m_TagString: Untagged
+  m_TagString: Bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18384,7 +18349,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
       propertyPath: m_LocalScale.x
@@ -18914,9 +18879,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleWall: {fileID: 1550397916}
+  puzzleBlock: {fileID: 0}
   player: {fileID: 638572587}
   canDestroy: 0
   camera: {fileID: 1280017658}
+  inBounds: 1
   wallUp: {fileID: 8300000, guid: 52eaf152a7ccf6447926696db259c84a, type: 3}
   pressurePlate: {fileID: 8300000, guid: d2bdfe039f41fcd4a9c9d2b474578092, type: 3}
 --- !u!61 &2119160027

@@ -4,8 +4,11 @@ using System.Collections;
 public class PuzzleBlockController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private AudioSource _audioSource;
+	private Vector3 startPosition;
+
 	// Use this for initialization
 	void Start () {
+		startPosition = transform.position;
 		rb = GetComponent<Rigidbody2D> ();
 		_audioSource = gameObject.GetComponent<AudioSource> ();
 		_audioSource.enabled = false;
@@ -18,6 +21,12 @@ public class PuzzleBlockController : MonoBehaviour {
 		} else {
 			_audioSource.enabled = false;
 		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if(collider.tag == "Bridge")
+		gameObject.transform.position = startPosition;
 	}
 }
 
