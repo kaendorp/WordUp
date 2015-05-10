@@ -43,7 +43,6 @@ using UnitySampleAssets.CrossPlatformInput;
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             // Pass all parameters to the character control script.
-            character.Move(h, crouch, jump, crouched);
             jump = false;
         }
     }
