@@ -2144,7 +2144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleWall: {fileID: 1715078020}
-  player: {fileID: 638572587}
+  player: {fileID: 1694920582}
+  player2: {fileID: 1031063227}
   canDestroy: 0
   camera: {fileID: 1280017658}
   wallUp: {fileID: 8300000, guid: 52eaf152a7ccf6447926696db259c84a, type: 3}
@@ -9669,6 +9670,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e587890a6a537a847aa77bce79823370, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1031063227
+GameObject:
+  m_PrefabParentObject: {fileID: 161486, guid: e587890a6a537a847aa77bce79823370, type: 2}
+  m_PrefabInternal: {fileID: 1031063226}
 --- !u!1001 &1038476180
 Prefab:
   m_ObjectHideFlags: 0
@@ -15723,6 +15728,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ecdf2498e8b2304b82b68e5ad92001f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1694920582
+GameObject:
+  m_PrefabParentObject: {fileID: 196280, guid: 7ecdf2498e8b2304b82b68e5ad92001f, type: 2}
+  m_PrefabInternal: {fileID: 1694920581}
 --- !u!4 &1696242146
 Transform:
   m_PrefabParentObject: {fileID: 448260, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
@@ -19279,7 +19288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleWall: {fileID: 1550397916}
-  player: {fileID: 638572587}
+  player: {fileID: 1694920582}
+  player2: {fileID: 1031063227}
   canDestroy: 0
   camera: {fileID: 1280017658}
   wallUp: {fileID: 8300000, guid: 52eaf152a7ccf6447926696db259c84a, type: 3}

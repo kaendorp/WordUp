@@ -6,6 +6,7 @@ public class PuzzleSwitch : MonoBehaviour
 {
     public GameObject puzzleWall;
     public GameObject player;
+    public GameObject player2;
     public bool canDestroy = false;
     public Camera2DFollow camera;
 
@@ -23,7 +24,8 @@ public class PuzzleSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        player = GameObject.Find("Player");
+        player2 = GameObject.Find("Player2");
     }
 
     void OnCollisionEnter2D(Collision2D collider)
@@ -46,6 +48,11 @@ public class PuzzleSwitch : MonoBehaviour
 		_audioSource.clip = wallUp;
 		_audioSource.Play ();
         puzzleChild.gameObject.SetActive(false); //active is depricated
+        
+        if(player)
         camera.target = player.transform;
+
+        else if(player2)
+        camera.target = player2.transform;
     }
 }
