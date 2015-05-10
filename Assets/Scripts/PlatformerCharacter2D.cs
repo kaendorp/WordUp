@@ -210,24 +210,31 @@ public class PlatformerCharacter2D : MonoBehaviour
                 isPlayed = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        if (Projectile2 != null)
         {
-            CurrentProjectile = Projectile2;
-            isPlayed = false;
-            if (!isPlayed)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                StartCoroutine(PlaySound("ycn"));
-                isPlayed = true;
+                CurrentProjectile = Projectile2;
+                isPlayed = false;
+                if (!isPlayed)
+                {
+                    StartCoroutine(PlaySound("ycn"));
+                    isPlayed = true;
+                }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Projectile3 != null)
         {
-            CurrentProjectile = Projectile3;
-            isPlayed = false;
-            if (!isPlayed)
+            if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                StartCoroutine(PlaySound("bouncy"));
+                CurrentProjectile = Projectile3;
                 isPlayed = false;
+                if (!isPlayed)
+                {
+                    StartCoroutine(PlaySound("bouncy"));
+                    isPlayed = false;
+                }
             }
         }
     }

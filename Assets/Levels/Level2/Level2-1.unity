@@ -4683,6 +4683,10 @@ Prefab:
       propertyPath: kindTextHUD
       value: 
       objectReference: {fileID: 628223790}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: Projectile3
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e587890a6a537a847aa77bce79823370, type: 2}
   m_IsPrefabParent: 0
@@ -6813,7 +6817,7 @@ Prefab:
     - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: Projectile3
       value: 
-      objectReference: {fileID: 166636, guid: 93477810339f0ac4080a1b5884d7faac, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: maxKids
       value: 5
