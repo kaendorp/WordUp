@@ -22,7 +22,7 @@ public class Letter2ProjectileController : MonoBehaviour {
 	void Start () {
 		_audioClip = gameObject.GetComponent<AudioSource>().clip;
 		player = FindObjectOfType<PlatformerCharacter2D>();
-		position = gameObject.transform.position;
+		position = new Vector3 (0, 0, 0);
 		if (player.transform.localScale.x < 0)
 		{
 			speed = -speed;
