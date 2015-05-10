@@ -37,31 +37,51 @@ public class GameControl : MonoBehaviour {
 
     public List<string> namen = new List<string>();
 
+    public bool FBlogin = false;
+
     public void LevelComplete(int level)
     {
         unlockedLevels[level] = true;
 
         if (level == 0)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_HetAvontuurBegint.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_HetAvontuurBegint.html".ToString());
+            }            
         }
         else if (level == 1)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_DeHoogteIn.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_DeHoogteIn.html".ToString());
+            }    
+            
         }
         else if (level == 2)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Ijsbreker.html".ToString());            
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Ijsbreker.html".ToString());
+            }                            
         }
         else if (level == 3)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Intellectueel.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Intellectueel.html".ToString());
+            }              
         }
 
         // Als alle items waar zijn
         if (System.Array.TrueForAll(unlockedLevels, item => item) == true)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_WordUp.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_WordUp.html".ToString());
+            }  
+
+            
         }
     }
 
@@ -71,19 +91,31 @@ public class GameControl : MonoBehaviour {
 
         if (baas == 0)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVoorDeStorm.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVoorDeStorm.html".ToString());
+            }              
         }
         else if (baas == 1)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerstoorder.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerstoorder.html".ToString());
+            }              
         }
         else if (baas == 2)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteOntregelaar.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteOntregelaar.html".ToString());
+            }              
         }
         else if (baas == 3)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerbreker.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_StilteVerbreker.html".ToString());
+            }               
         }      
     }
 
@@ -93,25 +125,40 @@ public class GameControl : MonoBehaviour {
 
         if (wg == 0)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Lef.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Lef.html".ToString());
+            }             
         }
         else if (wg == 1)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Luid.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Luid.html".ToString());
+            }             
         }
         else if (wg == 2)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Warmte.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Warmte.html".ToString());
+            }             
         }
         else if (wg == 3)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Familie.html".ToString());
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Familie.html".ToString());
+            }             
         }
 
         // Als alle items waar zijn
         if (System.Array.TrueForAll(wordGame, item => item) == true)
         {
-            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_VlotteSpreker.html".ToString());         
+            if (FBlogin == true)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_VlotteSpreker.html".ToString());    
+            }                  
         }
     }
 
