@@ -28,6 +28,8 @@ TagManager:
   - Ijstand
   - puzzleBlock
   - Rope
+  - Water
+  - Bridge
   layers:
   - Default
   - TransparentFX
