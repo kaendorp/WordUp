@@ -218,15 +218,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6195892, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Offset.x
-      value: -.604640901
+      value: -.512063682
       objectReference: {fileID: 0}
     - target: {fileID: 6195892, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Offset.y
-      value: -.000418246345
+      value: -.000558901869
       objectReference: {fileID: 0}
     - target: {fileID: 6195892, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Size.x
-      value: .996524751
+      value: .811375916
       objectReference: {fileID: 0}
     - target: {fileID: 492958, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_LocalPosition.x
@@ -829,15 +829,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6195892, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Offset.x
-      value: -.409821808
+      value: -.327178836
       objectReference: {fileID: 0}
     - target: {fileID: 6195892, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Offset.y
-      value: -.000129112566
+      value: -.000129131717
       objectReference: {fileID: 0}
     - target: {fileID: 6195892, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
       propertyPath: m_Size.x
-      value: .606873274
+      value: .441591442
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfc5e539c0f9c5943a9eef4d3911cc90, type: 2}
@@ -2692,11 +2692,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.30000019
+      value: -6.44000006
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .699999988
+      value: -.49000001
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5166,9 +5166,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -2.86102295e-06, y: -.17624259}
   serializedVersion: 2
-  m_Size: {x: 1.07000005, y: 1.54000008}
+  m_Size: {x: 1.07000005, y: 1.18751431}
 --- !u!212 &555785569
 SpriteRenderer:
   m_ObjectHideFlags: 0
