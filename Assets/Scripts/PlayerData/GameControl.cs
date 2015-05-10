@@ -17,7 +17,7 @@ public class GameControl : MonoBehaviour {
     public bool isMainMenu;
 
     // Highscore
-    public int highScore;
+    public int highScore = 0;
 
     // Achievements level
     // Tutorial = 0 || Level 1 = 1 || Level 2 = 2 || Level 3 = 3
