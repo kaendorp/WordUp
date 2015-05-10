@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class WinMenuScript : MonoBehaviour 
@@ -69,6 +70,12 @@ public class WinMenuScript : MonoBehaviour
                     Application.LoadLevel(levelKeuze);// Load next Level
                 }
             }            
+
+            if (laatstelevel == true)
+            {
+                Text score = GameObject.Find("Score").GetComponent<Text>();                
+                score.text = GameControl.control.highScore.ToString();
+            }
 
             // Naar main menu Button
             if (GUI.Button(
