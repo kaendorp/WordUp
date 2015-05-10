@@ -7048,6 +7048,14 @@ Prefab:
       propertyPath: shoot
       value: 
       objectReference: {fileID: 8300000, guid: b9a6883c745e32849b660ef7ba422180, type: 3}
+    - target: {fileID: 8262412, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2795d6d7146f2f74984c5f838285d444, type: 3}
+    - target: {fileID: 8272918, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 368af70cabf6c09478dcfb323535570b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
   m_IsPrefabParent: 0
