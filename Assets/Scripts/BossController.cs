@@ -680,7 +680,7 @@ public class BossController : MonoBehaviour
 		low = System.Text.Encoding.UTF8.GetBytes(input);
 		foreach(byte b in low)
 		{
-			Debug.Log (b);
+			//Debug.Log (b);
 			if(b < 65)
 			{
 				bossSource.clip = number1;
