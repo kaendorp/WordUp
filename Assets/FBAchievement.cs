@@ -9,23 +9,34 @@ using System.Text;
 
 public class FBAchievement : MonoBehaviour
 {
-    //Achievement URL (moet meegegeven worden bij zowel GIVE als GET methoden, toString() is belangrijk!
+    public static FBAchievement fbControl;
 
-    //Voor TestScene
-    private string btnText = "Give achievement";
+    // Lijst voor achievement    
+    public List<string> namen = new List<string>();
+
+    //Voor TestScene    
     public GameObject UIFB_IsLoggedIn;
-    public GameObject UIFB_IsNotLoggedIn;
-    private List<object> resultList = null;
+    public GameObject UIFB_IsNotLoggedIn;    
     private List<object> dataList = null;
     void Awake()
     {
-        FB.Init(SetInit, OnHideUnity);
+        // Creerd FBControl als deze er niet is en vangt af als hij er wel al is
+        if (fbControl == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            fbControl = this;
+        }
+        else if (fbControl != this)
+        {
+            Destroy(gameObject);
+        } 
+
+        FB.Init(SetInit, OnHideUnity);        
     }
 
     //Bottom of code (last method), aangeroepen, (eerst ervoor zorgen dat facebook geinitialized is en de user dus ingelogged is);
     void AchievementCalls()
-    {
-        Debug.Log("Start");
+    {        
         //Op deze manier moeten de classes worden aangeroepen:
         GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Warmte.html".ToString());
         //Wait a few seconds before calling the GET if wished to instantiate right after eachother
@@ -38,26 +49,24 @@ public class FBAchievement : MonoBehaviour
 
     public void GiveOneAchievement(string achievementUrl)
     {
-        var dict = new Dictionary<string, string>();
-        Debug.Log(achievementUrl);
+        var dict = new Dictionary<string, string>();        
         dict["achievement"] = achievementUrl;
         FB.API(FB.UserId + "/achievements", Facebook.HttpMethod.POST, null, dict);
     }
 
     void GetOneAchievement(long achievementId, string achievementUrl)
     {
-        var dict = new Dictionary<string, string>() { { "achievement", achievementUrl } };
-        Debug.Log(achievementId + " " + achievementUrl);
+        var dict = new Dictionary<string, string>() { { "achievement", achievementUrl } };        
         FB.API(FB.UserId + "/achievements/" + achievementId, Facebook.HttpMethod.GET, HandleGetAchievement, dict);
     }
 
-    void GetAllAchievements()
+    public void GetAllAchievements()
     {
         FB.API(FB.UserId + "/achievements", Facebook.HttpMethod.GET, HandleGetAchievement);
     }
 
     //ACHIEVEMENT METHOD APP
-    void GetAllAppAchievements()
+    public void GetAllAppAchievements()
     {
         FB.API(FB.AppId + "/achievements", Facebook.HttpMethod.GET, HandleGetAllAppAchievements);
     }
@@ -74,8 +83,8 @@ public class FBAchievement : MonoBehaviour
                 var data = (Dictionary<string, object>)entry["data"];
 
                 var achievements = (Dictionary<string, object>)data["achievement"];
-
-                Debug.Log(achievements["id"].ToString());
+                
+                namen.Add(achievements["title"].ToString());
                 Debug.Log(achievements["title"].ToString());
             }
         }
@@ -88,34 +97,22 @@ public class FBAchievement : MonoBehaviour
             dataList = Util.DeserializeScores(result.Text);
             foreach(object dataInstance in dataList)
             {
-                var entry = (Dictionary<string, object>)dataInstance;
-
-                Debug.Log(entry["id"].ToString());
-                Debug.Log(entry["title"].ToString());
-                Debug.Log(entry["description"].ToString());
-
+                var entry = (Dictionary<string, object>)dataInstance;           
+  
                 List<object> images = entry["image"] as List<object>;
                 foreach (object image in images)
                 {
-                    var imageEntry = (Dictionary<string, object>)image;
-                    Debug.Log(imageEntry["url"].ToString());
+                    var imageEntry = (Dictionary<string, object>)image;                    
                 }
-
-             
-
             }
         }
-
     }
 
     //METHODS FOR TESTSCENE
     private void SetInit()
-    {
-        Debug.Log("FB Initialized");
-
+    {      
         if (FB.IsLoggedIn)
-        {
-            Debug.Log("FB logged in");
+        {           
             HandleFBMenus(true);
         }
         else
@@ -156,17 +153,11 @@ public class FBAchievement : MonoBehaviour
         }
     }
 
-
     void AuthCallBack(FBResult result)
     {
         if (FB.IsLoggedIn)
-        {
-            Debug.Log("FB logged in");
+        {            
             AchievementCalls();
-        }
-        else
-        {
-            Debug.Log("FB login failed");
-        }
+        }        
     }
 }

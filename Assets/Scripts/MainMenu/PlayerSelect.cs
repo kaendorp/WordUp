@@ -50,8 +50,8 @@ public class PlayerSelect : MonoBehaviour {
             GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn 
             _audioSource.Play();
 
-            this.gameObject.SetActive(false);
-            mainMenu.SetActive(true);
+            this.gameObject.SetActive(false);            
+            mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;
             selected = 0;
         }
 
@@ -67,7 +67,7 @@ public class PlayerSelect : MonoBehaviour {
             _audioSource.Play();
 
             this.gameObject.SetActive(false);
-            mainMenu.SetActive(true);
+            mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;
             selected = 1;
         }   
         GUI.FocusControl(buttons[selected]);

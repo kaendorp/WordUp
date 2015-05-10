@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject level;
     public GameObject speler;
+    public GameObject prestaties;
     
     private GUISkin skin;	
 
@@ -16,82 +17,88 @@ public class MainMenu : MonoBehaviour
 
     public AudioSource _audioSource;
 
+    public bool _mainMenuUit = false;
+
 	void Start()
 	{
         level.SetActive(false);
         speler.SetActive(false);
 
 		// Load a skin for the buttons
-		skin = Resources.Load("ButtonSkin") as GUISkin;	
+		skin = Resources.Load("ButtonSkin") as GUISkin;      
 	}	
 	
 	void OnGUI()
 	{
-		button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
-		button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
-		
-		button2Rect.x = (Screen.width / 2) - (button2Rect.width / 2);
-		button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);
-
-		button3Rect.x = (Screen.width / 2) - (button3Rect.width / 2);
-		button3Rect.y = (Screen.height / 2) - (button3Rect.height / 2);
-		
-		button4Rect.x = (Screen.width / 2) - (button4Rect.width / 2);
-		button4Rect.y = (Screen.height / 2) - (button4Rect.height / 2);
-
-		button1Rect.y = button1Rect.y - 130;
-        button2Rect.y = button2Rect.y - 80;
-		button3Rect.y = button3Rect.y - 30;
-		button4Rect.y = button4Rect.y + 20;       
-		
-		// Set the skin to use
-		GUI.skin = skin;
-		
-		// Start Button
-		if (GUI.Button (
-			// Center in X, 2/3 of the height in Y
-			button1Rect,
-			"START"
-		)) 
-		{
-            _audioSource.Play();
-            GameControl.control.isMainMenu = false;
-			Application.LoadLevel (GameControl.control.loadLevel); // Load Intro
-		}
-        
-        // Start Button
-        if (GUI.Button(
-            // Center in X, 2/3 of the height in Y
-            button2Rect,
-            "Speler"
-        ))
+        if (_mainMenuUit == false)
         {
-            _audioSource.Play();
-            speler.SetActive(true); // Select Speler
-            this.gameObject.SetActive(false);
-        }
-        
-        // Start Button
-        if (GUI.Button(
-            // Center in X, 2/3 of the height in Y
-            button3Rect,
-            "Level"
-        ))
-        {
-            _audioSource.Play();
-            level.SetActive(true);// Select Level
-            this.gameObject.SetActive(false);
-        }
+            button1Rect.x = (Screen.width / 2) - (button1Rect.width / 2);
+            button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
 
-		// Prestaties Button
-		if (GUI.Button (
-			// Center in X, 2/3 of the height in Y
-			button4Rect,
-			"Prestaties"
-		)) 
-		{
-            _audioSource.Play();
-             // Load Prestaties Scene
-		}		
+            button2Rect.x = (Screen.width / 2) - (button2Rect.width / 2);
+            button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);
+
+            button3Rect.x = (Screen.width / 2) - (button3Rect.width / 2);
+            button3Rect.y = (Screen.height / 2) - (button3Rect.height / 2);
+
+            button4Rect.x = (Screen.width / 2) - (button4Rect.width / 2);
+            button4Rect.y = (Screen.height / 2) - (button4Rect.height / 2);
+
+            button1Rect.y = button1Rect.y - 130;
+            button2Rect.y = button2Rect.y - 80;
+            button3Rect.y = button3Rect.y - 30;
+            button4Rect.y = button4Rect.y + 20;
+
+            // Set the skin to use
+            GUI.skin = skin;
+
+            // Start Button
+            if (GUI.Button(
+                // Center in X, 2/3 of the height in Y
+                button1Rect,
+                "START"
+            ))
+            {
+                _audioSource.Play();
+                GameControl.control.isMainMenu = false;
+                Application.LoadLevel(GameControl.control.loadLevel); // Load Intro
+            }
+
+            // Start Button
+            if (GUI.Button(
+                // Center in X, 2/3 of the height in Y
+                button2Rect,
+                "Speler"
+            ))
+            {
+                _audioSource.Play();
+                speler.SetActive(true); // Select Speler
+                _mainMenuUit = true;                
+            }
+
+            // Start Button
+            if (GUI.Button(
+                // Center in X, 2/3 of the height in Y
+                button3Rect,
+                "Level"
+            ))
+            {
+                _audioSource.Play();
+                level.SetActive(true);// Select Level
+                _mainMenuUit = true;
+            }
+
+            // Prestaties Button
+            if (GUI.Button(
+                // Center in X, 2/3 of the height in Y
+                button4Rect,
+                "Prestaties"
+            ))
+            {                
+                _audioSource.Play();           
+                prestaties.SetActive(true);
+                _mainMenuUit = true;
+            }	
+        }                        
 	}
 }

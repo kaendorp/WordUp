@@ -36,6 +36,8 @@ public class WinMenuScript : MonoBehaviour
         // Gewonnen menu
         if (WinActive == true)
         {
+            GameControl.control.highScore += 100;
+
             // Stuur bericht naar Gamecontrol voor achievements
             GameControl.control.LevelComplete(levelEnBoss);
             GameControl.control.StilteVerslagen(levelEnBoss);
