@@ -16791,18 +16791,6 @@ Prefab:
       propertyPath: m_Name
       value: Spring 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6152180, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_Offset.y
-      value: .0413614511
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152180, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_Size.x
-      value: 3.96386123
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152180, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
-      propertyPath: m_Size.y
-      value: 2.5827229
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
   m_IsPrefabParent: 0
