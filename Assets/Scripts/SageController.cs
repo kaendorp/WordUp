@@ -3,16 +3,8 @@ using System.Collections;
 
 public class SageController : MonoBehaviour {
 
-    public enum kindType
-    {
-        Fynn,
-        Fyiona
-    }
-
-    public kindType _kindType;
-    private Animator anim;
-
     // Bericht
+    [TextArea(1, 3)]
     public string succesMessage = "";         // Het bericht wat getoont moet worden, gebruik \n om een nieuwe regel te beginnen
     public GameObject messageObject;    // TextMesh    
 
@@ -61,12 +53,6 @@ public class SageController : MonoBehaviour {
 
         if (this.transform.localScale.x >= 0)
             facingLeft = false;
-
-        anim = GetComponent<Animator>();
-        if (_kindType == kindType.Fynn)
-            anim.SetBool("IsFynn", true);
-        else
-            anim.SetBool("IsFynn", false);
 
 		_audioSource = gameObject.GetComponent<AudioSource> ();
     }
