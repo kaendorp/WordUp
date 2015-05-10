@@ -338,6 +338,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         if (col.gameObject.tag == "AbovePlatform" || col.gameObject.tag == "AboveTrigger")
         {
+            anim.SetBool("ClimbUp", true);
             canUseShield = false;
         }
         else
@@ -352,12 +353,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 		//de ladder
         if (col.gameObject.tag == "AboveTrigger")
         {
-			anim.SetBool("ClimbUp", true);
             canUseShield = false;
         }
 
         if (col.gameObject.tag == "AboveLadder") {
-			anim.SetBool ("ClimbUp", false);
             canUseShield = false;
 		} else {
 			climbing = false;
@@ -405,12 +404,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 
-		if (col.gameObject.tag == "LadderTrigger" || col.gameObject.tag == "AboveLadder")
+        if (col.gameObject.tag == "LadderTrigger" || col.gameObject.tag == "AboveLadder")
         {
-			anim.SetBool ("ClimbUp", false);
-			canUseShield = false;
-			anim.speed = 1f;
-			//grounded = false; /als dit anders gechecked kan worden werkt dit goed (nu grounded on stop)
+            anim.SetBool("ClimbUp", true);
+            canUseShield = false;
+            anim.speed = 1f;
+            //grounded = false; /als dit anders gechecked kan worden werkt dit goed (nu grounded on stop)
+        }
+        else
+        {
+            anim.SetBool("ClimbUp", false);
         }
     }
 
@@ -420,7 +423,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		//de ladder (stop met klimmen/opklimmen als je niet in de ladder zit!)
 		if (col.gameObject.tag == "AbovePlatform" || col.gameObject.tag == "Ladder") {
 			climbing = false;
-			anim.SetBool ("ClimbUp", false);
 			anim.speed = 1f;
 		}
 

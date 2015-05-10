@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3d2ed8e9f08ac844eb522c0dda14c1e1
-timeCreated: 1429405680
+timeCreated: 1431259113
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -26,6 +26,7 @@ TextureImporter:
     21300038: Fiona_Climb01
     21300040: Fiona_Climb02
     21300042: Fiona_Up
+    21300044: NEWFionaSprites_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -288,6 +289,16 @@ TextureImporter:
         y: 58
         width: 18
         height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NEWFionaSprites_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 59
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
