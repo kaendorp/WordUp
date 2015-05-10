@@ -78,6 +78,7 @@ public class FBHolder : MonoBehaviour {
 
             // Check for Achievements            
             GameControl.control.AchievementCheck();
+            GameControl.control.FBlogin = true;
         }
         else
         {
