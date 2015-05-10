@@ -4,6 +4,11 @@ using System.Collections;
 public class BossProjectile : MonoBehaviour {
     public GameObject enemyDeathEffect;
 
+    void Start()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("Default"));
+    }
+
 	void onTriggerEnter2D(Collision2D triggered)
 	{
 		//Debug.Log("Enemy projectile: HIT");
@@ -13,8 +18,7 @@ public class BossProjectile : MonoBehaviour {
 		{
 			Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
 		}
-        if (triggered.gameObject.layer.ToString() != "Default")
-		    Destroy(gameObject);
+		Destroy(gameObject);
 	}
 
 	void OnCollisionEnter2D(Collision2D collided)
@@ -27,7 +31,6 @@ public class BossProjectile : MonoBehaviour {
 			Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
 		}
 		//If it collides with anything, destroy projectile
-        if (collided.gameObject.layer.ToString() != "Default")
-            Destroy(gameObject);
+        Destroy(gameObject);
 	}
 }
