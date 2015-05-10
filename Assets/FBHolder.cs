@@ -114,8 +114,8 @@ public class FBHolder : MonoBehaviour {
 
     public void Share()
     {
-        FB.Feed(linkCaption: "Ik speel WordUp", 
-                picture: "http://el-coyot.com.ua/calc/img/na.jpg",
+        FB.Feed(linkCaption: "Ik speel WordUp",
+                picture: "http://wordupgame.tk/Facebook/Images/Achievements/WordUp!.jpg",
                 linkName: "Speel het ook!",
                 link: "http://apps.facebook.com/" + FB.AppId + "/?challenge_brag=" + (FB.IsLoggedIn ? FB.UserId : "guest")
                 
