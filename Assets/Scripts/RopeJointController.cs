@@ -8,10 +8,9 @@ public class RopeJointController : MonoBehaviour {
     private GameObject player;
     private bool isStickied = false;
     private bool manditoryStickDelayOver = true;
-    private float manidtoryStickDelay = 1f;
+    private float manidtoryStickDelay = 0.5f;
 
     private Vector3 position;
-    private bool isPlayed = false;
 
 	// Use this for initialization
 	void Start () {
@@ -30,23 +29,21 @@ public class RopeJointController : MonoBehaviour {
             {
                 player.transform.position = this.transform.position;
                 player.GetComponent<PlatformerCharacter2D>().anim.SetBool("Swinging", true);
-            }
 
-            if (manditoryStickDelayOver)
-            {
-                if (Input.GetKey(KeyCode.W))
+                if (manditoryStickDelayOver)
                 {
-                    Debug.Log(this.GetComponent<Rigidbody2D>().velocity.x);
-                    //player.GetComponent<Rigidbody2D>().AddForce(transform.right * this.GetComponent<Rigidbody2D>().velocity.x);
-                    player.GetComponent<Rigidbody2D>().velocity =
-                        new Vector2(
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity.x + horizontalReleaseBoost,
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity.y + verticalReleaseBoost
-                            );
-                    player.GetComponent<PlatformerCharacter2D>().anim.SetBool("Swinging", false);
-                    player = null;
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        player.GetComponent<Rigidbody2D>().velocity =
+                            new Vector2(
+                                this.gameObject.GetComponent<Rigidbody2D>().velocity.x + horizontalReleaseBoost,
+                                this.gameObject.GetComponent<Rigidbody2D>().velocity.y + verticalReleaseBoost
+                                );
+                        player.GetComponent<PlatformerCharacter2D>().anim.SetBool("Swinging", false);
+                        player = null;
 
-                    StartCoroutine(GetAwayTime());
+                        StartCoroutine(GetAwayTime());
+                    }
                 }
             }
         }
@@ -66,10 +63,12 @@ public class RopeJointController : MonoBehaviour {
             }
             this.gameObject.GetComponent<Rigidbody2D>().velocity = player.GetComponent<Rigidbody2D>().velocity;
             isStickied = true;
+
+            //Audio
             AudioClip _audioSource = this.gameObject.GetComponent<AudioSource>().clip;
             position = new Vector3(0, 0, 0);
             AudioSource.PlayClipAtPoint(_audioSource, position);
-            isPlayed = true;
+
             StartCoroutine(ManitoryStickDelay());
         }
     }
