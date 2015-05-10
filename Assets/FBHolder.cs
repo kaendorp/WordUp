@@ -185,7 +185,7 @@ public class FBHolder : MonoBehaviour {
         var scoreData = new Dictionary<string, string>();
         
         //test: insert score
-        scoreData["score"] = GameControl.control.highScore;
+        scoreData["score"] = GameControl.control.highScore.ToString();
         
         FB.API("/me/scores", Facebook.HttpMethod.POST, delegate(FBResult result)
         {

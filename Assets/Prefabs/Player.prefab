@@ -44,7 +44,6 @@ GameObject:
   - 61: {fileID: 6118624}
   - 212: {fileID: 21211306}
   - 58: {fileID: 5806544}
-  - 114: {fileID: 11414636}
   - 82: {fileID: 8275990}
   m_Layer: 8
   m_Name: Player
@@ -430,19 +429,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11414636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157408}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88cb0be213cb69c46b455d1ed5a68fcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousParent: {fileID: 0}
-  parent: {fileID: 0}
 --- !u!114 &11442900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,36 +476,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
-  jumpForce: 450
-  crouchSpeed: .127000004
-  airControl: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4294901961
+  grounded: 0
+  maxSpeed: 3
+  moveVelocity: 0
+  crouched: 1
+  jump: 0
+  jumpForce: 450
+  airControl: 1
   whatIsClimbable:
     serializedVersion: 2
     m_Bits: 16384
-  grounded: 0
-  anim: {fileID: 0}
-  moveVelocity: 0
+  climbing: 0
   canUseShield: 1
   shield: {fileID: 178276}
-  climbingSwitch: 0
-  climbing: 0
   knockback: 2
   knockbackLength: .200000003
   knockbackCount: 0
   knockFromRight: 0
-  impactEffect: {fileID: 199018, guid: 1265878839bd4a04bb8d4e6ed6d12b27, type: 2}
   firePoint: {fileID: 440230}
   Projectile1: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
   Projectile2: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
   Projectile3: {fileID: 166636, guid: 93477810339f0ac4080a1b5884d7faac, type: 2}
-  shotDelay: .600000024
-  target: {fileID: 0}
-  camera: {fileID: 0}
-  jump: 0
+  anim: {fileID: 0}
   number1: {fileID: 8300000, guid: 870c8a1d01da4ab489018f8f2c17786f, type: 3}
   number2: {fileID: 8300000, guid: d30ca66d063555944bd2380248784aaf, type: 3}
   number3: {fileID: 8300000, guid: 9ef71fdc775c4c248807db5520f6a4ea, type: 3}
