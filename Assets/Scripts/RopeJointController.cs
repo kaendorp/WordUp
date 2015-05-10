@@ -53,6 +53,9 @@ public class RopeJointController : MonoBehaviour {
     {
         if (!isStickied && manditoryStickDelayOver)
         {
+            if (collider.tag != "Player")
+                return;
+
             player = collider.gameObject;
 
             // Make sure we send the parent object
