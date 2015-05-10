@@ -161,8 +161,9 @@ public class GameControl : MonoBehaviour {
     // Zet de waardes van de achievements goed
     void OnGUI()
     {
-        namen = FBAchievement.fbControl.namen;               
-
+		if (FB.IsLoggedIn) {
+			namen = FBAchievement.fbControl.namen;               
+		}
         // Zet level unlock op true || 5 Achievements
         if (namen.Contains("Het avontuur begint"))
         {
