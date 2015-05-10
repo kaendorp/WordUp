@@ -10,6 +10,9 @@ public class RopeJointController : MonoBehaviour {
     private bool manditoryStickDelayOver = true;
     private float manidtoryStickDelay = 1f;
 
+    private Vector3 position;
+    private bool isPlayed = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -63,6 +66,10 @@ public class RopeJointController : MonoBehaviour {
             }
             this.gameObject.GetComponent<Rigidbody2D>().velocity = player.GetComponent<Rigidbody2D>().velocity;
             isStickied = true;
+            AudioClip _audioSource = this.gameObject.GetComponent<AudioSource>().clip;
+            position = new Vector3(0, 0, 0);
+            AudioSource.PlayClipAtPoint(_audioSource, position);
+            isPlayed = true;
             StartCoroutine(ManitoryStickDelay());
         }
     }
