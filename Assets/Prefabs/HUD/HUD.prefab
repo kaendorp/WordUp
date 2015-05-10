@@ -1926,7 +1926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverActive: 0
   gameoverMenu: {fileID: 22417796}
-  herstartlevel: 
+  herstartlevel: Tutorial
 --- !u!114 &11420020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3072,7 +3072,7 @@ MonoBehaviour:
   WinActive: 0
   finishMenu: {fileID: 22413460}
   levelText: Level 1
-  levelKeuze: 
+  levelKeuze: Level1
   laatstelevel: 0
   levelEnBoss: 0
 --- !u!114 &11462834
@@ -4830,7 +4830,7 @@ RectTransform:
   m_RootOrder: 11
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 412.5, y: 348.333435}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 795, y: 597}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22426506
