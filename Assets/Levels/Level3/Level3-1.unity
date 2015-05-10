@@ -7341,6 +7341,14 @@ Prefab:
       propertyPath: m_FontData.m_FontSize
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 145876, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493724, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
+      propertyPath: m_Text
+      value: '- Ik ben niet alleen, ik heb ... -'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d40505932fe9b246ac475b55ee75d8f, type: 2}
   m_IsPrefabParent: 0

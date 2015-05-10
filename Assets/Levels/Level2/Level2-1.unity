@@ -16376,6 +16376,10 @@ Prefab:
       propertyPath: herstartlevel
       value: Level2-1
       objectReference: {fileID: 0}
+    - target: {fileID: 11402220, guid: ed35e091f5035ce429f31f1dff5a8597, type: 2}
+      propertyPath: m_Text
+      value: '- Zelfs in dit koude land voel ik de ... -'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed35e091f5035ce429f31f1dff5a8597, type: 2}
   m_IsPrefabParent: 0
