@@ -29,8 +29,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
+  - 61: {fileID: 6195756}
   m_Layer: 0
-  m_Name: RayCastStart
+  m_Name: RightCollider
   m_TagString: Untagged
   m_Icon: {fileID: -1203168336, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44,8 +45,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400004}
+  - 61: {fileID: 6133340}
   m_Layer: 0
-  m_Name: RayCastEnd
+  m_Name: LeftCollider
   m_TagString: Untagged
   m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -58,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 18.6329994, y: 1.11500001, z: -5}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -99,9 +101,22 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .723110199}
+  m_Offset: {x: 0, y: -.00501036644}
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 1.03339767}
+  m_Size: {x: 3.5, y: 2.48963666}
+--- !u!61 &6133340
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .369997025, y: -1.48011267}
+  serializedVersion: 2
+  m_Size: {x: .283817112, y: 2.24138594}
 --- !u!61 &6152180
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -110,11 +125,24 @@ BoxCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0154590607, y: .479328036}
+  m_Offset: {x: -.0154590607, y: -.523844957}
   serializedVersion: 2
-  m_Size: {x: 3.96386099, y: 3.45865607}
+  m_Size: {x: 3.96386123, y: 1.4523083}
+--- !u!61 &6195756
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.262605667, y: -1.45623899}
+  serializedVersion: 2
+  m_Size: {x: .283817112, y: 2.28912807}
 --- !u!82 &8297112
 AudioSource:
   m_ObjectHideFlags: 1
@@ -212,11 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b161ef59dfb9d004e9007a2bd2bbe4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  rayCastStart: {fileID: 400002}
-  rayCastEnd: {fileID: 400004}
   springForce: 700
   canJump: 0
 --- !u!212 &21200000

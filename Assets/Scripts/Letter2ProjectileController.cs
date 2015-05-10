@@ -33,7 +33,7 @@ public class Letter2ProjectileController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (bounceUp == true) {
 			transform.Translate(speed * Time.deltaTime, 3f * Time.deltaTime, 0);	
 			heightDifference = transform.position.y - hitPosition;
@@ -47,9 +47,9 @@ public class Letter2ProjectileController : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.transform.tag == "Untagged") 
-		{
-			if (Physics2D.Raycast(transform.position, new Vector2(1, 0), hit.distance - 0.5f, 0) || Physics2D.Raycast(transform.position, new Vector2(-1, 0), hit.distance - 0.5f, 0))
+		if (col.transform.tag == "Untagged")
+        {
+            if (Physics2D.Raycast(transform.position, new Vector2(1, 0), hit.distance - 0.5f, 1, -0.1f, 0.1f) || Physics2D.Raycast(transform.position, new Vector2(-1, 0), hit.distance - 0.5f, 1, -0.1f, 0.1f))
 			{
 				Destroy(this.gameObject);
 			}
