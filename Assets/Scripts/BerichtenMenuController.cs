@@ -85,7 +85,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "vogel",
     };
 
-    private string[] objecten = new string[12]{
+    private string[] objecten = new string[13]{
 	    back,
         "ladder",
 	    "obstakel",
@@ -95,6 +95,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "deur",
 	    "lamp",
 	    "sleutel",
+        "klok",
 	    "iets",
 	    "iets moois",
 	    "bericht",
