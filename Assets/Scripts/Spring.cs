@@ -22,22 +22,32 @@ public class Spring : MonoBehaviour
 		animator = gameObject.GetComponent<Animator>();
 		_audioSource = gameObject.GetComponent<AudioSource> ().clip;
 		isPlayed = false;
+
+        position = new Vector3(0, 0, 0);
     }
 	
 	void OnCollisionStay2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Player" && !animator.GetBool("Pressing"))
+        GameObject player = other.gameObject;
+        // Make sure we send the parent object
+        // root never returns null, if this Transform doesn't have a parent it returns itself.
+        if (player.transform.root.gameObject != player)
+        {
+            player = player.transform.root.gameObject;
+        }
+
+        if (player.tag == "Player" && !animator.GetBool("Pressing"))
 		{
 			animator.SetBool("Pressing", true);
 			animator.SetBool("Releasing", false);
 			canJump = true;
 		}
-		else if (other.gameObject.tag == "Player" && canJump == true)
+        else if (player.tag == "Player" && canJump == true)
 		{
-			other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
+            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
 			canJump = false;
 		}
-		else if (other.gameObject.tag == "Player")
+        else if (player.tag == "Player")
 		{
 			animator.SetBool("Pressing", false);
 			animator.SetBool("Releasing", true);
