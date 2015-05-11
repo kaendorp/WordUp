@@ -2104,7 +2104,7 @@ MonoBehaviour:
   selectPlayer: 
   isMainMenu: 1
   highScore: 0
-  unlockedLevels: 00000000
+  unlockedLevels: 01010101
   verslaStilte: 00000000
   wordGame: 00000000
   kinderenTutorial: 0
