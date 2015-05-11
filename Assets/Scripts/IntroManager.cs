@@ -69,7 +69,7 @@ public class IntroManager : MonoBehaviour
         // Get animators and trigger the player 'hit' animation
         bossAnim = boss.GetComponent<Animator>();
         playerAnim = player.GetComponent<Animator>();
-        playerAnim.SetBool("IntroKnockback", true);
+        //playerAnim.SetBool("IntroKnockback", true);
 
         // set the location where the Silence will walk to
         targetposition = new Vector3(boss.transform.position.x + 5, boss.transform.position.y, boss.transform.position.z);

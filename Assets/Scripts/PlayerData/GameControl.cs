@@ -193,12 +193,14 @@ public class GameControl : MonoBehaviour {
         if (isMainMenu == false)
         {            
             if (GameControl.control.selectPlayer == "Fynn")
-            {                
+            {
+                Debug.Log("Fynn");
                 fynn.SetActive(true);
                 fiona.SetActive(false);
             }
             else if (GameControl.control.selectPlayer == "Fiona")
-            {                
+            {
+                Debug.Log("Fiona");
                 fynn.SetActive(false);
                 fiona.SetActive(true);
             }
