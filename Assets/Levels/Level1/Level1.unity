@@ -14763,54 +14763,10 @@ AudioSource:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ea61d3a2ac7dece419c2ce21e3185d19, type: 2}
   m_PrefabInternal: {fileID: 1798233672}
---- !u!1 &1614695991
-GameObject:
-  m_PrefabParentObject: {fileID: 104536, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
-  m_PrefabInternal: {fileID: 779574782}
 --- !u!4 &1614695992
 Transform:
   m_PrefabParentObject: {fileID: 424430, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
   m_PrefabInternal: {fileID: 779574782}
---- !u!114 &1614695997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1614695991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e5e257e7ac5eb4482d3666e5195a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: 4.4000001
-  softness: 129
-  spread: 1
-  blurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
-  depthFetchShader: {fileID: 4800000, guid: 14768d3865b1342e3a861fbe19ba2db2, type: 3}
-  creaseApplyShader: {fileID: 4800000, guid: b59984d82af624bd3b0c777f038276f2, type: 3}
---- !u!114 &1614695998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1614695991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500a7af77fae3c64dae138ab64769899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolution: 1
-  screenBlendMode: 0
-  sunTransform: {fileID: 0}
-  radialBlurIterations: 3
-  sunColor: {r: .713235259, g: .526390791, b: .382839531, a: 1}
-  sunShaftBlurRadius: 2
-  sunShaftIntensity: 1
-  useSkyBoxAlpha: .75
-  maxRadius: .495000005
-  useDepthTexture: 0
-  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
-  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
 --- !u!4 &1630630057
 Transform:
   m_PrefabParentObject: {fileID: 448260, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
