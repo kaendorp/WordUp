@@ -10,7 +10,7 @@ public class GameControl : MonoBehaviour {
     public static GameControl control;
     
     // Level select
-    public string loadLevel = "Tutorial";   
+    public string loadLevel = "Intro";   
 
     // Player select
     public string selectPlayer;
@@ -183,7 +183,7 @@ public class GameControl : MonoBehaviour {
             Destroy(gameObject);
         }        
 
-        loadLevel = "Tutorial";
+        loadLevel = "Intro";
         selectPlayer = "Fynn";
 
         // Laad de juist speler

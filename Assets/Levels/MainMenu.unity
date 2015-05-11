@@ -2112,6 +2112,7 @@ MonoBehaviour:
   kinderenLevel2: 0000000000
   kinderenLevel3: 000000000000
   namen: []
+  FBlogin: 0
 --- !u!4 &648911174
 Transform:
   m_ObjectHideFlags: 0

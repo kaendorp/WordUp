@@ -55,7 +55,7 @@ public class LevelSelect : MonoBehaviour {
             "Tutorial"
         ))
         {
-            GameControl.control.loadLevel = "Tutorial"; // Zet laadlevel op Tutorial          
+            GameControl.control.loadLevel = "Intro"; // Zet laadlevel op Intro en dan naar Tutorial     
             _audioSource.Play();
 
             this.gameObject.SetActive(false);

@@ -425,7 +425,7 @@ BoxCollider2D:
   m_Offset: {x: .608447313, y: -.140000001}
   serializedVersion: 2
   m_Size: {x: 1.82689655, y: .827156603}
---- !u!1 &67086259 stripped
+--- !u!1 &67086259
 GameObject:
   m_PrefabParentObject: {fileID: 157408, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_PrefabInternal: {fileID: 1511596915}
@@ -3397,7 +3397,7 @@ SpriteRenderer:
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300090, guid: 64863bf910495f0429443b654b57a85f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1004883027 stripped
+--- !u!114 &1004883027
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11480164, guid: ad641a1f4d04ab44696209bd854e3cd2,
     type: 2}
@@ -4408,7 +4408,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438202, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11489132, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: defaultCamera
@@ -5006,7 +5006,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_Enabled
@@ -5028,6 +5028,14 @@ Prefab:
     - target: {fileID: 9531734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442900, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: maxKids
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 157408, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
@@ -5737,12 +5745,12 @@ SpriteRenderer:
   m_SortingOrder: -4
   m_Sprite: {fileID: 21300120, guid: 64863bf910495f0429443b654b57a85f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!224 &1773433499 stripped
+--- !u!224 &1773433499
 RectTransform:
   m_PrefabParentObject: {fileID: 22494886, guid: ad641a1f4d04ab44696209bd854e3cd2,
     type: 2}
   m_PrefabInternal: {fileID: 843507032}
---- !u!114 &1773433500 stripped
+--- !u!114 &1773433500
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11411952, guid: ad641a1f4d04ab44696209bd854e3cd2,
     type: 2}
@@ -6733,7 +6741,7 @@ Transform:
   - {fileID: 98177705}
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!1 &2139030708 stripped
+--- !u!1 &2139030708
 GameObject:
   m_PrefabParentObject: {fileID: 109096, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
   m_PrefabInternal: {fileID: 1344816164}
