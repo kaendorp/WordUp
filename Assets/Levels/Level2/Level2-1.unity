@@ -9315,6 +9315,14 @@ Prefab:
       propertyPath: m_Name
       value: EnemyStationary 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: friendlyGraphics
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: message
+      value: De Stilte stal alle warmte \n van ons!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
   m_IsPrefabParent: 0
@@ -14469,6 +14477,14 @@ Prefab:
       propertyPath: m_Name
       value: EnemyPatrol 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: friendlyGraphics
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Pas op voor de ijspegels!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   m_IsPrefabParent: 0
@@ -17036,6 +17052,14 @@ Prefab:
       propertyPath: m_Name
       value: EnemyStationary 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: friendlyGraphics
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: message
+      value: Oh, het is zo koud!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
   m_IsPrefabParent: 0
@@ -18285,6 +18309,10 @@ Prefab:
     - target: {fileID: 141542, guid: 9c233369313ed59429afbd9f28c8be8d, type: 2}
       propertyPath: m_Name
       value: EnemySticky 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 9c233369313ed59429afbd9f28c8be8d, type: 2}
+      propertyPath: friendlyGraphics
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c233369313ed59429afbd9f28c8be8d, type: 2}
@@ -22344,6 +22372,10 @@ Prefab:
     - target: {fileID: 141542, guid: 9c233369313ed59429afbd9f28c8be8d, type: 2}
       propertyPath: m_Name
       value: EnemySticky 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 9c233369313ed59429afbd9f28c8be8d, type: 2}
+      propertyPath: friendlyGraphics
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c233369313ed59429afbd9f28c8be8d, type: 2}

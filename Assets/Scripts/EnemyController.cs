@@ -719,7 +719,9 @@ public class EnemyController : MonoBehaviour
         }
         // Instantiate friendly
         spawn = Instantiate(setSpawn, this.transform.position, Quaternion.identity) as GameObject; // Reset rotation for sticky enemy can be rotated
-        spawn.GetComponent<FriendlyController>().friendlyGraphics = friendlyGraphics;
+		if (setSpawn != friendlyFloating) {
+			spawn.GetComponent<FriendlyController> ().friendlyGraphics = friendlyGraphics;
+		}
 
 		if (enemyChanged != null) {
 			AudioSource.PlayClipAtPoint (enemyChanged, startPosition);
