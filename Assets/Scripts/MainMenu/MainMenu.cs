@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public AudioSource _audioSource;
 
-    public bool _mainMenuUit = false;
+    public bool _mainMenuUit;
 
 	void Start()
 	{
@@ -24,7 +24,9 @@ public class MainMenu : MonoBehaviour
         speler.SetActive(false);
 
 		// Load a skin for the buttons
-		skin = Resources.Load("ButtonSkin") as GUISkin;      
+		skin = Resources.Load("ButtonSkin") as GUISkin;
+
+        _mainMenuUit = true;
 	}	
 	
 	void OnGUI()

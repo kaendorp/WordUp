@@ -19,8 +19,8 @@ public class FBHolder : MonoBehaviour {
 
     void Awake()
     {
-        FB.Init(SetInit, OnHideUnity);
-    }
+        FB.Init(SetInit, OnHideUnity);        
+    }    
     
     private void SetInit()
     {       
@@ -50,12 +50,23 @@ public class FBHolder : MonoBehaviour {
     {
         FB.Login("email, publish_actions", AuthCallBack);        
     }
+    
+    public void Play()
+    {
+        UIFB_IsNotLoggedIn.SetActive(false);
+
+        MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+        mainMenu._mainMenuUit = false;          
+    }
 
     void AuthCallBack(FBResult result)
     {
         if (FB.IsLoggedIn)
         {            
             HandleFBMenus(true);
+
+            MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+            mainMenu._mainMenuUit = false;  
         }
         else
         {            
