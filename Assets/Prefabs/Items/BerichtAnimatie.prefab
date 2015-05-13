@@ -27,7 +27,7 @@ GameObject:
   - 23: {fileID: 2306890}
   - 102: {fileID: 10233984}
   - 114: {fileID: 11484790}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Bericht
   m_TagString: Bericht
   m_Icon: {fileID: 0}
