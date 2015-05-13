@@ -294,6 +294,19 @@ public class BerichtenMenuController : MonoBehaviour
                     SendMessage();                          // Send the selected word for processing
                 }
             }
+
+            GUI.SetNextControlName("Cancel");
+
+            Rect cancelButtonRect = buttonRect;
+            cancelButtonRect.x = 5f;
+            cancelButtonRect.y = Screen.height - 20f;
+            cancelButtonRect.width = buttonRect.width / 2;
+
+            if (GUI.Button(cancelButtonRect, "Annuleren"))
+            {
+                selectedMessage = "Annuleren";
+                SendMessage();
+            }
         }
     }
 
