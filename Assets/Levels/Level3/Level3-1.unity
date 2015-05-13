@@ -1753,6 +1753,10 @@ Prefab:
       propertyPath: CurrentLetters
       value: 
       objectReference: {fileID: 166636, guid: e4cd0abea09bd3a44b9539f22555fd00, type: 2}
+    - target: {fileID: 5074996, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_IsPrefabParent: 0
@@ -11814,7 +11818,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 11476612, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: maxKids
