@@ -14,7 +14,7 @@ public class IntroManager : MonoBehaviour
     public GameObject boss;
     private Animator bossAnim;
     public GameObject player;
-    private Animator playerAnim;
+    //private Animator playerAnim;
 
     public RectTransform healthTransform; // healthbar in UI
     public Image visualHealth; // healthbar image to change color
@@ -68,7 +68,7 @@ public class IntroManager : MonoBehaviour
 
         // Get animators and trigger the player 'hit' animation
         bossAnim = boss.GetComponent<Animator>();
-        playerAnim = player.GetComponent<Animator>();
+        //playerAnim = player.GetComponent<Animator>();
         //playerAnim.SetBool("IntroKnockback", true);
 
         // set the location where the Silence will walk to
