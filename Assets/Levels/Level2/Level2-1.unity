@@ -1750,9 +1750,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -.209999993}
+  m_Offset: {x: 0, y: 1.075279}
   serializedVersion: 2
-  m_Size: {x: 4.4000001, y: 2.6099999}
+  m_Size: {x: 4.4000001, y: .0652778149}
 --- !u!114 &142378482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1973,6 +1973,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -3879,6 +3887,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_klein 3
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -3978,6 +3994,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -4712,6 +4736,14 @@ Prefab:
     - target: {fileID: 438904, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -5729,6 +5761,14 @@ Prefab:
       propertyPath: m_TagString
       value: Ijstand
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -6052,6 +6092,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_klein 3
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -6093,6 +6141,14 @@ Prefab:
     - target: {fileID: 490764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -6433,6 +6489,14 @@ Prefab:
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Name
       value: IJstand_groot 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -8069,6 +8133,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
   m_IsPrefabParent: 0
@@ -8698,6 +8770,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -9492,11 +9572,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 74.8000031
+      value: 37.4199982
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.1400001
+      value: 4.92000008
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10682,6 +10762,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -13124,6 +13212,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_groot 1
       objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
   m_IsPrefabParent: 0
@@ -14637,6 +14733,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_klein 1
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -15016,6 +15120,14 @@ Prefab:
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Name
       value: IJstand_groot 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -15668,6 +15780,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_klein 1
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -15713,6 +15833,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -16167,6 +16295,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_klein 2
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -16212,6 +16348,14 @@ Prefab:
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Name
       value: IJstand_groot 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -16403,6 +16547,14 @@ Prefab:
     - target: {fileID: 438904, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -16680,6 +16832,14 @@ Prefab:
     - target: {fileID: 490764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -17473,6 +17633,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -18986,6 +19154,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_groot 1
       objectReference: {fileID: 0}
+    - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
   m_IsPrefabParent: 0
@@ -19035,6 +19211,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -19193,6 +19377,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -19630,6 +19822,14 @@ Prefab:
       propertyPath: m_Name
       value: IJstand_klein 2
       objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
   m_IsPrefabParent: 0
@@ -19675,6 +19875,14 @@ Prefab:
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Name
       value: IJstand_klein 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
