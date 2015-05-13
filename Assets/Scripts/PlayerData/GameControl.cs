@@ -80,9 +80,7 @@ public class GameControl : MonoBehaviour {
             if (FBlogin == true)
             {
                 FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_WordUp.html".ToString());
-            }  
-
-            
+            }            
         }
     }
 
@@ -208,12 +206,42 @@ public class GameControl : MonoBehaviour {
         }        
 	}
 
+    void Update()
+    {
+        if (FB.IsLoggedIn == true)
+        {
+            // Kinderen Achievement unlock
+            if (kinderenTutorial == 1)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Kindvriendelijk.html".ToString());
+            }
+            if (kinderenLevel1 == 4)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Kindervriend.html".ToString());
+            }
+            if (kinderenLevel2 == 5)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_RedderInNood.html".ToString());
+            }
+            if (kinderenLevel3 == 6)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://www.wordupgame.tk/Facebook/Html/Achievements/A_Held.html".ToString());
+            }
+            if (kinderenTutorial >= 1 && kinderenLevel1 >= 4 && kinderenLevel2 >= 5 && kinderenLevel3 >= 6)
+            {
+                FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_LevendeLegende.html".ToString());
+            }
+        }
+    }
+
     // Zet de waardes van de achievements goed
     void OnGUI()
     {
-		if (FB.IsLoggedIn) {
+		if (FB.IsLoggedIn) 
+        {
 			namen = FBAchievement.fbControl.namen;               
 		}
+
         // Zet level unlock op true || 5 Achievements
         if (namen.Contains("Het avontuur begint"))
         {
@@ -266,6 +294,24 @@ public class GameControl : MonoBehaviour {
         if (namen.Contains("Familie"))
         {
             wordGame[3] = true;
-        }         
+        }
+  
+        // Zet kinderen op juiste waardes || 5 achievements
+        if (namen.Contains("Kindvriendelijk"))
+        {
+            kinderenTutorial = 1;
+        }
+        if (namen.Contains("Kindervriend"))
+        {
+            kinderenLevel1 = 4;
+        }
+        if (namen.Contains("Redder in nood"))
+        {
+            kinderenLevel2 = 5;
+        }
+        if (namen.Contains("Held"))
+        {
+            kinderenLevel3 = 6;
+        }
     }
 }

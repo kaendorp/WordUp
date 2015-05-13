@@ -131,6 +131,28 @@ public class AchievementView : MonoBehaviour {
         {
             SmoothTalker.color = new Color32(255, 255, 255, 255);
         }
+
+        // Zet kinderen op juiste waardes || 5 achievements
+        if (control.kinderenTutorial >= 1)
+        {
+            Kindvriendelijk.color = new Color32(255, 255, 255, 255);
+        }
+        if (control.kinderenLevel1 >= 4)
+        {
+            Kindervriend.color = new Color32(255, 255, 255, 255);
+        }
+        if (control.kinderenLevel2 >= 5)
+        {
+            RedderInNood.color = new Color32(255, 255, 255, 255);
+        }
+        if (control.kinderenLevel3 >= 6)
+        {
+            Held.color = new Color32(255, 255, 255, 255);
+        }
+        if (control.kinderenTutorial >= 1 && control.kinderenLevel1 >= 4 && control.kinderenLevel2 >= 5 && control.kinderenLevel3 >= 6)
+        {
+            LevendeLegende.color = new Color32(255, 255, 255, 255);
+        }
     }
 
     // Tutorial
@@ -141,7 +163,10 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Kindvriendelijk";
 
         unlock.text = "Nee";
-        // if unlocked
+        if (control.kinderenTutorial >= 1)
+        {
+            unlock.text = "Ja";
+        }
         
         omschrijving.text = "Vindt alle kinderen in de tutorial.";
         image.sprite = GameObject.Find("Kindvriendelijk").GetComponent<Image>().sprite;
@@ -154,7 +179,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.wordGame[0] == true)
+        if (control.wordGame[0] == true)
         {
             unlock.text = "Ja";            
         }
@@ -170,7 +195,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.verslaStilte[0] == true)
+        if (control.verslaStilte[0] == true)
         {
             unlock.text = "Ja";
         }
@@ -188,7 +213,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.unlockedLevels[1] == true)
+        if (control.unlockedLevels[1] == true)
         {
             unlock.text = "Ja";
         }
@@ -203,9 +228,9 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Icarus";
 
         // if unlocked
-        unlock.text = "Nee";        
+        unlock.text = "Nee";
 
-        omschrijving.text = "";
+        omschrijving.text = "Val niet van de platformen in het eerste level.";
         image.sprite = GameObject.Find("Icarus").GetComponent<Image>().sprite;
     }
     public void Level1Button3()
@@ -215,7 +240,11 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Kindervriend";
 
         // if unlocked
-        unlock.text = "Nee";        
+        unlock.text = "Nee";
+        if (control.kinderenLevel1 >= 4)
+        {
+            unlock.text = "Ja";
+        }
 
         omschrijving.text = "Vindt alle kinderen in het eerste level.";
         image.sprite = GameObject.Find("Kindervriend").GetComponent<Image>().sprite;
@@ -228,7 +257,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.wordGame[1] == true)
+        if (control.wordGame[1] == true)
         {
             unlock.text = "Ja";
         }
@@ -244,7 +273,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.verslaStilte[1] == true)
+        if (control.verslaStilte[1] == true)
         {
             unlock.text = "Ja";
         }
@@ -262,8 +291,8 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        
-        omschrijving.text = "";
+
+        omschrijving.text = "Voorkom een duik in het water in het tweede level.";
         image.sprite = GameObject.Find("Droog over").GetComponent<Image>().sprite;
     }
     public void Level2Button2()
@@ -274,7 +303,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.unlockedLevels[2] == true)
+        if (control.unlockedLevels[2] == true)
         {
             unlock.text = "Ja";
         }
@@ -289,9 +318,9 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "IJsvrij";
 
         // if unlocked
-        unlock.text = "Nee";        
+        unlock.text = "Nee";
 
-        omschrijving.text = "";
+        omschrijving.text = "Ontwijk alle ijspegels in het tweede level.";
         image.sprite = GameObject.Find("IJsvrij").GetComponent<Image>().sprite;
     }
     public void Level2Button4()
@@ -301,8 +330,11 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Redder in nood";
 
         // if unlocked
-        unlock.text = "Nee";        
-
+        unlock.text = "Nee";
+        if (control.kinderenLevel2 >= 5)
+        {
+            unlock.text = "Ja";
+        }
         omschrijving.text = "Vindt alle kinderen in het tweede level.";
         image.sprite = GameObject.Find("Redder in nood").GetComponent<Image>().sprite;
     }
@@ -314,11 +346,10 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.wordGame[2] == true)
+        if (control.wordGame[2] == true)
         {
             unlock.text = "Ja";
         }
-
         omschrijving.text = "Los de derde woordpuzzel op.";
         image.sprite = GameObject.Find("Warmte").GetComponent<Image>().sprite;
     }
@@ -330,11 +361,10 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.verslaStilte[2] == true)
+        if (control.verslaStilte[2] == true)
         {
             unlock.text = "Ja";
         }
-
         omschrijving.text = "Versla de Stilte voor de derde keer.";
         image.sprite = GameObject.Find("Stilteontregelaar").GetComponent<Image>().sprite;
     }   
@@ -348,11 +378,10 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.unlockedLevels[3] == true)
+        if (control.unlockedLevels[3] == true)
         {
             unlock.text = "Ja";
         }
-
         omschrijving.text = "Voltooi het derde level.";
         image.sprite = GameObject.Find("Intellectueel").GetComponent<Image>().sprite;
     }
@@ -363,8 +392,11 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Held";
 
         // if unlocked
-        unlock.text = "Nee";        
-
+        unlock.text = "Nee";
+        if (control.kinderenLevel3 >= 6)
+        {
+            unlock.text = "Ja";
+        }
         omschrijving.text = "Vindt alle kinderen in het derde level.";
         image.sprite = GameObject.Find("Held").GetComponent<Image>().sprite;
     }
@@ -376,11 +408,10 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.wordGame[3] == true)
+        if (control.wordGame[3] == true)
         {
             unlock.text = "Ja";
         }
-
         omschrijving.text = "Los de laatste woordpuzzel op.";
         image.sprite = GameObject.Find("Familie").GetComponent<Image>().sprite;
     }
@@ -392,11 +423,10 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.verslaStilte[3] == true)
+        if (control.verslaStilte[3] == true)
         {
             unlock.text = "Ja";
         }
-
         omschrijving.text = "Versla de Stilte voor de laatste keer.";
         image.sprite = GameObject.Find("Stilteverbreker").GetComponent<Image>().sprite;
     }  
@@ -410,7 +440,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (GameControl.control.unlockedLevels[0] == true)
+        if (control.unlockedLevels[0] == true)
         {
             unlock.text = "Ja";
         }
@@ -425,9 +455,9 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Diplomaat";
 
         // if unlocked
-        unlock.text = "Nee";        
+        unlock.text = "Nee";
 
-        omschrijving.text = "";
+        omschrijving.text = "Vind en overtuig alle vijanden.";
         image.sprite = GameObject.Find("Diplomaat").GetComponent<Image>().sprite;
     }
     public void Overal1Button3()
@@ -449,9 +479,13 @@ public class AchievementView : MonoBehaviour {
         achievement.text = "Levende legende";
 
         // if unlocked
-        unlock.text = "Nee";        
+        unlock.text = "Nee";
+        if (control.kinderenTutorial == 1 && control.kinderenLevel1 == 4 && control.kinderenLevel2 == 5 && control.kinderenLevel3 == 6)
+        {
+            unlock.text = "Ja";
+        }
 
-        omschrijving.text = "";
+        omschrijving.text = "Vind alle kinderen";
         image.sprite = GameObject.Find("Levende legende").GetComponent<Image>().sprite;
     }
     public void Overal1Button5()
@@ -460,9 +494,10 @@ public class AchievementView : MonoBehaviour {
 
         achievement.text = "Onaantasbaar";
 
-        // if unlocked        
+        // if unlocked
+        unlock.text = "Nee";
 
-        omschrijving.text = "";
+        omschrijving.text = "Voltooi alle levels zonder schade op te lopen.";
         image.sprite = GameObject.Find("Onaantasbaar").GetComponent<Image>().sprite;
     }
     public void Overal1Button6()
@@ -473,7 +508,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (System.Array.TrueForAll(GameControl.control.wordGame, item => item) == true)
+        if (System.Array.TrueForAll(control.wordGame, item => item) == true)
         {
             unlock.text = "Ja";
         }
@@ -490,7 +525,7 @@ public class AchievementView : MonoBehaviour {
         // if unlocked
         unlock.text = "Nee";        
 
-        omschrijving.text = "";
+        omschrijving.text = "Voltooi alle levels met een volle moedbalk.";
         image.sprite = GameObject.Find("Veteraan").GetComponent<Image>().sprite;
     }
     public void Overal1Button8()
@@ -501,7 +536,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (System.Array.TrueForAll(GameControl.control.unlockedLevels, item => item) == true)
+        if (System.Array.TrueForAll(control.unlockedLevels, item => item) == true)
         {
             unlock.text = "Ja";
         }
