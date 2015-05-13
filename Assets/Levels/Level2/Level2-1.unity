@@ -201,9 +201,9 @@ RectTransform:
   - {fileID: 159498801}
   m_Father: {fileID: 1148766288}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -459.5, y: 260.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 69.8000031, y: -51.5}
   m_SizeDelta: {x: 100, y: 24}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &42988724
@@ -4060,6 +4060,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &360999480 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196694, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
+  m_PrefabInternal: {fileID: 360999479}
 --- !u!1 &361158257
 GameObject:
   m_ObjectHideFlags: 0
@@ -7640,6 +7644,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &716873335 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196694, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
+  m_PrefabInternal: {fileID: 716873334}
 --- !u!1 &717920183
 GameObject:
   m_ObjectHideFlags: 0
@@ -12348,7 +12356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   berichtenMaker: {fileID: 869589783}
   displayText: {fileID: 1367699552}
-  berichtenPrefabs: []
+  berichtenPrefabs:
+  - {fileID: 360999480}
+  - {fileID: 716873335}
   berichtMakerActive: 0
 --- !u!114 &1148766291
 MonoBehaviour:

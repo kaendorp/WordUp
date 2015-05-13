@@ -13,6 +13,8 @@ public class BerichtController : MonoBehaviour {
     public string message = "";         // Het bericht wat getoont moet worden, gebruik \n om een nieuwe regel te beginnen
     public GameObject messageObject;    // TextMesh
 
+    public bool isRewritten = false;
+
 	private AudioClip _audioSource;
 	private Vector3 position;
 	private bool isPlayed;
@@ -59,7 +61,7 @@ public class BerichtController : MonoBehaviour {
         {
             messageObject.GetComponent<TextMesh>().text = message;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return) && !isRewritten)
             {
                 HUD.GetComponent<BerichtenMenuController>().GetMessagePrefab(this.gameObject);
                 HUD.GetComponent<BerichtenMenuController>().berichtMakerActive = true;
