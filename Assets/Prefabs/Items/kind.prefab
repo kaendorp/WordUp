@@ -14,7 +14,7 @@ GameObject:
   - 212: {fileID: 21253480}
   - 95: {fileID: 9533186}
   - 82: {fileID: 8205654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: kind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
