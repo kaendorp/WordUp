@@ -113,23 +113,29 @@ public class FriendlyController : MonoBehaviour
 		_audioSource = gameObject.GetComponent<AudioSource> ();
         anim = GetComponent<Animator>();
 
-        if (friendlyGraphics == FriendlyGraphics.Male1)
-            anim.SetBool("isMale1", true);
-        else if (friendlyGraphics == FriendlyGraphics.Male2)
-            anim.SetBool("isMale2", true);
-        else if (friendlyGraphics == FriendlyGraphics.Female1)
-            anim.SetBool("isFemale1", true);
-        else if (friendlyGraphics == FriendlyGraphics.Female2)
-            anim.SetBool("isFemale2", true);
-        else if (friendlyGraphics == FriendlyGraphics.Male1Cold)
-            anim.SetBool("isMale1Cold", true);
-        else if (friendlyGraphics == FriendlyGraphics.Male2Cold)
-            anim.SetBool("isMale2Cold", true);
-        else if (friendlyGraphics == FriendlyGraphics.Female1Cold)
-            anim.SetBool("isFemale1Cold", true);
-        else if (friendlyGraphics == FriendlyGraphics.Female2Cold)
-            anim.SetBool("isFemale2Cold", true);
+        SetFriendlyGraphics(friendlyGraphics);
+    }
 
+    public void SetFriendlyGraphics(FriendlyGraphics graphics)
+    {
+        if (graphics == FriendlyGraphics.Male1)
+            anim.SetBool("isMale1", true);
+        else if (graphics == FriendlyGraphics.Male2)
+            anim.SetBool("isMale2", true);
+        else if (graphics == FriendlyGraphics.Female1)
+            anim.SetBool("isFemale1", true);
+        else if (graphics == FriendlyGraphics.Female2)
+            anim.SetBool("isFemale2", true);
+        else if (graphics == FriendlyGraphics.Male1Cold)
+            anim.SetBool("isMale1Cold", true);
+        else if (graphics == FriendlyGraphics.Male2Cold)
+            anim.SetBool("isMale2Cold", true);
+        else if (graphics == FriendlyGraphics.Female1Cold)
+            anim.SetBool("isFemale1Cold", true);
+        else if (graphics == FriendlyGraphics.Female2Cold)
+            anim.SetBool("isFemale2Cold", true);
+        else
+            anim.SetBool("isMale1", true);
     }
 
     void FixedUpdate()

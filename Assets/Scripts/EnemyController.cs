@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     public EnemyType type;
     public EnemyState _state = EnemyState.idle;// Local variable to represent our state
     private Animator anim;
+    public FriendlyGraphics friendlyGraphics;
 
     // Spawn friendly
     [Header("SPAWNS")]
@@ -718,6 +719,7 @@ public class EnemyController : MonoBehaviour
         }
         // Instantiate friendly
         spawn = Instantiate(setSpawn, this.transform.position, Quaternion.identity) as GameObject; // Reset rotation for sticky enemy can be rotated
+        spawn.GetComponent<FriendlyController>().friendlyGraphics = friendlyGraphics;
 
 		if (enemyChanged != null) {
 			AudioSource.PlayClipAtPoint (enemyChanged, startPosition);
