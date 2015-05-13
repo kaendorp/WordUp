@@ -38,7 +38,7 @@ public class EnemyProjectileController : MonoBehaviour {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
         //If it collides with anything, destroy projectile
-		AudioSource.PlayClipAtPoint (projectileHits, positie, 0.5f);
+		AudioSource.PlayClipAtPoint (projectileHits, positie, 0.1f);
 		Destroy(this.gameObject);
     }
 }
