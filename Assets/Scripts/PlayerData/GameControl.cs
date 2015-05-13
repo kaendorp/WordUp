@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Facebook;
@@ -252,7 +253,7 @@ public class GameControl : MonoBehaviour {
         // Zet Wordgame op true || 5 achievements
         if (namen.Contains("Lef"))
         {
-            wordGame[0] = true;
+            wordGame[0] = true;        
         }
         if (namen.Contains("Luid"))
         {

@@ -7160,6 +7160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 424539864}
+  speler: {fileID: 821807853}
   _audioSource: {fileID: 1026203711}
 --- !u!114 &1577057025
 MonoBehaviour:

@@ -16,12 +16,11 @@ public class Deur : MonoBehaviour {
 	public Image overlay;                   // Object in HUD that fills screen with a full alpha, black image
 	public AudioClip _audioSource;
 
+	public GameObject otherSideOfTheDoor;
 	private GameObject player;
-	private bool goThroughDoor;
 	private bool isPlayed;
 
 	void Start () {
-		goThroughDoor = false;
 		isPlayed = false;
 		player = GameObject.Find ("Player");
 		if (player == null) {
@@ -38,41 +37,31 @@ public class Deur : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-			goThroughDoor = true;
+			player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Player" && goThroughDoor == true) 
+		if (collision.gameObject.tag == "Player") 
 		{
 			if(Input.GetKey(KeyCode.W))
 			{
+				otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
 				if(!isPlayed)
 				{
 					GetComponent<AudioSource>().PlayOneShot(_audioSource);
 					isPlayed = true;
+					//maak het scherm zwart
+					StartCoroutine(FadeToBlack());
 				}
-				//maak het scherm zwart
-				StartCoroutine(FadeToBlack());
 			}
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D collision)
-	{
-		if (collision.gameObject.tag == "Player") 
-		{
-			goThroughDoor = false;
-			isPlayed = false;
-			player.GetComponent<PlatformerCharacter2D>().jumpForce = 450;
 		}
 	}
 
 	IEnumerator FadeToBlack()
 	{
-
 		// Lerp the colour of the texture between itself and transparent.
 		float rate = fadeOutSpeed;
 		float progress = 0f;
@@ -88,8 +77,9 @@ public class Deur : MonoBehaviour {
 		// Naar nieuwe kamer
 		mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 		player.transform.position = spawnPoint.transform.position;
-		yield return new WaitForSeconds(wait);
 
+		yield return new WaitForSeconds(wait);
+	
 		// Lerp the colour of the texture between itself and transparent.
 		rate = fadeInSpeed;
 		progress = 0f;
@@ -101,7 +91,8 @@ public class Deur : MonoBehaviour {
 			yield return null;
 		}
 		overlay.color = Color.clear;
-
+		otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = true;
+		isPlayed = false;
+		player.GetComponent<PlatformerCharacter2D>().jumpForce = 450;
 	}
-
 }
