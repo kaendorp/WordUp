@@ -1,12 +1,29 @@
 fileFormatVersion: 2
 guid: 3f62652660f08ca4e904e6707c09460c
-timeCreated: 1427746679
+timeCreated: 1431526635
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: NPC_Idle_0
     21300002: NPC_Idle_1
     21300004: NPC_Hit
+    21300006: NPC_0
+    21300008: NPC_1
+    21300010: NPC_2
+    21300012: NPC_3
+    21300014: NPC_4
+    21300016: NPC_5
+    21300018: NPC_6
+    21300020: NPC_7
+    21300022: NPC_8
+    21300024: NPC_9
+    21300026: NPC_10
+    21300028: NPC_11
+    21300030: NPC_12
+    21300032: NPC_13
+    21300034: NPC_14
+    21300036: NPC_15
+    21300038: NPC_16
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,8 +76,8 @@ TextureImporter:
         y: 211
         width: 12
         height: 30
-      alignment: 9
-      pivot: {x: .5, y: .449999988}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: NPC_Idle_1
       rect:
@@ -69,8 +86,8 @@ TextureImporter:
         y: 211
         width: 12
         height: 30
-      alignment: 9
-      pivot: {x: .5, y: .449999988}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: NPC_Hit
       rect:
@@ -79,6 +96,176 @@ TextureImporter:
         y: 174
         width: 12
         height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 211
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_1
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 211
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_2
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 211
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_3
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 211
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_4
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 211
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 211
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_6
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 175
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_7
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 174
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_8
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 178
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 136
+        width: 14
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 136
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_11
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 136
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_12
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 136
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_13
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 136
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_14
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 136
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_15
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 136
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NPC_16
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 136
+        width: 13
+        height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
