@@ -16311,10 +16311,10 @@ RectTransform:
   - {fileID: 423821071}
   m_Father: {fileID: 1334180229}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -459.5, y: 260.5}
-  m_SizeDelta: {x: 100, y: 24}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -51.5}
+  m_SizeDelta: {x: 99, y: 24}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &942411480
 MonoBehaviour:
@@ -18883,6 +18883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 19}
+  canJump: 1
 --- !u!61 &1069914990
 BoxCollider2D:
   m_ObjectHideFlags: 0
