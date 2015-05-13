@@ -53,6 +53,12 @@ public class KindController : MonoBehaviour
 	private byte[] low;
 	private AudioSource _audioSource;
 
+    // Bools voor GameData
+    public bool tutorialKind;
+    public bool level1Kind;
+    public bool level2Kind;
+    public bool level3Kind;
+
     // Use this for initialization
     void Start()
     {
@@ -103,6 +109,23 @@ public class KindController : MonoBehaviour
                 //Debug.Log("Trigger");
                 plusKind = true;
                 Stats.GetComponent<Player>().kindPlus = true;
+
+                if (tutorialKind == true)
+                {
+                    GameControl.control.kinderenTutorial += 1;
+                }
+                if (level1Kind == true)
+                {
+                    GameControl.control.kinderenLevel1 += 1;
+                }
+                if (level2Kind == true)
+                {
+                    GameControl.control.kinderenLevel2 += 1;
+                }
+                if (level3Kind == true)
+                {
+                    GameControl.control.kinderenLevel3 += 1;
+                }
             }
                         
             if (Stats.GetComponent<Player>().currentHealth < 10) // Als health niet vol is
@@ -115,7 +138,7 @@ public class KindController : MonoBehaviour
 					AudioSource.PlayClipAtPoint(bonusToHealth, position);
                     Stats.GetComponent<Player>().kindhealthPlus = true;
                 }
-            }            
+            }      
         }
     }
 
