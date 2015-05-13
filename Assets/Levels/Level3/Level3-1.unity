@@ -15477,7 +15477,7 @@ GameObject:
   - 61: {fileID: 1069914990}
   - 114: {fileID: 1069914989}
   - 82: {fileID: 1069914988}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
