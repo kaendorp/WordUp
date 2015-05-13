@@ -9,6 +9,8 @@ public class BouncyBed : MonoBehaviour {
 	private Vector3 positie;
 	private bool playSound;
 
+    public bool canJump = true;
+
 	private GameObject player;
 	// Use this for initialization
 	void Start () 
@@ -25,8 +27,9 @@ public class BouncyBed : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && canJump)
         {
+            canJump = false;
             player = collision.gameObject;
             // Make sure we send the parent object
             // root never returns null, if this Transform doesn't have a parent it returns itself.
@@ -42,6 +45,7 @@ public class BouncyBed : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D collision)
 	{
+        canJump = true;
 		if(playSound)
 		{
 			AudioSource.PlayClipAtPoint (_audioSource, positie);
