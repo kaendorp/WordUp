@@ -12,18 +12,18 @@ public class DeurController : MonoBehaviour {
 	public Camera mainCamera;
 	public float wait = 0.25f;
 	private GameObject player;
-	private bool goThroughDoor;
 	private bool isPlayed;
+
 	// Fade in/out
 	public float fadeInSpeed = 1.5f;        // Speed that the screen fades from black.
 	public float fadeOutSpeed = 1.5f;       // Speed that the screen fades to black.
 	public Image overlay;                   // Object in HUD that fills screen with a full alpha, black image
 	public AudioClip _audioSource;	//open door
 	public AudioClip _audioSource2; //closed door
+	public GameObject otherSideOfTheDoor;
 
 	void Start () {
 		isPlayed = false;
-		goThroughDoor = false;
 		player = GameObject.Find ("Player");
 		if (player == null) {
 			player = GameObject.Find ("Player2");
@@ -42,24 +42,24 @@ public class DeurController : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-			goThroughDoor = true;
+			player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Player" && open == true && goThroughDoor == true) 
+		if (collision.gameObject.tag == "Player" && open == true) 
 		{
 			if (Input.GetKey (KeyCode.W)) 
 			{
+				otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
 				if (!isPlayed) {
 					GetComponent<AudioSource> ().PlayOneShot (_audioSource);
 					isPlayed = true;
+					//maak het scherm zwart
+					StartCoroutine (FadeToBlack ());
 				}
-				//maak het scherm zwart
-				goThroughDoor = false;
-				StartCoroutine (FadeToBlack ());
 			}
 		} 
 		else 
@@ -73,17 +73,6 @@ public class DeurController : MonoBehaviour {
 					isPlayed = true;
 				}
 			}
-
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D collision)
-	{
-		if (collision.gameObject.tag == "Player") 
-		{
-			goThroughDoor = false;
-			isPlayed = false;
-			player.GetComponent<PlatformerCharacter2D>().jumpForce = 450;
 		}
 	}
 
@@ -118,5 +107,8 @@ public class DeurController : MonoBehaviour {
 			yield return null;
 		}
 		overlay.color = Color.clear;
+		otherSideOfTheDoor.GetComponent<BoxCollider2D> ().enabled = true;
+		isPlayed = false;
+		player.GetComponent<PlatformerCharacter2D>().jumpForce = 450;
 	}
 }

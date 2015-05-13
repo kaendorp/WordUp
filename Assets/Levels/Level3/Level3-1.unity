@@ -6900,6 +6900,7 @@ MonoBehaviour:
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
   _audioSource2: {fileID: 8300000, guid: 527fd050ebc187b4d99b66eec17eee43, type: 3}
+  otherSideOfTheDoor: {fileID: 0}
 --- !u!61 &398560131
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16058,6 +16059,7 @@ MonoBehaviour:
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
   _audioSource2: {fileID: 8300000, guid: 527fd050ebc187b4d99b66eec17eee43, type: 3}
+  otherSideOfTheDoor: {fileID: 0}
 --- !u!61 &923391794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23470,6 +23472,7 @@ MonoBehaviour:
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
   _audioSource2: {fileID: 8300000, guid: 527fd050ebc187b4d99b66eec17eee43, type: 3}
+  otherSideOfTheDoor: {fileID: 0}
 --- !u!61 &1275640095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24698,6 +24701,7 @@ MonoBehaviour:
   fadeOutSpeed: 1.5
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
+  otherSideOfTheDoor: {fileID: 2133079269}
 --- !u!61 &1345742212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25757,6 +25761,7 @@ MonoBehaviour:
   fadeOutSpeed: 1.5
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
+  otherSideOfTheDoor: {fileID: 0}
 --- !u!82 &1389470035
 AudioSource:
   m_ObjectHideFlags: 0
@@ -29102,6 +29107,7 @@ MonoBehaviour:
   fadeOutSpeed: 1.5
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
+  otherSideOfTheDoor: {fileID: 0}
 --- !u!61 &1584445646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37387,6 +37393,7 @@ MonoBehaviour:
   fadeOutSpeed: 1.5
   overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
+  otherSideOfTheDoor: {fileID: 1345742208}
 --- !u!61 &2133079273
 BoxCollider2D:
   m_ObjectHideFlags: 0
