@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 91b8aa2a7ca05dd4fb2260df19c37ccf
-timeCreated: 1429780525
+timeCreated: 1431515423
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -80,9 +80,9 @@ TextureImporter:
     - name: SnowTrees
       rect:
         serializedVersion: 2
-        x: 25
+        x: 26
         y: 1399
-        width: 1278
+        width: 1276
         height: 314
       alignment: 0
       pivot: {x: .5, y: .5}
