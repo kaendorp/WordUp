@@ -3483,10 +3483,6 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
-      propertyPath: currentEvent
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: fireAmount
       value: 1
       objectReference: {fileID: 0}
@@ -3561,14 +3557,6 @@ Prefab:
     - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: speed
       value: .0599999987
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
-      propertyPath: startHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
-      propertyPath: currentHealth
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: finalFight
