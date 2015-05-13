@@ -388,7 +388,7 @@ public class BerichtenMenuController : MonoBehaviour
         if (selectedMessage != back)
         {
             SetMessage(selectedMessage, stage);
-            if (stage < 8)
+            if (stage < 8 && selectedMessage != null) // selectedMessage will be null if the users stops
                 stage++;
         }
         else
@@ -425,19 +425,12 @@ public class BerichtenMenuController : MonoBehaviour
         if (messagePassed == "Afronden")
         {
             SendMessageToPrefab();
-            stage = 0;
-            Time.timeScale = 1;
-            berichtMakerActive = false;
-            berichtenMaker.gameObject.SetActive(false);
+            ExitMessageMenu();
             return;
         }
         else if (messagePassed == "Annuleren")
         {
-            messageList = new string[8];
-            stage = 0;
-            Time.timeScale = 1;
-            berichtMakerActive = false;
-            berichtenMaker.gameObject.SetActive(false);
+            ExitMessageMenu();
             return;
         }
 
@@ -483,6 +476,17 @@ public class BerichtenMenuController : MonoBehaviour
             selectedText = messageList[stagePassed];
     }
 
+    public void ExitMessageMenu()
+    {
+        wordOptions = baseWord;
+        messageList = new string[8];
+        stage = 0;
+        selectedMessage = null;
+        Time.timeScale = 1;
+        berichtMakerActive = false;
+        berichtenMaker.gameObject.SetActive(false);
+    }
+
     /**
      * Triggered by SetMessage() after the player selected "Afronden".
      *
@@ -492,7 +496,7 @@ public class BerichtenMenuController : MonoBehaviour
     public void SendMessageToPrefab()
     {
         messagePrefab.GetComponent<BerichtController>().message = selectedText;
-
+        messagePrefab.GetComponent<BerichtController>().isRewritten = true;
         int key = messagePrefab.GetComponent<BerichtController>().messageKey;
 
         // TODO: Get unique userkey from playerData
