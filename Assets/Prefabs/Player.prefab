@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294901961
+    m_Bits: 4294836425
   grounded: 0
   maxSpeed: 3
   moveVelocity: 0
