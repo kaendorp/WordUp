@@ -82,7 +82,7 @@ GameObject:
   - 212: {fileID: 21262160}
   - 95: {fileID: 9589608}
   - 82: {fileID: 8244148}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Sage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
