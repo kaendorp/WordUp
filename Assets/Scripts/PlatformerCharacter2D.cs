@@ -11,10 +11,11 @@ public class PlatformerCharacter2D : MonoBehaviour
     private float groundedRadius = .17f; // Radius of the overlap circle to determine if grounded
     public bool grounded = false; // Whether or not the player is grounded.
 
-    [Header("CEILING")]
-    private Transform ceilingCheck; // A position marking where to check for ceilings
-    private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
-
+	/*these are never used?
+    *[Header("CEILING")]
+    *private Transform ceilingCheck; // A position marking where to check for ceilings
+    *private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
+	*/
     [Header("MOVEMENT")]
     [SerializeField] public float maxSpeed = 400f; // A mask determining what is ground to the character
     float VerticalMovement;
@@ -71,7 +72,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     private void Awake()
     {
         groundCheck = transform.Find("GroundCheck"); //Check for ground
-        ceilingCheck = transform.Find("CeilingCheck"); //Check for ceiling
+        //ceilingCheck = transform.Find("CeilingCheck"); //Check for ceiling (is never used)
         anim = GetComponent<Animator>();
         CurrentProjectile = Projectile1;
     }
@@ -108,7 +109,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         } else if (grounded && climbing) {
           climbing = false;
         } else if (climbing) {
-            canUseShield = false;
+          canUseShield = false;
         }
 
         //Handle climbing
