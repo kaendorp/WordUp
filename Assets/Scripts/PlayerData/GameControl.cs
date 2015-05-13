@@ -31,10 +31,10 @@ public class GameControl : MonoBehaviour {
     public bool[] wordGame = new bool[4];
 
     // Achievements 
-    public bool kinderenTutorial;
-    public bool[] kinderenLevel1 = new bool[4];
-    public bool[] kinderenLevel2 = new bool[5];
-    public bool[] kinderenLevel3 = new bool[6];
+    public int kinderenTutorial;
+    public int kinderenLevel1;
+    public int kinderenLevel2;
+    public int kinderenLevel3;
 
     public List<string> namen = new List<string>();
 
