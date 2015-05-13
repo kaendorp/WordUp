@@ -341,8 +341,8 @@ public class BerichtenMenuController : MonoBehaviour
             // Stop
             Rect cancelButtonRect = buttonRect;
             cancelButtonRect.width = buttonRect.width / 2;
-            cancelButtonRect.x = 5f;
-            cancelButtonRect.y = Screen.height - heightPadding;
+            cancelButtonRect.x = (Screen.width / 2) - (cancelButtonRect.width/2) - 240;
+            cancelButtonRect.y = (Screen.height / 2) + 195;
 
             GUI.SetNextControlName(stop);
             if (GUI.Button(cancelButtonRect, stop))
@@ -355,7 +355,7 @@ public class BerichtenMenuController : MonoBehaviour
             Rect backButtonRect = buttonRect;
             backButtonRect.width = buttonRect.width / 2;
             backButtonRect.x = (Screen.width / 2) - (backButtonRect.width / 2);
-            backButtonRect.y = Screen.height - heightPadding;
+            backButtonRect.y = (Screen.height / 2) + 195;
 
             GUI.SetNextControlName(back);
             if (stage > 0)
@@ -374,8 +374,8 @@ public class BerichtenMenuController : MonoBehaviour
             // Done, show label if you can't finish the message, otherwise button
             Rect doneButtonRect = buttonRect;
             doneButtonRect.width = buttonRect.width / 2;
-            doneButtonRect.x = Screen.width - (doneButtonRect.width + 5f);
-            doneButtonRect.y = Screen.height - heightPadding;
+            doneButtonRect.x = (Screen.width / 2) - (cancelButtonRect.width / 2) + 240;
+            doneButtonRect.y = (Screen.height / 2) + 195;
             
             GUI.SetNextControlName(done);
             if (stage == 3 || stage == 7)
