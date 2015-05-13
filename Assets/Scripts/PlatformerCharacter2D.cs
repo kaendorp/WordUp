@@ -108,7 +108,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         } else if (grounded && climbing) {
           climbing = false;
         } else if (climbing) {
-            canUseShield = false;
+          canUseShield = false;
         }
 
         //Handle climbing
