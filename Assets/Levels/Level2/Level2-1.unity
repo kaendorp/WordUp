@@ -1976,11 +1976,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -2324,7 +2324,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 199797727}
   - 212: {fileID: 199797728}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3889,11 +3889,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -3907,7 +3907,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 330666047}
   - 212: {fileID: 330666048}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3997,11 +3997,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -4267,7 +4267,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 368522204}
   - 212: {fileID: 368522205}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4568,7 +4568,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 394213672}
   - 212: {fileID: 394213673}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4739,11 +4739,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -5763,11 +5763,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -5781,7 +5781,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 523097266}
   - 212: {fileID: 523097267}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6094,11 +6094,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -6144,11 +6144,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -6492,11 +6492,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -6782,6 +6782,10 @@ Prefab:
     - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: Projectile3
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: whatIsGround.m_Bits
+      value: 4294705353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e587890a6a537a847aa77bce79823370, type: 2}
@@ -7816,7 +7820,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 721188156}
   - 212: {fileID: 721188157}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8135,11 +8139,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -8618,7 +8622,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 815147024}
   - 212: {fileID: 815147025}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8773,11 +8777,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -8923,7 +8927,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 862470381}
   - 212: {fileID: 862470382}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9211,7 +9215,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 877493378}
   - 212: {fileID: 877493379}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9394,7 +9398,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 883620244}
   - 212: {fileID: 883620245}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9448,7 +9452,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 885837690}
   - 212: {fileID: 885837691}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9572,11 +9576,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 37.4199982
+      value: -4.41300011
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.92000008
+      value: -1.55499995
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9674,6 +9678,10 @@ Prefab:
       propertyPath: kindTextHUD
       value: 
       objectReference: {fileID: 628223790}
+    - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+      propertyPath: whatIsGround.m_Bits
+      value: 4294705353
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   m_IsPrefabParent: 0
@@ -10765,11 +10773,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -12214,7 +12222,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1143265091}
   - 212: {fileID: 1143265092}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12897,7 +12905,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1171469765}
   - 212: {fileID: 1171469766}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13214,11 +13222,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -14735,11 +14743,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -15123,11 +15131,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -15782,11 +15790,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -15836,11 +15844,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -15922,7 +15930,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1446068163}
   - 212: {fileID: 1446068164}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16297,11 +16305,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -16351,11 +16359,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -16550,11 +16558,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -16835,11 +16843,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -17636,11 +17644,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -18176,7 +18184,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1651740260}
   - 212: {fileID: 1651740261}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18904,7 +18912,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1760403762}
   - 212: {fileID: 1760403763}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19156,11 +19164,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 145770, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 190608, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be243bf066c4d3045bf0955db43ad380, type: 2}
@@ -19214,11 +19222,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -19380,11 +19388,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -19467,7 +19475,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1798971372}
   - 212: {fileID: 1798971373}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Icicle9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19824,11 +19832,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -19878,11 +19886,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 112764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 196756, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
       propertyPath: m_Layer
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
