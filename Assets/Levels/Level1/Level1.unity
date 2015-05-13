@@ -15105,7 +15105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetX: 0
-  hasARightBuddy: 0
+  hasARightBuddy: 1
   hasALeftBuddy: 0
   reverseScale: 0
   parents: {fileID: 1146772044}
@@ -16038,7 +16038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc06c1d081993c4289469d4d0aff606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCheckPoint: {fileID: 0}
+  currentCheckPoint: {fileID: 64015585}
   RespawnEffect: {fileID: 149576, guid: bd10896924509c34cae544ada954484e, type: 2}
   playerPrefab: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
   checkPoint: {fileID: 0}
