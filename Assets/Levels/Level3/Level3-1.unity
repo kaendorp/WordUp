@@ -2775,6 +2775,14 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: friendlyGraphics
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Probeer op de tafel te komen!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   m_IsPrefabParent: 0
@@ -5375,6 +5383,10 @@ Prefab:
     - target: {fileID: 21212692, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Je hebt me gered!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
@@ -10839,6 +10851,10 @@ Prefab:
       propertyPath: friendlyGraphics
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: message
+      value: Gebruik het licht!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
   m_IsPrefabParent: 0
@@ -15993,6 +16009,14 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: friendlyGraphics
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: De Stilte is dichtbij!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   m_IsPrefabParent: 0
@@ -18994,7 +19018,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
       propertyPath: friendlyGraphics
-      value: 6
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Alle kamers hebben een sleutel!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
@@ -24385,6 +24413,14 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: friendlyGraphics
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
+      propertyPath: message
+      value: De Stilte was het, \n die het licht weghaalde!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
   m_IsPrefabParent: 0
@@ -26744,6 +26780,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Is het al te laat?
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   m_IsPrefabParent: 0
@@ -27148,6 +27188,14 @@ Prefab:
     - target: {fileID: 21212692, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: friendlyGraphics
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Let op de tijd.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
@@ -32721,6 +32769,10 @@ Prefab:
     - target: {fileID: 21212692, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475766, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
+      propertyPath: message
+      value: Je kunt hier naarboven klimmen!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
