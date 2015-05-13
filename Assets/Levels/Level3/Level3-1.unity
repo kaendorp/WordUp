@@ -4529,7 +4529,7 @@ Prefab:
       objectReference: {fileID: 8300000, guid: 77cd3b00bf91f434685aa1ffe63dc482, type: 3}
     - target: {fileID: 8272918, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: m_Volume
-      value: .5
+      value: .25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
@@ -6835,7 +6835,7 @@ GameObject:
   - 61: {fileID: 398560131}
   - 114: {fileID: 398560130}
   - 82: {fileID: 398560132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gele deur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6897,7 +6897,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
   _audioSource2: {fileID: 8300000, guid: 527fd050ebc187b4d99b66eec17eee43, type: 3}
 --- !u!61 &398560131
@@ -16019,7 +16019,7 @@ GameObject:
   - 61: {fileID: 923391794}
   - 114: {fileID: 923391793}
   - 82: {fileID: 923391796}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rode deur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16055,7 +16055,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
   _audioSource2: {fileID: 8300000, guid: 527fd050ebc187b4d99b66eec17eee43, type: 3}
 --- !u!61 &923391794
@@ -18382,7 +18382,7 @@ RectTransform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1334180229}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 140, y: -51}
@@ -20713,7 +20713,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1334180229}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1, y: 2}
@@ -23405,7 +23405,7 @@ GameObject:
   - 61: {fileID: 1275640095}
   - 114: {fileID: 1275640094}
   - 82: {fileID: 1275640096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Blue door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23467,7 +23467,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
   _audioSource2: {fileID: 8300000, guid: 527fd050ebc187b4d99b66eec17eee43, type: 3}
 --- !u!61 &1275640095
@@ -24558,7 +24558,6 @@ RectTransform:
   - {fileID: 527582802}
   - {fileID: 388553742}
   - {fileID: 204604508}
-  - {fileID: 1401967823}
   - {fileID: 1138622967}
   - {fileID: 1054674325}
   m_Father: {fileID: 0}
@@ -24636,7 +24635,7 @@ GameObject:
   - 61: {fileID: 1345742212}
   - 114: {fileID: 1345742211}
   - 82: {fileID: 1345742213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Green door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24697,7 +24696,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
 --- !u!61 &1345742212
 BoxCollider2D:
@@ -25682,7 +25681,7 @@ GameObject:
   - 61: {fileID: 1389470033}
   - 114: {fileID: 1389470034}
   - 82: {fileID: 1389470035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gele deur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25756,7 +25755,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
 --- !u!82 &1389470035
 AudioSource:
@@ -26106,70 +26105,6 @@ SpriteRenderer:
   m_SortingOrder: -25
   m_Sprite: {fileID: 21300062, guid: 22b3b3f8fff8588479448a8c9293becf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &1401967822
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 179336, guid: ad641a1f4d04ab44696209bd854e3cd2, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1401967823}
-  - 222: {fileID: 1401967825}
-  - 114: {fileID: 1401967824}
-  m_Layer: 5
-  m_Name: Overlay
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1401967823
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 22462588, guid: ad641a1f4d04ab44696209bd854e3cd2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1401967822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1334180229}
-  m_RootOrder: 12
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: 2}
-  m_SizeDelta: {x: 15, y: 17}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1401967824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11480164, guid: ad641a1f4d04ab44696209bd854e3cd2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1401967822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1401967825
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 22249334, guid: ad641a1f4d04ab44696209bd854e3cd2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1401967822}
 --- !u!1001 &1408872436
 Prefab:
   m_ObjectHideFlags: 0
@@ -28212,7 +28147,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1538224429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.42999983, y: -8.47999954, z: 0}
+  m_LocalPosition: {x: -8.97000027, y: -8.47999954, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1441476562}
@@ -29104,7 +29039,7 @@ GameObject:
   - 61: {fileID: 1584445646}
   - 114: {fileID: 1584445645}
   - 82: {fileID: 1584445647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Blue door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29165,7 +29100,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
 --- !u!61 &1584445646
 BoxCollider2D:
@@ -36731,7 +36666,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2068201516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.41499996, y: -8.48200035, z: 0}
+  m_LocalPosition: {x: -7.15999985, y: -8.47999954, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1441476562}
@@ -37389,7 +37324,7 @@ GameObject:
   - 61: {fileID: 2133079273}
   - 114: {fileID: 2133079272}
   - 82: {fileID: 2133079274}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Green door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37450,7 +37385,7 @@ MonoBehaviour:
   wait: .25
   fadeInSpeed: 1.5
   fadeOutSpeed: 1.5
-  overlay: {fileID: 1401967824}
+  overlay: {fileID: 1138622968}
   _audioSource: {fileID: 8300000, guid: 94da3c37138cad44881eba9b6b628a26, type: 3}
 --- !u!61 &2133079273
 BoxCollider2D:

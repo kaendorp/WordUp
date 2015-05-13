@@ -56,6 +56,7 @@ public class Deur : MonoBehaviour {
 				}
 				//maak het scherm zwart
 				StartCoroutine(FadeToBlack());
+				goThroughDoor = false;
 			}
 		}
 	}
@@ -88,8 +89,9 @@ public class Deur : MonoBehaviour {
 		// Naar nieuwe kamer
 		mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 		player.transform.position = spawnPoint.transform.position;
-		yield return new WaitForSeconds(wait);
 
+		yield return new WaitForSeconds(wait);
+	
 		// Lerp the colour of the texture between itself and transparent.
 		rate = fadeInSpeed;
 		progress = 0f;
@@ -103,5 +105,4 @@ public class Deur : MonoBehaviour {
 		overlay.color = Color.clear;
 
 	}
-
 }

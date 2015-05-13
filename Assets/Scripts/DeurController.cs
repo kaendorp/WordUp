@@ -58,6 +58,7 @@ public class DeurController : MonoBehaviour {
 					isPlayed = true;
 				}
 				//maak het scherm zwart
+				goThroughDoor = false;
 				StartCoroutine (FadeToBlack ());
 			}
 		} 
@@ -103,7 +104,6 @@ public class DeurController : MonoBehaviour {
 		// Naar nieuwe kamer
 		player.transform.position = spawnPoint.transform.position;
 		mainCamera.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
-
 
 		yield return new WaitForSeconds(wait);
 
