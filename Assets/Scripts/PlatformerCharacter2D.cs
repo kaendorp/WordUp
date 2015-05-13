@@ -160,7 +160,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         if (!climbing)
         {
-            if (Input.GetKey(KeyCode.S))
+            if (CrossPlatformInputManager.GetButton("Shield"))
             {
                 if (canUseShield)
                 {
@@ -188,7 +188,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     void Shooting()
     {
         // Fire chosen projectile
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (CrossPlatformInputManager.GetButtonDown("Shoot"))
         {
             _playerSource.clip = playerFire;
             _playerSource.volume = 0.5f;
@@ -201,7 +201,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
 
         // Switching projectiles
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             CurrentProjectile = Projectile1;
             isPlayed = false;
@@ -214,7 +214,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         if (Projectile2 != null)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (CrossPlatformInputManager.GetButtonDown("Fire2"))
             {
                 CurrentProjectile = Projectile2;
                 isPlayed = false;
@@ -227,7 +227,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
         if (Projectile3 != null)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (CrossPlatformInputManager.GetButtonDown("Fire3"))
             {
                 CurrentProjectile = Projectile3;
                 isPlayed = false;
@@ -395,7 +395,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		//if (col.gameObject.tag == "Ladder" && Input.GetKey (KeyCode.W) || col.gameObject.tag == "Ladder" && Input.GetKey (KeyCode.S)) {
 		if (col.gameObject.tag == "Ladder") 
 		{
-			if(Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S) )
+            if (Input.GetAxis("Vertical") != 0)
 			{
 				anim.SetBool ("Climbing", true);
 				anim.speed = 1f;

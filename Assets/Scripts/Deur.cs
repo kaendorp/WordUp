@@ -45,7 +45,7 @@ public class Deur : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-			if(Input.GetKey(KeyCode.W))
+			if(CrossPlatformInputManager.GetButtonDown("Jump"))
 			{
 				otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;

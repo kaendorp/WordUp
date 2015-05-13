@@ -50,7 +50,7 @@ public class DeurController : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player" && open == true) 
 		{
-			if (Input.GetKey (KeyCode.W)) 
+            if (CrossPlatformInputManager.GetButtonDown("Jump")) 
 			{
 				otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
@@ -64,7 +64,7 @@ public class DeurController : MonoBehaviour {
 		} 
 		else 
 		{
-			if (Input.GetKey (KeyCode.W)) 
+            if (CrossPlatformInputManager.GetButtonDown("Jump")) 
 			{
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
 				if (!isPlayed) 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnitySampleAssets.CrossPlatformInput;
 
 public class BerichtenMenuController : MonoBehaviour
 {
@@ -207,10 +208,10 @@ public class BerichtenMenuController : MonoBehaviour
      */
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    wordOptions = done;
-        //}
+        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        {
+            ExitMessageMenu();
+        }
     }
 
     /**
