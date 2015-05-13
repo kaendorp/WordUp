@@ -6,14 +6,11 @@ public class PlayerSelect : MonoBehaviour {
 
     public GameObject mainMenu;    
 
-    private GUISkin skin;
-
-    // Keyboard control
-    string[] buttons = new string[2] { "Fynn", "Fiona"};
-    private int selected;
+    private GUISkin skin;    
 
     private Rect button1Rect = new Rect(15, 15, 160, 30);
     private Rect button2Rect = new Rect(15, 15, 160, 30);
+    private Rect button3Rect = new Rect(15, 15, 160, 30);
 
     public AudioSource _audioSource;
 
@@ -29,18 +26,23 @@ public class PlayerSelect : MonoBehaviour {
         button1Rect.y = (Screen.height / 2) - (button1Rect.height / 2);
 
         button2Rect.x = (Screen.width / 2) - (button2Rect.width / 2);
-        button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);        
+        button2Rect.y = (Screen.height / 2) - (button2Rect.height / 2);
+
+        button3Rect.x = (Screen.width / 2) - (button3Rect.width / 2);
+        button3Rect.y = (Screen.height / 2) - (button3Rect.height / 2); 
 
         button1Rect.y = button1Rect.y - 80;
         button1Rect.x = button1Rect.x;
         button2Rect.y = button2Rect.y - 30;
-        button2Rect.x = button2Rect.x;       
+        button2Rect.x = button2Rect.x;
+        button3Rect.y = button3Rect.y + 20;
+        button3Rect.x = button3Rect.x; 
+      
 
         // Set the skin to use
         GUI.skin = skin;
-
-        GUI.SetNextControlName(buttons[0]);
-        // Start Button
+       
+        // Fynn Button
         if (GUI.Button(
             // Center in X, 2/3 of the height in Y
             button1Rect,
@@ -50,13 +52,12 @@ public class PlayerSelect : MonoBehaviour {
             GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn 
             _audioSource.Play();
 
-            this.gameObject.SetActive(false);            
-            mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;
-            selected = 0;
+            // LoadLevel
+            GameControl.control.isMainMenu = false;
+            Application.LoadLevel(GameControl.control.loadLevel); // Load Intro            
         }
-
-        GUI.SetNextControlName(buttons[1]);
-        // Prestaties Button
+        
+        // Fiona Button
         if (GUI.Button(
             // Center in X, 2/3 of the height in Y
             button2Rect,
@@ -66,10 +67,22 @@ public class PlayerSelect : MonoBehaviour {
             GameControl.control.selectPlayer = "Fiona"; // Zet speler op Fiona           
             _audioSource.Play();
 
+            // LoadLevel
+            GameControl.control.isMainMenu = false;
+            Application.LoadLevel(GameControl.control.loadLevel); // Load Intro     
+        }
+
+        // Terug Button
+        if (GUI.Button(
+            // Center in X, 2/3 of the height in Y
+            button3Rect,
+            "< Terug"
+        ))
+        {
+            _audioSource.Play();
+
             this.gameObject.SetActive(false);
-            mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;
-            selected = 1;
-        }   
-        GUI.FocusControl(buttons[selected]);
+            mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;            
+        }  
     }
 }
