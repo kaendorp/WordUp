@@ -43,7 +43,7 @@ public class BerichtController : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player" && isPlayed == false) 
 		{
-			AudioSource.PlayClipAtPoint (_audioSource, position);
+			AudioSource.PlayClipAtPoint (_audioSource, position, 0.1f);
 			isPlayed = true;
 		}
 	}
