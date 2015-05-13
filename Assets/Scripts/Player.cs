@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
     //Boodschap
 	private Text boodschap;
 
+    public GameMaster gameMaster;
+
     // Kinderen
 	[Header("KIDS")]
     public bool kindhealthPlus;
@@ -120,6 +122,9 @@ public class Player : MonoBehaviour {
 
 		//audio
 		_playerSource = gameObject.GetComponent<AudioSource> ();
+
+        //find gamemaster
+        gameMaster = FindObjectOfType<GameMaster>();
 	}
 
 	private void HandleHealth()
@@ -192,7 +197,8 @@ public class Player : MonoBehaviour {
         {
             if (currentHealth > 0)
             {
-                CurrentHealth -= 1;
+                CurrentHealth-=1;
+                gameMaster.Respawn();
             }
             else
             {
