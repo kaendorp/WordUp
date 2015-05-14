@@ -6733,7 +6733,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 440788, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11476612, guid: e587890a6a537a847aa77bce79823370, type: 2}
       propertyPath: letters.Array.data[0]
@@ -6862,7 +6862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 448082, guid: 33fd507ecde655a4884965790e633e93, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11437986, guid: 33fd507ecde655a4884965790e633e93, type: 2}
       propertyPath: selectPlayer
@@ -7635,7 +7635,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 424944, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 196694, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
       propertyPath: m_Name
@@ -8222,6 +8222,16 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300054, guid: 91b8aa2a7ca05dd4fb2260df19c37ccf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1001 &789371054
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1148766288}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 87b81501ab8bd1a478ed28861cd6c65c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &796000233
 GameObject:
   m_ObjectHideFlags: 0
@@ -8426,7 +8436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 453482, guid: 69fc2ebc50ea8404b8b2b97258274be2, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69fc2ebc50ea8404b8b2b97258274be2, type: 2}
@@ -9632,7 +9642,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457734, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11479562, guid: 08f42665212e559419a184bfa3f173be, type: 2}
       propertyPath: Projectile1
@@ -9754,7 +9764,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438202, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11489132, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: defaultCamera
@@ -12350,6 +12360,7 @@ RectTransform:
   - {fileID: 51268449}
   - {fileID: 1047027739}
   - {fileID: 869589783}
+  - {fileID: 1713694955}
   - {fileID: 1954813121}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -14068,7 +14079,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 424944, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11441094, guid: fe50f537bb0b72a4f9b3c0cbe9495564, type: 2}
       propertyPath: messageKey
@@ -18549,6 +18560,11 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300054, guid: 91b8aa2a7ca05dd4fb2260df19c37ccf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!224 &1713694955 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22405614, guid: 87b81501ab8bd1a478ed28861cd6c65c,
+    type: 2}
+  m_PrefabInternal: {fileID: 789371054}
 --- !u!4 &1713706703 stripped
 Transform:
   m_PrefabParentObject: {fileID: 490764, guid: abbd33add3a019a4fac140be5cb2ce3b, type: 2}
@@ -21010,7 +21026,7 @@ RectTransform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1148766288}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 140, y: -51}
