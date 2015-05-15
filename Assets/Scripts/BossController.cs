@@ -258,9 +258,11 @@ public class BossController : MonoBehaviour
     {
         float elapsedTime = 0f;
         float setWidth;
+
         while (elapsedTime < 5)
         {
-            setWidth = Mathf.Lerp(0, 1, ((elapsedTime / 5)));
+            float current = (float)currentHealth / (float)startHealth;
+            setWidth = Mathf.Lerp(0, current, ((elapsedTime / 5)));
             BossFill.GetComponent<Image>().fillAmount = setWidth;
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -663,6 +665,7 @@ public class BossController : MonoBehaviour
         wasHit = true; // can trigger roarAttack
 
         if (currentHealth <= 0) {
+            bossSource.Stop();
 			StartCoroutine (Defeated ());
 			isActive = false; // Makes sure the next action isn't accidentally called in Update()
 		} else {
@@ -717,8 +720,8 @@ public class BossController : MonoBehaviour
 
         // TODO: Disable player controlls without stopping time
         anim.SetBool("IsDefeated", true);
-        BossBar.SetActive(false);
         yield return new WaitForSeconds(3f);
+        BossBar.SetActive(false);
         messageObject.SetActive(true);
         messageObject.GetComponent<TextMesh>().text = endMessage1;
 		yield return new WaitForSeconds(1f);
