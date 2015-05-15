@@ -6,6 +6,7 @@ public class KnopScriptRotate : MonoBehaviour {
     public GameObject knop;
     public GameObject[] lichten;
 	public GameObject rotateMyLamp;
+	public GameObject hint;
 
 	private AudioClip _audioSource;
 	private Vector3 positie;
@@ -40,6 +41,7 @@ public class KnopScriptRotate : MonoBehaviour {
                 }             
 
                 ingedrukt = true;
+				hint.GetComponent<Animator>().enabled = false;
             }
 
 			if (ingedrukt == true && teller == 0) 

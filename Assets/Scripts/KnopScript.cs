@@ -6,6 +6,7 @@ public class KnopScript : MonoBehaviour {
     public GameObject knop;
     public GameObject[] lichten;
 	public GameObject[] platformen;    
+	public GameObject hint;
 
 	private AudioClip _audioSource;
 	private Vector3 positie;
@@ -44,7 +45,7 @@ public class KnopScript : MonoBehaviour {
                 {
                     o.SetActive(true);
                 }                     
-
+				hint.GetComponent<Animator>().enabled = false;
                 ingedrukt = true;
             }
 
