@@ -28,7 +28,7 @@ public class BerichtGetSet : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        if (webRequest.error == null)
+        if (string.IsNullOrEmpty(webRequest.error) && webRequest.responseHeaders.ContainsValue("HTTP/1.1 200 OK"))
         {
             string[] lines = webRequest.text.Split(';');            // returns an semicolon seperated array, so split
 
