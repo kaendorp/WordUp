@@ -1,12 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnitySampleAssets._2D;
 
 public class KnopScriptRotate : MonoBehaviour {
 
     public GameObject knop;
-    public GameObject[] lichten;
+    public GameObject lamp;
 	public GameObject rotateMyLamp;
 	public GameObject hint;
+
+	public GameObject cameraFocus;
+	public GameObject player;
+	public GameObject player2;
+	public Camera2DFollow cameraKnop;
+	
+	public float speed;
 
 	private AudioClip _audioSource;
 	private Vector3 positie;
@@ -34,12 +42,10 @@ public class KnopScriptRotate : MonoBehaviour {
             if (ingedrukt == false)
             { 
                 // Zet licht aan
-                foreach (GameObject o in lichten)
-                {
-                    o.GetComponent<Light>().enabled = true;
-					rotateMyLamp.SendMessage("LampAan", true);
-                }             
-
+				StartCoroutine(ShowTheLight ());
+                lamp.GetComponent<Light>().enabled = true;
+				rotateMyLamp.SendMessage("LampAan", true);
+           
                 ingedrukt = true;
 				hint.GetComponent<Animator>().enabled = false;
             }
@@ -51,5 +57,17 @@ public class KnopScriptRotate : MonoBehaviour {
 				teller++;
 			}
         }
-    }    
+    } 
+
+	IEnumerator ShowTheLight()
+	{
+		cameraKnop.target = cameraFocus.transform;
+		yield return new WaitForSeconds(speed);
+		
+		if(player)
+			cameraKnop.target = player.transform;
+		
+		else if(player2)
+			cameraKnop.target = player2.transform;
+	}
 }

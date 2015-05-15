@@ -9145,10 +9145,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knop: {fileID: 2036098516}
-  lichten:
-  - {fileID: 1180136050}
+  lamp: {fileID: 1180136050}
   rotateMyLamp: {fileID: 954132264}
   hint: {fileID: 1433942018}
+  cameraFocus: {fileID: 786825836}
+  player: {fileID: 1592066147}
+  player2: {fileID: 765445808}
+  cameraKnop: {fileID: 1414706243}
+  speed: 2
 --- !u!61 &540724838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13545,6 +13549,10 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 764959641}
+--- !u!1 &765445808 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161486, guid: e587890a6a537a847aa77bce79823370, type: 2}
+  m_PrefabInternal: {fileID: 857133448}
 --- !u!1 &765665427
 GameObject:
   m_ObjectHideFlags: 0
@@ -16624,6 +16632,34 @@ Prefab:
       propertyPath: hint
       value: 
       objectReference: {fileID: 942590465}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: lamp
+      value: 
+      objectReference: {fileID: 1864203848}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1592066147}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 765445808}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1414706243}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraFocus
+      value: 
+      objectReference: {fileID: 1690585320}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraKnop
+      value: 
+      objectReference: {fileID: 1414706243}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
   m_IsPrefabParent: 0
@@ -20090,7 +20126,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1123096053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.8699999, y: -5.23000002, z: 0}
+  m_LocalPosition: {x: -12.8400002, y: -5.21999979, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1920293923}
@@ -20221,10 +20257,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knop: {fileID: 200087037}
-  lichten:
-  - {fileID: 345616042}
+  lamp: {fileID: 345616042}
   rotateMyLamp: {fileID: 1375656800}
   hint: {fileID: 1260751625}
+  cameraFocus: {fileID: 1198994454}
+  player: {fileID: 1592066147}
+  player2: {fileID: 765445808}
+  cameraKnop: {fileID: 1414706243}
+  speed: 2
 --- !u!61 &1125816544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26834,6 +26874,34 @@ Prefab:
       propertyPath: hint
       value: 
       objectReference: {fileID: 1888380699}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1592066147}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 765445808}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1414706243}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: lamp
+      value: 
+      objectReference: {fileID: 1731395734}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraFocus
+      value: 
+      objectReference: {fileID: 1898581094}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraKnop
+      value: 
+      objectReference: {fileID: 1414706243}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
   m_IsPrefabParent: 0
@@ -29788,6 +29856,10 @@ SpriteRenderer:
   m_SortingOrder: -30
   m_Sprite: {fileID: 21300018, guid: 22b3b3f8fff8588479448a8c9293becf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1592066147 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 157408, guid: 08f42665212e559419a184bfa3f173be, type: 2}
+  m_PrefabInternal: {fileID: 120990684}
 --- !u!1 &1592656272
 GameObject:
   m_ObjectHideFlags: 0
@@ -35424,6 +35496,34 @@ Prefab:
       propertyPath: hint
       value: 
       objectReference: {fileID: 1971809273}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: lamp
+      value: 
+      objectReference: {fileID: 1068847290}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1414706243}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 765445808}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1592066147}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraFocus
+      value: 
+      objectReference: {fileID: 1255318453}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraKnop
+      value: 
+      objectReference: {fileID: 1414706243}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
   m_IsPrefabParent: 0
@@ -35720,6 +35820,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 10895578, guid: e5813f190cfbf914590233228e71592f, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5813f190cfbf914590233228e71592f, type: 2}
   m_IsPrefabParent: 0
@@ -35786,6 +35890,34 @@ Prefab:
       propertyPath: hint
       value: 
       objectReference: {fileID: 1718366679}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: lamp
+      value: 
+      objectReference: {fileID: 1941990267}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1592066147}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 765445808}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1414706243}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraFocus
+      value: 
+      objectReference: {fileID: 1941990267}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
+      propertyPath: cameraKnop
+      value: 
+      objectReference: {fileID: 1414706243}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
   m_IsPrefabParent: 0

@@ -8,7 +8,7 @@ public class PuzzleSwitch : MonoBehaviour
     public GameObject player;
     public GameObject player2;
     public bool canDestroy = false;
-    public Camera2DFollow camera;
+    public Camera2DFollow cameraSwitch;
 
 	//wall slide sound
 	private AudioSource _audioSource;
@@ -43,16 +43,16 @@ public class PuzzleSwitch : MonoBehaviour
 
     IEnumerator DestroyWallBlock(Transform puzzleChild)
     {
-        camera.target = puzzleChild;
+		cameraSwitch.target = puzzleChild;
         yield return new WaitForSeconds(2f);
 		_audioSource.clip = wallUp;
 		_audioSource.Play ();
         puzzleChild.gameObject.SetActive(false); //active is depricated
         
         if(player)
-        camera.target = player.transform;
+			cameraSwitch.target = player.transform;
 
         else if(player2)
-        camera.target = player2.transform;
+			cameraSwitch.target = player2.transform;
     }
 }
