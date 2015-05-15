@@ -7,6 +7,7 @@ public class GameMaster : MonoBehaviour
     public static GameMaster gm;
     //Default in editor
     public GameObject currentCheckPoint;
+	public GameObject lastCheckPoint;
     private PlatformerCharacter2D player;
     public GameObject RespawnEffect;
 

@@ -20,6 +20,7 @@ public class CheckPoint : MonoBehaviour {
     {
         if (collider.gameObject.tag == "Player")
         {
+			gameObject.GetComponent<Animator> ().SetBool ("checked", true);
             gameMaster.currentCheckPoint = gameObject;
         }
     }
