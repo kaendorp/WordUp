@@ -52,7 +52,8 @@ public class DeurController : MonoBehaviour {
 		{
             if (CrossPlatformInputManager.GetButtonDown("Jump")) 
 			{
-				otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
+                if (otherSideOfTheDoor)
+				    otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
 				if (!isPlayed) {
 					GetComponent<AudioSource> ().PlayOneShot (_audioSource);
@@ -70,7 +71,7 @@ public class DeurController : MonoBehaviour {
 				if (!isPlayed) 
 				{
 					GetComponent<AudioSource> ().PlayOneShot (_audioSource2);
-					isPlayed = true;
+					//isPlayed = true;
 				}
 			}
 		}
@@ -107,7 +108,8 @@ public class DeurController : MonoBehaviour {
 			yield return null;
 		}
 		overlay.color = Color.clear;
-		otherSideOfTheDoor.GetComponent<BoxCollider2D> ().enabled = true;
+        if (otherSideOfTheDoor)
+		    otherSideOfTheDoor.GetComponent<BoxCollider2D> ().enabled = true;
 		isPlayed = false;
 		player.GetComponent<PlatformerCharacter2D>().jumpForce = 450;
 	}
