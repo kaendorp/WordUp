@@ -27,12 +27,21 @@ public class BerichtGetSet : MonoBehaviour
         {
             yield return new WaitForSeconds(0.2f);
         }
-        string[] lines = webRequest.text.Split(';');            // returns an semicolon seperated array, so split
 
-        System.Random randomMessage = new System.Random();
-        int selectedMessage = randomMessage.Next(0, (lines.Length - 1));  // select a random message
+        if (string.IsNullOrEmpty(webRequest.error) && webRequest.responseHeaders.ContainsValue("HTTP/1.1 200 OK"))
+        {
+            string[] lines = webRequest.text.Split(';');            // returns an semicolon seperated array, so split
 
-        result = lines[selectedMessage];
+            System.Random randomMessage = new System.Random();
+            int selectedMessage = randomMessage.Next(0, (lines.Length - 1));  // select a random message
+
+            result = lines[selectedMessage];
+        }
+        else
+        {
+            result = null;
+            Debug.Log("BerichtGet error: " + webRequest.error);
+        }
 
         callback(result);       // return the message
     }

@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413090}
   - 212: {fileID: 21263528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BerichtCirkel
   m_TagString: Bericht
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 23: {fileID: 2306890}
   - 102: {fileID: 10233984}
   - 114: {fileID: 11484790}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bericht
   m_TagString: Bericht
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 467170}
   - 198: {fileID: 19840396}
   - 199: {fileID: 19953326}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Bericht
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 212: {fileID: 21267678}
   - 95: {fileID: 9539178}
   - 82: {fileID: 8276530}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BerichtAnimatie
   m_TagString: Bericht
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 437852}
   - 108: {fileID: 10842850}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spotlight
   m_TagString: Bericht
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c2e6216ac8335dc41aed541632025d8d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .100000001
   m_Pitch: 1
   Loop: 0
   Mute: 0

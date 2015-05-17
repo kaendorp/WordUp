@@ -86,7 +86,7 @@ public class SageController : MonoBehaviour {
             }
             else
             {
-                messageObject.GetComponent<TextMesh>().text = "Je hebt nog niet voldoende \n letters verzameld jongeling. \n Ga terug en wederkeer als \n je alle " + lettersNeeded + " letters gevonden hebt.";
+                messageObject.GetComponent<TextMesh>().text = "Je hebt nog niet voldoende \n letters verzameld jongeling. \n Ga terug en kom hier als \n je alle " + lettersNeeded + " letters gevonden hebt.";
             }
 			StartCoroutine(PlaySound (succesMessage));
         }

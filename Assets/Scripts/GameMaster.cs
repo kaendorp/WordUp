@@ -5,7 +5,9 @@ public class GameMaster : MonoBehaviour
 {
 
     public static GameMaster gm;
+    //Default in editor
     public GameObject currentCheckPoint;
+	public GameObject lastCheckPoint;
     private PlatformerCharacter2D player;
     public GameObject RespawnEffect;
 
@@ -25,19 +27,12 @@ public class GameMaster : MonoBehaviour
     }
 
 
-    public IEnumerator RespawnPlayer()
+    public void Respawn()
     {
         //Debug.Log("TODO: Add waiting for spawn");
         //player.gameObject.active = false;
-        yield return new WaitForSeconds(1);
         Instantiate(RespawnEffect, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
         player.transform.position = currentCheckPoint.transform.position;
         //player.gameObject.active = true;
-    }
-
-
-    public void Respawn()
-    {
-        gm.StartCoroutine(gm.RespawnPlayer());
     }
 }

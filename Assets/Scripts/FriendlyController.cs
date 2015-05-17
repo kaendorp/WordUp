@@ -20,11 +20,24 @@ public enum FriendlyState
     wait
 }
 
+public enum FriendlyGraphics
+{
+    Male1,
+    Male2,
+    Female1,
+    Female2,
+    Male1Cold,
+    Male2Cold,
+    Female1Cold,
+    Female2Cold
+}
+
 public class FriendlyController : MonoBehaviour
 {
     public FriendlyType type;
     private FriendlyState _state = FriendlyState.idle;      // Local variable to represent our state
     private Animator anim;
+    public FriendlyGraphics friendlyGraphics;
 
     // Spawn enemy
     [Header("SPAWNS")]
@@ -99,6 +112,30 @@ public class FriendlyController : MonoBehaviour
         message = message.Replace("\\n", "\n");
 		_audioSource = gameObject.GetComponent<AudioSource> ();
         anim = GetComponent<Animator>();
+
+        SetFriendlyGraphics(friendlyGraphics);
+    }
+
+    public void SetFriendlyGraphics(FriendlyGraphics graphics)
+    {
+        if (graphics == FriendlyGraphics.Male1)
+            anim.SetBool("isMale1", true);
+        else if (graphics == FriendlyGraphics.Male2)
+            anim.SetBool("isMale2", true);
+        else if (graphics == FriendlyGraphics.Female1)
+            anim.SetBool("isFemale1", true);
+        else if (graphics == FriendlyGraphics.Female2)
+            anim.SetBool("isFemale2", true);
+        else if (graphics == FriendlyGraphics.Male1Cold)
+            anim.SetBool("isMale1Cold", true);
+        else if (graphics == FriendlyGraphics.Male2Cold)
+            anim.SetBool("isMale2Cold", true);
+        else if (graphics == FriendlyGraphics.Female1Cold)
+            anim.SetBool("isFemale1Cold", true);
+        else if (graphics == FriendlyGraphics.Female2Cold)
+            anim.SetBool("isFemale2Cold", true);
+        else
+            anim.SetBool("isMale1", true);
     }
 
     void FixedUpdate()

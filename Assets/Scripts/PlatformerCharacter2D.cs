@@ -11,10 +11,11 @@ public class PlatformerCharacter2D : MonoBehaviour
     private float groundedRadius = .17f; // Radius of the overlap circle to determine if grounded
     public bool grounded = false; // Whether or not the player is grounded.
 
-    [Header("CEILING")]
-    private Transform ceilingCheck; // A position marking where to check for ceilings
-    private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
-
+	/*these are never used?
+    *[Header("CEILING")]
+    *private Transform ceilingCheck; // A position marking where to check for ceilings
+    *private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
+	*/
     [Header("MOVEMENT")]
     [SerializeField] public float maxSpeed = 400f; // A mask determining what is ground to the character
     float VerticalMovement;
@@ -71,7 +72,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     private void Awake()
     {
         groundCheck = transform.Find("GroundCheck"); //Check for ground
-        ceilingCheck = transform.Find("CeilingCheck"); //Check for ceiling
+        //ceilingCheck = transform.Find("CeilingCheck"); //Check for ceiling (is never used)
         anim = GetComponent<Animator>();
         CurrentProjectile = Projectile1;
     }
@@ -108,7 +109,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         } else if (grounded && climbing) {
           climbing = false;
         } else if (climbing) {
-            canUseShield = false;
+          canUseShield = false;
         }
 
         //Handle climbing
@@ -159,7 +160,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         if (!climbing)
         {
-            if (Input.GetKey(KeyCode.S))
+            if (CrossPlatformInputManager.GetButton("Shield"))
             {
                 if (canUseShield)
                 {
@@ -187,7 +188,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     void Shooting()
     {
         // Fire chosen projectile
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (CrossPlatformInputManager.GetButtonDown("Shoot"))
         {
             _playerSource.clip = playerFire;
             _playerSource.volume = 0.5f;
@@ -200,7 +201,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
 
         // Switching projectiles
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             CurrentProjectile = Projectile1;
             isPlayed = false;
@@ -213,7 +214,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         if (Projectile2 != null)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (CrossPlatformInputManager.GetButtonDown("Fire2"))
             {
                 CurrentProjectile = Projectile2;
                 isPlayed = false;
@@ -226,7 +227,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
         if (Projectile3 != null)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (CrossPlatformInputManager.GetButtonDown("Fire3"))
             {
                 CurrentProjectile = Projectile3;
                 isPlayed = false;
@@ -394,7 +395,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		//if (col.gameObject.tag == "Ladder" && Input.GetKey (KeyCode.W) || col.gameObject.tag == "Ladder" && Input.GetKey (KeyCode.S)) {
 		if (col.gameObject.tag == "Ladder") 
 		{
-			if(Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S) )
+            if (Input.GetAxis("Vertical") != 0)
 			{
 				anim.SetBool ("Climbing", true);
 				anim.speed = 1f;

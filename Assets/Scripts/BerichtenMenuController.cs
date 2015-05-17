@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnitySampleAssets.CrossPlatformInput;
 
 public class BerichtenMenuController : MonoBehaviour
 {
@@ -23,9 +24,14 @@ public class BerichtenMenuController : MonoBehaviour
 
     private Rect buttonRect = new Rect(15, 40, 195, 15);    // Default button size
 
-    private string[] wordOptions;                            // Menuitems
+    private string[] wordOptions;                           // Menuitems
+    private float arrayLength;                              // Amount of half the menu items
 
     private static string back = "< terug";                 // Static string, subject to change and used by many stringArrays
+    private static string stop = "Annuleren";
+    private static string done = "Afronden";
+
+    private string categoryLabelText;
 
     private string[] baseWord = new string[12] {
         "***",
@@ -42,24 +48,7 @@ public class BerichtenMenuController : MonoBehaviour
         "En allemaal dankzij ***"
     };
 
-    private string[] baseWord2 = new string[13] {
-        back,
-        "***",
-        "***?",
-        "***!",
-        "***...",
-        "*** verderop",
-        "*** vereist",
-        "Pas op voor ***",
-        "Tijd voor ***",
-        "Probeer ***",
-        "Denk terug aan ***",
-        "Hoera voor ***!",
-        "En allemaal dankzij ***"
-    };
-
-    private string[] category = new string[8]{
-        back,
+    private string[] category = new string[7]{
         "Wezens",
         "Objecten",
         "Techniek",
@@ -69,8 +58,7 @@ public class BerichtenMenuController : MonoBehaviour
         "Overpeinzingen"
     };
 
-    private string[] wezens = new string[13]{
-        back,
+    private string[] wezens = new string[12]{
 	    "vijand",
 	    "vijanden",
 	    "duo",
@@ -85,8 +73,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "vogel",
     };
 
-    private string[] objecten = new string[13]{
-	    back,
+    private string[] objecten = new string[12]{
         "ladder",
 	    "obstakel",
 	    "letter",
@@ -101,8 +88,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "bericht",
     };
 
-    private string[] techniek = new string[8]{
-        back,
+    private string[] techniek = new string[7]{
 	    "tegenaanval",
 	    "aanvallen van een afstand",
 	    "één voor één uitschakelen",
@@ -112,8 +98,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "schild",
     };
 
-    private string[] locatie = new string[6]{
-        back,
+    private string[] locatie = new string[5]{
 	    "platform",
         "grot",
 	    "gevaarlijke plek",
@@ -121,8 +106,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "veilige plek",
     };
 
-    private string[] oriëntatie = new string[9]{
-        back,
+    private string[] oriëntatie = new string[8]{
         "voorwaards",
         "terug",
         "links",	
@@ -133,8 +117,7 @@ public class BerichtenMenuController : MonoBehaviour
         "beneden",
     };
 
-    private string[] concepten = new string[10]{
-        back,
+    private string[] concepten = new string[9]{
         "kans",
         "hint",
         "geheim",
@@ -146,8 +129,7 @@ public class BerichtenMenuController : MonoBehaviour
         "kracht",
     };
 
-    private string[] overpeinzingen = new string[14]{
-	    back,
+    private string[] overpeinzingen = new string[13]{
         "succes",
 	    "goed werk",
 	    "het lukte!",
@@ -163,8 +145,7 @@ public class BerichtenMenuController : MonoBehaviour
 	    "fantastisch uitzicht!",
     };
 
-    private string[] tussenvoegsel = new string[8]{
-        back,
+    private string[] tussenvoegsel = new string[7]{
 	    ",\n",
 	    " en dan\n",
 	    " maar\n",
@@ -172,21 +153,6 @@ public class BerichtenMenuController : MonoBehaviour
 	    " of\n",
 	    " dus\n",
 	    " trouwens\n",
-    };
-
-    private string[] done = new string[4] 
-    {
-        back,
-        "Afronden",
-        "Doorgaan",
-        "Annuleren",
-    };
-
-    private string[] done2 = new string[3] 
-    {
-        back,
-        "Afronden",
-        "Annuleren",
     };
 
     // Use this for initialization
@@ -207,10 +173,10 @@ public class BerichtenMenuController : MonoBehaviour
      */
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    wordOptions = done;
-        //}
+        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        {
+            ExitMessageMenu();
+        }
     }
 
     /**
@@ -270,7 +236,7 @@ public class BerichtenMenuController : MonoBehaviour
         {
             //buttonRect.width = this.gameObject.GetComponent<RectTransform>().rect.width;
             buttonRect.x = (Screen.width / 2) - (buttonRect.width / 2);
-            buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2) - 80f;
+            buttonRect.y = (Screen.height / 2) - (buttonRect.height / 2) - 50f;
             Time.timeScale = 0;                             // Pause the game and activate the menu
             berichtenMaker.gameObject.SetActive(true);      // Activate the menu
 
@@ -280,18 +246,149 @@ public class BerichtenMenuController : MonoBehaviour
 
             displayText.GetComponent<Text>().text = selectedText;
 
-            for (int i = 0; i < wordOptions.Length; i++)    // For every item in menu, make a button
+            float heightPadding = 20f; // height between buttons
+
+            Rect topLabel = buttonRect;
+            GUI.SetNextControlName("TopLabel");
+            topLabel.y -= heightPadding+10f;
+            topLabel.width = Screen.width;
+            topLabel.x = (Screen.width / 2) - (topLabel.width / 2);
+            GUI.Label(topLabel, categoryLabelText);
+
+            /**
+             * List buttons buttons
+             */
+            if (stage != 7)
             {
-                Rect buttonRectTemp = buttonRect;
-                float height = 20f;
-                buttonRectTemp.y += height * i;
-                
-                GUI.SetNextControlName(wordOptions[i]);
-                if (GUI.Button(buttonRectTemp, wordOptions[i].Replace("\n","")))
+                int j = 0;
+                for (int i = 0; i < wordOptions.Length; i++)    // For every item in menu, make a button
                 {
-                    selectedMessage = wordOptions[i];       // Set the selected word after button is pressed
-                    SendMessage();                          // Send the selected word for processing
+                    Rect buttonRectTemp = buttonRect;
+
+                    // Check to see if the list is even or odd, if odd, the left list should be one more
+                    if (wordOptions.Length % 2 == 0)         // even amount
+                        arrayLength = wordOptions.Length / 2;
+                    else                                     // odd amount
+                        arrayLength = Mathf.RoundToInt(wordOptions.Length / 2) + 1;
+
+                    if (i < arrayLength)
+                    {
+                        buttonRectTemp.x = buttonRect.x - (buttonRect.width / 2);
+                        buttonRectTemp.y += heightPadding * i;
+                    }
+                    else
+                    {
+                        buttonRectTemp.x = buttonRect.x + (buttonRect.width / 2);
+                        buttonRectTemp.y = buttonRect.y;
+                        buttonRectTemp.y += heightPadding * j;
+                        j++;
+                    }
+
+                    GUI.SetNextControlName(wordOptions[i]);
+                    if (GUI.Button(buttonRectTemp, wordOptions[i].Replace("\n", "")))
+                    {
+                        selectedMessage = wordOptions[i];       // Set the selected word after button is pressed
+                        SendMessage();                          // Send the selected word for processing
+                    }
                 }
+            }
+
+            /**
+             * User is done, ask the user to finish the message.
+             */
+            else
+            {
+                categoryLabelText = "";
+
+                Rect afrondenLabelRect = buttonRect;
+                GUI.SetNextControlName("AfrondenLabel");
+                GUI.Label(afrondenLabelRect, "Bericht plaatsen?");
+
+                Rect afrondenButtonRect = buttonRect;
+                afrondenButtonRect.y += heightPadding;
+                GUI.SetNextControlName("Afronden?");
+                if (GUI.Button(afrondenButtonRect, "Afronden"))
+                {
+                    selectedMessage = done;
+                    SendMessage();
+                }
+            }
+
+            /**
+             * Show 'finish message?' button when on the 'add conjuction' stage.
+             */
+            if (stage == 3)
+            {
+                Rect afrondenLabelRect = buttonRect;
+                afrondenLabelRect.y += heightPadding * (arrayLength + 1);
+                GUI.SetNextControlName("AfrondenLabel");
+                GUI.Label(afrondenLabelRect, "Bericht plaatsen?");
+
+                Rect afrondenButtonRect = buttonRect;
+                afrondenButtonRect.y += heightPadding * (arrayLength + 2);
+                GUI.SetNextControlName("Afronden?");
+                if (GUI.Button(afrondenButtonRect, "Afronden"))
+                {
+                    selectedMessage = done;
+                    SendMessage();
+                }
+            }
+
+            /**
+             * Buttons at the bottom of the menu:
+             * Stop, Back, Done
+             */
+            // Stop
+            Rect cancelButtonRect = buttonRect;
+            cancelButtonRect.width = buttonRect.width / 2;
+            cancelButtonRect.x = (Screen.width / 2) - (cancelButtonRect.width/2) - 240;
+            cancelButtonRect.y = (Screen.height / 2) + 195;
+
+            GUI.SetNextControlName(stop);
+            if (GUI.Button(cancelButtonRect, stop))
+            {
+                selectedMessage = stop;
+                SendMessage();
+            }
+
+            // Back, only after you can actually go back, after the first stage
+            Rect backButtonRect = buttonRect;
+            backButtonRect.width = buttonRect.width / 2;
+            backButtonRect.x = (Screen.width / 2) - (backButtonRect.width / 2);
+            backButtonRect.y = (Screen.height / 2) + 195;
+
+            GUI.SetNextControlName(back);
+            if (stage > 0)
+            {
+                if (GUI.Button(backButtonRect, back))
+                {
+                    selectedMessage = back;
+                    SendMessage();
+                }
+            }
+            else
+            {
+                GUI.Label(backButtonRect, back);
+            }
+
+            // Done, show label if you can't finish the message, otherwise button
+            Rect doneButtonRect = buttonRect;
+            doneButtonRect.width = buttonRect.width / 2;
+            doneButtonRect.x = (Screen.width / 2) - (cancelButtonRect.width / 2) + 240;
+            doneButtonRect.y = (Screen.height / 2) + 195;
+            
+            GUI.SetNextControlName(done);
+            if (stage == 3 || stage == 7)
+            {
+                if (GUI.Button(doneButtonRect, done))
+                {
+                    selectedMessage = done;
+                    SendMessage();
+                }
+            }
+            else
+            {
+                GUI.Label(doneButtonRect, done);
             }
         }
     }
@@ -315,33 +412,32 @@ public class BerichtenMenuController : MonoBehaviour
             // wordoptions
             case 0:
                 wordOptions = baseWord;
+                categoryLabelText = "Kies een bericht om toe te voegen:";
                 break;
             // category
             case 1:
                 wordOptions = category;
+                categoryLabelText = "Kies een woord uit de volgende categorieën:";
                 break;
             // sub-category
             case 2:
                 ChangeCategory(selectedMessage);
                 break;
-            case 3:
-                wordOptions = done;
-                break;
             // tussenvoegsel
-            case 4:
+            case 3:
                 wordOptions = tussenvoegsel;
+                categoryLabelText = "Voegwoord:";
+                break;
+            case 4:
+                wordOptions = baseWord;
+                categoryLabelText = "Kies een bericht om toe te voegen:";
                 break;
             case 5:
-                wordOptions = baseWord2;
+                wordOptions = category;
+                categoryLabelText = "Kies een woord uit de volgende categorieën:";
                 break;
             case 6:
-                wordOptions = category;
-                break;
-            case 7:
                 ChangeCategory(selectedMessage);
-                break;
-            case 8:
-                wordOptions = done2;
                 break;
         }
     }
@@ -357,24 +453,31 @@ public class BerichtenMenuController : MonoBehaviour
         {
             case ("Wezens"):
                 wordOptions = wezens;
+                categoryLabelText = "Wezens:";
                 break;
             case ("Objecten"):
                 wordOptions = objecten;
+                categoryLabelText = "Objecten:";
                 break;
             case ("Techniek"):
                 wordOptions = techniek;
+                categoryLabelText = "Techniek:";
                 break;
             case ("Locatie"):
                 wordOptions = locatie;
+                categoryLabelText = "Locatie:";
                 break;
             case ("Oriëntatie"):
                 wordOptions = oriëntatie;
+                categoryLabelText = "Oriëntatie:";
                 break;
             case ("Concepten"):
                 wordOptions = concepten;
+                categoryLabelText = "Concepten:";
                 break;
             case ("Overpeinzingen"):
                 wordOptions = overpeinzingen;
+                categoryLabelText = "Overpeinzingen:";
                 break;
         }
     }
@@ -388,19 +491,16 @@ public class BerichtenMenuController : MonoBehaviour
         if (selectedMessage != back)
         {
             SetMessage(selectedMessage, stage);
-            if (stage < 8)
+            if (stage <= 6 && selectedMessage != null) // selectedMessage will be null if the users stops
                 stage++;
         }
         else
         {
-            if (stage == 8 || stage == 3)
-            {
-                stage -= 2;
-            }
-            else if (stage >= 1)
-            {
+            if (stage >= 1 && stage != 3)
                 stage--;
-            }
+            else if (stage == 3)
+                stage = 1;
+            
             SetMessage(null, stage);
         }
     }
@@ -422,22 +522,15 @@ public class BerichtenMenuController : MonoBehaviour
      */
     public void SetMessage(string messagePassed, int stagePassed)
     {
-        if (messagePassed == "Afronden")
+        if (messagePassed == done)
         {
             SendMessageToPrefab();
-            stage = 0;
-            Time.timeScale = 1;
-            berichtMakerActive = false;
-            berichtenMaker.gameObject.SetActive(false);
+            ExitMessageMenu();
             return;
         }
-        else if (messagePassed == "Annuleren")
+        else if (messagePassed == stop)
         {
-            messageList = new string[8];
-            stage = 0;
-            Time.timeScale = 1;
-            berichtMakerActive = false;
-            berichtenMaker.gameObject.SetActive(false);
+            ExitMessageMenu();
             return;
         }
 
@@ -456,31 +549,36 @@ public class BerichtenMenuController : MonoBehaviour
                     messageList[2] = messageList[1];
                 break;
             case 3:
-                    messageList[3] = messageList[2];
+                messageList[3] = messageList[2] + messagePassed;
                 break;
             case 4:
                 messageList[4] = messageList[3] + messagePassed;
                 break;
             case 5:
-                messageList[5] = messageList[4] + messagePassed;
+                messageList[5] = messageList[4];
                 break;
             case 6:
-                messageList[6] = messageList[5];
-                break;
-            case 7:
                 if (messagePassed != null)
-                    messageList[7] = messageList[6].Replace("***", messagePassed);
+                    messageList[6] = messageList[5].Replace("***", messagePassed);
                 else
-                    messageList[7] = messageList[6];
-                break;
-            case 8:
-                messageList[8] = messageList[7];
+                    messageList[6] = messageList[5];
                 break;
 
         }
 
-        if (stagePassed != 9) // user is done with the message
+        if (stagePassed != 7) // user is done with the message
             selectedText = messageList[stagePassed];
+    }
+
+    public void ExitMessageMenu()
+    {
+        wordOptions = baseWord;
+        messageList = new string[8];
+        stage = 0;
+        selectedMessage = null;
+        Time.timeScale = 1;
+        berichtMakerActive = false;
+        berichtenMaker.gameObject.SetActive(false);
     }
 
     /**
@@ -492,7 +590,7 @@ public class BerichtenMenuController : MonoBehaviour
     public void SendMessageToPrefab()
     {
         messagePrefab.GetComponent<BerichtController>().message = selectedText;
-
+        messagePrefab.GetComponent<BerichtController>().isRewritten = true;
         int key = messagePrefab.GetComponent<BerichtController>().messageKey;
 
         // TODO: Get unique userkey from playerData

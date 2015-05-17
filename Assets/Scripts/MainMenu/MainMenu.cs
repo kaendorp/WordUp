@@ -13,11 +13,10 @@ public class MainMenu : MonoBehaviour
 	private Rect button1Rect = new Rect(15,15,160,30);
 	private Rect button2Rect = new Rect(15,15,160,30);
 	private Rect button3Rect = new Rect(15,15,160,30);
-	private Rect button4Rect = new Rect(15,15,160,30);
 
     public AudioSource _audioSource;
 
-    public bool _mainMenuUit = false;
+    public bool _mainMenuUit;
 
 	void Start()
 	{
@@ -25,7 +24,9 @@ public class MainMenu : MonoBehaviour
         speler.SetActive(false);
 
 		// Load a skin for the buttons
-		skin = Resources.Load("ButtonSkin") as GUISkin;      
+		skin = Resources.Load("ButtonSkin") as GUISkin;
+
+        _mainMenuUit = true;
 	}	
 	
 	void OnGUI()
@@ -41,13 +42,9 @@ public class MainMenu : MonoBehaviour
             button3Rect.x = (Screen.width / 2) - (button3Rect.width / 2);
             button3Rect.y = (Screen.height / 2) - (button3Rect.height / 2);
 
-            button4Rect.x = (Screen.width / 2) - (button4Rect.width / 2);
-            button4Rect.y = (Screen.height / 2) - (button4Rect.height / 2);
-
             button1Rect.y = button1Rect.y - 130;
             button2Rect.y = button2Rect.y - 80;
-            button3Rect.y = button3Rect.y - 30;
-            button4Rect.y = button4Rect.y + 20;
+            button3Rect.y = button3Rect.y - 30;            
 
             // Set the skin to use
             GUI.skin = skin;
@@ -60,26 +57,17 @@ public class MainMenu : MonoBehaviour
             ))
             {
                 _audioSource.Play();
-                GameControl.control.isMainMenu = false;
-                Application.LoadLevel(GameControl.control.loadLevel); // Load Intro
-            }
+                GameControl.control.loadLevel = "Intro";
+
+                // playerSelect
+                speler.SetActive(true); // Select Speler
+                _mainMenuUit = true;
+            }            
 
             // Start Button
             if (GUI.Button(
                 // Center in X, 2/3 of the height in Y
                 button2Rect,
-                "Speler"
-            ))
-            {
-                _audioSource.Play();
-                speler.SetActive(true); // Select Speler
-                _mainMenuUit = true;                
-            }
-
-            // Start Button
-            if (GUI.Button(
-                // Center in X, 2/3 of the height in Y
-                button3Rect,
                 "Level"
             ))
             {
@@ -91,7 +79,7 @@ public class MainMenu : MonoBehaviour
             // Prestaties Button
             if (GUI.Button(
                 // Center in X, 2/3 of the height in Y
-                button4Rect,
+                button3Rect,
                 "Prestaties"
             ))
             {                

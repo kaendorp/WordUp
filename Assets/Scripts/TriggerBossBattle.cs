@@ -37,8 +37,8 @@ public class TriggerBossBattle : MonoBehaviour
             {
                 player = player.transform.root.gameObject;
             }
-            bossController.setPlayerObject(player);
-            bossController.beginBossBattle();
+            bossController.SetPlayerObject(player);
+            bossController.BeginBossBattle();
 
 			//fade out music, disable ambience
 			StartCoroutine(ChangeMusic());

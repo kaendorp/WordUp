@@ -10,6 +10,9 @@ public class Spring : MonoBehaviour
     private Animator animator;
     private GameObject player;
 
+    public float bounceDelay = 0.2f;
+    private float savePlayerForce;
+
 	//voor spring geluid
 	private AudioClip _audioSource;
 	private Vector3 position;
@@ -22,45 +25,42 @@ public class Spring : MonoBehaviour
 		animator = gameObject.GetComponent<Animator>();
 		_audioSource = gameObject.GetComponent<AudioSource> ().clip;
 		isPlayed = false;
-
+        canJump = true;
         position = new Vector3(0, 0, 0);
     }
-	
-	void OnCollisionStay2D(Collision2D other)
-	{
-        GameObject player = other.gameObject;
-        // Make sure we send the parent object
-        // root never returns null, if this Transform doesn't have a parent it returns itself.
-        if (player.transform.root.gameObject != player)
-        {
-            player = player.transform.root.gameObject;
-        }
 
-        if (player.tag == "Player" && !animator.GetBool("Pressing"))
-		{
-			animator.SetBool("Pressing", true);
-			animator.SetBool("Releasing", false);
-			canJump = true;
-		}
-        else if (player.tag == "Player" && canJump == true)
-		{
-            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
-			canJump = false;
-		}
-        else if (player.tag == "Player")
-		{
-			animator.SetBool("Pressing", false);
-			animator.SetBool("Releasing", true);
-			canJump = false;
-		}
-	}
+    IEnumerator Bounce()
+    {
+        canJump = false;
+        animator.SetBool("Pressing", true);
+        animator.SetBool("Releasing", false);
+        yield return new WaitForSeconds(bounceDelay);
+        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, springForce));
+        animator.SetBool("Pressing", false);
+        animator.SetBool("Releasing", true);
+        canJump = true;
+    }
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Player" && isPlayed == true) 
-		{
-			isPlayed = false;
-		}
+        if (collision.gameObject.tag == "Player")
+        {
+            player = collision.gameObject;
+            // Make sure we send the parent object
+            // root never returns null, if this Transform doesn't have a parent it returns itself.
+            if (player.transform.root.gameObject != player)
+            {
+                player = player.transform.root.gameObject;
+            }
+
+            if (isPlayed == true)
+            {
+                isPlayed = false;
+            }
+
+            if (canJump)
+                StartCoroutine(Bounce());
+        }
 	}
 
 	void OnTriggerExit2D(Collider2D collision)

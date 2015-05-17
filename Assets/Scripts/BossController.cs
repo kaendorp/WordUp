@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BossController : MonoBehaviour
@@ -117,6 +118,12 @@ public class BossController : MonoBehaviour
 	public AudioClip number4;
 	public float speed;
 	private byte[] low;
+
+    // Healthbar
+    private GameObject HUD;
+    private GameObject BossBar;
+    private GameObject BossFill; // healthbar in UI
+
     /**
      * Awake
      *
@@ -128,6 +135,10 @@ public class BossController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         bossSequenceList = new BetterList<bossEvents>();
+
+        HUD = GameObject.Find("HUD");
+        BossBar = HUD.transform.FindChild("BossHud").gameObject;
+        BossFill = BossBar.transform.FindChild("BossFill").gameObject;
 
         switch (currentSequence)
         {
@@ -218,7 +229,7 @@ public class BossController : MonoBehaviour
      *
      * Value is passed from TriggerBossBattle.OnTriggerEnter2D()
      */
-    public void setPlayerObject(GameObject passedObject)
+    public void SetPlayerObject(GameObject passedObject)
     {
         player = passedObject;
     }
@@ -228,10 +239,34 @@ public class BossController : MonoBehaviour
      *
      * Also sets the currenthealth to the set StartHealth
      */
-    public void beginBossBattle()
+    public void BeginBossBattle()
     {
         isActive = true;
         currentHealth = startHealth;
+        BossBar.SetActive(true);
+        StartCoroutine(FillHealthBar());
+    }
+
+    /**
+     * Slowly fills the healthbar of the boss, from 0 to full. For aesthetics.
+     * Uses the image fill method, the BossFill should be an UI Image with it's 
+     * type set to 'Filled', method to Horizontal, orgin Left.
+     * 
+     * Called by beginBossBattle();
+     */
+    IEnumerator FillHealthBar()
+    {
+        float elapsedTime = 0f;
+        float setWidth;
+
+        while (elapsedTime < 5)
+        {
+            float current = (float)currentHealth / (float)startHealth;
+            setWidth = Mathf.Lerp(0, current, ((elapsedTime / 5)));
+            BossFill.GetComponent<Image>().fillAmount = setWidth;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
     /**
@@ -241,7 +276,7 @@ public class BossController : MonoBehaviour
      * It also ends the coroutineStarted check so it will start the next
      * action in Update()
      */
-    private void setNextAction()
+    private void SetNextAction()
     {
         // Debug.Log("Setting Action to : " + bossSequenceList[bossSequenceListValue].ToString());
         currentEvent = bossSequenceList[bossSequenceListValue];
@@ -266,7 +301,7 @@ public class BossController : MonoBehaviour
         anim.SetBool("IsHit", false);
         yield return new WaitForSeconds(2f);
         //Debug.Log("IDLE DONE");
-        setNextAction();
+        SetNextAction();
     }
 
     /**
@@ -292,7 +327,7 @@ public class BossController : MonoBehaviour
         anim.SetBool("IsShooting", false);
         yield return new WaitForSeconds(1f); // Wait for the animation to end
         //Debug.Log("SHOOT DONE");
-        setNextAction();
+        SetNextAction();
     }
 
     /**
@@ -354,7 +389,7 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(1f); // Wait for the animation to end
         //Debug.Log("SHOOT DONE");
 
-        setNextAction();
+        SetNextAction();
     }
 
     private void BounceProjectile()
@@ -370,6 +405,8 @@ public class BossController : MonoBehaviour
      * Set the path the bouncing projectile will make.
      *
      * Y position of the boss is set to bottom. Provided the boss is standing on the floor this will give us the "floor" height.
+     * 
+     * Called by BouncyProjectile()
      */
     private void SetBouncyPath()
     {
@@ -396,6 +433,15 @@ public class BossController : MonoBehaviour
         }
     }
 
+    /**
+     * Moves the bouncy projectile from one point to the next.
+     * This method is an iteration of itself so that the projectile will go
+     * from one point in savedPath to the next point in savedPath.
+     * 
+     * savedPath is set in SetBouncyPath(), but given in BouncyProjectile()
+     * 
+     * Called in BouncyProjectile()
+     */
     IEnumerator MoveToBouncePoint(GameObject shot, Vector2[] savedPath, int bouncePoint)
     {
         float elapsedTime = 0f;
@@ -447,7 +493,7 @@ public class BossController : MonoBehaviour
         anim.SetBool("IsShooting", false);
         yield return new WaitForSeconds(1f); // Wait for the animation to end
         //Debug.Log("SHOOT DONE");
-        setNextAction();
+        SetNextAction();
     }
 
     private void ArcProjectile()
@@ -455,7 +501,7 @@ public class BossController : MonoBehaviour
         shot = (GameObject)Instantiate(arcPrefab, firePoint.transform.position, firePoint.transform.rotation);
         shot.GetComponent<Rigidbody2D>().gravityScale = 1f;
         shot.GetComponent<Rigidbody2D>().angularDrag = 0;
-        Vector3 velocity = calculateThrowSpeed(shot.transform.position, player.transform.position, timeToTarget);
+        Vector3 velocity = CalculateThrowSpeed(shot.transform.position, player.transform.position, timeToTarget);
 
         if (float.IsNaN(velocity.y) || float.IsNaN(velocity.x)) // if calculation fails, give the projectile a weak nudge
             velocity = new Vector3(-2f, 1f, 0);
@@ -470,7 +516,7 @@ public class BossController : MonoBehaviour
      * http://answers.unity3d.com/questions/248788/calculating-ball-trajectory-in-full-3d-world.html
      * Based of an awnser by Tomer Barkan, May 14, 2013
      */
-    private Vector3 calculateThrowSpeed(Vector3 origin, Vector3 target, float timeToTarget)
+    private Vector3 CalculateThrowSpeed(Vector3 origin, Vector3 target, float timeToTarget)
     {
         // calculate vectors
         Vector3 toTarget = target - origin;
@@ -516,7 +562,7 @@ public class BossController : MonoBehaviour
 
         iceInit = (GameObject)Instantiate(icicles, iceSpawn.transform.position, iceSpawn.transform.rotation);
         yield return new WaitForSeconds(0.5f);
-        setNextAction();
+        SetNextAction();
     }
 
     IEnumerator IcePlatform(Vector3 from, Vector3 to)
@@ -554,7 +600,7 @@ public class BossController : MonoBehaviour
             yield return new WaitForSeconds(2f);
             //Debug.Log("ROAR DONE");
         }
-        setNextAction();
+        SetNextAction();
     }
 
     IEnumerator PushPlayerLeft()
@@ -597,7 +643,7 @@ public class BossController : MonoBehaviour
 		bossSource.Stop ();
         yield return new WaitForSeconds(1f);
 		//Debug.Log("ROAR DONE");
-        setNextAction();
+        SetNextAction();
     }
 
     /**
@@ -605,15 +651,21 @@ public class BossController : MonoBehaviour
      *
      * Called by BossCirlceCollider.OnCollisionEnter2D()
      */
-    public void hitByPlayerProjectile()
+    public void HitByPlayerProjectile()
     {
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", true);
-        
+
+        int healthBefore = currentHealth;
 		currentHealth--;
+        int healthAfter = currentHealth;
+       
+        StartCoroutine(BossHealthBarTakeDamage(healthBefore, healthAfter));
+
         wasHit = true; // can trigger roarAttack
 
         if (currentHealth <= 0) {
+            bossSource.Stop();
 			StartCoroutine (Defeated ());
 			isActive = false; // Makes sure the next action isn't accidentally called in Update()
 		} else {
@@ -622,6 +674,34 @@ public class BossController : MonoBehaviour
 			bossSource.volume = 0.25f;
 			bossSource.Play ();
 		}
+    }
+
+    /**
+     * Drains the healthbar of the boss when taking damage. 
+     * Uses the image fill method, the BossFill should be an UI Image with it's 
+     * type set to 'Filled', method to Horizontal, orgin Left.
+     * 
+     * The first value given to this method should be the so called, 'from' and 
+     * 'to' values, as you usually want the healthbar to go 'from' 3 hp 'to' 2 hp,
+     * for example.
+     * 
+     * Called by hitByPlayerProjectile();
+     */
+    IEnumerator BossHealthBarTakeDamage(int healthBefore, int healthAfter)
+    {
+        float elapsedTime = 0f;
+        float setWidth;
+
+        float before = (float)healthBefore / (float)startHealth;
+        float after = (float)healthAfter / (float)startHealth;
+
+        while (elapsedTime < 1f)
+        {
+            setWidth = Mathf.Lerp(before, after, ((elapsedTime / 1f)));
+            BossFill.GetComponent<Image>().fillAmount = setWidth;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
     /**
@@ -640,7 +720,8 @@ public class BossController : MonoBehaviour
 
         // TODO: Disable player controlls without stopping time
         anim.SetBool("IsDefeated", true);
-
+        yield return new WaitForSeconds(3f);
+        BossBar.SetActive(false);
         messageObject.SetActive(true);
         messageObject.GetComponent<TextMesh>().text = endMessage1;
 		yield return new WaitForSeconds(1f);

@@ -37,8 +37,10 @@ public class EnemyProjectileController : MonoBehaviour {
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
-        //If it collides with anything, destroy projectile
-		AudioSource.PlayClipAtPoint (projectileHits, positie, 0.5f);
+        //If it collides with anything, destroy projectile, if the object dies too fast, error, that's why, check
+		if (this.gameObject) {
+			AudioSource.PlayClipAtPoint (projectileHits, positie, 0.5f);
+		}
 		Destroy(this.gameObject);
     }
 }
