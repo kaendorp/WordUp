@@ -21,6 +21,8 @@ public class TextOutline : MonoBehaviour
     public int doubleResolution = 1024;
     private TextMesh textMesh;
     private MeshRenderer meshRenderer;
+    public string SortingLayerName = "Default";
+    public int SortingOrder = 100;
 
     void Start()
     {
@@ -38,6 +40,12 @@ public class TextOutline : MonoBehaviour
             otherMeshRenderer.sortingLayerID = meshRenderer.sortingLayerID;
             otherMeshRenderer.sortingLayerName = meshRenderer.sortingLayerName;
         }
+    }
+
+    void Awake()
+    {
+        this.GetComponent<MeshRenderer>().sortingLayerName = SortingLayerName;
+        this.GetComponent<MeshRenderer>().sortingOrder = SortingOrder;
     }
 
     void LateUpdate()
@@ -69,6 +77,7 @@ public class TextOutline : MonoBehaviour
                 MeshRenderer otherMeshRenderer = transform.GetChild(i).GetComponent<MeshRenderer>();
                 otherMeshRenderer.sortingLayerID = meshRenderer.sortingLayerID;
                 otherMeshRenderer.sortingLayerName = meshRenderer.sortingLayerName;
+                otherMeshRenderer.sortingOrder = meshRenderer.sortingOrder;
             }
         }
     }
