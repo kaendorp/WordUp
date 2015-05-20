@@ -20,7 +20,6 @@ public class Letter2ProjectileController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_audioClip = gameObject.GetComponent<AudioSource>().clip;
 		player = FindObjectOfType<PlatformerCharacter2D>();
 		position = new Vector3 (0, 0, 0);
 		if (player.transform.localScale.x < 0)
@@ -56,28 +55,22 @@ public class Letter2ProjectileController : MonoBehaviour {
 			else
             {
 				bounceUp = true;
+                _audioClip = gameObject.GetComponent<AudioSource>().clip;
 				AudioSource.PlayClipAtPoint(_audioClip, position, 0.2f);
 				hitPosition = transform.position.y;
 			}
 		}
-        if (col.transform.tag == "Boss")
+        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")
         {
-            StartCoroutine(ToggleKinematic());
+            /**
+             * Needed for the boss to register a hit. This projectile can not 
+             * be kinematic if it needs to trigger a collider.
+             */
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            
+            Instantiate(enemyDeathEffect, col.transform.position, col.transform.rotation);
+            // The enemy and boss will destroy this object to ensure it detects the hit properly
         }
-		if (col.transform.tag == "Enemy") {
-			Destroy(this.gameObject);
-		}
 		Destroy(this.gameObject, 3.5f);
 	}
-	
-    /**
-     * Needed for the boss to register a hit. This projectile can not 
-     * be kinematic if it needs to trigger a collider.
-     */
-    IEnumerator ToggleKinematic()
-    {
-        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-        yield return new WaitForSeconds(0.2f);
-        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-    }
 }

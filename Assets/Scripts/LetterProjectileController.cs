@@ -30,27 +30,31 @@ public class LetterProjectileController : MonoBehaviour {
 		    Destroy (this.gameObject,2);
 	}
 
-	void onTriggerEnter2D(Collision2D obj)
+    void onTriggerEnter2D(Collision2D collider)
     {
-		//Debug.Log ("Hit");
-		Instantiate(enemyDeathEffect, obj.transform.position, obj.transform.rotation);
-        Destroy(this.gameObject);		
+        if (collider.gameObject.tag == "Enemy" || collider.gameObject.tag == "Boss")
+        {
+            Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
+            // The enemy and boss will destroy this object to ensure it detects the hit properly
+        }
+        else
+        {
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 
 	void OnCollisionEnter2D(Collision2D collider)
-	{ 
-		//Debug.Log("Collision Detected");
-		if (collider.gameObject.tag == "Enemy") {
-			Instantiate (enemyDeathEffect, collider.transform.position, collider.transform.rotation);
-		}
-		Instantiate (impactEffect, transform.position, transform.rotation);
-        Destroy(this.gameObject);
-		/*
-         if(collider.gameObject.name == "CannonBall")
-         {
-             megonLife -= 1;
-             Instantiate(bossExplosion, transform.position, transform.rotation); // Instantiate Explosion Effect
-         }
-         */
+	{
+        if (collider.gameObject.tag == "Enemy" || collider.gameObject.tag == "Boss")
+        {
+            Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
+            // The enemy and boss will destroy this object to ensure it detects the hit properly
+        }
+        else
+        {
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
 	}
 }
