@@ -21,7 +21,7 @@ public class TextOutline : MonoBehaviour
     public int doubleResolution = 1024;
     private TextMesh textMesh;
     private MeshRenderer meshRenderer;
-    public string SortingLayerName = "Default";
+    public string SortingLayerName = "Foreground";
     public int SortingOrder = 100;
 
     void Start()
