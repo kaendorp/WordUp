@@ -10,27 +10,32 @@ public class BossProjectile : MonoBehaviour {
     }
 
 	void onTriggerEnter2D(Collision2D triggered)
-	{
-		//Debug.Log("Enemy projectile: HIT");
-		
+	{		
 		//If collides with player
 		if (triggered.gameObject.tag == "Player")
 		{
 			Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
+            // Destroy is handled in player for better hit detection
 		}
-		Destroy(gameObject);
+        else
+        {
+            //If it collides with anything, destroy projectile
+            Destroy(this.gameObject);
+        }
 	}
 
 	void OnCollisionEnter2D(Collision2D collided)
 	{
-		//Debug.Log("Enemy projectile: HIT");
-		
 		//If collides with player
-		if (collided.gameObject.tag == "Player")
-		{
-			Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
-		}
-		//If it collides with anything, destroy projectile
-        Destroy(gameObject);
+        if (collided.gameObject.tag == "Player")
+        {
+            Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            // Destroy is handled in player for better hit detection
+        }
+        else
+        {
+            //If it collides with anything, destroy projectile
+            Destroy(this.gameObject);
+        }
 	}
 }

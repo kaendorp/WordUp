@@ -190,7 +190,10 @@ public class Player : MonoBehaviour {
             else if (currentHealth == 0)
             {
                 Respawn();
-            }            
+            }
+
+            if (LayerMask.LayerToName(collision.gameObject.layer) == "EnemyProjectile")
+                Destroy(collision.gameObject);
 		}        
 		
         if (collision.gameObject.tag == "Water")

@@ -315,6 +315,7 @@ public class FriendlyController : MonoBehaviour
                 //Debug.Log(this.gameObject.name + ": Au!");
                 currentHealth -= 1;
             }
+            Destroy(collision.gameObject);
         }
     }
 
