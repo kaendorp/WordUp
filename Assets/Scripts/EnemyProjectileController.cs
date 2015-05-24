@@ -21,7 +21,7 @@ public class EnemyProjectileController : MonoBehaviour {
     void onTriggerEnter2D(Collision2D collided)
     {
         //If collides with player
-        if (collided.gameObject.tag == "Player" || collided.gameObject.tag == "Friendly")
+        if (collided.collider.gameObject.tag == "Player" || collided.collider.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
@@ -35,7 +35,7 @@ public class EnemyProjectileController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collided)
     {
         //If collides with player
-        if (collided.gameObject.tag == "Player" || collided.gameObject.tag == "Friendly")
+        if (collided.collider.gameObject.tag == "Player" || collided.collider.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
