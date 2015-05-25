@@ -7212,6 +7212,7 @@ GameObject:
   - 61: {fileID: 666537395}
   - 95: {fileID: 666537399}
   - 212: {fileID: 666537398}
+  - 114: {fileID: 666537400}
   m_Layer: 2
   m_Name: CheckPoint 1
   m_TagString: Untagged
@@ -7299,6 +7300,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &666537400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666537394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957b00f229c0d4a4c838785b24737d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointNumber: 1
 --- !u!1 &693094625
 GameObject:
   m_ObjectHideFlags: 0
@@ -7601,6 +7614,7 @@ GameObject:
   - 61: {fileID: 716469707}
   - 95: {fileID: 716469710}
   - 212: {fileID: 716469709}
+  - 114: {fileID: 716469711}
   m_Layer: 2
   m_Name: CheckPoint 2
   m_TagString: Untagged
@@ -7688,6 +7702,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &716469711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716469705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957b00f229c0d4a4c838785b24737d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointNumber: 2
 --- !u!1001 &716873334
 Prefab:
   m_ObjectHideFlags: 0

@@ -9855,6 +9855,7 @@ GameObject:
   - 61: {fileID: 587792902}
   - 114: {fileID: 587792901}
   - 82: {fileID: 587792903}
+  - 114: {fileID: 587792904}
   m_Layer: 0
   m_Name: Sleutel blauw
   m_TagString: Sleutel
@@ -9994,6 +9995,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &587792904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587792898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957b00f229c0d4a4c838785b24737d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointNumber: 1
 --- !u!1 &588631069
 GameObject:
   m_ObjectHideFlags: 0
@@ -25761,6 +25774,7 @@ GameObject:
   - 61: {fileID: 1377555100}
   - 114: {fileID: 1377555099}
   - 82: {fileID: 1377555101}
+  - 114: {fileID: 1377555102}
   m_Layer: 0
   m_Name: Sleutel geel
   m_TagString: Untagged
@@ -25900,6 +25914,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1377555102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377555096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957b00f229c0d4a4c838785b24737d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointNumber: 2
 --- !u!1 &1382205741
 GameObject:
   m_ObjectHideFlags: 0
@@ -30982,6 +31008,7 @@ GameObject:
   - 114: {fileID: 1688958761}
   - 61: {fileID: 1688958760}
   - 82: {fileID: 1688958762}
+  - 114: {fileID: 1688958763}
   m_Layer: 0
   m_Name: Sleutel rood
   m_TagString: Untagged
@@ -31121,6 +31148,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1688958763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1688958757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957b00f229c0d4a4c838785b24737d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointNumber: 3
 --- !u!1 &1689642167
 GameObject:
   m_ObjectHideFlags: 0
