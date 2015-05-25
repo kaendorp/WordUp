@@ -101,8 +101,9 @@ public class PlayerSelect : MonoBehaviour {
     {
         UnityAnalytics.CustomEvent("startFromMainMenu", new Dictionary<string, object>
         {
-            { "selectedLevel", GameControl.control.loadLevel},
-            { "selectedPlayer", GameControl.control.selectPlayer}
+            { "selectedLevel", GameControl.control.loadLevel },
+            { "selectedPlayer", GameControl.control.selectPlayer },
+            { "timeSpentInMainMenu", Time.timeSinceLevelLoad },
         });
     }
 }
