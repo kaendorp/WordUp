@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class Player : MonoBehaviour {
 
@@ -125,6 +127,14 @@ public class Player : MonoBehaviour {
 
         //find gamemaster
         gameMaster = FindObjectOfType<GameMaster>();
+
+        // Analytics
+        GameControl.control.damageTaken = 0; 
+        GameControl.control.lettersFound = "";
+        GameControl.control.kidsFound = 0;
+        GameControl.control.bossBattleStarted = false;
+        GameControl.control.bossDamageTaken = 0;
+        GameControl.control.respawns = 0;
 	}
 
 	private void HandleHealth()
@@ -185,6 +195,7 @@ public class Player : MonoBehaviour {
                 Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
                 StartCoroutine(coolDownDMG());
                 CurrentHealth -= 1;
+                GameControl.control.damageTaken++; // Used for analytics
                 Destroy(spawnedImpactEffect, 1);
             }
             else if (currentHealth == 0)
@@ -226,7 +237,9 @@ public class Player : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (_audioSource, positie);
 
                 Destroy(collision.gameObject);
-                StartCoroutine(showLetters()); 
+                StartCoroutine(showLetters());
+
+                GameControl.control.lettersFound += collision.gameObject.name;
 
                 // Aantal letters is 7
                 switch (maxLetters)
@@ -460,6 +473,7 @@ public class Player : MonoBehaviour {
             if (countKids < maxKids)
             {
                 CountKids += 1;
+                GameControl.control.kidsFound++;
             }
             kindPlus = false;
         }
@@ -511,5 +525,36 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+
+    /**
+     * Sends the selected player and level to analytics
+     * 
+     * Called by Respawn()
+     */
+    void StartGameAnalytics()
+    {
+        string customEventName = "PlayerDeath" + Application.loadedLevelName;
+
+        float bossBattleDuration = 0f;
+
+        if (GameControl.control.bossBattleStarted)
+            bossBattleDuration = (Time.timeSinceLevelLoad - GameControl.control.bossBattleStartTime);
+
+        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "runningTime", Time.timeSinceLevelLoad },
+            { "damageTaken", GameControl.control.damageTaken },
+            { "projectile1Shot", GameControl.control.projectile1Shot },
+            { "projectile2Shot", GameControl.control.projectile2Shot },
+            { "projectile3Shot", GameControl.control.projectile3Shot },
+            { "kidsFound", GameControl.control.kidsFound },
+            { "lettersFound", GameControl.control.lettersFound },
+            { "enemyDefeated", GameControl.control.enemiesDefeated },
+            { "bossBattleStarted", GameControl.control.bossBattleStarted },
+            { "bossBattleHealth", GameControl.control.bossDamageTaken },
+            { "bossBattleDuration", bossBattleDuration },
+            { "respawns", GameControl.control.respawns },
+        });
+    }
 }
 

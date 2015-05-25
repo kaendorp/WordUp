@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class BossController : MonoBehaviour
 {
@@ -241,6 +243,8 @@ public class BossController : MonoBehaviour
      */
     public void BeginBossBattle()
     {
+        GameControl.control.bossBattleStartTime = Time.timeSinceLevelLoad; // Analytics
+        GameControl.control.bossBattleStarted = true; // Analytics
         isActive = true;
         currentHealth = startHealth;
         BossBar.SetActive(true);
@@ -656,6 +660,8 @@ public class BossController : MonoBehaviour
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", true);
 
+        GameControl.control.bossDamageTaken++; // Analytics
+
         int healthBefore = currentHealth;
 		currentHealth--;
         int healthAfter = currentHealth;
@@ -818,6 +824,8 @@ public class BossController : MonoBehaviour
      */
     void PlayerVictory()
     {
+        StartGameAnalytics(); // analytics
+
         GameObject g = GameObject.Find("HUD");
         WinMenuScript wScript = g.GetComponent<WinMenuScript>();
         wScript.WinActive = true;
@@ -832,5 +840,31 @@ public class BossController : MonoBehaviour
                 Debug.DrawLine(bouncyPath[i - 1], bouncyPath[i]);
             }
         }
+    }
+
+    /**
+     * Sends the selected player and level to analytics
+     * 
+     * Called by PlayerVictory()
+     */
+    void StartGameAnalytics()
+    {
+        string customEventName = "BossBattleWon" + Application.loadedLevelName;
+
+        float bossBattleDuration = (Time.timeSinceLevelLoad - GameControl.control.bossBattleStartTime);
+
+        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "runningTime", Time.timeSinceLevelLoad },
+            { "damageTaken", GameControl.control.damageTaken },
+            { "projectile1Shot", GameControl.control.projectile1Shot },
+            { "projectile2Shot", GameControl.control.projectile2Shot },
+            { "projectile3Shot", GameControl.control.projectile3Shot },
+            { "kidsFound", GameControl.control.kidsFound },
+            { "lettersFound", GameControl.control.lettersFound },
+            { "enemyDefeated", GameControl.control.enemiesDefeated },
+            { "bossBattleDuration", bossBattleDuration },
+            { "respawns", GameControl.control.respawns },
+        });
     }
 }

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class TriggerBossBattle : MonoBehaviour
 {
@@ -101,4 +103,25 @@ public class TriggerBossBattle : MonoBehaviour
 		}
 		StopCoroutine("ChangeMusic");
 	}
+
+    /**
+     * Sends the selected player and level to analytics
+     */
+    void StartGameAnalytics()
+    {
+        string customEventName = "BossBattleStart" + Application.loadedLevelName;
+
+        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "runningTime", Time.timeSinceLevelLoad },
+            { "damageTaken", GameControl.control.damageTaken },
+            { "projectile1Shot", GameControl.control.projectile1Shot },
+            { "projectile2Shot", GameControl.control.projectile2Shot },
+            { "projectile3Shot", GameControl.control.projectile3Shot },
+            { "kidsFound", GameControl.control.kidsFound },
+            { "lettersFound", GameControl.control.lettersFound },
+            { "enemyDefeated", GameControl.control.enemiesDefeated },
+            { "respawns", GameControl.control.respawns },
+        });
+    }
 }

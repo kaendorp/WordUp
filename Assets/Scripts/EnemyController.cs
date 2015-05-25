@@ -762,6 +762,8 @@ public class EnemyController : MonoBehaviour
         // Instantiate death effect
         Instantiate(enemyDeathEffect, this.transform.position, this.transform.rotation);
 
+        GameControl.control.enemiesDefeated++; // Analytics
+
         Destroy(this.gameObject);
     }
 
