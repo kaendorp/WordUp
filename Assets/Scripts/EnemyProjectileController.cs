@@ -18,29 +18,31 @@ public class EnemyProjectileController : MonoBehaviour {
 		positie = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
-    void onTriggerEnter2D(Collision2D triggered)
+    void onTriggerEnter2D(Collision2D collided)
     {
-        //Debug.Log("Enemy projectile: HIT");
         //If collides with player
-        if (triggered.gameObject.tag == "Player" || triggered.gameObject.tag == "Friendly")
+        if (collided.collider.gameObject.tag == "Player" || collided.collider.gameObject.tag == "Friendly")
         {
-            Instantiate(enemyDeathEffect, triggered.transform.position, triggered.transform.rotation);
+            Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
-        Destroy(this.gameObject);
+        else
+        {
+            AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
+            Destroy(this.gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collided)
     {
-        //Debug.Log("Enemy projectile: HIT");
         //If collides with player
-        if (collided.gameObject.tag == "Player" || collided.gameObject.tag == "Friendly")
+        if (collided.collider.gameObject.tag == "Player" || collided.collider.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
         }
-        //If it collides with anything, destroy projectile, if the object dies too fast, error, that's why, check
-		if (this.gameObject) {
-			AudioSource.PlayClipAtPoint (projectileHits, positie, 0.5f);
-		}
-		Destroy(this.gameObject);
+        else
+        {
+            AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
+            Destroy(this.gameObject);
+        }
     }
 }

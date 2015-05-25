@@ -20,6 +20,7 @@ public class BossCircleCollider : MonoBehaviour {
 		Debug.Log ("HIT");
 		if (collider.gameObject.tag == "PlayerProjectile")
 		{
+            Destroy(collider.gameObject);
 			bossController.HitByPlayerProjectile();
 		}
 	}
@@ -29,6 +30,7 @@ public class BossCircleCollider : MonoBehaviour {
         Debug.Log("HIT");
         if (collider.gameObject.tag == "PlayerProjectile")
         {
+            Destroy(collider.gameObject);
             bossController.HitByPlayerProjectile();
         }
     }
