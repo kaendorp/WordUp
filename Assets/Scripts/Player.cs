@@ -537,28 +537,39 @@ public class Player : MonoBehaviour {
     {
         string customEventName = "PlayerDeath" + Application.loadedLevelName;
 
-        float bossBattleDuration = 0f;
-
-        if (GameControl.control.bossBattleStarted)
-            bossBattleDuration = (Time.timeSinceLevelLoad - GameControl.control.bossBattleStartTime);
-
-        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        if (!GameControl.control.bossBattleStarted)
         {
-            { "runningTime", Time.timeSinceLevelLoad },
-            { "damageTaken", GameControl.control.damageTaken },
-            { "projectile1Shot", GameControl.control.projectile1Shot },
-            { "projectile2Shot", GameControl.control.projectile2Shot },
-            { "projectile3Shot", GameControl.control.projectile3Shot },
-            { "kidsFound", GameControl.control.kidsFound },
-            { "lettersFound", GameControl.control.lettersFound },
-            { "enemyDefeated", GameControl.control.enemiesDefeated },
-            { "bossBattleStarted", GameControl.control.bossBattleStarted },
-            { "bossBattleHealth", GameControl.control.bossDamageTaken },
-            { "bossBattleDuration", bossBattleDuration },
-            { "respawns", GameControl.control.respawns },
-            { "timesPaused", GameControl.control.timesPaused },
-            { "pauseDuration", GameControl.control.pauseDuration },
-        });
+            UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+            {
+                { "runningTime", Time.timeSinceLevelLoad },
+                { "damageTaken", GameControl.control.damageTaken },
+                { "projectile1Shot", GameControl.control.projectile1Shot },
+                { "projectile2Shot", GameControl.control.projectile2Shot },
+                { "projectile3Shot", GameControl.control.projectile3Shot },
+                { "kidsFound", GameControl.control.kidsFound },
+                { "lettersFound", GameControl.control.lettersFound },
+                { "enemyDefeated", GameControl.control.enemiesDefeated },
+                { "respawns", GameControl.control.respawns },
+                { "timesPaused", GameControl.control.timesPaused },
+            });
+        }
+        else
+        {
+            float bossBattleDuration = (Time.timeSinceLevelLoad - GameControl.control.bossBattleStartTime);
+
+            UnityAnalytics.CustomEvent(customEventName + "Boss", new Dictionary<string, object>
+            {
+                { "runningTime", Time.timeSinceLevelLoad },
+                { "damageTaken", GameControl.control.damageTaken },
+                { "projectile1Shot", GameControl.control.projectile1Shot },
+                { "projectile2Shot", GameControl.control.projectile2Shot },
+                { "projectile3Shot", GameControl.control.projectile3Shot },
+                { "bossBattleHealth", GameControl.control.bossDamageTaken },
+                { "bossBattleDuration", bossBattleDuration },
+                { "timesPaused", GameControl.control.timesPaused },
+                { "pauseDuration", GameControl.control.pauseDuration },
+            });
+        }
     }
 }
 

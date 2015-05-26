@@ -860,13 +860,13 @@ public class BossController : MonoBehaviour
             { "projectile1Shot", GameControl.control.projectile1Shot },
             { "projectile2Shot", GameControl.control.projectile2Shot },
             { "projectile3Shot", GameControl.control.projectile3Shot },
-            { "kidsFound", GameControl.control.kidsFound },
-            { "lettersFound", GameControl.control.lettersFound },
-            { "enemyDefeated", GameControl.control.enemiesDefeated },
+            // { "kidsFound", GameControl.control.kidsFound },
+            // { "lettersFound", GameControl.control.lettersFound },
+            // { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "bossBattleDuration", bossBattleDuration },
-            { "respawns", GameControl.control.respawns },
-            { "timesPaused", GameControl.control.timesPaused },
-            { "pauseDuration", GameControl.control.pauseDuration },
+            // { "respawns", GameControl.control.respawns },
+            // { "timesPaused", GameControl.control.timesPaused },
+            // { "pauseDuration", GameControl.control.pauseDuration },
         });
     }
 }

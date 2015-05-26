@@ -123,7 +123,7 @@ public class TriggerBossBattle : MonoBehaviour
             { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "respawns", GameControl.control.respawns },
             { "timesPaused", GameControl.control.timesPaused },
-            { "pauseDuration", GameControl.control.pauseDuration },
+            // { "pauseDuration", GameControl.control.pauseDuration },
         });
     }
 }
