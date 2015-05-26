@@ -135,6 +135,8 @@ public class Player : MonoBehaviour {
         GameControl.control.bossBattleStarted = false;
         GameControl.control.bossDamageTaken = 0;
         GameControl.control.respawns = 0;
+        GameControl.control.timesPaused = 0;
+        GameControl.control.pauseDuration = 0;
 	}
 
 	private void HandleHealth()
@@ -450,7 +452,7 @@ public class Player : MonoBehaviour {
             {
                 boodschap.text = "";
                 letterPanel.gameObject.SetActive(false);
-
+                GameControl.control.timesPaused++;
 
                 HUD.GetComponent<PauseMenuScripte>().PauseActive = true;
             }
@@ -554,6 +556,8 @@ public class Player : MonoBehaviour {
             { "bossBattleHealth", GameControl.control.bossDamageTaken },
             { "bossBattleDuration", bossBattleDuration },
             { "respawns", GameControl.control.respawns },
+            { "timesPaused", GameControl.control.timesPaused },
+            { "pauseDuration", GameControl.control.pauseDuration },
         });
     }
 }

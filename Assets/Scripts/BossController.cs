@@ -865,6 +865,8 @@ public class BossController : MonoBehaviour
             { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "bossBattleDuration", bossBattleDuration },
             { "respawns", GameControl.control.respawns },
+            { "timesPaused", GameControl.control.timesPaused },
+            { "pauseDuration", GameControl.control.pauseDuration },
         });
     }
 }

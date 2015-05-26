@@ -122,6 +122,8 @@ public class TriggerBossBattle : MonoBehaviour
             { "lettersFound", GameControl.control.lettersFound },
             { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "respawns", GameControl.control.respawns },
+            { "timesPaused", GameControl.control.timesPaused },
+            { "pauseDuration", GameControl.control.pauseDuration },
         });
     }
 }

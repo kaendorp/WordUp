@@ -31,6 +31,8 @@ public class GameControl : MonoBehaviour {
     public bool bossBattleStarted;
     public int bossDamageTaken; // set in BossController.cs
     public int respawns; // set in GameMaster.cs
+    public int timesPaused;
+    public float pauseDuration; // set in PauseMenuScripte.cs
     // reset in BossController.cs
     public float bossBattleStartTime;
 
