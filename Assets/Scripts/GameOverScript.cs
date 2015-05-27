@@ -89,10 +89,11 @@ public class GameOverScript : MonoBehaviour
     void StartGameAnalytics()
     {
         string customEventName = "PlayerDeath" + Application.loadedLevelName;
+        AnalyticsResult results;
 
         if (!GameControl.control.bossBattleStarted)
         {
-            UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+            results = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
             {
                 { "runningTime", Time.timeSinceLevelLoad },
                 { "projectile1Shot", GameControl.control.projectile1Shot },
@@ -109,8 +110,8 @@ public class GameOverScript : MonoBehaviour
         else
         {
             float bossBattleDuration = (Time.timeSinceLevelLoad - GameControl.control.bossBattleStartTime);
-
-            UnityAnalytics.CustomEvent(customEventName + "Boss", new Dictionary<string, object>
+            customEventName += "Boss";
+            results = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
             {
                 { "runningTime", Time.timeSinceLevelLoad },
                 { "projectile1Shot", GameControl.control.projectile1Shot },
@@ -124,5 +125,10 @@ public class GameOverScript : MonoBehaviour
                 { "playerRestart", playerRestart },
             });
         }
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
     }
 }

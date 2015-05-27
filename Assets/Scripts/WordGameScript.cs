@@ -556,10 +556,15 @@ public class WordGameScript : MonoBehaviour {
     {
         float timeSpent = (Time.realtimeSinceStartup - analyticsTimeStart);
 
-        UnityAnalytics.CustomEvent("WordGame", new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent("WordGame", new Dictionary<string, object>
         {
             { "selectedLevel", Application.loadedLevelName },
             { "timeSpentSolvingWordGame", timeSpent},
         });
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics WordGame: " + results.ToString());
+        else
+            Debug.Log("Analytics WordGame: Done");
     }
 }

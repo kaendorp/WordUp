@@ -100,12 +100,17 @@ public class PauseMenuScripte : MonoBehaviour {
         float timeSpent = (Time.realtimeSinceStartup - pauseStartTime);
         GameControl.control.pauseDuration += timeSpent;
 
-        UnityAnalytics.CustomEvent("pauseMenu", new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent("pauseMenu", new Dictionary<string, object>
         {
             { "selectedLevel", Application.loadedLevelName },
             { "runningTime", Time.timeSinceLevelLoad },
             { "timeSpentInPauseMenu", timeSpent },
             { "continueAfterPauseMenu", pauseContinue },
         });
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics pauseMenu: " + results.ToString());
+        else
+            Debug.Log("Analytics pauseMenu: Done");
     }
 }

@@ -34,7 +34,7 @@ public class Sleutel : MonoBehaviour {
     {
         string customEventName = "Checkpoint" + this.gameObject.name.Replace(" ", "") + Application.loadedLevelName;
 
-        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
         {
             { "runningTime", Time.timeSinceLevelLoad },
             { "damageTaken", GameControl.control.damageTaken },
@@ -49,6 +49,9 @@ public class Sleutel : MonoBehaviour {
             { "pauseDuration", GameControl.control.pauseDuration },
         });
 
-        Debug.Log(customEventName + ": Done");
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
     }
 }

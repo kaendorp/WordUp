@@ -623,12 +623,17 @@ public class BerichtenMenuController : MonoBehaviour
         int messageKey = messagePrefab.GetComponent<BerichtController>().messageKey;
         bool isWritten = messagePrefab.GetComponent<BerichtController>().isRewritten;
 
-        UnityAnalytics.CustomEvent("berichtMaker", new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent("berichtMaker", new Dictionary<string, object>
         {
             { "selectedLevel", Application.loadedLevelName },
             { "berichtID", messageKey },
             { "timeSpentInBerichtMenu", timeSpent},
             { "messagePlaced", isWritten },
         });
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics berichtMaker: " + results.ToString());
+        else
+            Debug.Log("Analytics berichtMaker: Done");
     }
 }

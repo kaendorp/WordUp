@@ -36,7 +36,7 @@ public class CheckPoint : MonoBehaviour {
     {
         string customEventName = "Checkpoint" + checkpointNumber + Application.loadedLevelName;
 
-        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
         {
             { "runningTime", Time.timeSinceLevelLoad },
             { "damageTaken", GameControl.control.damageTaken },
@@ -51,6 +51,10 @@ public class CheckPoint : MonoBehaviour {
             { "pauseDuration", GameControl.control.pauseDuration },
         });
         analyticsDone = true;
-        Debug.Log(customEventName + ": Done");
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
     }
 }

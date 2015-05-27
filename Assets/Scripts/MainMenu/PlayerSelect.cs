@@ -99,11 +99,16 @@ public class PlayerSelect : MonoBehaviour {
      */
     void StartGameAnalytics()
     {
-        UnityAnalytics.CustomEvent("startFromMainMenu", new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent("startFromMainMenu", new Dictionary<string, object>
         {
             { "selectedLevel", GameControl.control.loadLevel },
             { "selectedPlayer", GameControl.control.selectPlayer },
             { "timeSpentInMainMenu", Time.timeSinceLevelLoad },
         });
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics startFromMainMenu: " + results.ToString());
+        else
+            Debug.Log("Analytics startFromMainMenu: Done");
     }
 }

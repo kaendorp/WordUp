@@ -111,7 +111,7 @@ public class TriggerBossBattle : MonoBehaviour
     {
         string customEventName = "BossBattleStart" + Application.loadedLevelName;
 
-        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        AnalyticsResult results = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
         {
             { "runningTime", Time.timeSinceLevelLoad },
             { "damageTaken", GameControl.control.damageTaken },
@@ -125,5 +125,9 @@ public class TriggerBossBattle : MonoBehaviour
             { "timesPaused", GameControl.control.timesPaused },
             // { "pauseDuration", GameControl.control.pauseDuration },
         });
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
     }
 }
