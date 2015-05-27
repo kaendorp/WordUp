@@ -241,6 +241,8 @@ public class BossController : MonoBehaviour
      */
     public void BeginBossBattle()
     {
+        GameControl.control.bossBattleStartTime = Time.timeSinceLevelLoad; // Analytics
+        GameControl.control.bossBattleStarted = true; // Analytics
         isActive = true;
         currentHealth = startHealth;
         BossBar.SetActive(true);
@@ -655,6 +657,8 @@ public class BossController : MonoBehaviour
     {
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", true);
+
+        GameControl.control.bossDamageTaken++; // Analytics
 
         int healthBefore = currentHealth;
 		currentHealth--;

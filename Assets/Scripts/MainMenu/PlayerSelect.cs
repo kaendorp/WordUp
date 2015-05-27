@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class PlayerSelect : MonoBehaviour {
 
@@ -52,6 +54,9 @@ public class PlayerSelect : MonoBehaviour {
             GameControl.control.selectPlayer = "Fynn"; // Zet speler op Fynn 
             _audioSource.Play();
 
+            // Send data to Analytics
+            StartGameAnalytics();
+
             // LoadLevel
             GameControl.control.isMainMenu = false;
             Application.LoadLevel(GameControl.control.loadLevel); // Load Intro            
@@ -66,6 +71,9 @@ public class PlayerSelect : MonoBehaviour {
         {
             GameControl.control.selectPlayer = "Fiona"; // Zet speler op Fiona           
             _audioSource.Play();
+
+            // Send data to Analytics
+            StartGameAnalytics();
 
             // LoadLevel
             GameControl.control.isMainMenu = false;
@@ -84,5 +92,23 @@ public class PlayerSelect : MonoBehaviour {
             this.gameObject.SetActive(false);
             mainMenu.GetComponent<MainMenu>()._mainMenuUit = false;            
         }  
+    }
+
+    /**
+     * Sends the selected player and level to analytics
+     */
+    void StartGameAnalytics()
+    {
+        AnalyticsResult results = UnityAnalytics.CustomEvent("startFromMainMenu", new Dictionary<string, object>
+        {
+            { "selectedLevel", GameControl.control.loadLevel },
+            { "selectedPlayer", GameControl.control.selectPlayer },
+            { "timeSpentInMainMenu", Time.timeSinceLevelLoad },
+        });
+
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics startFromMainMenu: " + results.ToString());
+        else
+            Debug.Log("Analytics startFromMainMenu: Done");
     }
 }

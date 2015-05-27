@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class TriggerBossBattle : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class TriggerBossBattle : MonoBehaviour
 	private bool isPlayed = false;
 	private AudioSource _audioSource;
 
+    // Analytics
+    private bool analyticsStarted = false;
+
 	private void Start()
 	{
 		_audioSource = worldMusic.GetComponent<AudioSource> ();
@@ -28,6 +33,12 @@ public class TriggerBossBattle : MonoBehaviour
     {
         if (col.tag == "Player")
         {
+            if (!analyticsStarted)
+            {
+                analyticsStarted = true;
+                StartGameAnalytics();
+            }
+
             bossController.isActive = true;
             GameObject player = col.gameObject;
 
@@ -101,4 +112,42 @@ public class TriggerBossBattle : MonoBehaviour
 		}
 		StopCoroutine("ChangeMusic");
 	}
+
+    /**
+     * Sends the selected player and level to analytics
+     */
+    void StartGameAnalytics()
+    {
+        string customEventName = "BossBattleStart" + Application.loadedLevelName;
+
+        AnalyticsResult results = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "runningTime", Time.timeSinceLevelLoad },
+            { "damageTaken", GameControl.control.damageTaken },
+            { "kidsFound", GameControl.control.kidsFound },
+            { "enemyDefeated", GameControl.control.enemiesDefeated },
+            { "respawns", GameControl.control.respawns },
+            { "timesPaused", GameControl.control.timesPaused },
+            { "pauseDuration", GameControl.control.pauseDuration },
+        });
+        if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
+
+        // Shots
+        customEventName += "Shots";
+
+        AnalyticsResult results2 = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "projectile1Shot", GameControl.control.projectile1Shot },
+            { "projectile2Shot", GameControl.control.projectile2Shot },
+            { "projectile3Shot", GameControl.control.projectile3Shot },
+        });
+
+        if (results2 != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
+    }
 }

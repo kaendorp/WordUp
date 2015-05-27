@@ -125,6 +125,16 @@ public class Player : MonoBehaviour {
 
         //find gamemaster
         gameMaster = FindObjectOfType<GameMaster>();
+
+        // Analytics
+        GameControl.control.damageTaken = 0; 
+        GameControl.control.lettersFound = "";
+        GameControl.control.kidsFound = 0;
+        GameControl.control.bossBattleStarted = false;
+        GameControl.control.bossDamageTaken = 0;
+        GameControl.control.respawns = 0;
+        GameControl.control.timesPaused = 0;
+        GameControl.control.pauseDuration = 0;
 	}
 
 	private void HandleHealth()
@@ -185,6 +195,7 @@ public class Player : MonoBehaviour {
                 Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
                 StartCoroutine(coolDownDMG());
                 CurrentHealth -= 1;
+                GameControl.control.damageTaken++; // Used for analytics
                 Destroy(spawnedImpactEffect, 1);
             }
             else if (currentHealth == 0)
@@ -226,7 +237,9 @@ public class Player : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (_audioSource, positie);
 
                 Destroy(collision.gameObject);
-                StartCoroutine(showLetters()); 
+                StartCoroutine(showLetters());
+
+                GameControl.control.lettersFound += collision.gameObject.name;
 
                 // Aantal letters is 7
                 switch (maxLetters)
@@ -437,7 +450,7 @@ public class Player : MonoBehaviour {
             {
                 boodschap.text = "";
                 letterPanel.gameObject.SetActive(false);
-
+                GameControl.control.timesPaused++;
 
                 HUD.GetComponent<PauseMenuScripte>().PauseActive = true;
             }
@@ -460,6 +473,7 @@ public class Player : MonoBehaviour {
             if (countKids < maxKids)
             {
                 CountKids += 1;
+                GameControl.control.kidsFound++;
             }
             kindPlus = false;
         }

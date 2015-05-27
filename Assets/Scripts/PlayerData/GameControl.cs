@@ -20,6 +20,22 @@ public class GameControl : MonoBehaviour {
     // Highscore
     public int highScore = 0;
 
+    // ANALYTICS
+    // reset in PlatformerCharacter2D.cs
+    public int projectile1Shot, projectile2Shot, projectile3Shot;
+    public int enemiesDefeated;
+    // reset in Player.cs
+    public int damageTaken;
+    public int kidsFound;
+    public string lettersFound;
+    public bool bossBattleStarted;
+    public int bossDamageTaken; // set in BossController.cs
+    public int respawns; // set in GameMaster.cs
+    public int timesPaused;
+    public float pauseDuration; // set in PauseMenuScripte.cs
+    // reset in BossController.cs
+    public float bossBattleStartTime;
+
     // Achievements level
     // Tutorial = 0 || Level 1 = 1 || Level 2 = 2 || Level 3 = 3
     public bool[] unlockedLevels = new bool[4];

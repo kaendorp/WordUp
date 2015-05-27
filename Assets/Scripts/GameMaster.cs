@@ -33,6 +33,7 @@ public class GameMaster : MonoBehaviour
         //player.gameObject.active = false;
         Instantiate(RespawnEffect, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
         player.transform.position = currentCheckPoint.transform.position;
+        GameControl.control.respawns++;
         //player.gameObject.active = true;
     }
 }

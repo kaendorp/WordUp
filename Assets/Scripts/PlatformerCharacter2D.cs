@@ -81,6 +81,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 	{
 		//audio
 		_playerSource = gameObject.GetComponent<AudioSource> ();
+        
+        // Analytics
+        GameControl.control.projectile1Shot = 0;
+        GameControl.control.projectile2Shot = 0;
+        GameControl.control.projectile3Shot = 0;
+        GameControl.control.enemiesDefeated = 0;
 	}
 
 	private void Update()
@@ -194,6 +200,8 @@ public class PlatformerCharacter2D : MonoBehaviour
             _playerSource.volume = 0.5f;
             _playerSource.loop = false;
             _playerSource.Play();
+
+            AnalyticsCountShotPlusOne();
 
             Instantiate(CurrentProjectile, firePoint.position, firePoint.rotation);
             anim.SetBool("Shoot", true);
@@ -480,4 +488,23 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 	}
+
+    /**
+     * Counts amount of shots fired per projectiletype
+     */
+    public void AnalyticsCountShotPlusOne()
+    {
+        if (CurrentProjectile == Projectile1)
+        {
+            GameControl.control.projectile1Shot++;
+        }
+        else if (CurrentProjectile = Projectile2)
+        {
+            GameControl.control.projectile2Shot++;
+        }
+        else if (CurrentProjectile = Projectile3)
+        {
+            GameControl.control.projectile3Shot++;
+        }
+    }
 }
