@@ -179,7 +179,7 @@ public class BerichtenMenuController : MonoBehaviour
      */
     void Update()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        if (berichtMakerActive && CrossPlatformInputManager.GetButtonDown("Cancel"))
         {
             ExitMessageMenu();
         }
