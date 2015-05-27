@@ -101,6 +101,7 @@ public class GameOverScript : MonoBehaviour
                 { "enemyDefeated", GameControl.control.enemiesDefeated },
                 { "respawns", GameControl.control.respawns },
                 { "timesPaused", GameControl.control.timesPaused },
+                { "pauseDuration", GameControl.control.pauseDuration },
                 { "playerRestart", playerRestart },
             });
         }
@@ -112,6 +113,7 @@ public class GameOverScript : MonoBehaviour
             {
                 { "runningTime", Time.timeSinceLevelLoad },
                 { "kidsFound", GameControl.control.kidsFound },
+                { "enemyDefeated", GameControl.control.enemiesDefeated },
                 { "bossBattleHealth", GameControl.control.bossDamageTaken },
                 { "bossBattleDuration", bossBattleDuration },
                 { "timesPaused", GameControl.control.timesPaused },
