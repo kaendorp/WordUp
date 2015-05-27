@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class WordGameScript : MonoBehaviour {
 
@@ -36,6 +38,10 @@ public class WordGameScript : MonoBehaviour {
     private Rect letter7Rect = new Rect(15, 15, 50, 50);	
 
     public int wordGameLevel;
+
+    // ANALYTICS
+    private float analyticsTimeStart = 0f;
+    private bool analyticsTimeStarted = false;
 
 	// Use this for initialization
 	void Start ()
@@ -153,6 +159,12 @@ public class WordGameScript : MonoBehaviour {
 		
 		if (Active == true) 
 		{
+            if (!analyticsTimeStarted)
+            {
+                analyticsTimeStart = Time.realtimeSinceStartup;
+                analyticsTimeStarted = true;
+            }
+
             if (aantalLetters == 3)
             {
                 letter1Rect.x = letter1Rect.x - 55;
@@ -537,4 +549,17 @@ public class WordGameScript : MonoBehaviour {
 			}
 		}
 	}
+    /**
+     * Sends the selected player and level to analytics
+     */
+    void StartGameAnalytics()
+    {
+        float timeSpent = (Time.realtimeSinceStartup - analyticsTimeStart);
+
+        UnityAnalytics.CustomEvent("WordGame", new Dictionary<string, object>
+        {
+            { "selectedLevel", Application.loadedLevelName },
+            { "timeSpentSolvingWordGame", timeSpent},
+        });
+    }
 }
