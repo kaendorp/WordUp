@@ -19,6 +19,9 @@ public class TriggerBossBattle : MonoBehaviour
 	private bool isPlayed = false;
 	private AudioSource _audioSource;
 
+    // Analytics
+    private bool analyticsStarted = false;
+
 	private void Start()
 	{
 		_audioSource = worldMusic.GetComponent<AudioSource> ();
@@ -30,6 +33,12 @@ public class TriggerBossBattle : MonoBehaviour
     {
         if (col.tag == "Player")
         {
+            if (!analyticsStarted)
+            {
+                analyticsStarted = true;
+                StartGameAnalytics();
+            }
+
             bossController.isActive = true;
             GameObject player = col.gameObject;
 
