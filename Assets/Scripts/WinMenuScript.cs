@@ -128,7 +128,6 @@ public class WinMenuScript : MonoBehaviour
             { "bossBattleDuration", bossBattleDuration },
             { "winMenuDuration", winMenuDuration },
             { "continueAfterWinMenu", continueAfterWinMenu },
-            { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "respawns", GameControl.control.respawns },
             { "timesPaused", GameControl.control.timesPaused },
             { "pauseDuration", GameControl.control.pauseDuration },
