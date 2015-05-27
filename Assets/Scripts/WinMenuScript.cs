@@ -24,7 +24,7 @@ public class WinMenuScript : MonoBehaviour
     // Analytics
     private bool winMenuStarted = false;
     private float winMenuStartTime;
-    private bool winContinue;
+    private bool continueAfterWinMenu;
 
 	// Use this for initialization
 	void Start () 
@@ -77,7 +77,7 @@ public class WinMenuScript : MonoBehaviour
                     levelText
                     ))
                 {
-                    winContinue = true; // Analytics
+                    continueAfterWinMenu = true; // Analytics
                     StartGameAnalytics();
 
                     WinActive = false;
@@ -100,7 +100,7 @@ public class WinMenuScript : MonoBehaviour
                 "Menu"
                 ))
             {
-                winContinue = false; // Analytics
+                continueAfterWinMenu = false; // Analytics
                 StartGameAnalytics();
 
                 WinActive = false;
@@ -127,7 +127,7 @@ public class WinMenuScript : MonoBehaviour
             { "kidsFound", GameControl.control.kidsFound },
             { "bossBattleDuration", bossBattleDuration },
             { "winMenuDuration", winMenuDuration },
-            { "winContinue", winContinue },
+            { "continueAfterWinMenu", continueAfterWinMenu },
             { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "respawns", GameControl.control.respawns },
             { "timesPaused", GameControl.control.timesPaused },

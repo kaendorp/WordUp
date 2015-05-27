@@ -125,7 +125,6 @@ public class TriggerBossBattle : MonoBehaviour
             { "runningTime", Time.timeSinceLevelLoad },
             { "damageTaken", GameControl.control.damageTaken },
             { "kidsFound", GameControl.control.kidsFound },
-            { "lettersFound", GameControl.control.lettersFound },
             { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "respawns", GameControl.control.respawns },
             { "timesPaused", GameControl.control.timesPaused },

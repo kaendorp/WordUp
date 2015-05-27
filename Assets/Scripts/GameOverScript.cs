@@ -16,7 +16,7 @@ public class GameOverScript : MonoBehaviour
     public string herstartlevel;
 
     // ANALYTICS
-    private bool playerRestart;
+    private bool restartAfterGameOver;
 
 	void Start()
 	{
@@ -56,7 +56,7 @@ public class GameOverScript : MonoBehaviour
 				"Opnieuw?"
 				)) 
 			{
-                playerRestart = true;
+                restartAfterGameOver = true;
                 StartGameAnalytics();
 
 				GameOverActive = false;
@@ -72,7 +72,7 @@ public class GameOverScript : MonoBehaviour
 				"Menu"
 				)) 
 			{
-                playerRestart = true;
+                restartAfterGameOver = true;
                 StartGameAnalytics();
 
 				GameOverActive = false;
@@ -102,7 +102,7 @@ public class GameOverScript : MonoBehaviour
                 { "respawns", GameControl.control.respawns },
                 { "timesPaused", GameControl.control.timesPaused },
                 { "pauseDuration", GameControl.control.pauseDuration },
-                { "playerRestart", playerRestart },
+                { "restartAfterGameOver", restartAfterGameOver },
             });
         }
         else
@@ -114,11 +114,12 @@ public class GameOverScript : MonoBehaviour
                 { "runningTime", Time.timeSinceLevelLoad },
                 { "kidsFound", GameControl.control.kidsFound },
                 { "enemyDefeated", GameControl.control.enemiesDefeated },
+                { "respawns", GameControl.control.respawns },
                 { "bossBattleHealth", GameControl.control.bossDamageTaken },
                 { "bossBattleDuration", bossBattleDuration },
                 { "timesPaused", GameControl.control.timesPaused },
                 { "pauseDuration", GameControl.control.pauseDuration },
-                { "playerRestart", playerRestart },
+                { "restartAfterGameOver", restartAfterGameOver },
             });
         }
 
