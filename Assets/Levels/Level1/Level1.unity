@@ -631,6 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
+  checkpointNumber: 0
 --- !u!4 &64015588
 Transform:
   m_ObjectHideFlags: 0
@@ -4503,6 +4504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
+  checkpointNumber: 1
 --- !u!61 &348392227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12773,6 +12775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
+  checkpointNumber: 4
 --- !u!95 &996973987
 Animator:
   serializedVersion: 3
@@ -17628,6 +17631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
+  checkpointNumber: 3
 --- !u!95 &1393872719
 Animator:
   serializedVersion: 3
@@ -17991,6 +17995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
+  checkpointNumber: 2
 --- !u!95 &1444655476
 Animator:
   serializedVersion: 3

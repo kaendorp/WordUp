@@ -7244,6 +7244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 1943576505}
+  checkpointNumber: 1
 --- !u!4 &666537397
 Transform:
   m_ObjectHideFlags: 0
@@ -7645,6 +7646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 1943576505}
+  checkpointNumber: 2
 --- !u!212 &716469709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13591,6 +13593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 1943576505}
+  checkpointNumber: 0
 --- !u!212 &1207437733
 SpriteRenderer:
   m_ObjectHideFlags: 0
