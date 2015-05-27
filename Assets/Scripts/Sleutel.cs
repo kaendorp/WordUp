@@ -38,18 +38,30 @@ public class Sleutel : MonoBehaviour {
         {
             { "runningTime", Time.timeSinceLevelLoad },
             { "damageTaken", GameControl.control.damageTaken },
-            { "projectile1Shot", GameControl.control.projectile1Shot },
-            { "projectile2Shot", GameControl.control.projectile2Shot },
-            { "projectile3Shot", GameControl.control.projectile3Shot },
             { "kidsFound", GameControl.control.kidsFound },
             { "lettersFound", GameControl.control.lettersFound },
             { "enemyDefeated", GameControl.control.enemiesDefeated },
             { "respawns", GameControl.control.respawns },
-            // { "timesPaused", GameControl.control.timesPaused },
+            { "timesPaused", GameControl.control.timesPaused },
             { "pauseDuration", GameControl.control.pauseDuration },
         });
 
         if (results != AnalyticsResult.Ok)
+            Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
+        else
+            Debug.Log("Analytics " + customEventName + ": Done");
+
+        // Shots
+        customEventName += "Shots";
+
+        AnalyticsResult results2 = UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "projectile1Shot", GameControl.control.projectile1Shot },
+            { "projectile2Shot", GameControl.control.projectile2Shot },
+            { "projectile3Shot", GameControl.control.projectile3Shot },
+        });
+
+        if (results2 != AnalyticsResult.Ok)
             Debug.LogError("Analytics " + customEventName + ": " + results.ToString());
         else
             Debug.Log("Analytics " + customEventName + ": Done");
