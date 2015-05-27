@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Cloud.Analytics;
 
 public class WinMenuScript : MonoBehaviour 
 {
@@ -18,6 +20,11 @@ public class WinMenuScript : MonoBehaviour
     public bool laatstelevel;
 
     public int levelEnBoss;
+
+    // Analytics
+    private bool winMenuStarted = false;
+    private float winMenuStartTime;
+    private bool winContinue;
 
 	// Use this for initialization
 	void Start () 
@@ -37,6 +44,12 @@ public class WinMenuScript : MonoBehaviour
         // Gewonnen menu
         if (WinActive == true)
         {
+            if (!winMenuStarted)
+            {
+                winMenuStartTime = Time.realtimeSinceStartup;
+                winMenuStarted = true;
+            }
+
             GameControl.control.highScore += 100;
 
             // Stuur bericht naar Gamecontrol voor achievements
@@ -64,6 +77,8 @@ public class WinMenuScript : MonoBehaviour
                     levelText
                     ))
                 {
+                    winContinue = true; // Analytics
+
                     WinActive = false;
                     Time.timeScale = 1;
                     finishMenu.gameObject.SetActive(false);
@@ -84,11 +99,36 @@ public class WinMenuScript : MonoBehaviour
                 "Menu"
                 ))
             {
+                winContinue = false; // Analytics
+
                 WinActive = false;
                 Time.timeScale = 1;
                 finishMenu.gameObject.SetActive(false);
                 Application.LoadLevel("MainMenu"); // Load Main Menu
             }            
         }
+    }
+
+    /**
+     * Sends the selected player and level to analytics
+     */
+    void StartGameAnalytics()
+    {
+        string customEventName = "BossBattleWon" + Application.loadedLevelName;
+        float winMenuDuration = (Time.realtimeSinceStartup - winMenuStartTime);
+        float bossBattleDuration = (Time.timeSinceLevelLoad - GameControl.control.bossBattleStartTime);
+
+        UnityAnalytics.CustomEvent(customEventName, new Dictionary<string, object>
+        {
+            { "runningTime", Time.timeSinceLevelLoad },
+            { "damageTaken", GameControl.control.damageTaken },
+            { "kidsFound", GameControl.control.kidsFound },
+            { "projectile1Shot", GameControl.control.projectile1Shot },
+            { "projectile2Shot", GameControl.control.projectile2Shot },
+            { "projectile3Shot", GameControl.control.projectile3Shot },
+            { "bossBattleDuration", bossBattleDuration },
+            { "winMenuDuration", winMenuDuration },
+            { "winContinue", winContinue },
+        });
     }
 }
