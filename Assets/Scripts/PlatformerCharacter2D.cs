@@ -34,7 +34,8 @@ public class PlatformerCharacter2D : MonoBehaviour
     public bool climbing = false;
 
     [Header("SHIELD")]
-    public bool canUseShield = true;
+    public bool canUseShield;
+    public bool ShieldCoolingDown = false;
     public GameObject shield;
 
     [Header("KNOCKBACK")]
@@ -118,6 +119,16 @@ public class PlatformerCharacter2D : MonoBehaviour
           canUseShield = false;
         }
 
+        if (ShieldCoolingDown == true)
+        {
+            canUseShield = false;
+            StartCoroutine(WaitForCooldown());
+        }
+        else if (ShieldCoolingDown == false)
+        {
+            canUseShield = true;
+        }
+
         //Handle climbing
         Climb(HorizontalMovement);
         KnockBack();
@@ -130,6 +141,12 @@ public class PlatformerCharacter2D : MonoBehaviour
         
         //Give player better balance
         GetComponent<Rigidbody2D>().velocity = new Vector2(HorizontalMovement * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+    }
+
+    IEnumerator WaitForCooldown()
+    {
+        yield return new WaitForSeconds(1);
+        ShieldCoolingDown = false;
     }
 
     public void Move(float HorizontalMovement, bool crouch, bool jump)
@@ -166,19 +183,23 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         if (!climbing)
         {
-            if (CrossPlatformInputManager.GetButton("Shield"))
+            if (canUseShield)
             {
-                if (canUseShield)
+                if (CrossPlatformInputManager.GetButton("Shield"))
                 {
-                    anim.SetBool("Crouch", true);
-                    shield.SetActive(true);
-                    jumpForce = 100f;
-                    maxSpeed = 1f;
+                    canUseShield = false;    
+                        anim.SetBool("Crouch", true);
+                        shield.SetActive(true);
+                        jumpForce = 100f;
+                        maxSpeed = 1f;
+                        canUseShield = false;
                 }
-                else
+                if (!CrossPlatformInputManager.GetButton("Shield"))
                 {
                     anim.SetBool("Crouch", false);
                     shield.SetActive(false);
+                    jumpForce = 450f;
+                    maxSpeed = 3f;
                 }
             }
             else
@@ -357,13 +378,10 @@ public class PlatformerCharacter2D : MonoBehaviour
             anim.SetBool("ClimbUp", true);
             canUseShield = false;
         }
-        else
-        {
-            canUseShield = true; 
-        }
     }
 
 	//the player triggers lots of things
+
     void OnTriggerEnter2D(Collider2D col)
     {
 		//de ladder
@@ -387,12 +405,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 		//knockback on collision met enemy
         if (col.gameObject.tag == "Enemy")
         {
-            knockbackCount = knockbackLength;
+            if (shield.activeSelf == false)
+            {
+                knockbackCount = knockbackLength;
 
-            if (col.transform.position.x < transform.position.x)
-                knockFromRight = true;
-            else
-                knockFromRight = false;
+                if (col.transform.position.x < transform.position.x)
+                    knockFromRight = true;
+                else
+                    knockFromRight = false;
+            }
         }
     }
 
