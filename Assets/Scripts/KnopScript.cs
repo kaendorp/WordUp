@@ -66,10 +66,10 @@ public class KnopScript : MonoBehaviour {
 		cameraKnop.target = cameraFocus.transform;
 		yield return new WaitForSeconds(speed);
 
-		if(player2)
+		if(player)
 			cameraKnop.target = player.transform;
 		
-		else if(player)
+		else if(player2)
 			cameraKnop.target = player2.transform;
 	}
 }
