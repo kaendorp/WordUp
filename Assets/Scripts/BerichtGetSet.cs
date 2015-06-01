@@ -10,7 +10,7 @@ public class BerichtGetSet : MonoBehaviour
      */
     public IEnumerator submitMessage(int retrievalNr, string user, string message)
     {
-        string url = ("http://wordupgame.tk/insert_message.php?RetrievalNr=" + retrievalNr + "&User=" + WWW.EscapeURL(user) + "&Message=" + WWW.EscapeURL(message));
+        string url = ("https://wordup.devcode.nl/insert_message.php?RetrievalNr=" + retrievalNr + "&User=" + WWW.EscapeURL(user) + "&Message=" + WWW.EscapeURL(message));
         Debug.Log(url);
         WWW webRequest = new WWW(url);
         yield return webRequest;
@@ -21,7 +21,7 @@ public class BerichtGetSet : MonoBehaviour
     public IEnumerator RetrieveMessagesFromServer(int retrievalNr, Action<string> callback)
     {
         string result = null;
-        WWW webRequest = new WWW("http://wordupgame.tk/get_message.php?RetrievalNr=" + retrievalNr);
+        WWW webRequest = new WWW("https://wordup.devcode.nl/get_message.php?RetrievalNr=" + retrievalNr);
 
         while (!webRequest.isDone && webRequest.progress < 0.1f) // wait for download to complete
         {
