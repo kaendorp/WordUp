@@ -14872,6 +14872,14 @@ Prefab:
       propertyPath: lettersHUD.Array.data[6]
       value: 
       objectReference: {fileID: 2127414811}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: Projectile2
+      value: 
+      objectReference: {fileID: 110568, guid: aa2d0d91a4e6f8e4dbada10a36988050, type: 2}
+    - target: {fileID: 11451004, guid: e587890a6a537a847aa77bce79823370, type: 2}
+      propertyPath: Projectile3
+      value: 
+      objectReference: {fileID: 166636, guid: 93477810339f0ac4080a1b5884d7faac, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e587890a6a537a847aa77bce79823370, type: 2}
   m_IsPrefabParent: 0
@@ -29299,6 +29307,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -.0879999995
       objectReference: {fileID: 0}
+    - target: {fileID: 5805194, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa75295594b8094e86c2a1fc3758d35, type: 2}
   m_IsPrefabParent: 0
@@ -35951,7 +35963,7 @@ Prefab:
     - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
       propertyPath: cameraFocus
       value: 
-      objectReference: {fileID: 1941990267}
+      objectReference: {fileID: 615593767}
     - target: {fileID: 11413654, guid: 14d4c32c085d08743b2764e6cd343fa3, type: 2}
       propertyPath: speed
       value: 2
