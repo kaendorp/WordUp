@@ -188,25 +188,6 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Enemy") // Near enemy? Health goes down every 2 seconds
-		{
-            if (!onCoolDown && currentHealth > 0)
-            {
-                Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
-                StartCoroutine(coolDownDMG());
-                CurrentHealth -= 1;
-                GameControl.control.damageTaken++; // Used for analytics
-                Destroy(spawnedImpactEffect, 1);
-            }
-            else if (currentHealth == 0)
-            {
-                Respawn();
-            }
-
-            if (LayerMask.LayerToName(collision.gameObject.layer) == "EnemyProjectile")
-                Destroy(collision.gameObject);
-		}        
-		
         if (collision.gameObject.tag == "Water")
         {
             if (currentHealth > 0)
@@ -223,7 +204,11 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collision)
-	{        
+	{
+        if (collision.gameObject.tag == "Enemy") // Near enemy? Health goes down every 2 seconds
+        {
+            TakeDamage();
+        }
 		if (collision.gameObject.tag == "Letter") 
 		{
 			if (countLetters < maxLetters)
@@ -395,14 +380,8 @@ public class Player : MonoBehaviour {
             if (currentHealth > 0)
             {
                 rb.AddForce(Vector3.up * 300);
-                
-                if (!onCoolDown)
-                {
-                    Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
-                    StartCoroutine(coolDownDMG());
-                    CurrentHealth -= 1;
-                    Destroy(spawnedImpactEffect, 1);
-                }             
+
+                TakeDamage();          
             }
             else
             {
@@ -412,15 +391,7 @@ public class Player : MonoBehaviour {
 
         if (collision.gameObject.tag == "ijstand") // Near enemy? Health goes down every 2 seconds
         {
-            if (!onCoolDown && currentHealth > 0)
-            {
-                StartCoroutine(coolDownDMG());
-                CurrentHealth -= 1;
-            }
-            else if (currentHealth == 0)
-            {
-                Respawn();
-            }
+            TakeDamage();
         }      
 	}
 
@@ -478,6 +449,20 @@ public class Player : MonoBehaviour {
             kindPlus = false;
         }
 	}
+
+    public void TakeDamage()
+    {
+        if (!onCoolDown)
+        {
+            Object spawnedImpactEffect = Instantiate(impactEffect, transform.position, transform.rotation);
+            StartCoroutine(coolDownDMG());
+            CurrentHealth -= 1;
+            GameControl.control.damageTaken++; // Used for analytics
+            Destroy(spawnedImpactEffect, 1);
+            if (currentHealth <= 0)
+                Respawn();
+        }
+    }
 
     IEnumerator PlusOneActive()
     {
