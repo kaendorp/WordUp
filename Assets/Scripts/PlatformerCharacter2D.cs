@@ -187,7 +187,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             {
                 if (CrossPlatformInputManager.GetButton("Shield"))
                 {
-                    canUseShield = false;    
+                        canUseShield = false;    
                         anim.SetBool("Crouch", true);
                         shield.SetActive(true);
                         jumpForce = 100f;

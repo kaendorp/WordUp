@@ -15,7 +15,7 @@ MonoBehaviour:
   appIds:
   - 821395271288211
   appLabels:
-  - App Name
+  - WordUpTest
   cookie: 1
   logging: 1
   status: 1

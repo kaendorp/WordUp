@@ -17,21 +17,46 @@ public class FBHolder : MonoBehaviour {
     public GameObject ScoreEntryPanel;
     public GameObject ScoreScrollList;
 
+    bool doubleCheck;
+
+    public GameObject playerSelect;
+    public GameObject levelSelect;
+    public GameObject achievementView;
+
+    public GameObject FbContainer;
+
     void Awake()
     {
         FB.Init(SetInit, OnHideUnity);        
-    }    
-    
+    }
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        if (FB.IsLoggedIn && doubleCheck == false)
+        {
+            MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+            mainMenu._mainMenuUit = false;  
+        }
+        if (playerSelect.activeInHierarchy || levelSelect.activeInHierarchy || achievementView.activeInHierarchy || FbContainer.activeInHierarchy)
+        {
+            MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+            mainMenu._mainMenuUit = true;
+            doubleCheck = true;
+        }
+        if (!playerSelect.activeInHierarchy || !levelSelect.activeInHierarchy || !achievementView.activeInHierarchy || !FbContainer.activeInHierarchy)
+        {
+            doubleCheck = false;
+        }
+    }
+
     private void SetInit()
     {       
-        if (FB.IsLoggedIn)
-        {            
-            HandleFBMenus(true);
-        }
-        else
-        {
-            HandleFBMenus(false);
-        }
+        HandleFBMenus(false);
     }
 
     private void OnHideUnity(bool isGameShown)
@@ -48,13 +73,15 @@ public class FBHolder : MonoBehaviour {
 
     public void FBLogin()
     {
-        FB.Login("email, publish_actions", AuthCallBack);        
+        FB.Login("email, publish_actions", AuthCallBack);
+        MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+        mainMenu._mainMenuUit = false;
+        HandleFBMenus(true);
     }
     
     public void Play()
     {
         UIFB_IsNotLoggedIn.SetActive(false);
-
         MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
         mainMenu._mainMenuUit = false;          
     }

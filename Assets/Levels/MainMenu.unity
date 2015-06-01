@@ -2167,6 +2167,19 @@ MonoBehaviour:
   selectPlayer: 
   isMainMenu: 1
   highScore: 0
+  projectile1Shot: 0
+  projectile2Shot: 0
+  projectile3Shot: 0
+  enemiesDefeated: 0
+  damageTaken: 0
+  kidsFound: 0
+  lettersFound: 
+  bossBattleStarted: 0
+  bossDamageTaken: 0
+  respawns: 0
+  timesPaused: 0
+  pauseDuration: 0
+  bossBattleStartTime: 0
   unlockedLevels: 01010101
   verslaStilte: 00000000
   wordGame: 00000000
@@ -5411,6 +5424,10 @@ MonoBehaviour:
   UIFB_UserName: {fileID: 1093424280}
   ScoreEntryPanel: {fileID: 1688923803}
   ScoreScrollList: {fileID: 97149183}
+  playerSelect: {fileID: 821807853}
+  levelSelect: {fileID: 1577057022}
+  achievementView: {fileID: 1241050455}
+  FbContainer: {fileID: 1055780743}
 --- !u!4 &1275511430
 Transform:
   m_ObjectHideFlags: 0
