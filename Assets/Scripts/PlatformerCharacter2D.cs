@@ -519,11 +519,11 @@ public class PlatformerCharacter2D : MonoBehaviour
         {
             GameControl.control.projectile1Shot++;
         }
-        else if (CurrentProjectile = Projectile2)
+        else if (CurrentProjectile == Projectile2)
         {
             GameControl.control.projectile2Shot++;
         }
-        else if (CurrentProjectile = Projectile3)
+        else if (CurrentProjectile == Projectile3)
         {
             GameControl.control.projectile3Shot++;
         }
