@@ -17,6 +17,8 @@ public class CheckPoint : MonoBehaviour {
 
     void Update()
     {
+        if(gameMaster.currentCheckPoint != gameObject)
+        gameObject.GetComponent<Animator>().SetBool("checked", false);
     }
 
 	// Update is called once per frame

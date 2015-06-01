@@ -25,7 +25,7 @@ public class PuzzleBlockController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.tag == "Bridge")
+		if(collider.tag == "Bridge" || collider.tag == "Water")
 		gameObject.transform.position = startPosition;
 	}
 }
