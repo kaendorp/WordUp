@@ -6,17 +6,14 @@ public class WaterScript : MonoBehaviour
 	private AudioClip _audioSource;
 	private Vector3 positie;
 	private bool isSplashPlayed;
-	// Use this for initialization
-	void Start () {
+	
+    // Use this for initialization
+	void Start () 
+    {
 		isSplashPlayed = false;
 		_audioSource = gameObject.GetComponent<AudioSource>().clip;
 		positie = gameObject.transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	}	
 
 	void OnTriggerExit2D(Collider2D collision)
 	{
@@ -37,6 +34,7 @@ public class WaterScript : MonoBehaviour
 				AudioSource.PlayClipAtPoint (_audioSource, positie);
 				isSplashPlayed = true;
 			}
+            GameControl.control.droogOverGevallen = true;
 		}
 
 		if (collision.gameObject.tag == "Ijstand") 
