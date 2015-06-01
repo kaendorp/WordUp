@@ -30,7 +30,8 @@ public class KnopScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-
+		player = GameObject.Find("Player");
+		player2 = GameObject.Find("Player2");
 	}
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -65,10 +66,10 @@ public class KnopScript : MonoBehaviour {
 		cameraKnop.target = cameraFocus.transform;
 		yield return new WaitForSeconds(speed);
 
-		if(player)
+		if(player2)
 			cameraKnop.target = player.transform;
 		
-		else if(player2)
+		else if(player)
 			cameraKnop.target = player2.transform;
 	}
 }
