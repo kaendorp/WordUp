@@ -52,9 +52,26 @@ public class GameControl : MonoBehaviour {
     public int kinderenLevel2;
     public int kinderenLevel3;
 
+    // Icarus Achievement
+    public bool icarusFall;
+    public bool icarusComplete;
+
+    // IJsvrij Achievement
+    public bool ijsGeraakt;
+    public bool ijsVrijComplete;
+
+    // Droog over Achievement
+    public bool droogOverGevallen;
+    public bool droogOverComplete;
+
+    // Onaantasbaar
+    public bool[] onaantasbaar = new bool[4];
+    public bool onaantasbaarComplete;
+
     public List<string> namen = new List<string>();
 
     public bool FBlogin = false;
+    public bool FBloginClicked = false;
 
     public void LevelComplete(int level)
     {
@@ -174,6 +191,43 @@ public class GameControl : MonoBehaviour {
             {
                 FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_VlotteSpreker.html".ToString());    
             }                  
+        }
+    }
+
+    public void IcarusFall()
+    {
+        icarusComplete = true;
+
+        if (FBlogin == true)
+        {
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_DeHoogteIn.html".ToString());
+        }
+    }
+    public void IJsVrij()
+    {
+        ijsVrijComplete = true;
+
+        if (FBlogin == true)
+        {
+            // Achievement ontbreekt
+        }
+    }
+    public void DroogOverCheck()
+    {
+        droogOverComplete = true;
+
+        if (FBlogin == true)
+        {
+            // Achievement ontbreekt
+        }
+    }
+    public void OnaantasbaarCheck()
+    {
+        onaantasbaarComplete = true;
+
+        if (FBlogin == true)
+        {
+            // Achievement ontbreekt
         }
     }
 
@@ -328,6 +382,30 @@ public class GameControl : MonoBehaviour {
         if (namen.Contains("Held"))
         {
             kinderenLevel3 = 6;
+        }
+
+        // Zet Icarus Achievement op true
+        if (namen.Contains("De hoogte in"))
+        {
+            icarusComplete = true;
+        }
+
+        // Zet IJsvrij Achievement op true
+        if (namen.Contains("IJsvrij"))
+        {
+            ijsVrijComplete = true;
+        }
+
+        // Zet DroogOver Achievement op true
+        if (namen.Contains("Droog Over"))
+        {
+            droogOverComplete = true;
+        }
+
+        // Zet Onaantasbaar Achievement op true
+        if (namen.Contains("Onaantasbaar"))
+        {
+            onaantasbaarComplete = true;
         }
     }
 }

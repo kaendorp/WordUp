@@ -32,7 +32,12 @@ public class FBHolder : MonoBehaviour {
 
     void Start()
     {
-
+        if (GameControl.control.FBloginClicked == true)
+        {
+            UIFB_IsNotLoggedIn.SetActive(false);
+            MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+            mainMenu._mainMenuUit = false;
+        }
     }
 
     void Update()
@@ -83,7 +88,8 @@ public class FBHolder : MonoBehaviour {
     {
         UIFB_IsNotLoggedIn.SetActive(false);
         MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
-        mainMenu._mainMenuUit = false;          
+        mainMenu._mainMenuUit = false;
+        GameControl.control.FBloginClicked = true;
     }
 
     void AuthCallBack(FBResult result)

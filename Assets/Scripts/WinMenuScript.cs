@@ -56,6 +56,71 @@ public class WinMenuScript : MonoBehaviour
             GameControl.control.LevelComplete(levelEnBoss);
             GameControl.control.StilteVerslagen(levelEnBoss);
 
+            // Vind player 'health' voor Onaantasbaar achievement
+            GameObject stats = GameObject.Find("Stats");
+            Player playerStats = stats.GetComponent<Player>();
+
+            if (levelEnBoss == 0)
+            {
+                if (playerStats.currentHealth == 10)
+                {
+                    GameControl.control.onaantasbaar[0] = true;
+                }
+            }
+            if (levelEnBoss == 1)
+            {
+                if (GameControl.control.icarusFall == false)
+                {
+                    // Achievement gehaald
+                    GameControl.control.IcarusFall();                    
+                }
+                if (playerStats.currentHealth == 10)
+                {
+                    GameControl.control.onaantasbaar[1] = true;
+                }
+            }
+            if (levelEnBoss == 2)
+            {
+                if (GameControl.control.ijsGeraakt == false)
+                {
+                    // Achievement gehaald
+                    GameControl.control.IJsVrij();
+                }
+                else
+                {
+                    // zet de waarde weer op false
+                    GameControl.control.ijsGeraakt = false;
+                }
+
+                if (GameControl.control.droogOverGevallen == false)
+                {
+                    // Achievement gehaald
+                    GameControl.control.DroogOverCheck();
+                }
+                else
+                {
+                    // zet de waarde weer op false
+                    GameControl.control.droogOverGevallen = false;
+                }
+
+                if (playerStats.currentHealth == 10)
+                {
+                    GameControl.control.onaantasbaar[2] = true;
+                }
+            }
+            if (levelEnBoss == 3)
+            {
+                if (playerStats.currentHealth == 10)
+                {
+                    GameControl.control.onaantasbaar[3] = true;
+                }
+                if (System.Array.TrueForAll(GameControl.control.onaantasbaar, item => item) == true)
+                {
+                    // Achievement gehaald
+                    GameControl.control.OnaantasbaarCheck();
+                }                
+            }
+
             button1Rect.y = button1Rect.y + 75;
             button2Rect.y = button2Rect.y - 15;
 

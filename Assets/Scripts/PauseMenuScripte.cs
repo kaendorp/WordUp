@@ -61,7 +61,7 @@ public class PauseMenuScripte : MonoBehaviour {
             if (GUI.Button(
                 // Center in X, 2/3 of the height in Y
                 button1Rect,
-                "Terug"
+                "OK"
                 ))
             {
                 pauseContinue = true;
