@@ -44,13 +44,11 @@ public class AchievementView : MonoBehaviour {
     public Image Familie;
     public Image StilteVerbreker;
 
-    public Image StartingOut;
-    public Image Diplomaat;
+    public Image StartingOut;    
     public Image GulleGever;
     public Image LevendeLegende;
     public Image Onaantasbaar;
-    public Image SmoothTalker;
-    public Image Veteraan;
+    public Image SmoothTalker;    
     public Image WordUp;
 
     GameControl control;
@@ -153,6 +151,29 @@ public class AchievementView : MonoBehaviour {
         {
             LevendeLegende.color = new Color32(255, 255, 255, 255);
         }
+
+        // Icarus Achievement
+        if (control.icarusComplete == true)
+        {
+            Icarus.color = new Color32(255, 255, 255, 255);
+        }
+
+        // IJsvrij Achievement
+        if (control.icarusComplete == true)
+        {
+            IJsvrij.color = new Color32(255, 255, 255, 255);
+        }
+
+        // DroogOver Achievement
+        if (control.icarusComplete == true)
+        {
+            DroogOver.color = new Color32(255, 255, 255, 255);
+        }
+        // Onaantasbaar Achievement
+        if (control.icarusComplete == true)
+        {
+            Onaantasbaar.color = new Color32(255, 255, 255, 255);
+        }
     }
 
     // Tutorial
@@ -229,6 +250,10 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
+        if (control.icarusComplete = true)
+        {
+            unlock.text = "Ja";
+        }
 
         omschrijving.text = "Val niet van de platformen in het eerste level.";
         image.sprite = GameObject.Find("Icarus").GetComponent<Image>().sprite;
@@ -447,20 +472,8 @@ public class AchievementView : MonoBehaviour {
 
         omschrijving.text = "Voltooi de tutorial.";
         image.sprite = GameObject.Find("Starting out").GetComponent<Image>().sprite;
-    }
+    }    
     public void Overal1Button2()
-    {
-        ShowAchievement();
-
-        achievement.text = "Diplomaat";
-
-        // if unlocked
-        unlock.text = "Nee";
-
-        omschrijving.text = "Vind en overtuig alle vijanden.";
-        image.sprite = GameObject.Find("Diplomaat").GetComponent<Image>().sprite;
-    }
-    public void Overal1Button3()
     {
         ShowAchievement();
 
@@ -472,7 +485,7 @@ public class AchievementView : MonoBehaviour {
         omschrijving.text = "Doneer aan KidsRights.";
         image.sprite = GameObject.Find("Gulle gever").GetComponent<Image>().sprite;
     }
-    public void Overal1Button4()
+    public void Overal1Button3()
     {
         ShowAchievement();
 
@@ -488,7 +501,7 @@ public class AchievementView : MonoBehaviour {
         omschrijving.text = "Vind alle kinderen";
         image.sprite = GameObject.Find("Levende legende").GetComponent<Image>().sprite;
     }
-    public void Overal1Button5()
+    public void Overal1Button4()
     {
         ShowAchievement();
 
@@ -497,10 +510,10 @@ public class AchievementView : MonoBehaviour {
         // if unlocked
         unlock.text = "Nee";
 
-        omschrijving.text = "Voltooi alle levels zonder schade op te lopen.";
+        omschrijving.text = "Voltooi alle levels met een volle moedbalk.";
         image.sprite = GameObject.Find("Onaantasbaar").GetComponent<Image>().sprite;
     }
-    public void Overal1Button6()
+    public void Overal1Button5()
     {
         ShowAchievement();
 
@@ -515,20 +528,8 @@ public class AchievementView : MonoBehaviour {
 
         omschrijving.text = "Los alle woordpuzzels op.";
         image.sprite = GameObject.Find("Smooth talker").GetComponent<Image>().sprite;
-    }
-    public void Overal1Button7()
-    {
-        ShowAchievement();
-
-        achievement.text = "Veteraan";
-
-        // if unlocked
-        unlock.text = "Nee";        
-
-        omschrijving.text = "Voltooi alle levels met een volle moedbalk.";
-        image.sprite = GameObject.Find("Veteraan").GetComponent<Image>().sprite;
-    }
-    public void Overal1Button8()
+    }    
+    public void Overal1Button6()
     {
         ShowAchievement();
 

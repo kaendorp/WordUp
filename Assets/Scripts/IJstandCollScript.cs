@@ -20,6 +20,7 @@ public class IJstandCollScript : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             Destroy(IJstand);
+            GameControl.control.ijsGeraakt = true;
         }        
     }    
 }
