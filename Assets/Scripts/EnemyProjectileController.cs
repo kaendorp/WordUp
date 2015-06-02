@@ -21,28 +21,68 @@ public class EnemyProjectileController : MonoBehaviour {
     void onTriggerEnter2D(Collision2D collided)
     {
         //If collides with player
-        if (collided.collider.gameObject.tag == "Player" || collided.collider.gameObject.tag == "Friendly")
+        if (collided.collider.gameObject.tag == "Player")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            Transform stats = collided.gameObject.transform.FindChild("Stats");
+            if (stats != null)
+            {
+                Player playerComponent = stats.GetComponent<Player>();
+                if (playerComponent != null)
+                    playerComponent.TakeDamage();
+            }
+            else
+            {
+                Debug.LogError(this.gameObject.name + ": Could not find Stats Object");
+            }
+        }
+        else if (collided.collider.gameObject.tag == "Friendly")
+        {
+            Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            FriendlyController friendlyController = collided.gameObject.GetComponent<FriendlyController>();
+            if (friendlyController != null)
+                friendlyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find FriendlyController on Friendly target");
         }
         else
         {
             AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
-            Destroy(this.gameObject);
         }
+        Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collided)
     {
         //If collides with player
-        if (collided.collider.gameObject.tag == "Player" || collided.collider.gameObject.tag == "Friendly")
+        if (collided.collider.gameObject.tag == "Player")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            Transform stats = collided.gameObject.transform.FindChild("Stats");
+            if (stats != null)
+            {
+                Player playerComponent = stats.GetComponent<Player>();
+                if (playerComponent != null)
+                    playerComponent.TakeDamage();
+            }
+            else
+            {
+                Debug.LogError(this.gameObject.name + ": Could not find Stats Object");
+            }
+        }
+        else if (collided.collider.gameObject.tag == "Friendly")
+        {
+            Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            FriendlyController friendlyController = collided.gameObject.GetComponent<FriendlyController>();
+            if (friendlyController != null)
+                friendlyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find FriendlyController on Friendly target");
         }
         else
         {
             AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
-            Destroy(this.gameObject);
         }
+        Destroy(this.gameObject);
     }
 }

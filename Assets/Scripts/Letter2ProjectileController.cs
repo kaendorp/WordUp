@@ -29,6 +29,9 @@ public class Letter2ProjectileController : MonoBehaviour {
 		if (player.transform.localScale.x > 0) {
             speed = 2.0f;
 		}
+
+        if (this.gameObject != null)
+            Destroy(this.gameObject, 3.5f);
 	}
 	
 	// Update is called once per frame
@@ -60,17 +63,32 @@ public class Letter2ProjectileController : MonoBehaviour {
 				hitPosition = transform.position.y;
 			}
 		}
-        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")
+        if (col.gameObject.tag == "Enemy")
         {
-            /**
-             * Needed for the boss to register a hit. This projectile can not 
-             * be kinematic if it needs to trigger a collider.
-             */
-            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-            
             Instantiate(enemyDeathEffect, col.transform.position, col.transform.rotation);
-            // The enemy and boss will destroy this object to ensure it detects the hit properly
+            EnemyController enemyController = col.gameObject.GetComponent<EnemyController>();
+            if (enemyController != null)
+                enemyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find EnemyController on Enemy target");
+
+            Destroy(this.gameObject);
         }
-		Destroy(this.gameObject, 3.5f);
+        else if (col.gameObject.tag == "Boss")
+        {
+            Instantiate(enemyDeathEffect, col.transform.position, col.transform.rotation);
+            Transform bossTransform = col.transform.parent.transform;
+            if (bossTransform.name != "Boss")
+            {
+                Debug.LogError("BossParent Not Found! Returned parent : " + bossTransform.name);
+            }
+            BossController bossController = bossTransform.GetComponent<BossController>();
+            if (bossController != null)
+                bossController.HitByPlayerProjectile();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find BossController on Boss target");
+
+            Destroy(this.gameObject);
+        }
 	}
 }

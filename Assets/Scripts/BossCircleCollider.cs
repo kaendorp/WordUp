@@ -18,20 +18,10 @@ public class BossCircleCollider : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collider)
 	{
 		Debug.Log ("HIT");
-		if (collider.gameObject.tag == "PlayerProjectile")
-		{
-            Destroy(collider.gameObject);
-			bossController.HitByPlayerProjectile();
-		}
 	}
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("HIT");
-        if (collider.gameObject.tag == "PlayerProjectile")
-        {
-            Destroy(collider.gameObject);
-            bossController.HitByPlayerProjectile();
-        }
     }
 }
