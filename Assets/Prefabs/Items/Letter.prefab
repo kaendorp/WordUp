@@ -62,7 +62,7 @@ GameObject:
   - 58: {fileID: 5805194}
   - 82: {fileID: 8290618}
   - 114: {fileID: 11429642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AreaAware
   m_TagString: Untagged
   m_Icon: {fileID: 0}
