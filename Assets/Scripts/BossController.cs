@@ -769,7 +769,7 @@ public class BossController : MonoBehaviour
 			if(b == 32)//silent spaces
 			{
 				bossSource.volume = 0f;
-				yield return new WaitForSeconds(0.05f);
+				yield return new WaitForSeconds(0.06f);
 			}
 			else if(b < 65)
 			{
