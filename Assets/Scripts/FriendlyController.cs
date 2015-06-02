@@ -160,11 +160,6 @@ public class FriendlyController : MonoBehaviour
                 Wait();
                 break;
         }
-
-        if (currentHealth <= 0)
-        {
-            FriendlyDeath();
-        }
     }
 
 	private void PlaySound()
@@ -296,9 +291,7 @@ public class FriendlyController : MonoBehaviour
     }
 
     /**
-     * Take damage when hit with an enemy projectile. When this entity gets hit
-     * it will get a period in which it can not be hurt ('onCoolDown'), granting
-     * it invincibility for a short period of time.
+     * Plays the message sounds when a player is near.
      */
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -306,16 +299,23 @@ public class FriendlyController : MonoBehaviour
 		{
 			StartCoroutine(PlaySound(message));
 		}
+    }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+    /**
+     * Take damage when hit with an enemy projectile. When this entity gets hit
+     * it will get a period in which it can not be hurt ('onCoolDown'), granting
+     * it invincibility for a short period of time.
+     * 
+     * Called by EnemyProjectileController.cs
+     */
+    public void TakeDamage()
+    {
+        if (!onCoolDown)
         {
-            if (!onCoolDown && currentHealth > 0)
-            {
-                StartCoroutine(coolDownDMG());
-                //Debug.Log(this.gameObject.name + ": Au!");
-                currentHealth -= 1;
-            }
-            Destroy(collision.gameObject);
+            StartCoroutine(coolDownDMG());
+            currentHealth -= 1;
+            if (currentHealth <= 0)
+                FriendlyDeath();
         }
     }
 

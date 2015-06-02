@@ -39,6 +39,11 @@ public class EnemyProjectileController : MonoBehaviour {
         else if (collided.collider.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            FriendlyController friendlyController = collided.gameObject.GetComponent<FriendlyController>();
+            if (friendlyController != null)
+                friendlyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find FriendlyController on Friendly target");
         }
         else
         {
@@ -68,6 +73,11 @@ public class EnemyProjectileController : MonoBehaviour {
         else if (collided.collider.gameObject.tag == "Friendly")
         {
             Instantiate(enemyDeathEffect, collided.transform.position, collided.transform.rotation);
+            FriendlyController friendlyController = collided.gameObject.GetComponent<FriendlyController>();
+            if (friendlyController != null)
+                friendlyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find FriendlyController on Friendly target");
         }
         else
         {
