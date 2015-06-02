@@ -60,7 +60,7 @@ public class Letter2ProjectileController : MonoBehaviour {
 				hitPosition = transform.position.y;
 			}
 		}
-        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")
+        if (col.gameObject.tag == "Enemy")
         {
             /**
              * Needed for the boss to register a hit. This projectile can not 
@@ -68,6 +68,21 @@ public class Letter2ProjectileController : MonoBehaviour {
              */
             this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             
+            Instantiate(enemyDeathEffect, col.transform.position, col.transform.rotation);
+            EnemyController enemyController = col.gameObject.GetComponent<EnemyController>();
+            if (enemyController != null)
+                enemyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find EnemyController on Enemy target");
+        }
+        else if (col.gameObject.tag == "Boss")
+        {
+            /**
+             * Needed for the boss to register a hit. This projectile can not 
+             * be kinematic if it needs to trigger a collider.
+             */
+            this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+
             Instantiate(enemyDeathEffect, col.transform.position, col.transform.rotation);
             // The enemy and boss will destroy this object to ensure it detects the hit properly
         }

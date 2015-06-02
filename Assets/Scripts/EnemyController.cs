@@ -190,11 +190,6 @@ public class EnemyController : MonoBehaviour
         {
             Hover();
         }
-
-        if (currentHealth <= 0)
-        {
-            EnemyDeath();
-        }
     }
 
 	private void PlaySound()
@@ -666,37 +661,19 @@ public class EnemyController : MonoBehaviour
      * Take damage when hit with the players projectile. When this entity gets hit
      * it will get a period in which it can not be hurt ('onCoolDown'), granting
      * it invincibility for a short period of time.
+     * 
+     * Called in LetterProjectileController.cs
+     * Called in LetterProjectile3Controller.cs
+     * Called in Letter2ProjectileController.cs
      */
-    void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage()
     {
-        if (collision.gameObject.tag == "PlayerProjectile")
+        if (!onCoolDown)
         {
-            Destroy(collision.gameObject);
-            if (!onCoolDown && currentHealth > 0)
-            {
-                StartCoroutine(coolDownDMG());
-                //Debug.Log(this.gameObject.name + ": Au!");
-                currentHealth -= 1;
-            }
-        }
-    }
-
-    /**
-     * Take damage when hit with the players projectile. When this entity gets hit
-     * it will get a period in which it can not be hurt ('onCoolDown'), granting
-     * it invincibility for a short period of time.
-     */
-    void OnColliderEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "PlayerProjectile")
-        {
-            Destroy(collision.gameObject);
-            if (!onCoolDown && currentHealth > 0)
-            {
-                StartCoroutine(coolDownDMG());
-                //Debug.Log(this.gameObject.name + ": Au!");
-                currentHealth -= 1;
-            }
+            StartCoroutine(coolDownDMG());
+            currentHealth -= 1;
+            if (currentHealth <= 0)
+                EnemyDeath();
         }
     }
 

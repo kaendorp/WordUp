@@ -32,7 +32,16 @@ public class LetterProjectileController : MonoBehaviour {
 
     void onTriggerEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.tag == "Enemy" || collider.gameObject.tag == "Boss")
+        if (collider.gameObject.tag == "Enemy")
+        {
+            Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
+            EnemyController enemyController = collider.gameObject.GetComponent<EnemyController>();
+            if (enemyController != null)
+                enemyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find EnemyController on Enemy target");
+        }
+        else if (collider.gameObject.tag == "Boss")
         {
             Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
             // The enemy and boss will destroy this object to ensure it detects the hit properly
@@ -46,7 +55,16 @@ public class LetterProjectileController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collider)
 	{
-        if (collider.gameObject.tag == "Enemy" || collider.gameObject.tag == "Boss")
+        if (collider.gameObject.tag == "Enemy")
+        {
+            Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
+            EnemyController enemyController = collider.gameObject.GetComponent<EnemyController>();
+            if (enemyController != null)
+                enemyController.TakeDamage();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find EnemyController on Enemy target");
+        }
+        else if (collider.gameObject.tag == "Boss")
         {
             Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
             // The enemy and boss will destroy this object to ensure it detects the hit properly
