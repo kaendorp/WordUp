@@ -209,7 +209,7 @@ public class GameControl : MonoBehaviour {
 
         if (FBlogin == true)
         {
-            // Achievement ontbreekt
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Ijsvrij.html".ToString());
         }
     }
     public void DroogOverCheck()
@@ -218,7 +218,7 @@ public class GameControl : MonoBehaviour {
 
         if (FBlogin == true)
         {
-            // Achievement ontbreekt
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Droog-over.html".ToString());
         }
     }
     public void OnaantasbaarCheck()
@@ -227,7 +227,7 @@ public class GameControl : MonoBehaviour {
 
         if (FBlogin == true)
         {
-            // Achievement ontbreekt
+            FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Onaantasbaar.html".ToString());
         }
     }
 
