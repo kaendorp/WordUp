@@ -231,7 +231,11 @@ MonoBehaviour:
   number2: {fileID: 8300000, guid: d30ca66d063555944bd2380248784aaf, type: 3}
   number3: {fileID: 8300000, guid: 9ef71fdc775c4c248807db5520f6a4ea, type: 3}
   number4: {fileID: 8300000, guid: 2b2f8e0d351eed74782c3293f0689527, type: 3}
-  speed: .0199999996
+  speed: .0399999991
+  tutorialKind: 0
+  level1Kind: 0
+  level2Kind: 0
+  level3Kind: 0
 --- !u!114 &11468742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +251,8 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   resolutionDependant: 0
   doubleResolution: 1024
+  SortingLayerName: Foreground
+  SortingOrder: 100
 --- !u!212 &21253480
 SpriteRenderer:
   m_ObjectHideFlags: 1

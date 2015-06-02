@@ -294,6 +294,8 @@ MonoBehaviour:
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   resolutionDependant: 0
   doubleResolution: 1024
+  SortingLayerName: Foreground
+  SortingOrder: 100
 --- !u!114 &11475766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  friendlyGraphics: 0
   enemyPatrol: {fileID: 141542, guid: 8446af755bac7034880b5b8782ab1464, type: 2}
   enemyStationary: {fileID: 141542, guid: c45654a6e039fd14b807a2d25eb68f5c, type: 2}
   message: 
@@ -327,7 +330,7 @@ MonoBehaviour:
   number2: {fileID: 8300000, guid: 9514e2890f076744891d791c19798d8a, type: 3}
   number3: {fileID: 8300000, guid: 1fd12025871833b4a9b92d0bb53465f4, type: 3}
   number4: {fileID: 8300000, guid: 0cec9bfbc4f544842867c08ff7fbcb8e, type: 3}
-  speed: .0299999993
+  speed: .0399999991
 --- !u!212 &21212692
 SpriteRenderer:
   m_ObjectHideFlags: 1
