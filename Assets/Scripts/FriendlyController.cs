@@ -104,6 +104,7 @@ public class FriendlyController : MonoBehaviour
 	public float speed;
 	private byte[] low;
 	private AudioSource _audioSource;
+	private bool isDoneTalking;
 
     void Start()
     {
@@ -112,6 +113,7 @@ public class FriendlyController : MonoBehaviour
         message = message.Replace("\\n", "\n");
 		_audioSource = gameObject.GetComponent<AudioSource> ();
         anim = GetComponent<Animator>();
+		isDoneTalking = true;
 
         SetFriendlyGraphics(friendlyGraphics);
     }
@@ -304,6 +306,7 @@ public class FriendlyController : MonoBehaviour
     {
 		if (collision.gameObject.tag == "Player") 
 		{
+			if(isDoneTalking)
 			StartCoroutine(PlaySound(message));
 		}
 
@@ -338,10 +341,16 @@ public class FriendlyController : MonoBehaviour
 	IEnumerator PlaySound(string input)
 	{
 		low = System.Text.Encoding.UTF8.GetBytes(input);
+		isDoneTalking = false;
 		foreach(byte b in low)
 		{
 			//Debug.Log (b);
-			if(b < 65)
+			if(b == 32)//silent spaces
+			{
+				_audioSource.volume = 0f;
+				yield return new WaitForSeconds(0.05f);
+			}
+			else if(b < 65)
 			{
 				_audioSource.clip = number1;
 				_audioSource.volume = 0.2f;
@@ -370,6 +379,7 @@ public class FriendlyController : MonoBehaviour
 				yield return new WaitForSeconds(speed);
 			}
 		}
+		isDoneTalking = true;
 	}
 
     /**

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SageController : MonoBehaviour {
+public class SageController : MonoBehaviour 
+{
 
     // Bericht
     [TextArea(1, 3)]
@@ -39,6 +40,7 @@ public class SageController : MonoBehaviour {
 	public float speed;
 	private byte[] low;
 	private AudioSource _audioSource;
+	private bool isDoneTalking;
 
     // Use this for initialization
     void Start()
@@ -46,7 +48,7 @@ public class SageController : MonoBehaviour {
         // Vind het KindObject
         Stats = GameObject.Find("Stats");
         lettersNeeded = Stats.GetComponent<Player>().maxLetters;
-
+		isDoneTalking = true;
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         succesMessage = succesMessage.Replace("\\n", "\n");       
@@ -88,7 +90,11 @@ public class SageController : MonoBehaviour {
             {
                 messageObject.GetComponent<TextMesh>().text = "Je hebt nog niet voldoende \n letters verzameld jongeling. \n Ga terug en kom hier als \n je alle " + lettersNeeded + " letters gevonden hebt.";
             }
-			StartCoroutine(PlaySound (succesMessage));
+
+			if(isDoneTalking)
+			{
+				StartCoroutine(PlaySound (succesMessage));
+			}
         }
     }
 
@@ -103,10 +109,16 @@ public class SageController : MonoBehaviour {
 	IEnumerator PlaySound(string input)
 	{
 		low = System.Text.Encoding.UTF8.GetBytes(input);
+		isDoneTalking = false;
 		foreach(byte b in low)
 		{
 			//Debug.Log (b);
-			if(b < 65)
+			if(b == 32)//silent spaces
+			{
+				_audioSource.volume = 0f;
+				yield return new WaitForSeconds(0.05f);
+			}
+			else if(b < 65)
 			{
 				_audioSource.clip = number1;
 				_audioSource.volume = 0.2f;
@@ -135,6 +147,7 @@ public class SageController : MonoBehaviour {
 				yield return new WaitForSeconds(speed);
 			}
 		}
+		isDoneTalking = true;
 	}
 
     /**

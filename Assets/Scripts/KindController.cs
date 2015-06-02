@@ -52,6 +52,7 @@ public class KindController : MonoBehaviour
 	public float speed;
 	private byte[] low;
 	private AudioSource _audioSource;
+	private bool isDoneTalking;
 
     // Bools voor GameData
     public bool tutorialKind;
@@ -66,6 +67,7 @@ public class KindController : MonoBehaviour
         Stats = GameObject.Find("Stats");
 		position = this.transform.position;
 		_audioSource = gameObject.GetComponent<AudioSource> ();
+		isDoneTalking = true;
         // Normaal gezien is een bericht een enkele regel
         // hiermee wordt een newline ge-escaped
         message = message.Replace("\\n", "\n");
@@ -103,7 +105,9 @@ public class KindController : MonoBehaviour
         if (collision.gameObject.tag == targetLayer)
         {
             messageObject.GetComponent<TextMesh>().text = message;
-			StartCoroutine(PlaySound (message));
+			if(isDoneTalking)
+				StartCoroutine(PlaySound (message));
+
             if (plusKind == false)
             {
                 //Debug.Log("Trigger");
@@ -156,10 +160,16 @@ public class KindController : MonoBehaviour
 	IEnumerator PlaySound(string input)
 	{
 		low = System.Text.Encoding.UTF8.GetBytes(input);
+		isDoneTalking = false;
 		foreach(byte b in low)
 		{
 			//Debug.Log (b);
-			if(b < 65)
+			if(b == 32)//silent spaces
+			{
+				_audioSource.volume = 0f;
+				yield return new WaitForSeconds(0.05f);
+			}
+			else if(b < 65)
 			{
 				_audioSource.clip = number1;
 				_audioSource.volume = 0.2f;
@@ -188,7 +198,7 @@ public class KindController : MonoBehaviour
 				yield return new WaitForSeconds(speed);
 			}
 		}
-		
+		isDoneTalking = true;
 	}
 
 
