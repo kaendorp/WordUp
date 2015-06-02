@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnitySampleAssets.CrossPlatformInput;
 
 public class PlatformerCharacter2D : MonoBehaviour
 {
@@ -94,12 +93,12 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
         if (!jump)
         {
-            if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 jump = true;
             }
         }
-        HorizontalMovement = CrossPlatformInputManager.GetAxis("Horizontal");
+        HorizontalMovement = Input.GetAxis("Horizontal");
         bool crouch = Input.GetKey(KeyCode.LeftControl);
         // Pass all parameters to the character control script.
         Move(HorizontalMovement, crouch, jump);
@@ -108,7 +107,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HorizontalMovement = CrossPlatformInputManager.GetAxis("Horizontal");
+        HorizontalMovement = Input.GetAxis("Horizontal");
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
         climbing = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsClimbable);
 
@@ -185,7 +184,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         {
             if (canUseShield)
             {
-                if (CrossPlatformInputManager.GetButton("Shield"))
+                if (Input.GetButton("Shield"))
                 {
                         canUseShield = false;    
                         anim.SetBool("Crouch", true);
@@ -194,7 +193,7 @@ public class PlatformerCharacter2D : MonoBehaviour
                         maxSpeed = 1f;
                         canUseShield = false;
                 }
-                if (!CrossPlatformInputManager.GetButton("Shield"))
+                if (!Input.GetButton("Shield"))
                 {
                     anim.SetBool("Crouch", false);
                     shield.SetActive(false);
@@ -215,7 +214,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     void Shooting()
     {
         // Fire chosen projectile
-        if (CrossPlatformInputManager.GetButtonDown("Shoot"))
+        if (Input.GetButtonDown("Shoot"))
         {
             _playerSource.clip = playerFire;
             _playerSource.volume = 0.5f;
@@ -230,7 +229,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
 
         // Switching projectiles
-        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             CurrentProjectile = Projectile1;
             isPlayed = false;
@@ -243,7 +242,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         if (Projectile2 != null)
         {
-            if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 CurrentProjectile = Projectile2;
                 isPlayed = false;
@@ -256,7 +255,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
         if (Projectile3 != null)
         {
-            if (CrossPlatformInputManager.GetButtonDown("Fire3"))
+            if (Input.GetButtonDown("Fire3"))
             {
                 CurrentProjectile = Projectile3;
                 isPlayed = false;

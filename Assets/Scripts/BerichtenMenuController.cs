@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Cloud.Analytics;
-using UnitySampleAssets.CrossPlatformInput;
 
 public class BerichtenMenuController : MonoBehaviour
 {
@@ -179,7 +178,7 @@ public class BerichtenMenuController : MonoBehaviour
      */
     void Update()
     {
-        if (berichtMakerActive && CrossPlatformInputManager.GetButtonDown("Cancel"))
+        if (berichtMakerActive && Input.GetButtonDown("Cancel"))
         {
             ExitMessageMenu();
         }

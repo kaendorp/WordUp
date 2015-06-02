@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnitySampleAssets.CrossPlatformInput;
 
 public class Deur : MonoBehaviour {
 
@@ -45,7 +44,7 @@ public class Deur : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-			if(CrossPlatformInputManager.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
 			{
 				otherSideOfTheDoor.GetComponent<BoxCollider2D>().enabled = false;
 				player.GetComponent<PlatformerCharacter2D>().jumpForce = 0;
