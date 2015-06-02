@@ -6,17 +6,27 @@ using UnityEngine.Cloud.Analytics;
 public class CheckPoint : MonoBehaviour {
 
     public GameMaster gameMaster;
+    public Player player;
     private bool analyticsDone = false;
     public int checkpointNumber = 0;
+    public int lettersNeeded;
+    string amountText;
+    public string message = "";
+    public GameObject messageObject;  
 
     // Use this for initialization
     void Start()
     {
+        message = message.Replace("\\n", "\n");
         gameMaster = FindObjectOfType<GameMaster>();
+        player = FindObjectOfType<Player>();
+        messageObject = transform.FindChild("CheckpointMessage").gameObject;
     }
 
     void Update()
     {
+        if(gameMaster.currentCheckPoint != gameObject)
+        gameObject.GetComponent<Animator>().SetBool("checked", false);
     }
 
 	// Update is called once per frame
@@ -29,6 +39,40 @@ public class CheckPoint : MonoBehaviour {
 
             if (!analyticsDone && checkpointNumber != 0)
                 StartGameAnalytics();
+
+            if (player.countLetters < lettersNeeded)
+            {
+
+                int verschilLetters = (lettersNeeded - player.countLetters);
+
+                if (verschilLetters != 1)
+                {
+                    amountText = verschilLetters.ToString();
+                    message = amountText + " Letters gemist...";
+                    messageObject.GetComponent<TextMesh>().text = message;
+                }
+                else
+                {
+                    amountText = verschilLetters.ToString();
+                    message = amountText + " Letter gemist...";
+                    messageObject.GetComponent<TextMesh>().text = message;
+                }
+
+            }
+            else
+            {
+                message = "";
+                messageObject.GetComponent<TextMesh>().text = message;
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            message = "";
+            messageObject.GetComponent<TextMesh>().text = message;
         }
     }
 
