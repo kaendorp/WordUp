@@ -25,6 +25,8 @@ public class LetterProjectile3Controller : MonoBehaviour {
 		if (player.transform.localScale.x > 0) {
             speed = 1f;
 		}
+        if (this.gameObject != null)
+            Destroy(this.gameObject, 5);
 	}
 	
 	// Update is called once per frame
@@ -34,8 +36,6 @@ public class LetterProjectile3Controller : MonoBehaviour {
 			AudioSource.PlayClipAtPoint (_audioClip, position, 0.1f);
 			isPlayed = true;
 		}
-        if (this.gameObject != null)
-		    Destroy (this.gameObject,5);
 	}
 
     void onTriggerEnter2D(Collision2D collider)
@@ -52,13 +52,22 @@ public class LetterProjectile3Controller : MonoBehaviour {
         else if (collider.gameObject.tag == "Boss")
         {
             Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
-            // The enemy and boss will destroy this object to ensure it detects the hit properly
+            Transform bossTransform = collider.transform.parent.transform;
+            if (bossTransform.name != "Boss")
+            {
+                Debug.LogError("BossParent Not Found! Returned parent : " + bossTransform.name);
+            }
+            BossController bossController = bossTransform.GetComponent<BossController>();
+            if (bossController != null)
+                bossController.HitByPlayerProjectile();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find BossController on Boss target");
         }
         else
         {
             Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(this.gameObject);
         }
+        Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collider)
@@ -75,12 +84,21 @@ public class LetterProjectile3Controller : MonoBehaviour {
         else if (collider.gameObject.tag == "Boss")
         {
             Instantiate(enemyDeathEffect, collider.transform.position, collider.transform.rotation);
-            // The enemy and boss will destroy this object to ensure it detects the hit properly
+            Transform bossTransform = collider.transform.parent.transform;
+            if (bossTransform.name != "Boss")
+            {
+                Debug.LogError("BossParent Not Found! Returned parent : " + bossTransform.name);
+            }
+            BossController bossController = bossTransform.GetComponent<BossController>();
+            if (bossController != null)
+                bossController.HitByPlayerProjectile();
+            else
+                Debug.LogError(this.gameObject.name + ": Could not find BossController on Boss target");
         }
         else
         {
             Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(this.gameObject);
         }
+        Destroy(this.gameObject);
     }
 }

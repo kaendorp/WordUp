@@ -651,7 +651,9 @@ public class BossController : MonoBehaviour
     /**
      * Boss is hit by player.
      *
-     * Called by BossCirlceCollider.OnCollisionEnter2D()
+     * Called in LetterProjectileController.cs
+     * Called in LetterProjectile3Controller.cs
+     * Called in Letter2ProjectileController.cs
      */
     public void HitByPlayerProjectile()
     {
