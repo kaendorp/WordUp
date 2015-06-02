@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnitySampleAssets.CrossPlatformInput;
 
 public class RopeJointController : MonoBehaviour {
     public float horizontalSpeed = 2f;
@@ -33,7 +32,7 @@ public class RopeJointController : MonoBehaviour {
 
                 if (manditoryStickDelayOver)
                 {
-                    if (CrossPlatformInputManager.GetButtonDown("Jump"))
+                    if (Input.GetButtonDown("Jump"))
                     {
                         player.GetComponent<Rigidbody2D>().velocity =
                             new Vector2(
