@@ -78,7 +78,7 @@ public class FBHolder : MonoBehaviour {
 
     public void FBLogin()
     {
-        FB.Login("email, publish_actions", AuthCallBack);
+        FB.Login("email, public_profile, publish_actions, user_friends", AuthCallBack);
         MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
         mainMenu._mainMenuUit = false;
         HandleFBMenus(true);
@@ -236,5 +236,19 @@ public class FBHolder : MonoBehaviour {
         {
             Debug.Log("Score submit result: " + result.Text);
         }, scoreData);
+    }
+
+    void AlternateShare()
+    {
+        Application.ExternalCall("InstantiateSharing");
+    }
+
+    void AlternateFriendInvite()
+    {
+        Application.ExternalCall("InstantiateFriendInvite");
+    }
+
+    public void AlternateShareCallback()
+    {
     }
 }
