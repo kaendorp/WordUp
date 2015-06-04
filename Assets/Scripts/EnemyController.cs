@@ -272,7 +272,8 @@ public class EnemyController : MonoBehaviour
             ~(
                 (1 << LayerMask.NameToLayer(targetLayer)) +
                 (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                (1 << LayerMask.NameToLayer("PlayerProjectile"))
+                (1 << LayerMask.NameToLayer("PlayerProjectile")) +
+                (1 << LayerMask.NameToLayer("Foreground"))
             ) // Collide with all layers, except the targetlayer and the projectiles
         );
 
@@ -284,7 +285,8 @@ public class EnemyController : MonoBehaviour
                 ~(
                     (1 << this.gameObject.layer) +
                     (1 << LayerMask.NameToLayer("EnemyProjectile")) +
-                    (1 << LayerMask.NameToLayer("PlayerProjectile"))
+                    (1 << LayerMask.NameToLayer("PlayerProjectile")) +
+                    (1 << LayerMask.NameToLayer("Foreground"))
                 ) // Collide with all layers, except the targetlayer and the projectiles
             );
         }

@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22403086}
   - 212: {fileID: 21260456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Letter_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 212: {fileID: 21226500}
   - 61: {fileID: 6193786}
   - 82: {fileID: 8246828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Letter
   m_TagString: Letter
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 413432}
   - 23: {fileID: 2306778}
   - 102: {fileID: 10299184}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Letter_Tekst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
