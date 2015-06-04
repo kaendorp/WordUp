@@ -47,7 +47,8 @@ public class EnemyProjectileController : MonoBehaviour {
         }
         else
         {
-            AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
+            if (projectileHits)
+                AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
         }
         Destroy(this.gameObject);
     }
@@ -81,7 +82,8 @@ public class EnemyProjectileController : MonoBehaviour {
         }
         else
         {
-            AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
+            if (projectileHits)
+                AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
         }
         Destroy(this.gameObject);
     }
