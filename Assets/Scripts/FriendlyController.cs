@@ -210,7 +210,8 @@ public class FriendlyController : MonoBehaviour
                 (1 << this.gameObject.layer) +
                 (1 << LayerMask.NameToLayer("UI")) +
                 (1 << LayerMask.NameToLayer("EnemeyProjectile")) +
-                (1 << LayerMask.NameToLayer("PlayerProjectile"))
+                (1 << LayerMask.NameToLayer("PlayerProjectile")) +
+                (1 << LayerMask.NameToLayer("Foreground"))
             ) // Collide with all layers, except itself
         );
 
@@ -223,7 +224,8 @@ public class FriendlyController : MonoBehaviour
                     (1 << this.gameObject.layer) +
                     (1 << LayerMask.NameToLayer("UI")) +
                     (1 << LayerMask.NameToLayer("EnemeyProjectile")) +
-                    (1 << LayerMask.NameToLayer("PlayerProjectile"))
+                    (1 << LayerMask.NameToLayer("PlayerProjectile")) +
+                    (1 << LayerMask.NameToLayer("Foreground"))
                 ) // Collide with all layers, except itself
             );
         }
