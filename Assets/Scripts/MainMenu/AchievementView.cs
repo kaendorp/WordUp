@@ -250,7 +250,7 @@ public class AchievementView : MonoBehaviour {
 
         // if unlocked
         unlock.text = "Nee";
-        if (control.icarusComplete = true)
+        if (control.icarusComplete == true)
         {
             unlock.text = "Ja";
         }
