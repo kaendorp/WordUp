@@ -6,7 +6,7 @@ public class EnemyProjectileController : MonoBehaviour {
 	private AudioClip projectileHits;
 	private Vector3 positie;
 
-    // Use this for initialization
+	// Use this for initialization
     void Start()
     {
         // EnemyProjectile layer should ignore itself, not collide
@@ -15,7 +15,7 @@ public class EnemyProjectileController : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("EnemyProjectile"));
 
 		projectileHits = gameObject.GetComponent<AudioSource> ().clip;
-		positie = new Vector3(0.0f, 0.0f, 0.0f);
+		positie = gameObject.transform.position;
     }
 
     void onTriggerEnter2D(Collision2D collided)
@@ -47,7 +47,7 @@ public class EnemyProjectileController : MonoBehaviour {
         }
         else
         {
-            if (projectileHits)
+			if (projectileHits)
                 AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
         }
         Destroy(this.gameObject);
@@ -82,7 +82,7 @@ public class EnemyProjectileController : MonoBehaviour {
         }
         else
         {
-            if (projectileHits)
+			if (projectileHits)
                 AudioSource.PlayClipAtPoint(projectileHits, positie, 0.5f);
         }
         Destroy(this.gameObject);
