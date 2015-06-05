@@ -188,8 +188,13 @@ public class IntroManager : MonoBehaviour
 		low = System.Text.Encoding.UTF8.GetBytes(input);
 		foreach(byte b in low)
 		{
-			Debug.Log (b);
-			if(b < 65)
+			//Debug.Log (b);
+			if(b == 32)//silent spaces
+			{
+				bossSource.volume = 0f;
+				yield return new WaitForSeconds(0.06f);
+			}
+			else if(b < 65)
 			{
 				bossSource.clip = number1;
 				bossSource.volume = 0.2f;
