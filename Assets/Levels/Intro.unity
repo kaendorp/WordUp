@@ -7922,11 +7922,11 @@ Prefab:
       objectReference: {fileID: 8300000, guid: 773eada9b2aa3e542b9734865d8739ad, type: 3}
     - target: {fileID: 11483210, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: speed
-      value: .0399999991
+      value: .0599999987
       objectReference: {fileID: 0}
     - target: {fileID: 8246090, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: m_Volume
-      value: .5
+      value: .75
       objectReference: {fileID: 0}
     - target: {fileID: 8272918, guid: 4aca21a2aa5348049a6317840d398a49, type: 2}
       propertyPath: m_Enabled
