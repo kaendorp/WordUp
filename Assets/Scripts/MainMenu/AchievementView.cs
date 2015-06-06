@@ -239,7 +239,7 @@ public class AchievementView : MonoBehaviour {
             unlock.text = "Ja";
         }
 
-        omschrijving.text = "Voltooi Level 1 uit.";
+        omschrijving.text = "Voltooi het eerste level.";
         image.sprite = GameObject.Find("De hoogte in").GetComponent<Image>().sprite;
     }
     public void Level1Button2()
@@ -498,7 +498,7 @@ public class AchievementView : MonoBehaviour {
             unlock.text = "Ja";
         }
 
-        omschrijving.text = "Vind alle kinderen";
+        omschrijving.text = "Vindt alle kinderen.";
         image.sprite = GameObject.Find("Levende legende").GetComponent<Image>().sprite;
     }
     public void Overal1Button4()
