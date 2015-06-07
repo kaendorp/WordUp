@@ -50,6 +50,27 @@ public class FBHolder : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+        if (GameControl.control.FBloginClicked == true)
+        {
+            // Onthoud de keuze 'spelen'
+            UIFB_IsNotLoggedIn.SetActive(false);
+            MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+            mainMenu._mainMenuUit = false;
+        }
+        if (GameControl.control.FBlogin == true)
+        {
+            // Laad de Facebook user gegevens
+            UIFB_IsNotLoggedIn.SetActive(false);
+            HandleFBMenus(true);
+
+            // Skipt het LogIn met Facebook Menu
+            MainMenu mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
+            mainMenu._mainMenuUit = false;
+        }
+    }
+
     private void SetInit()
     {
         if (GameControl.control.FBloginClicked == true)
