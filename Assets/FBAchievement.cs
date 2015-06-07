@@ -29,9 +29,7 @@ public class FBAchievement : MonoBehaviour
         else if (fbControl != this)
         {
             Destroy(gameObject);
-        } 
-
-        FB.Init(SetInit, OnHideUnity);        
+        }   
     }
 
     //Bottom of code (last method), aangeroepen, (eerst ervoor zorgen dat facebook geinitialized is en de user dus ingelogged is);
@@ -47,36 +45,38 @@ public class FBAchievement : MonoBehaviour
 
     //ACHIEVEMENT METHODS (Player):
 
+    //Give the player ONE achievement
     public void GiveOneAchievement(string achievementUrl)
     {
         var dict = new Dictionary<string, string>();        
         dict["achievement"] = achievementUrl;
         FB.API(FB.UserId + "/achievements", Facebook.HttpMethod.POST, null, dict);
     }
-
+    //GET ONE achievement
     void GetOneAchievement(long achievementId, string achievementUrl)
     {
         var dict = new Dictionary<string, string>() { { "achievement", achievementUrl } };        
         FB.API(FB.UserId + "/achievements/" + achievementId, Facebook.HttpMethod.GET, HandleGetAchievement, dict);
     }
-
+    //GET ALL achievements
     public void GetAllAchievements()
     {
         FB.API(FB.UserId + "/achievements", Facebook.HttpMethod.GET, HandleGetAchievement);
     }
 
-    //ACHIEVEMENT METHOD APP
+    //GET ALL achievements of APP
     public void GetAllAppAchievements()
     {
         FB.API(FB.AppId + "/achievements", Facebook.HttpMethod.GET, HandleGetAllAppAchievements);
     }
 
-    //HANDLE METHODS
+    //HANDLE METHOD: GET ONE achievement, GET ALL achievements - PLAYER
     void HandleGetAchievement(FBResult result)
     {
         if (result != null)
         {
-            dataList = Util.DeserializeScores(result.Text);
+            //Deserialize JSON result into usable data
+            dataList = FBUtil.DeserializeScores(result.Text);
             foreach (object dataInstance in dataList)
             {
                 var entry = (Dictionary<string, object>)dataInstance;
@@ -89,12 +89,13 @@ public class FBAchievement : MonoBehaviour
             }
         }
     }
-
+    //HANDLE METHOD: GET ALL achievements - APP
     void HandleGetAllAppAchievements(FBResult result)
     {
+        //Deserialize JSON result into usable data
         if (result != null)
         {
-            dataList = Util.DeserializeScores(result.Text);
+            dataList = FBUtil.DeserializeScores(result.Text);
             foreach(object dataInstance in dataList)
             {
                 var entry = (Dictionary<string, object>)dataInstance;           
@@ -108,56 +109,5 @@ public class FBAchievement : MonoBehaviour
         }
     }
 
-    //METHODS FOR TESTSCENE
-    private void SetInit()
-    {      
-        if (FB.IsLoggedIn)
-        {           
-            HandleFBMenus(true);
-        }
-        else
-        {
-            HandleFBMenus(false);
-        }
-    }
-
-    private void OnHideUnity(bool isGameShown)
-    {
-        if (!isGameShown)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
-    }
-
-    public void FBLogin()
-    {
-        FB.Login("email, publish_actions", AuthCallBack);
-    }
-
-    void HandleFBMenus(bool isLoggedIn)
-    {
-        if (isLoggedIn)
-        {
-            UIFB_IsLoggedIn.SetActive(true);
-            UIFB_IsNotLoggedIn.SetActive(false);
-
-        }
-        else
-        {
-            UIFB_IsLoggedIn.SetActive(false);
-            UIFB_IsNotLoggedIn.SetActive(true);
-        }
-    }
-
-    void AuthCallBack(FBResult result)
-    {
-        if (FB.IsLoggedIn)
-        {            
-            AchievementCalls();
-        }        
-    }
+ 
 }

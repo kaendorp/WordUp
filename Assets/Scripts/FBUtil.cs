@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Facebook.MiniJSON;
 
-public class Util : ScriptableObject
+public class FBUtil : ScriptableObject
 {
+    //Methods for creating FB objects needed in the FBHolder and FBAchievement Classes
+
+    //GET picture URL: Facebook ID, height, width, (type)
+    //Format picture URL to usable URL defined by the parameters
     public static string GetPictureURL(string facebookID, int? width = null, int? height = null, string type = null)
     {
         string url = string.Format("/{0}/picture", facebookID);
@@ -15,6 +19,7 @@ public class Util : ScriptableObject
         return url;
     }
 
+    //If failed to GET picture, Show result in console
     public static void FriendPictureCallback(FBResult result)
     {
         if (result.Error != null)
@@ -22,19 +27,9 @@ public class Util : ScriptableObject
             Debug.LogError(result.Error);
             return;
         }
-
-        //GameStateManager.FriendTexture = result.Texture;
     }
 
-    public static Dictionary<string, string> RandomFriend(List<object> friends)
-    {
-        var fd = ((Dictionary<string, object>)(friends[Random.Range(0, friends.Count - 1)]));
-        var friend = new Dictionary<string, string>();
-        friend["id"] = (string)fd["id"];
-        friend["first_name"] = (string)fd["first_name"];
-        return friend;
-    }
-
+    //Deserialize the JSON received in the methods in the FBHolder script
     public static Dictionary<string, string> DeserializeJSONProfile(string response)
     {
         var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
@@ -44,33 +39,21 @@ public class Util : ScriptableObject
         {
             profile["first_name"] = (string)nameH;
         }
-        return profile;
+        return profile; //First name
     }
     
+    //Deserialize the JSON received in the methods in the FBHolder script
     public static List<object> DeserializeScores(string response) 
     {
-
         var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
         object scoresh;
         var scores = new List<object>();
         if (responseObject.TryGetValue ("data", out scoresh)) 
         {
-            scores = (List<object>) scoresh;
+            scores = (List<object>) scoresh; 
         }
 
-        return scores;
-    }
-
-    public static List<object> DeserializeJSONFriends(string response)
-    {
-        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
-        object friendsH;
-        var friends = new List<object>();
-        if (responseObject.TryGetValue("friends", out friendsH))
-        {
-            friends = (List<object>)(((Dictionary<string, object>)friendsH)["data"]);
-        }
-        return friends;
+        return scores; //List with scores, also used with Achievements
     }
     
     
@@ -84,5 +67,15 @@ public class Util : ScriptableObject
     {
         Rect rect = new Rect (pos.x, pos.y, Screen.width, Screen.height);
         GUI.Label (rect, text, style);
+    }
+
+    //Get random friend from list
+    public static Dictionary<string, string> RandomFriend(List<object> friends)
+    {
+        var fd = ((Dictionary<string, object>)(friends[Random.Range(0, friends.Count - 1)]));
+        var friend = new Dictionary<string, string>();
+        friend["id"] = (string)fd["id"];
+        friend["first_name"] = (string)fd["first_name"];
+        return friend;
     }
 }
