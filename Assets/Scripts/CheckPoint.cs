@@ -40,6 +40,7 @@ public class CheckPoint : MonoBehaviour {
             if (!analyticsDone && checkpointNumber != 0)
                 StartGameAnalytics();
 
+            //if current amount of letters is lower than the expected amount of letters, show message stating the amount of missing letters
             if (player.countLetters < lettersNeeded)
             {
 
