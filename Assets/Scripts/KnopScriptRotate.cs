@@ -32,7 +32,8 @@ public class KnopScriptRotate : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-
+		player = GameObject.Find("Player");
+		player2 = GameObject.Find("Player2");
 	}
 
     void OnTriggerEnter2D(Collider2D collision)
