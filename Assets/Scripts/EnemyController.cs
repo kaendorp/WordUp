@@ -128,7 +128,6 @@ public class EnemyController : MonoBehaviour
 		_audioSource = GetComponent<AudioSource>();
 		isPlayed = false;
 
-		anim = GetComponent<Animator>();
         if (type == EnemyType.floating)
         {
             startPosition = this.transform.position;
@@ -136,6 +135,10 @@ public class EnemyController : MonoBehaviour
             leftPosition = new Vector3((startPosition.x - hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
             rightPosition = new Vector3((startPosition.x + hoverXSwing), (startPosition.y + hoverYSwing), startPosition.z);
         }
+
+        anim = GetComponent<Animator>();
+
+        // The sticky has its sprite attached to it's firepoint to look at the player.
         if (type == EnemyType.sticky)
         {
             anim = firePoint.GetComponent<Animator>();
@@ -147,7 +150,6 @@ public class EnemyController : MonoBehaviour
         switch (_state)
         {
             case EnemyState.idle:
-                //delayCoroutineStarted = false;
                 if (type == EnemyType.stationary)
                 {
                     Idle();
@@ -186,6 +188,7 @@ public class EnemyController : MonoBehaviour
                 break;
         }
 
+        // Hovering enemy always hovers
         if (type == EnemyType.floating)
         {
             Hover();
@@ -226,8 +229,7 @@ public class EnemyController : MonoBehaviour
      */
     private void Idle()
     {
-		// Will set 'playerSpotted' to true if spotted
-        IsTargetInRange();
+        IsTargetInRange(); // Will set 'playerSpotted' to true if spotted
         if (playerSpotted)
         {
             if (type == EnemyType.runner)
@@ -241,6 +243,9 @@ public class EnemyController : MonoBehaviour
 				_state = EnemyState.waitThenAttack;
 			}
         }
+
+        // Running enemy is most of the time on ice and will be moving even after there is no force
+        // applied to it, this stops the running animation if the speed is below minSpeed threshold.
 		if (type == EnemyType.runner && Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.x) <= sprintMinSpeed) 
 		{
 			_audioSource.Stop ();
@@ -342,10 +347,6 @@ public class EnemyController : MonoBehaviour
      */
     void Hover()
     {
-        //tempPosition.x += Mathf.Sin(Time.realtimeSinceStartup * setHoverX) * setHoverA;
-        //tempPosition.y += Mathf.Sin(Time.realtimeSinceStartup * setHoverY) * setHoverA;
-        //transform.position = tempPosition;
-
         float step = hoverSpeed * Time.deltaTime;
         if (this.transform.position == startPosition && movingRight)
         {
@@ -369,6 +370,16 @@ public class EnemyController : MonoBehaviour
         this.transform.position = Vector3.MoveTowards(this.transform.position, moveTo, step);
     }
 
+    /**
+     * This enemy will make a mad dash towards the player.
+     * 
+     * FacePlayer() will flip the enemy in the direction of the player, making it so that the
+     * force will always propel the enemy towards the player.
+     * 
+     * Once it initiates the sprint the enemy will keep charging towards the player untill
+     * the BlindSprint() time has passed, then it will check to see if the player is still
+     * visable and if not will return to the idle state.
+     */
     private void Sprint()
     {
         if (type == EnemyType.runner && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= sprintMinSpeed)
@@ -379,7 +390,7 @@ public class EnemyController : MonoBehaviour
         FacePlayer();
         GetComponent<Rigidbody2D>().AddForce(transform.right * (-moveSpeed * 5));
 
-        if (!delayCoroutineStarted)
+        if (!delayCoroutineStarted) // Trigger only once!
             StartCoroutine(BlindSprint());
 
         if (!isBlinded)
@@ -390,6 +401,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /**
+     * Called in Sprint()
+     */
     IEnumerator BlindSprint()
     {
         delayCoroutineStarted = true;
@@ -408,13 +422,13 @@ public class EnemyController : MonoBehaviour
     private void WaitThenAttack()
     {
         // Patroling enemy needs to stop moving before shooting.
-        // This enemy will resume patrol in the idle state
         if (type == EnemyType.patrol)
         {
             anim.SetFloat("speed", 0);
 			isPlayed = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
+        // Floating enemy will move slower
         else if (type == EnemyType.floating)
         {
             hoverSpeed = moveSpeed - (moveSpeed / 3);
@@ -430,6 +444,7 @@ public class EnemyController : MonoBehaviour
             AimAtPlayer();
         }
 
+        // Sticky enemy rotates it's head and should not flip
         if (type != EnemyType.sticky)
             FacePlayer();
 
@@ -444,6 +459,8 @@ public class EnemyController : MonoBehaviour
     /**
      * Provides a short delay before shooting and blinds the patrolling enemy,
      * so that it will continue to patrol after shooting.
+     * 
+     * Called in WaitThenAttack state in Update()
      */
     IEnumerator FireDelay()
     {
@@ -605,13 +622,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /**
+     * Calculates the rotation of the firepoint to point to the player.
+     * 
+     * Used by the floating enemy and the sticky enemy.
+     * The sticky enemy has it's sprites rotation linked with the firepoint.
+     */
     private void AimAtPlayer()
     {
         if (target != null)
         {
             Vector3 targetLocation = target.transform.position;
-            //float angle = Mathf.Atan2(targetLocation.y, targetLocation.x) * Mathf.Rad2Deg;
-            //firePoint.transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
 
             float AngleRad = Mathf.Atan2(targetLocation.y - firePoint.transform.position.y, targetLocation.x - firePoint.transform.position.x);
             float AngleDeg = (180 / Mathf.PI) * AngleRad;
@@ -628,7 +649,6 @@ public class EnemyController : MonoBehaviour
      */
     private void Shoot()
     {
-        //hasShot = true;
         if (anim != null)
         {
             anim.SetTrigger("attacktrigger");
@@ -665,8 +685,8 @@ public class EnemyController : MonoBehaviour
      * it invincibility for a short period of time.
      * 
      * Called in LetterProjectileController.cs
+     * Called in LetterProjectile2Controller.cs
      * Called in LetterProjectile3Controller.cs
-     * Called in Letter2ProjectileController.cs
      */
     public void TakeDamage()
     {
@@ -680,7 +700,10 @@ public class EnemyController : MonoBehaviour
     }
 
     /**
-     * Sets the delay when this entity can get hurt again.
+     * Sets the delay when this entity can get hurt again and triggers the 
+     * 'isHit' animation.
+     * 
+     * Called in TakeDamage()
      */
     IEnumerator coolDownDMG()
     {
@@ -701,8 +724,6 @@ public class EnemyController : MonoBehaviour
      */
     void EnemyDeath()
     {
-        //Debug.Log(this.gameObject.name + ": 'Yay! Ik ben nu vriendelijk!'");
-
         // Set the friendly spawn type
         if (type == EnemyType.patrol)
         {
