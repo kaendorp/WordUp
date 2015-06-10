@@ -280,7 +280,6 @@ public class BossController : MonoBehaviour
      */
     private void SetNextAction()
     {
-        // Debug.Log("Setting Action to : " + bossSequenceList[bossSequenceListValue].ToString());
         currentEvent = bossSequenceList[bossSequenceListValue];
         bossSequenceListValue++;
 
@@ -302,7 +301,6 @@ public class BossController : MonoBehaviour
         circleCollider.SetActive(false);
         anim.SetBool("IsHit", false);
         yield return new WaitForSeconds(2f);
-        //Debug.Log("IDLE DONE");
         SetNextAction();
     }
 
@@ -328,7 +326,6 @@ public class BossController : MonoBehaviour
 
         anim.SetBool("IsShooting", false);
         yield return new WaitForSeconds(1f); // Wait for the animation to end
-        //Debug.Log("SHOOT DONE");
         SetNextAction();
     }
 
@@ -352,6 +349,9 @@ public class BossController : MonoBehaviour
      * Shooting bouncing projectiles action
      *
      * Triggers the shooting animation and fires 'fireAmount' of projectiles.
+     * 
+     * bool goingDown is used in SetBouncyPath to set the initial direction of
+     * the projectile.
      */
     IEnumerator Bounce()
     {
@@ -389,11 +389,14 @@ public class BossController : MonoBehaviour
 
         anim.SetBool("IsShooting", false);
         yield return new WaitForSeconds(1f); // Wait for the animation to end
-        //Debug.Log("SHOOT DONE");
 
         SetNextAction();
     }
 
+    /**
+     * Instantiate the bouncyprojecilte, set a new bouncypath
+     * and starts the MoveToBouncyPoint coroutine.
+     */
     private void BounceProjectile()
     {
         shot = (GameObject)Instantiate(bouncePrefab, firePoint.transform.position, firePoint.transform.rotation);
@@ -498,15 +501,19 @@ public class BossController : MonoBehaviour
         SetNextAction();
     }
 
+    /**
+     * Instantiate Arcing projectile.
+     * 
+     * Called in Arc()
+     */
     private void ArcProjectile()
     {
         shot = (GameObject)Instantiate(arcPrefab, firePoint.transform.position, firePoint.transform.rotation);
-        shot.GetComponent<Rigidbody2D>().gravityScale = 1f;
-        shot.GetComponent<Rigidbody2D>().angularDrag = 0;
         Vector3 velocity = CalculateThrowSpeed(shot.transform.position, player.transform.position, timeToTarget);
 
         if (float.IsNaN(velocity.y) || float.IsNaN(velocity.x)) // if calculation fails, give the projectile a weak nudge
             velocity = new Vector3(-2f, 1f, 0);
+
         shot.GetComponent<Rigidbody2D>().velocity = velocity;
         Destroy(shot, projectileLifeTime);
     }
@@ -545,6 +552,12 @@ public class BossController : MonoBehaviour
         return result;
     }
 
+    /**
+     * The boss stomps the floor, spawning an ice platform and dropping icicles.
+     * 
+     * In lvl3 the icicles are replaced with the spawning of enemies (minions) and
+     * the platform is disabled.
+     */
     IEnumerator Stomp()
     {
         if (iceInit != null)
@@ -558,15 +571,22 @@ public class BossController : MonoBehaviour
         anim.SetTrigger("StompAttack");
 
         yield return new WaitForSeconds(0.3f);
-        Vector3 startPosition = icePlatform.transform.position;
-        Vector3 endPosition = new Vector3(icePlatform.transform.position.x, icePlatform.transform.position.y + platformHeight, icePlatform.transform.position.z);
-        StartCoroutine(IcePlatform(startPosition, endPosition));
+
+        if (icePlatform != null)
+        {
+            Vector3 startPosition = icePlatform.transform.position;
+            Vector3 endPosition = new Vector3(icePlatform.transform.position.x, icePlatform.transform.position.y + platformHeight, icePlatform.transform.position.z);
+            StartCoroutine(IcePlatform(startPosition, endPosition));
+        }
 
         iceInit = (GameObject)Instantiate(icicles, iceSpawn.transform.position, iceSpawn.transform.rotation);
         yield return new WaitForSeconds(0.5f);
         SetNextAction();
     }
 
+    /**
+     * Moves the iceplatform upwards and then down again.
+     */
     IEnumerator IcePlatform(Vector3 from, Vector3 to)
     {
         float iceUpTime = 0.1f;
@@ -600,11 +620,13 @@ public class BossController : MonoBehaviour
             anim.SetTrigger("RoarAttack");
             StartCoroutine(PushPlayerLeft());
             yield return new WaitForSeconds(2f);
-            //Debug.Log("ROAR DONE");
         }
         SetNextAction();
     }
 
+    /**
+     * Called in RoarAttack()
+     */
     IEnumerator PushPlayerLeft()
     {
         float elapsedTime = 0f;
@@ -652,8 +674,8 @@ public class BossController : MonoBehaviour
      * Boss is hit by player.
      *
      * Called in LetterProjectileController.cs
+     * Called in LetterProjectile2Controller.cs
      * Called in LetterProjectile3Controller.cs
-     * Called in Letter2ProjectileController.cs
      */
     public void HitByPlayerProjectile()
     {
@@ -834,6 +856,9 @@ public class BossController : MonoBehaviour
         wScript.WinActive = true;
     }
 
+    /**
+     * Draws the bouncypath in the editor.
+     */
 	private void OnDrawGizmos()
     {
         if (bouncyPath != null && bouncyPath.Length > 0)
