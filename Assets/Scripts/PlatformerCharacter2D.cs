@@ -89,7 +89,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         GameControl.control.enemiesDefeated = 0;
 	}
 
-	private void Update()
+    private void Update()
     {
         if (!jump)
         {
@@ -98,11 +98,6 @@ public class PlatformerCharacter2D : MonoBehaviour
                 jump = true;
             }
         }
-        HorizontalMovement = Input.GetAxis("Horizontal");
-        bool crouch = Input.GetKey(KeyCode.LeftControl);
-        // Pass all parameters to the character control script.
-        Move(HorizontalMovement, crouch, jump);
-        jump = false;
     }
 
     private void FixedUpdate()
@@ -117,6 +112,8 @@ public class PlatformerCharacter2D : MonoBehaviour
         } else if (climbing) {
           canUseShield = false;
         }
+
+        bool crouch = Input.GetKey(KeyCode.LeftControl);
 
         if (ShieldCoolingDown == true)
         {
@@ -133,6 +130,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         KnockBack();
         Shooting();
         Shield();
+        Move(HorizontalMovement, crouch, jump);
 
         //Set primary anim parameters
         anim.SetBool("Ground", grounded);
@@ -140,12 +138,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         
         //Give player better balance
         GetComponent<Rigidbody2D>().velocity = new Vector2(HorizontalMovement * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
-    }
-
-    IEnumerator WaitForCooldown()
-    {
-        yield return new WaitForSeconds(1);
-        ShieldCoolingDown = false;
+        jump = false;
     }
 
     public void Move(float HorizontalMovement, bool crouch, bool jump)
@@ -344,6 +337,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     }
 
+    //Cooldown for shield
+    IEnumerator WaitForCooldown()
+    {
+        yield return new WaitForSeconds(1);
+        ShieldCoolingDown = false;
+    }
+
+    //Set player layer recursively
     void SetLayerRecursively(GameObject obj, int layerNumber)
     {
         if (null == obj)
@@ -361,6 +362,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             SetLayerRecursively(child.gameObject, layerNumber);
         }
     }
+
 	//properly face character left or right before moving
     private void Flip()
     {
@@ -370,6 +372,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         transform.localScale = theScale;
     }
 
+    //Collision stay 
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag == "AbovePlatform" || col.gameObject.tag == "AboveTrigger")
@@ -379,8 +382,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
     }
 
-	//the player triggers lots of things
-
+	//Collider trigger enter
     void OnTriggerEnter2D(Collider2D col)
     {
 		//de ladder
@@ -445,7 +447,6 @@ public class PlatformerCharacter2D : MonoBehaviour
             anim.SetBool("ClimbUp", true);
             canUseShield = false;
             anim.speed = 1f;
-            //grounded = false; /als dit anders gechecked kan worden werkt dit goed (nu grounded on stop)
         }
         else
         {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Letter2ProjectileController : MonoBehaviour {
+public class LetterProjectile2Controller : MonoBehaviour {
 
 	public float speed = 2.0f;
 	public PlatformerCharacter2D player;
