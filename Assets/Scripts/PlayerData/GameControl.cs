@@ -52,6 +52,12 @@ public class GameControl : MonoBehaviour {
     public int kinderenLevel2;
     public int kinderenLevel3;
 
+    public bool a_kindvriendelijk = false;
+    public bool a_kindervriend = false;
+    public bool a_redderInNood = false;
+    public bool a_held = false;
+    public bool a_levendeLegende = false;
+
     // Icarus Achievement
     public bool icarusFall;
     public bool icarusComplete;
@@ -281,24 +287,29 @@ public class GameControl : MonoBehaviour {
         if (FB.IsLoggedIn == true)
         {
             // Kinderen Achievement unlock
-            if (kinderenTutorial == 1)
+            if (kinderenTutorial == 1 && !a_kindvriendelijk)
             {
+                a_kindvriendelijk = true;
                 FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Kindvriendelijk.html".ToString());
             }
-            if (kinderenLevel1 == 4)
+            if (kinderenLevel1 == 4 && !a_kindervriend)
             {
+                a_kindervriend = true;
                 FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_Kindervriend.html".ToString());
             }
-            if (kinderenLevel2 == 5)
+            if (kinderenLevel2 == 5 && !a_redderInNood)
             {
+                a_redderInNood = true;
                 FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_RedderInNood.html".ToString());
             }
-            if (kinderenLevel3 == 6)
+            if (kinderenLevel3 == 6 && !a_held)
             {
+                a_held = true;
                 FBAchievement.fbControl.GiveOneAchievement("http://www.wordupgame.tk/Facebook/Html/Achievements/A_Held.html".ToString());
             }
-            if (kinderenTutorial >= 1 && kinderenLevel1 >= 4 && kinderenLevel2 >= 5 && kinderenLevel3 >= 6)
+            if (a_kindvriendelijk && a_kindervriend && a_redderInNood && a_held && !a_levendeLegende )
             {
+                a_levendeLegende = true;
                 FBAchievement.fbControl.GiveOneAchievement("http://wordupgame.tk/Facebook/Html/Achievements/A_LevendeLegende.html".ToString());
             }
         }
